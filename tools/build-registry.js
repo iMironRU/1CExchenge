@@ -176,7 +176,7 @@ for (const cf of cfScans) {
         formatVersions: cf.enterpriseData.declared, evidence: [where], notes };
       // «1С:ERP Управление предприятием 2 / Комплексная автоматизация, редакция 2» — два корреспондента
       for (const label of (c.title || c.name).split(/\s+\/\s+/)) {
-        const corr = P.fromLabel(label);
+        const corr = P.withCurrent(P.fromLabel(label));
         addLink({ ...common, from: selfRef, to: corr });
         addLink({ ...common, from: corr, to: selfRef });
       }

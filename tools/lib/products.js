@@ -30,11 +30,12 @@ const PRODUCTS = [
   { key: 'Отчетность предпринимателя', names: [/^ОтчетностьПредпринимателя/], labels: [re('отчетность предпринимателя')] },
   { key: '1С:Мобильная касса', names: [/^МобильнаяКасса$/], labels: [re('мобильная касса')] },
   { key: '1С:Касса', names: [/^КассаБазовая$/, /^Касса$/], labels: [re('1с:? ?касса')] },
-  { key: 'РМК', names: [/^РабочееМестоКассира/], labels: [re('рабочее место кассира')] },
+  { key: 'РМК', names: [/^РабочееМестоКассира/, /^РМК/], labels: [re('рабочее место кассира')] },
   { key: 'ТиС 7.7', names: [/Торговля\+Склад/i], labels: [re('торговля\\s*\\+\\s*склад|^ут92$|^conv9_2$|^conv77_8$')] },
   { key: 'Аспект 7.7', names: [/Аспект/i], labels: [re('аспект|^conv_asp$')] },
   { key: 'ЗиК 7.7', names: [/ЗарплатаИКадры/i], labels: [re('^зик\\B|зарплата и кадры')] },
   { key: 'Бухгалтерия 7.7', names: [/^Бухгалтерия77/i], labels: [re('^бухгалтерия 7\\.7')] },
+  { key: 'Управление холдингом', names: [/^УправлениеХолдингом/], labels: [re('управлени\\W* холдингом')] },
   { key: 'КАМИН Зарплата', names: [/^КаминЗарплата/], labels: [re('камин')] },
   { key: 'Клиент ЭДО', names: [/^КлиентЭДО/], labels: [re('клиент эдо')] },
   { key: 'Конвертация данных', names: [/^КонвертацияДанных/], labels: [re('конвертаци\\W+ данных')] },
@@ -67,7 +68,9 @@ function fromRules(c) {
   const ver = c.version || ((c.name || '').match(/версия\s+([\d.]+)/i) || [])[1] || null;
   return {
     product: p ? p.key : c.name,
-    edition: p && /7\.7$/.test(p.key) ? null : edition(ver),
+    // без версии — редакция из синонима или из цифры в конце имени (ERP2)
+    edition: p && /7\.7$/.test(p.key) ? null
+      : edition(ver) || (c.synonym ? fromLabel(c.synonym).edition : null) || (((c.name || '').match(/[A-Za-zА-Яа-яЁё](\d)$/) || [])[1] || null),
     version: ver,
     name: c.name,
     synonym: c.synonym || null,
@@ -81,9 +84,11 @@ function fromLabel(label) {
   // «…, ред. 3.0» / «…, редакция 11»; иначе — номер в конце («1С:ERP Управление предприятием 2.0»)
   const m = label.match(/ред(?:\.|акция)?\s*([\d.]+)/i) || label.match(/\s(\d+(?:\.\d+)?)\s*$/);
   const legacy = p && /7\.7$/.test(p.key);
+  // «1С:Бухгалтерия предприятия 8» — это номер платформы, а не редакция
+  const ed = m && !(m[1] === '8' && !/ред/i.test(m[0])) ? m[1].replace(/\.$/, '') : null;
   return {
     product: p ? p.key : label,
-    edition: m && !legacy ? m[1].replace(/\.$/, '') : null,
+    edition: ed && !legacy ? ed : null,
     version: null,
     name: null,
     synonym: label,
@@ -108,7 +113,15 @@ function line(c) {
   if (!c.edition) return c.product;
   const major = parseInt(c.edition, 10);
   if (c.product in MAJOR_LINES && major >= MAJOR_LINES[c.product]) return `${c.product} ${major}`;
-  return `${c.product} ${c.edition}`;
+  // «ред. 3» и «ред. 3.0» — одна линейка
+  return `${c.product} ${c.edition.includes('.') ? c.edition : c.edition + '.0'}`;
 }
 
-module.exports = { fromRules, fromLabel, fromTemplate, display, line, edition };
+// Корреспонденты из кода современных конфигураций часто подписаны без редакции («1С:Управление торговлей») —
+// для них подставляем актуальную линейку
+const CURRENT = { 'УТ': '11', 'КА': '2', 'ERP': '2', 'РМК': '1.1', 'ДО КОРП': '3.0' };
+function withCurrent(c) {
+  return c && !c.edition && CURRENT[c.product] ? { ...c, edition: CURRENT[c.product] } : c;
+}
+
+module.exports = { withCurrent, fromRules, fromLabel, fromTemplate, display, line, edition };
