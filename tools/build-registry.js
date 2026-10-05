@@ -1,0 +1,303 @@
+#!/usr/bin/env node
+// Сборка реестра обменов/переходов из результатов сканирования поставок.
+// Вход: data/templates.json (scan-templates.js), data/annotations.json (ручная разметка).
+// Выход: data/registry.json, data/registry.csv, REGISTRY.md
+'use strict';
+const fs = require('fs');
+const path = require('path');
+const P = require('./lib/products');
+
+const ROOT = path.join(__dirname, '..');
+const scan = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'templates.json'), 'utf8'));
+const ann = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'annotations.json'), 'utf8'));
+const procRules = ann.processings.map(a => ({ ...a, re: new RegExp(a.match, 'i') }));
+
+const links = new Map();
+
+// Одинаковые правила лежат в нескольких поставках (УТ 11.5 и 11.6) — сливаем в одну связь
+// со списком поставок; ключ включает версии, на которые собраны правила.
+// Те же правила, найденные и файлом поставки, и макетом в CF, тоже сливаются (источник — оба).
+function addLink(l) {
+  const c = x => `${P.display(x)}@${x.version || ''}`;
+  const key = [c(l.from), c(l.to), l.kind, l.mechanism].join('|');
+  const ex = links.get(key);
+  const ev = l.evidence.map(e => `${l.shippedIn.product} ${l.shippedIn.version}: ${e}`);
+  const source = l.source || 'files';
+  if (ex) {
+    if (!ex.shippedIn.some(s => s.path === l.shippedIn.path)) ex.shippedIn.push(l.shippedIn);
+    for (const e of ev) if (!ex.evidence.includes(e)) ex.evidence.push(e);
+    for (const n of l.notes) if (!ex.notes.includes(n)) ex.notes.push(n);
+    if (!ex.sources.includes(source)) ex.sources.push(source);
+    ex.exchangePlan = ex.exchangePlan || l.exchangePlan;
+    if (l.formatVersions) ex.formatVersions = l.formatVersions;
+    return;
+  }
+  links.set(key, { ...l, shippedIn: [l.shippedIn], evidence: ev, sources: [source] });
+}
+
+// У правил иногда не указана версия стороны (Аспект 7.7 -> УТ); если это продукт самой
+// поставки — берём редакцию поставки
+function withSelf(c, self) {
+  if (c && !c.edition && c.product === self.product) return { ...c, edition: self.edition };
+  return c;
+}
+
+function evidence(a) {
+  return a.entry ? `${a.file} :: ${a.entry}` : a.file;
+}
+
+for (const t of scan.templates) {
+  const self = P.fromTemplate(t);
+  const shippedIn = { path: t.path, product: self.product, version: t.version, name: t.name };
+  // для обработок версия «себя» не несёт информации (это версия поставки, она в shippedIn)
+  const selfRef = { ...self, version: null };
+  const resolve = label => (label === '$self' ? selfRef : P.fromLabel(label));
+
+  // группируем по папке внутри поставки: одна папка = один обмен (правила + описание)
+  const groups = new Map();
+  for (const a of t.artifacts) {
+    const dir = path.dirname(a.file);
+    if (!groups.has(dir)) groups.set(dir, []);
+    groups.get(dir).push(a);
+  }
+
+  for (const [dir, items] of groups) {
+    const conv = items.filter(a => a.type === 'rules' && a.kind === 'conversion');
+    const reg = items.filter(a => a.type === 'rules' && a.kind === 'registration');
+    const procs = items.filter(a => a.type === 'processing');
+    const docs = items.filter(a => a.type === 'doc');
+    const section = (items.find(a => a.section) || {}).section || null;
+    const partner = (items.find(a => a.partner) || {}).partner || null;
+    let produced = 0;
+
+    for (const a of conv) {
+      const from = withSelf(P.fromRules(a.source), self);
+      const to = withSelf(P.fromRules(a.target), self);
+      const legacy = from && from.edition === null && /7\.7/.test(from.product);
+      const kind = section === 'transition' || legacy ? 'переход' : 'синхронизация';
+      // правила регистрации той же папки/архива, относящиеся к стороне-источнику
+      const plan = reg.find(r => r.file === a.file) || reg[0];
+      const notes = [];
+      if (/первый обмен/i.test(a.file + (a.entry || ''))) notes.push('правила первого обмена');
+      if (a.title) notes.push(`«${a.title}»`);
+      addLink({
+        from, to, kind,
+        mechanism: 'КД2: правила конвертации',
+        exchangePlan: plan ? plan.exchangePlan : null,
+        rulesFormat: a.formatVersion,
+        rulesCreated: a.created,
+        shippedIn,
+        evidence: [evidence(a), ...(plan ? [evidence(plan)] : []), ...docs.map(evidence)],
+        notes,
+      });
+      produced++;
+    }
+
+    for (const a of procs) {
+      const r = procRules.find(x => x.re.test(a.file + (a.entry ? '/' + a.entry : '')));
+      if (!r) {
+        if (section) addLink({
+          from: selfRef, to: P.fromLabel(partner), kind: section === 'transition' ? 'переход' : 'синхронизация',
+          mechanism: 'обработка (не размечена)', exchangePlan: null, shippedIn,
+          evidence: [evidence(a)], notes: ['нужна ручная разметка в data/annotations.json'],
+        });
+        continue;
+      }
+      if (r.skip) continue;
+      const from = r.from ? resolve(r.from) : self;
+      const to = r.to ? resolve(r.to) : P.fromLabel(partner);
+      addLink({
+        from, to, kind: r.kind, mechanism: r.mechanism, exchangePlan: null, shippedIn,
+        evidence: [evidence(a), ...docs.map(evidence)], notes: r.note ? [r.note] : [],
+      });
+      produced++;
+    }
+
+    // папка обмена только с описанием: обмен встроен в конфигурацию
+    if (!produced && section === 'exchange' && partner && docs.length) {
+      addLink({
+        from: selfRef, to: P.fromLabel(partner), kind: 'синхронизация',
+        mechanism: 'встроен в конфигурацию (в поставке только описание)', exchangePlan: null, shippedIn,
+        evidence: docs.map(evidence), notes: [],
+      });
+    }
+  }
+}
+
+// ---------- CF: планы обмена, встроенные правила, корреспонденты EnterpriseData, обработки перехода
+const cfDir = path.join(ROOT, 'data', 'cf');
+const cfScans = fs.existsSync(cfDir)
+  ? fs.readdirSync(cfDir).filter(f => f.endsWith('.json')).map(f => JSON.parse(fs.readFileSync(path.join(cfDir, f), 'utf8')))
+  : [];
+const skipPlans = new RegExp(ann.skipPlans || '^$');
+const cfProc = (ann.cfProcessors || []).map(a => ({ ...a, re: new RegExp(a.match) }));
+const enterpriseData = [];
+
+for (const cf of cfScans) {
+  const self = P.fromTemplate(cf);
+  const selfRef = { ...self, version: null };
+  const shippedIn = { path: cf.path, product: self.product, version: cf.version, name: cf.name };
+  const base = { shippedIn, source: 'cf' };
+  enterpriseData.push({ config: self, declared: cf.enterpriseData.declared, packages: cf.enterpriseData.xdtoPackages });
+
+  for (const p of cf.exchangePlans) {
+    if (skipPlans.test(p.name)) continue;
+    const where = `CF: ПланОбмена.${p.name}`;
+    for (const r of p.rules.filter(r => r.kind === 'conversion')) {
+      addLink({
+        ...base, kind: 'синхронизация', mechanism: 'КД2: правила конвертации', exchangePlan: p.name,
+        from: withSelf(P.fromRules(r.source), self), to: withSelf(P.fromRules(r.target), self),
+        rulesFormat: r.formatVersion, rulesCreated: r.created,
+        evidence: [`${where}.Макет.${r.template}`], notes: r.title ? [`«${r.title}»`] : [],
+      });
+    }
+    if (!p.xdto) continue;
+    for (const c of p.correspondents) {
+      if (c.offered === false || c.name === 'ДругаяПрограмма') continue;
+      const notes = [`вариант настройки: ${c.title || c.name}`, ...(c.offered === null ? ['доступность варианта не проверена'] : [])];
+      const common = { ...base, kind: 'синхронизация', mechanism: 'EnterpriseData', exchangePlan: p.name,
+        formatVersions: cf.enterpriseData.declared, evidence: [where], notes };
+      // «1С:ERP Управление предприятием 2 / Комплексная автоматизация, редакция 2» — два корреспондента
+      for (const label of (c.title || c.name).split(/\s+\/\s+/)) {
+        const corr = P.fromLabel(label);
+        addLink({ ...common, from: selfRef, to: corr });
+        addLink({ ...common, from: corr, to: selfRef });
+      }
+    }
+  }
+
+  const conversions = d => d.rules.filter(r => r.kind === 'conversion' && !/ПустыеПравила/i.test(r.template));
+  for (const d of cf.processors) {
+    const rules = cfProc.filter(a => a.re.test(d.name) && (!a.for || a.for.includes(self.product)));
+    if (rules.some(a => a.skip)) continue;
+    const where = `CF: Обработка.${d.name}`;
+    if (rules.length) {
+      for (const a of rules) {
+        const notes = a.note ? [a.note] : [];
+        for (const s of a.sources || []) {
+          addLink({ ...base, kind: 'переход', mechanism: 'встроенная обработка', exchangePlan: null,
+            from: P.fromLabel(s), to: selfRef, evidence: [where], notes });
+        }
+        for (const t of a.targets || []) {
+          addLink({ ...base, kind: 'переход', mechanism: 'встроенная обработка', exchangePlan: null,
+            from: selfRef, to: P.fromLabel(t), evidence: [where], notes });
+        }
+        // правила КД2 в макетах обработки описывают направление сами
+        if (a.rulesKind) for (const r of conversions(d)) {
+          addLink({ ...base, kind: a.rulesKind, mechanism: 'КД2: правила конвертации', exchangePlan: null,
+            from: withSelf(P.fromRules(r.source), self), to: withSelf(P.fromRules(r.target), self),
+            rulesFormat: r.formatVersion, rulesCreated: r.created,
+            evidence: [`${where}.Макет.${r.template}`], notes: [...notes, ...(r.title ? [`«${r.title}»`] : [])] });
+        }
+      }
+      continue;
+    }
+    // не размечено: правила КД2 в макетах обработки или «говорящее» имя
+    for (const r of conversions(d)) {
+      addLink({ ...base, kind: 'переход', mechanism: 'встроенная обработка + правила КД2', exchangePlan: null,
+        from: withSelf(P.fromRules(r.source), self), to: withSelf(P.fromRules(r.target), self),
+        evidence: [`${where}.Макет.${r.template}`],
+        notes: ['нужна проверка: data/annotations.json → cfProcessors'] });
+    }
+    // имя «ПомощникПереходаС…/ЗагрузкаДанныхИз…/ПереносДанныхИз…» без разметки — источник из синонима
+    const m = /^(ПомощникПереходаС|ЗагрузкаДанныхИз|ПереносДанныхИз)/.test(d.name) &&
+      (d.synonym || '').match(/(?:перехода|переноса данных|загрузки данных|загрузка данных|загрузка)\s+(?:с|из)\s+(.+)$/i);
+    if (!d.rules.length && m) {
+      addLink({ ...base, kind: 'переход', mechanism: 'встроенная обработка', exchangePlan: null,
+        from: P.fromLabel(m[1]), to: selfRef, evidence: [where],
+        notes: [`«${d.synonym}»`, 'нужна проверка: data/annotations.json → cfProcessors'] });
+    }
+  }
+}
+
+const list = [...links.values()].sort((a, b) =>
+  P.line(a.from).localeCompare(P.line(b.from), 'ru') || P.line(a.to).localeCompare(P.line(b.to), 'ru') ||
+  a.shippedIn[0].path.localeCompare(b.shippedIn[0].path));
+list.forEach((l, i) => { l.id = i + 1; });
+
+// ---- JSON
+const out = {
+  generated: new Date().toISOString(),
+  templatesRoot: scan.root,
+  templates: scan.templates.map(t => ({ path: t.path, name: t.name, version: t.version, synonym: t.synonym })),
+  links: list.map(l => ({
+    id: l.id, kind: l.kind, mechanism: l.mechanism,
+    from: { ...l.from, line: P.line(l.from) }, to: { ...l.to, line: P.line(l.to) },
+    exchangePlan: l.exchangePlan, rulesFormat: l.rulesFormat || null, rulesCreated: l.rulesCreated || null,
+    formatVersions: l.formatVersions || null,
+    sources: l.sources, shippedIn: l.shippedIn, evidence: l.evidence, notes: l.notes,
+  })),
+  enterpriseData: enterpriseData.map(e => ({ config: P.display(e.config), version: e.config.version, declared: e.declared, packages: e.packages })),
+};
+fs.writeFileSync(path.join(ROOT, 'data', 'registry.json'), JSON.stringify(out, null, 1));
+
+// ---- CSV (Excel: UTF-8 BOM, разделитель «;»)
+const csvq = v => {
+  const s = v == null ? '' : String(v);
+  return /[;"\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+};
+const header = ['id', 'Тип', 'Источник', 'Версия источника', 'Приёмник', 'Версия приёмника', 'Механизм',
+  'План обмена', 'Где найдено (поставки)', 'Примечание', 'Файлы'];
+const rows = out.links.map(l => [l.id, l.kind, l.from.line, l.from.version, l.to.line, l.to.version, l.mechanism,
+  l.exchangePlan, l.shippedIn.map(s => `${s.product} ${s.version}`).join(', '), l.notes.join('; '), l.evidence.join(' | ')]);
+fs.writeFileSync(path.join(ROOT, 'data', 'registry.csv'),
+  '﻿' + [header, ...rows].map(r => r.map(csvq).join(';')).join('\r\n') + '\r\n');
+
+// ---- Markdown
+const md = [];
+md.push('# Реестр обменов и переходов типовых конфигураций 1С', '');
+md.push(`Сгенерировано ${out.generated.slice(0, 10)} из поставок в \`${scan.root}\` (\`tools/build-registry.js\`).`, '');
+md.push('## Просканированные поставки', '', '| Поставка | Конфигурация | Версия | Связей |', '|---|---|---|---|');
+for (const t of scan.templates) {
+  const n = out.links.filter(l => l.shippedIn.some(s => s.path === t.path)).length;
+  md.push(`| \`${t.path}\` | ${t.synonym || t.name} | ${t.version} | ${n} |`);
+}
+
+// матрица по линейкам: строка = источник, столбец = приёмник
+const lines = [...new Set(out.links.flatMap(l => [l.from.line, l.to.line]))].sort((a, b) => a.localeCompare(b, 'ru'));
+const cell = new Map();
+for (const l of out.links) {
+  const k = `${l.from.line}→${l.to.line}`;
+  if (!cell.has(k)) cell.set(k, new Set());
+  cell.get(k).add(l.kind === 'переход' ? 'П' : l.kind === 'синхронизация' ? 'С' : '·');
+}
+md.push('', '## Матрица «из → в»', '', 'Строка — источник, столбец — приёмник. **С** — синхронизация (обмен), **П** — переход (перенос данных).', '');
+md.push(`| из \\ в | ${lines.join(' | ')} |`, `|---|${lines.map(() => ':-:').join('|')}|`);
+for (const a of lines) {
+  const r = lines.map(b => (cell.has(`${a}→${b}`) ? [...cell.get(`${a}→${b}`)].sort().join('') : ''));
+  if (r.some(Boolean)) md.push(`| **${a}** | ${r.join(' | ')} |`);
+}
+
+// версии EnterpriseData: что объявляет каждая конфигурация и общие версии пар
+if (out.enterpriseData.length) {
+  md.push('', '## EnterpriseData: версии формата', '',
+    'Объявленные для обмена версии (`ВерсииФормата.Вставить(...)` в коде CF). Обмен через EnterpriseData возможен, если у пары есть общая версия.', '',
+    '| Конфигурация | Версия поставки | Объявленные версии формата |', '|---|---|---|');
+  for (const e of out.enterpriseData) md.push(`| ${e.config} | ${e.version} | ${e.declared.join(', ') || '—'} |`);
+  const ed = out.enterpriseData.filter(e => e.declared.length);
+  if (ed.length > 1) {
+    md.push('', 'Максимальная общая версия для пар:', '', `| | ${ed.map(e => e.config).join(' | ')} |`, `|---|${ed.map(() => ':-:').join('|')}|`);
+    const cmp = (a, b) => a.split('.').map(Number).reduce((r, x, i) => r || x - (b.split('.').map(Number)[i] || 0), 0);
+    for (const a of ed) {
+      md.push(`| **${a.config}** | ${ed.map(b => {
+        if (a === b) return '—';
+        const common = a.declared.filter(v => b.declared.includes(v)).sort(cmp);
+        return common.length ? common[common.length - 1] : '✗';
+      }).join(' | ')} |`);
+    }
+  }
+}
+
+md.push('', '## Связи', '', 'Источник: **ф** — файл поставки, **CF** — объект конфигурации.', '',
+  '| # | Тип | Из | В | Механизм | План обмена | Ист. | Где найдено |', '|---|---|---|---|---|---|---|---|');
+for (const l of out.links) {
+  const ver = c => (c.version ? ` <sub>${c.version}</sub>` : '');
+  const where = l.evidence.slice(0, 2).map(e => '`' + e + '`').join('<br>') + (l.evidence.length > 2 ? `<br><sub>…ещё ${l.evidence.length - 2}</sub>` : '');
+  const notes = l.notes.length ? `<br><sub>${l.notes.join('; ')}</sub>` : '';
+  const src = l.sources.map(s => (s === 'cf' ? 'CF' : 'ф')).join('+');
+  md.push(`| ${l.id} | ${l.kind} | ${l.from.line}${ver(l.from)} | ${l.to.line}${ver(l.to)} | ${l.mechanism}${notes} | ${l.exchangePlan ? '`' + l.exchangePlan + '`' : ''} | ${src} | ${where} |`);
+}
+fs.writeFileSync(path.join(ROOT, 'REGISTRY.md'), md.join('\n') + '\n');
+
+console.log(`links: ${out.links.length} (${Object.entries(out.links.reduce((a, l) => (a[l.kind] = (a[l.kind] || 0) + 1, a), {})).map(([k, v]) => `${k} ${v}`).join(', ')})`);
+console.log('-> data/registry.json, data/registry.csv, REGISTRY.md');
