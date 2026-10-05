@@ -135,6 +135,9 @@ details.more summary { cursor: pointer; color: var(--sync); font-size: 12px; }
 .ct-tbl td { padding: 2px 4px; border-bottom: 1px dashed var(--line); word-break: break-word; vertical-align: top; }
 .ct-tbl td:first-child { width: 55%; }
 .dim { color: var(--faint); }
+.warn { color: var(--warn); }
+.chip.old { color: var(--faint); border-style: dashed; }
+select { font: 13px var(--font); color: var(--fg); background: var(--surface); border: 1px solid var(--line-strong); border-radius: var(--r-sm); padding: 5px 8px; max-width: 100%; }
 .obj-list { max-height: 78vh; overflow: auto; display: grid; }
 .obj { appearance: none; border: 0; border-bottom: 1px solid var(--line); background: none; text-align: left; cursor: pointer;
   display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 10px; align-items: baseline; padding: 7px 14px; font: 13px var(--font); color: var(--fg); }
@@ -201,6 +204,7 @@ footer { color: var(--faint); font-size: 12px; }
 
   <nav class="tabs" role="tablist" aria-label="Разделы">
     <button class="tab" role="tab" id="tab-matrix" data-tab="matrix" aria-selected="true">Матрица</button>
+    <button class="tab" role="tab" id="tab-cls" data-tab="cls" aria-selected="false">Классы</button>
     <button class="tab" role="tab" id="tab-obj" data-tab="obj" aria-selected="false">Объекты</button>
     <button class="tab" role="tab" id="tab-list" data-tab="list" aria-selected="false">Связи</button>
     <button class="tab" role="tab" id="tab-ed" data-tab="ed" aria-selected="false">EnterpriseData</button>
@@ -220,6 +224,8 @@ footer { color: var(--faint); font-size: 12px; }
         <button class="chip" data-m="proc" aria-pressed="true">Обработки</button>
         <button class="chip" data-m="doc" aria-pressed="true">Только описание</button>
       </div>
+      <select id="f-task" aria-label="Учётная задача"><option value="">Все задачи</option></select>
+      <label class="check"><input type="checkbox" id="f-actual"> Только актуальные редакции</label>
       <label class="check"><input type="checkbox" id="f-77"> Скрыть конфигурации 7.7</label>
       <input type="search" id="f-q" placeholder="Фильтр: УТ, БП 3.0…" aria-label="Фильтр конфигураций">
     </div>
@@ -232,6 +238,13 @@ footer { color: var(--faint); font-size: 12px; }
       <div class="card"><div class="mx-scroll" id="mx"></div></div>
       <aside class="card detail" id="detail" aria-live="polite"></aside>
     </div>
+  </section>
+
+  <section id="p-cls" class="section" role="tabpanel" aria-labelledby="tab-cls" hidden>
+    <p class="note">Каждая связь отнесена к учётной задаче (по семействам конфигураций сторон), механизму, направлению
+      (двусторонняя — есть связь и в обратную сторону) и актуальности (обе стороны — последние редакции по каталогу Апдейкона).
+      Клик по паре открывает её в матрице.</p>
+    <div class="card tbl-scroll"><table class="list" id="cls-table"></table></div>
   </section>
 
   <section id="p-obj" class="section" role="tabpanel" aria-labelledby="tab-obj" hidden>
@@ -333,10 +346,10 @@ function showTab(name) {
   store.set('tab', name);
 }
 tabs.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
-{ const h = location.hash.slice(1); showTab(['matrix', 'obj', 'list', 'ed', 'dist'].includes(h) ? h : store.get('tab', 'matrix')); }
+{ const h = location.hash.slice(1); showTab(['matrix', 'cls', 'obj', 'list', 'ed', 'dist'].includes(h) ? h : store.get('tab', 'matrix')); }
 
 // ---------- матрица
-const F = { kind: 'all', mech: new Set(['kd2', 'ed', 'proc', 'doc']), hide77: false, q: '' };
+const F = { kind: 'all', mech: new Set(['kd2', 'ed', 'proc', 'doc']), hide77: false, q: '', task: '', actual: false };
 let selected = { from: 'УТ 11', to: 'Розница 2' };
 
 const byOrder = (a, b) => (lineInfo[a]?.order ?? 999) - (lineInfo[b]?.order ?? 999) || a.localeCompare(b, 'ru');
@@ -344,7 +357,8 @@ const is77 = line => /7\.7$/.test(line) || /^Прежние/.test(line);
 
 function filtered() {
   return links.filter(l => (F.kind === 'all' || l.k === F.kind) && F.mech.has(l.m) &&
-    !(F.hide77 && (is77(l.from.line) || is77(l.to.line))));
+    !(F.hide77 && (is77(l.from.line) || is77(l.to.line))) &&
+    (!F.task || (l.cls && l.cls.task === F.task)) && (!F.actual || (l.cls && l.cls.actual === 'актуальная')));
 }
 
 function renderMatrix() {
@@ -407,6 +421,7 @@ function linkItem(l, opts = {}) {
   return `<div class="item">
     <div class="top"><span class="pill ${l.k}">${KIND[l.k]}</span>${mechPill}<span class="mech">${esc(l.mech)}</span>
       <span class="pill n" title="Где найдено">${l.src.map(s => SRC[s] || 'файл поставки').join(' + ')}</span></div>
+    ${l.cls ? `<div class="notes">${esc(l.cls.task)} · ${esc(l.cls.dir)} · ${l.cls.actual === 'актуальная' ? 'актуальные редакции' : '<span class="warn">есть устаревшая сторона</span>'}</div>` : ''}
     ${urls ? `<div class="notes">${urls}</div>` : ''}
     ${route}${vers}
     ${l.plan ? `<div class="plan">ПланОбмена.${esc(l.plan)}</div>` : ''}
@@ -517,6 +532,10 @@ $('#f-mech').addEventListener('click', e => {
   renderMatrix(); renderDetail();
 });
 $('#f-77').addEventListener('change', e => { F.hide77 = e.target.checked; renderMatrix(); renderDetail(); });
+$('#f-actual').addEventListener('change', e => { F.actual = e.target.checked; renderMatrix(); renderDetail(); });
+{ const sel = $('#f-task'); const tasks = [...new Set(links.map(l => l.cls && l.cls.task).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ru'));
+  sel.innerHTML += tasks.map(t => `<option>${esc(t)}</option>`).join('');
+  sel.addEventListener('change', () => { F.task = sel.value; renderMatrix(); renderDetail(); }); }
 $('#f-q').addEventListener('input', e => { F.q = e.target.value; renderMatrix(); });
 
 // ---------- объекты: обратный индекс «объект -> где и во что ездит»
@@ -588,10 +607,11 @@ function renderList() {
   const rows = links.filter(l => (L.kind === 'all' || l.k === L.kind) &&
     (!q || l.text.includes(q)));
   $('#l-count').textContent = `${rows.length} из ${links.length}`;
-  $('#l-table').innerHTML = `<thead><tr><th>#</th><th>Тип</th><th>Откуда</th><th>Куда</th><th>Механизм</th><th>План обмена</th><th>Где найдено</th></tr></thead><tbody>` +
+  $('#l-table').innerHTML = `<thead><tr><th>#</th><th>Тип</th><th>Задача</th><th>Откуда</th><th>Куда</th><th>Механизм</th><th>План обмена</th><th>Где найдено</th></tr></thead><tbody>` +
     rows.map(l => `<tr>
       <td class="num">${l.id}</td>
       <td><span class="pill ${l.k}">${KIND[l.k]}</span></td>
+      <td>${l.cls ? esc(l.cls.task) + `<span class="v">${esc(l.cls.dir)}${l.cls.actual === 'актуальная' ? '' : ' · устар.'}</span>` : ''}</td>
       <td>${esc(l.from.line)}${l.from.ver ? `<span class="v">${esc(l.from.ver)}</span>` : ''}</td>
       <td>${esc(l.to.line)}${l.to.ver ? `<span class="v">${esc(l.to.ver)}</span>` : ''}</td>
       <td>${esc(l.mech)}${l.notes.length ? `<span class="v">${esc(l.notes.join(' · '))}</span>` : ''}</td>
@@ -647,6 +667,34 @@ $('#l-q').addEventListener('input', e => { L.q = e.target.value; renderList(); }
         ${trans ? `<ul class="m trans">${trans}</ul>` : ''}</div>
       <span class="st ${c.status}">${label[c.status]}</span></div>`;
   }).join('');
+})();
+
+(function renderCls() {
+  const MECH = ['Правила КД2', 'КД2, правила из файла', 'EnterpriseData', 'Обработка', 'Пакет перехода', 'Только описание'];
+  const by = new Map();
+  for (const l of links) {
+    if (!l.cls) continue;
+    const t = l.cls.task;
+    if (!by.has(t)) by.set(t, { n: 0, two: 0, act: 0, mech: {}, pairs: new Map() });
+    const e = by.get(t);
+    e.n++; if (l.cls.dir === 'двусторонняя') e.two++; if (l.cls.actual === 'актуальная') e.act++;
+    e.mech[l.cls.mech] = (e.mech[l.cls.mech] || 0) + 1;
+    const pk = l.from.line + '→' + l.to.line;
+    if (!e.pairs.has(pk)) e.pairs.set(pk, { from: l.from.line, to: l.to.line, act: l.cls.actual === 'актуальная' });
+  }
+  const rows = [...by].sort((a, b) => b[1].n - a[1].n).map(([t, e]) => {
+    const mech = MECH.filter(m => e.mech[m]).map(m => `${esc(m)} ${e.mech[m]}`).join(' · ');
+    const pairs = [...e.pairs.values()].sort((a, b) => (b.act - a.act) || byOrder(a.from, b.from) || byOrder(a.to, b.to))
+      .map(p => `<button class="chip${p.act ? '' : ' old'}" data-cls-task="${esc(t)}" data-from="${esc(p.from)}" data-to="${esc(p.to)}">${esc(p.from)} → ${esc(p.to)}</button>`).join(' ');
+    return `<tr><td><b>${esc(t)}</b><span class="v">${e.n} связей · двусторонних ${e.two} · актуальных ${e.act}</span><span class="v">${mech}</span></td><td><div class="chips">${pairs}</div></td></tr>`;
+  }).join('');
+  $('#cls-table').innerHTML = '<thead><tr><th>Задача</th><th>Пары конфигураций (серым — с устаревшей стороной)</th></tr></thead><tbody>' + rows + '</tbody>';
+  $('#cls-table').addEventListener('click', e => {
+    const b = e.target.closest('[data-cls-task]'); if (!b) return;
+    e.stopPropagation();
+    F.task = b.dataset.clsTask; $('#f-task').value = F.task;
+    showTab('matrix'); select({ from: b.dataset.from, to: b.dataset.to });
+  });
 })();
 
 renderMatrix(); renderDetail(); renderList(); renderObjList();

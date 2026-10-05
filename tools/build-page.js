@@ -41,7 +41,7 @@ const links = reg.links.map(l => {
     to: { line: lineOf(l.to), ver: l.to.version || null },
     plan: l.exchangePlan || null, src: l.sources || ['files'],
     ev: l.evidence, notes: l.notes, fv: l.formatVersions || null, urls: l.urls || [],
-    ct: l.content || null,
+    ct: l.content || null, cls: l.class || null,
   };
   const objs = o.ct ? o.ct.export.flatMap(e => [e[0], e[1]]).filter(Boolean) : [];
   o.text = [o.from.line, o.to.line, o.from.ver, o.to.ver, o.mech, o.plan, ...o.notes, ...o.ev, ...objs].join(' ').toLowerCase();
@@ -81,5 +81,20 @@ const data = {
 const json = JSON.stringify(data).replace(/</g, '\\u003c');
 const tpl = fs.readFileSync(path.join(__dirname, 'page', 'template.html'), 'utf8');
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
-fs.writeFileSync(OUT, tpl.replace('/*__DATA__*/null', json));
+const page = tpl.replace('/*__DATA__*/null', json);
+fs.writeFileSync(OUT, page);
+// --pages: самостоятельный документ для GitHub Pages (артефакт добавляет обёртку сам, Pages — нет)
+if (args.includes('--pages')) {
+  const dir = path.join(ROOT, 'docs');
+  fs.mkdirSync(dir, { recursive: true });
+  const NL = String.fromCharCode(10);
+  const head = ['<!doctype html>', '<html lang="ru">', '<head>', '<meta charset="utf-8">',
+    '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">',
+    '<meta name="description" content="Реестр обменов и переходов типовых конфигураций 1С: матрица «из → в», какие объекты ездят, классификация.">',
+    '<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>', ''].join(NL);
+  const i = page.indexOf('<div class="wrap">');
+  fs.writeFileSync(path.join(dir, 'index.html'), head + page.slice(0, i) + '</head>' + NL + '<body>' + NL + page.slice(i) + NL + '</body>' + NL + '</html>' + NL);
+  fs.writeFileSync(path.join(dir, '.nojekyll'), '');
+  console.log('-> docs/index.html (GitHub Pages)');
+}
 console.log(`-> ${OUT} (${(fs.statSync(OUT).size / 1024).toFixed(0)} КБ, связей ${links.length}, линеек ${Object.keys(lines).length})`);

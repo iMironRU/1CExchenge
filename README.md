@@ -1,5 +1,7 @@
 # 1CExchenge — реестр обменов и переходов типовых конфигураций 1С
 
+**Страница реестра:** https://imironru.github.io/1CExchenge/ — матрица «из → в», какие объекты ездят, классификация, версии EnterpriseData, поставки.
+
 Цель: по полным поставкам типовых конфигураций 1С составить реестр, **из какой типовой
 в какую есть обмен (синхронизация) и переход (перенос данных)**, с доказательством
 в виде конкретного файла или объекта поставки.
@@ -41,7 +43,7 @@ node tools/scan-templates.js      # файлы поставок      -> data/tem
 node tools/scan-cf.js             # CF (≈5–7 мин/поставка, кеш в work/) -> data/cf/*.json
 node tools/fetch-files.js         # файлы последних версий из API Апдейкона -> data/catalog-files.json
 node tools/build-registry.js      # -> data/registry.json, data/registry.csv, REGISTRY.md
-node tools/build-page.js          # страница с матрицей -> work/page/registry.html
+node tools/build-page.js --pages  # страница -> work/page/registry.html и docs/index.html (GitHub Pages)
 ```
 
 Страница опубликована как артефакт: https://claude.ai/artifact/F7cwxeovhDSFgpzhjsKerp

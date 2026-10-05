@@ -18,7 +18,9 @@ const links = new Map();
 // со списком поставок; ключ включает версии, на которые собраны правила.
 // Те же правила, найденные и файлом поставки, и макетом в CF, тоже сливаются (источник — оба).
 function addLink(l) {
-  const c = x => `${P.display(x)}@${x.version || ''}`;
+  // правила КД2 различаем по версиям, на которые собраны; остальные связи — уровня линейки конфигурации
+  const versioned = /^КД2: правила конвертации/.test(l.mechanism);
+  const c = x => (versioned ? `${P.display(x)}@${x.version || ''}` : P.line(x));
   const key = [c(l.from), c(l.to), l.kind, l.mechanism].join('|');
   const ex = links.get(key);
   const ev = l.evidence.map(e => `${l.shippedIn.product} ${l.shippedIn.version}: ${e}`);
@@ -28,7 +30,10 @@ function addLink(l) {
     for (const e of ev) if (!ex.evidence.includes(e)) ex.evidence.push(e);
     for (const n of l.notes) if (!ex.notes.includes(n)) ex.notes.push(n);
     if (!ex.sources.includes(source)) ex.sources.push(source);
-    ex.exchangePlan = ex.exchangePlan || l.exchangePlan;
+    if (l.exchangePlan && !(ex.exchangePlan || '').split(', ').includes(l.exchangePlan)) {
+      ex.exchangePlan = ex.exchangePlan ? `${ex.exchangePlan}, ${l.exchangePlan}` : l.exchangePlan;
+    }
+    for (const n of l.notes) if (!ex.notes.includes(n)) ex.notes.push(n);
     ex.content = ex.content || l.content || null;
     if (l.formatVersions) ex.formatVersions = l.formatVersions;
     for (const u of l.urls || []) if (!(ex.urls || (ex.urls = [])).includes(u)) ex.urls.push(u);
@@ -147,6 +152,7 @@ const cfScans = fs.existsSync(cfDir)
   : [];
 const skipPlans = new RegExp(ann.skipPlans || '^$');
 const cfProc = (ann.cfProcessors || []).map(a => ({ ...a, re: new RegExp(a.match) }));
+const planPartners = (ann.planPartners || []).map(a => ({ ...a, re: new RegExp(a.plan) }));
 const enterpriseData = [];
 
 for (const cf of cfScans) {
@@ -167,6 +173,17 @@ for (const cf of cfScans) {
         evidence: [`${where}.Макет.${r.template}`], notes: r.title ? [`«${r.title}»`] : [],
         content: linkContent(r, p.rules.find(x => x.kind === 'registration')),
       });
+    }
+    // партнёры планов без корреспондентов в коде — по ручной разметке
+    for (const a of planPartners) {
+      if (!a.re.test(p.name) || (a.for && !a.for.includes(self.product))) continue;
+      for (const label of a.partners) {
+        const corr = P.withCurrent(P.fromLabel(label));
+        const common = { ...base, kind: 'синхронизация', exchangePlan: p.name, evidence: [where], notes: a.note ? [a.note] : [],
+          mechanism: p.xdto ? 'EnterpriseData' : 'КД2: план обмена, правила из файла' };
+        addLink({ ...common, from: selfRef, to: corr });
+        addLink({ ...common, from: corr, to: selfRef });
+      }
     }
     if (!p.xdto) continue;
     for (const c of p.correspondents) {
@@ -301,6 +318,65 @@ const list = [...links.values()].sort((a, b) =>
   a.shippedIn[0].path.localeCompare(b.shippedIn[0].path));
 list.forEach((l, i) => { l.id = i + 1; });
 
+// ---------- классификация: направление, механизм, учётная задача, актуальность
+const FAMILIES = {
+  'Бухгалтерия': ['БП', 'БП КОРП', 'БНО', 'Бухгалтерия 7.7', 'Отчетность предпринимателя'],
+  'Торговля и производство': ['УТ', 'КА', 'ERP', 'УПП', 'Управление холдингом', 'ТиС 7.7', 'Аспект 7.7'],
+  'Розница и касса': ['Розница', 'РМК', '1С:Касса', '1С:Мобильная касса', '1С:Кабинет клиента', 'Маркировка'],
+  'Малый бизнес': ['УНФ'],
+  'Зарплата и кадры': ['ЗУП', 'ЗУП КОРП', 'ЗиК 7.7', 'КАМИН Зарплата', 'Прежние программы (не уточнено)'],
+  'Документооборот': ['ДО КОРП', '1С:Архив', 'Клиент ЭДО'],
+  'Госсектор': ['БГУ', 'ЗКГУ', 'ЗБУ', 'БМО', 'Вещевое довольствие', 'Больничная аптека', 'Плановое питание'],
+};
+const familyOf = c => Object.keys(FAMILIES).find(f => FAMILIES[f].includes(c.product)) || 'Прочее';
+const is77 = c => /7\.7$/.test(c.product) || /^Прежние/.test(c.product);
+
+// актуальные линейки — последние редакции из каталога Апдейкона
+const currentLines = new Set();
+if (fs.existsSync(catPath)) {
+  for (const c of JSON.parse(fs.readFileSync(catPath, 'utf8')).configs) {
+    currentLines.add(P.line(P.fromTemplate({ name: c.name, version: c.version })));
+  }
+}
+const isCurrent = c => !is77(c) && (!c.edition || currentLines.has(P.line(c)));
+
+function mechClass(m) {
+  if (/^КД2: правила конвертации/.test(m)) return 'Правила КД2';
+  if (/правила из файла/.test(m)) return 'КД2, правила из файла';
+  if (/EnterpriseData/.test(m)) return 'EnterpriseData';
+  if (/пакет перехода|дистрибутив обновления/.test(m)) return 'Пакет перехода';
+  if (/встроен в конфигурацию/.test(m)) return 'Только описание';
+  return 'Обработка';
+}
+
+function task(l) {
+  const a = familyOf(l.from), b = familyOf(l.to), fams = new Set([a, b]);
+  if (l.kind === 'переход') {
+    if (is77(l.from)) return 'Переход с 1С 7.7';
+    if (a === b) return 'Переход на новую редакцию';
+    return 'Переход на другую программу';
+  }
+  if (l.from.product === l.to.product) return 'Между базами одной программы';
+  if (fams.has('Документооборот')) return 'Документооборот и архив';
+  if (fams.has('Госсектор')) return 'Госсектор';
+  if (fams.has('Зарплата и кадры')) return 'Зарплата и кадры → учёт';
+  if (fams.has('Бухгалтерия')) return 'Оперативный учёт ↔ бухгалтерия';
+  if (fams.has('Розница и касса')) return 'Розница и касса ↔ управление';
+  if (a === b) return 'Внутри линейки';
+  return 'Оперативный учёт: разные программы';
+}
+
+const pairKey = l => `${P.line(l.from)}→${P.line(l.to)}`;
+const syncPairs = new Set(list.filter(l => l.kind === 'синхронизация').map(pairKey));
+for (const l of list) {
+  l.class = {
+    task: task(l),
+    mech: mechClass(l.mechanism),
+    dir: l.kind === 'переход' ? 'перенос' : syncPairs.has(`${P.line(l.to)}→${P.line(l.from)}`) ? 'двусторонняя' : 'односторонняя',
+    actual: isCurrent(l.from) && isCurrent(l.to) ? 'актуальная' : 'устаревшая сторона',
+  };
+}
+
 // ---- JSON
 const out = {
   generated: new Date().toISOString(),
@@ -311,7 +387,7 @@ const out = {
     from: { ...l.from, line: P.line(l.from) }, to: { ...l.to, line: P.line(l.to) },
     exchangePlan: l.exchangePlan, rulesFormat: l.rulesFormat || null, rulesCreated: l.rulesCreated || null,
     formatVersions: l.formatVersions || null, content: l.content || null,
-    sources: l.sources, shippedIn: l.shippedIn, evidence: l.evidence, notes: l.notes, urls: l.urls || [],
+    class: l.class, sources: l.sources, shippedIn: l.shippedIn, evidence: l.evidence, notes: l.notes, urls: l.urls || [],
   })),
   enterpriseData: enterpriseData.map(e => ({ config: P.display(e.config), version: e.config.version, declared: e.declared, packages: e.packages })),
 };
