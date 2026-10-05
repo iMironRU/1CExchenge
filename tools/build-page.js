@@ -10,6 +10,7 @@ const P = require('./lib/products');
 const ROOT = path.join(__dirname, '..');
 const args = process.argv.slice(2);
 const OUT = args.includes('--out') ? args[args.indexOf('--out') + 1] : path.join(ROOT, 'work', 'page', 'registry.html');
+const ann = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'annotations.json'), 'utf8'));
 const reg = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'registry.json'), 'utf8'));
 const catPath = path.join(ROOT, 'data', 'catalog-ru.json');
 const catalog = fs.existsSync(catPath) ? JSON.parse(fs.readFileSync(catPath, 'utf8')).configs : [];
@@ -24,16 +25,22 @@ const FAMILY_GROUP = { 'БП КОРП': 'БП', 'БНО': 'БП', 'ЗУП КОР
 const mechClass = m => (/^КД2/.test(m) ? 'kd2' : /EnterpriseData/.test(m) ? 'ed' : /встроен в конфигурацию/.test(m) ? 'doc' : 'proc');
 
 const lines = {};
+// ASCII-метка линейки для адреса страницы (#ut-11~bp-3.0)
+const TR = { а: 'a', б: 'b', в: 'v', г: 'g', д: 'd', е: 'e', ё: 'e', ж: 'zh', з: 'z', и: 'i', й: 'y', к: 'k', л: 'l', м: 'm', н: 'n', о: 'o', п: 'p', р: 'r', с: 's', т: 't', у: 'u', ф: 'f', х: 'h', ц: 'c', ч: 'ch', ш: 'sh', щ: 'sch', ъ: '', ы: 'y', ь: '', э: 'e', ю: 'yu', я: 'ya' };
+const slug = s => s.toLowerCase().split('').map(ch => (ch in TR ? TR[ch] : ch)).join('').replace(/[^a-z0-9.]+/g, '-').replace(/^-|-$/g, '');
 const lineOf = c => {
   const line = c.line;
   if (!lines[line]) {
     const fi = FAMILY.indexOf(c.product);
     const ed = parseFloat(c.edition) || 0;
-    lines[line] = { order: (fi < 0 ? 900 : fi * 10) + Math.min(ed, 99) / 100, family: FAMILY_GROUP[c.product] || c.product };
+    const meta = (reg.lines || {})[line] || {};
+    lines[line] = { order: (fi < 0 ? 900 : fi * 10) + Math.min(ed, 99) / 100, family: FAMILY_GROUP[c.product] || c.product,
+      fam: meta.family || 'Прочее', cur: meta.current !== false, slug: slug(line) };
   }
   return line;
 };
 
+const content = {};
 const links = reg.links.map(l => {
   const o = {
     id: l.id, k: l.kind === 'переход' ? 't' : 's', m: mechClass(l.mechanism), mech: l.mechanism,
@@ -41,9 +48,12 @@ const links = reg.links.map(l => {
     to: { line: lineOf(l.to), ver: l.to.version || null },
     plan: l.exchangePlan || null, src: l.sources || ['files'],
     ev: l.evidence, notes: l.notes, fv: l.formatVersions || null, urls: l.urls || [],
-    ct: l.content || null, cls: l.class || null,
+    cs: l.content ? { summary: l.content.summary, ed: !!l.content.ed, formats: l.content.formats || null, pko: l.content.pko || null,
+      off: l.content.off || 0, reg: l.content.reg || null, basis: l.content.basis || null, n: l.content.export.length } : null,
+    cls: l.class || null,
   };
-  const objs = o.ct ? o.ct.export.flatMap(e => [e[0], e[1]]).filter(Boolean) : [];
+  if (l.content) content[l.id] = l.content.export;
+  const objs = [];
   o.text = [o.from.line, o.to.line, o.from.ver, o.to.ver, o.mech, o.plan, ...o.notes, ...o.ev, ...objs].join(' ').toLowerCase();
   return o;
 });
@@ -76,13 +86,16 @@ const cat = catalog.map(c => {
 
 const data = {
   generated: reg.generated, root: reg.templatesRoot, links, lines, templates,
-  ed: reg.enterpriseData, catalog: cat,
+  ed: reg.enterpriseData, catalog: cat, pairNotes: ann.pairNotes || [],
 };
+const contentJson = JSON.stringify(content);
 const json = JSON.stringify(data).replace(/</g, '\\u003c');
 const tpl = fs.readFileSync(path.join(__dirname, 'page', 'template.html'), 'utf8');
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
-const page = tpl.replace('/*__DATA__*/null', json);
+const pairJs = fs.readFileSync(path.join(__dirname, 'page', 'pair.js'), 'utf8');
+const page = tpl.replace('/*__DATA__*/null', () => json).replace('/*__PAIR__*/', () => pairJs);
 fs.writeFileSync(OUT, page);
+fs.writeFileSync(path.join(path.dirname(OUT), 'content.json'), contentJson);
 // --pages: самостоятельный документ для GitHub Pages (артефакт добавляет обёртку сам, Pages — нет)
 if (args.includes('--pages')) {
   const dir = path.join(ROOT, 'docs');
@@ -95,6 +108,7 @@ if (args.includes('--pages')) {
   const i = page.indexOf('<div class="wrap">');
   fs.writeFileSync(path.join(dir, 'index.html'), head + page.slice(0, i) + '</head>' + NL + '<body>' + NL + page.slice(i) + NL + '</body>' + NL + '</html>' + NL);
   fs.writeFileSync(path.join(dir, '.nojekyll'), '');
+  fs.writeFileSync(path.join(dir, 'content.json'), contentJson);
   console.log('-> docs/index.html (GitHub Pages)');
 }
 console.log(`-> ${OUT} (${(fs.statSync(OUT).size / 1024).toFixed(0)} КБ, связей ${links.length}, линеек ${Object.keys(lines).length})`);

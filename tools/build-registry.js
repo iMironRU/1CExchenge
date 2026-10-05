@@ -319,17 +319,8 @@ const list = [...links.values()].sort((a, b) =>
 list.forEach((l, i) => { l.id = i + 1; });
 
 // ---------- классификация: направление, механизм, учётная задача, актуальность
-const FAMILIES = {
-  'Бухгалтерия': ['БП', 'БП КОРП', 'БНО', 'Бухгалтерия 7.7', 'Отчетность предпринимателя'],
-  'Торговля и производство': ['УТ', 'КА', 'ERP', 'УПП', 'Управление холдингом', 'ТиС 7.7', 'Аспект 7.7'],
-  'Розница и касса': ['Розница', 'РМК', '1С:Касса', '1С:Мобильная касса', '1С:Кабинет клиента', 'Маркировка'],
-  'Малый бизнес': ['УНФ'],
-  'Зарплата и кадры': ['ЗУП', 'ЗУП КОРП', 'ЗиК 7.7', 'КАМИН Зарплата', 'Прежние программы (не уточнено)'],
-  'Документооборот': ['ДО КОРП', '1С:Архив', 'Клиент ЭДО'],
-  'Госсектор': ['БГУ', 'ЗКГУ', 'ЗБУ', 'БМО', 'Вещевое довольствие', 'Больничная аптека', 'Плановое питание'],
-};
-const familyOf = c => Object.keys(FAMILIES).find(f => FAMILIES[f].includes(c.product)) || 'Прочее';
-const is77 = c => /7\.7$/.test(c.product) || /^Прежние/.test(c.product);
+const { familyOf: familyOfProduct, is77 } = require('./lib/families');
+const familyOf = c => familyOfProduct(c.product);
 
 // актуальные линейки — последние редакции из каталога Апдейкона
 const currentLines = new Set();
@@ -389,7 +380,9 @@ const out = {
     formatVersions: l.formatVersions || null, content: l.content || null,
     class: l.class, sources: l.sources, shippedIn: l.shippedIn, evidence: l.evidence, notes: l.notes, urls: l.urls || [],
   })),
-  enterpriseData: enterpriseData.map(e => ({ config: P.display(e.config), version: e.config.version, declared: e.declared, packages: e.packages })),
+  enterpriseData: enterpriseData.map(e => ({ config: P.display(e.config), line: P.line(e.config), version: e.config.version, declared: e.declared, packages: e.packages })),
+  // линейки: семейство и актуальность — для выбора пары на странице
+  lines: Object.fromEntries([...new Map(list.flatMap(l => [l.from, l.to]).map(c => [P.line(c), c])).entries()].map(([ln, c]) => [ln, { product: c.product, edition: c.edition || null, family: familyOf(c), current: isCurrent(c) }])),
 };
 fs.writeFileSync(path.join(ROOT, 'data', 'registry.json'), JSON.stringify(out, null, 1));
 

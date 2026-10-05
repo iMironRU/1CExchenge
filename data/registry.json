@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-05T14:53:46.013Z",
+ "generated": "2026-10-05T17:55:58.907Z",
  "templatesRoot": "C:\\.temp\\tmplts",
  "templates": [
   {
@@ -87958,6 +87958,7 @@
  "enterpriseData": [
   {
    "config": "БНО 3.0",
+   "line": "БНО 3.0",
    "version": "3.0.206.3",
    "declared": [
     "1.2",
@@ -88003,6 +88004,7 @@
   },
   {
    "config": "БП 3.0",
+   "line": "БП 3.0",
    "version": "3.0.203.24",
    "declared": [
     "1.2",
@@ -88047,6 +88049,7 @@
   },
   {
    "config": "КА 2.6",
+   "line": "КА 2",
    "version": "2.6.1.70",
    "declared": [
     "1.2",
@@ -88087,6 +88090,7 @@
   },
   {
    "config": "ДО КОРП 3.0",
+   "line": "ДО КОРП 3",
    "version": "3.0.21.3",
    "declared": [
     "1.2",
@@ -88118,6 +88122,7 @@
   },
   {
    "config": "УПП 1.3",
+   "line": "УПП 1.3",
    "version": "1.3.285.1",
    "declared": [
     "1.2",
@@ -88140,6 +88145,7 @@
   },
   {
    "config": "ЗУП КОРП 3.1",
+   "line": "ЗУП КОРП 3",
    "version": "3.1.38.41",
    "declared": [
     "1.2",
@@ -88175,24 +88181,28 @@
   },
   {
    "config": "Миниденьги 2.0",
+   "line": "Миниденьги 2.0",
    "version": "2.0.15.9",
    "declared": [],
    "packages": []
   },
   {
    "config": "МобильныйДокументооборот 2.2",
+   "line": "МобильныйДокументооборот 2.2",
    "version": "2.2.15.10",
    "declared": [],
    "packages": []
   },
   {
    "config": "МобильноеПриложениеЗаказы 4.0",
+   "line": "МобильноеПриложениеЗаказы 4.0",
    "version": "4.0.62",
    "declared": [],
    "packages": []
   },
   {
    "config": "РМК 1.1",
+   "line": "РМК 1.1",
    "version": "1.1.4.105",
    "declared": [
     "1.2",
@@ -88230,6 +88240,7 @@
   },
   {
    "config": "Розница 2.3",
+   "line": "Розница 2",
    "version": "2.3.25.23",
    "declared": [
     "1.2",
@@ -88274,6 +88285,7 @@
   },
   {
    "config": "Розница 2.3",
+   "line": "Розница 2",
    "version": "2.3.26.24",
    "declared": [
     "1.2",
@@ -88321,6 +88333,7 @@
   },
   {
    "config": "Розница 3.0",
+   "line": "Розница 3",
    "version": "3.0.14.159",
    "declared": [
     "1.2",
@@ -88366,12 +88379,14 @@
   },
   {
    "config": "МобильноеУправлениеНебольшойФирмой 1.2",
+   "line": "МобильноеУправлениеНебольшойФирмой 1.2",
    "version": "1.2.140.1",
    "declared": [],
    "packages": []
   },
   {
    "config": "УНФ 3.0",
+   "line": "УНФ 3",
    "version": "3.0.14.159",
    "declared": [
     "1.2",
@@ -88417,6 +88432,7 @@
   },
   {
    "config": "БГУ 2.0",
+   "line": "БГУ 2.0",
    "version": "2.0.110.66",
    "declared": [
     "1.2",
@@ -88453,6 +88469,7 @@
   },
   {
    "config": "ЗКГУ 3.1",
+   "line": "ЗКГУ 3",
    "version": "3.1.38.92",
    "declared": [
     "1.2",
@@ -88484,12 +88501,14 @@
   },
   {
    "config": "УТ 10.3",
+   "line": "УТ 10.3",
    "version": "10.3.88.3",
    "declared": [],
    "packages": []
   },
   {
    "config": "УТ 11.5",
+   "line": "УТ 11",
    "version": "11.5.27.70",
    "declared": [
     "1.2",
@@ -88529,6 +88548,7 @@
   },
   {
    "config": "УТ 11.6",
+   "line": "УТ 11",
    "version": "11.6.1.47",
    "declared": [
     "1.2",
@@ -88567,5 +88587,319 @@
     "1.23.1"
    ]
   }
- ]
+ ],
+ "lines": {
+  "1С:Архив": {
+   "product": "1С:Архив",
+   "edition": null,
+   "family": "Документооборот",
+   "current": true
+  },
+  "БГУ 2.0": {
+   "product": "БГУ",
+   "edition": "2.0",
+   "family": "Госсектор",
+   "current": true
+  },
+  "ДО КОРП 3": {
+   "product": "ДО КОРП",
+   "edition": "3.0",
+   "family": "Документооборот",
+   "current": true
+  },
+  "ЗКГУ 3": {
+   "product": "ЗКГУ",
+   "edition": "3.1",
+   "family": "Госсектор",
+   "current": true
+  },
+  "ЗУП КОРП 3": {
+   "product": "ЗУП КОРП",
+   "edition": "3.1",
+   "family": "Зарплата и кадры",
+   "current": true
+  },
+  "1С:Кабинет клиента": {
+   "product": "1С:Кабинет клиента",
+   "edition": null,
+   "family": "Розница и касса",
+   "current": true
+  },
+  "Розница 3": {
+   "product": "Розница",
+   "edition": "3.0",
+   "family": "Розница и касса",
+   "current": true
+  },
+  "УНФ 3": {
+   "product": "УНФ",
+   "edition": "3.0",
+   "family": "Малый бизнес",
+   "current": true
+  },
+  "1С:Касса": {
+   "product": "1С:Касса",
+   "edition": null,
+   "family": "Розница и касса",
+   "current": true
+  },
+  "БНО 3.0": {
+   "product": "БНО",
+   "edition": "3.0",
+   "family": "Бухгалтерия",
+   "current": true
+  },
+  "БП 3.0": {
+   "product": "БП",
+   "edition": "3.0",
+   "family": "Бухгалтерия",
+   "current": true
+  },
+  "КА 2": {
+   "product": "КА",
+   "edition": "2.5",
+   "family": "Торговля и производство",
+   "current": true
+  },
+  "Розница 2": {
+   "product": "Розница",
+   "edition": "2.3",
+   "family": "Розница и касса",
+   "current": false
+  },
+  "УТ 11": {
+   "product": "УТ",
+   "edition": "11.5",
+   "family": "Торговля и производство",
+   "current": true
+  },
+  "1С:Мобильная касса": {
+   "product": "1С:Мобильная касса",
+   "edition": null,
+   "family": "Розница и касса",
+   "current": true
+  },
+  "Аспект 7.7": {
+   "product": "Аспект 7.7",
+   "edition": null,
+   "family": "Торговля и производство",
+   "current": false
+  },
+  "УТ 10.3": {
+   "product": "УТ",
+   "edition": "10.3",
+   "family": "Торговля и производство",
+   "current": false
+  },
+  "БГУ 1.0": {
+   "product": "БГУ",
+   "edition": "1.0",
+   "family": "Госсектор",
+   "current": false
+  },
+  "БМО 1.3": {
+   "product": "БМО",
+   "edition": "1.3",
+   "family": "Госсектор",
+   "current": true
+  },
+  "Больничная аптека 2.0": {
+   "product": "Больничная аптека",
+   "edition": "2",
+   "family": "Госсектор",
+   "current": false
+  },
+  "Больничная аптека 3.0": {
+   "product": "Больничная аптека",
+   "edition": "3.0",
+   "family": "Госсектор",
+   "current": false
+  },
+  "Вещевое довольствие 2.0": {
+   "product": "Вещевое довольствие",
+   "edition": "2.0",
+   "family": "Госсектор",
+   "current": true
+  },
+  "ЗБУ 1.0": {
+   "product": "ЗБУ",
+   "edition": "1.0",
+   "family": "Госсектор",
+   "current": false
+  },
+  "КАМИН Зарплата 5.5": {
+   "product": "КАМИН Зарплата",
+   "edition": "5.5",
+   "family": "Зарплата и кадры",
+   "current": false
+  },
+  "Плановое питание 2.0": {
+   "product": "Плановое питание",
+   "edition": "2",
+   "family": "Госсектор",
+   "current": false
+  },
+  "БНО 2.0": {
+   "product": "БНО",
+   "edition": "2.0",
+   "family": "Бухгалтерия",
+   "current": false
+  },
+  "ЗУП 3": {
+   "product": "ЗУП",
+   "edition": "3.1",
+   "family": "Зарплата и кадры",
+   "current": true
+  },
+  "ERP 2": {
+   "product": "ERP",
+   "edition": "2",
+   "family": "Торговля и производство",
+   "current": true
+  },
+  "БП 1.6": {
+   "product": "БП",
+   "edition": "1.6",
+   "family": "Бухгалтерия",
+   "current": false
+  },
+  "БП 2.0": {
+   "product": "БП",
+   "edition": "2.0",
+   "family": "Бухгалтерия",
+   "current": false
+  },
+  "УНФ 1.6": {
+   "product": "УНФ",
+   "edition": "1.6",
+   "family": "Малый бизнес",
+   "current": false
+  },
+  "КАМИН Зарплата 5.0": {
+   "product": "КАМИН Зарплата",
+   "edition": "5.0",
+   "family": "Зарплата и кадры",
+   "current": false
+  },
+  "БП КОРП 2.0": {
+   "product": "БП КОРП",
+   "edition": "2.0",
+   "family": "Бухгалтерия",
+   "current": false
+  },
+  "БП КОРП 3.0": {
+   "product": "БП КОРП",
+   "edition": "3.0",
+   "family": "Бухгалтерия",
+   "current": true
+  },
+  "ДО КОРП 2.1": {
+   "product": "ДО КОРП",
+   "edition": "2.1",
+   "family": "Документооборот",
+   "current": false
+  },
+  "Бухгалтерия 7.7": {
+   "product": "Бухгалтерия 7.7",
+   "edition": null,
+   "family": "Бухгалтерия",
+   "current": false
+  },
+  "УПП 1.3": {
+   "product": "УПП",
+   "edition": "1.3",
+   "family": "Торговля и производство",
+   "current": true
+  },
+  "ДО КОРП 1.4": {
+   "product": "ДО КОРП",
+   "edition": "1.4",
+   "family": "Документооборот",
+   "current": false
+  },
+  "ДО КОРП 2.0": {
+   "product": "ДО КОРП",
+   "edition": "2.0",
+   "family": "Документооборот",
+   "current": false
+  },
+  "Управление холдингом 3.0": {
+   "product": "Управление холдингом",
+   "edition": "3.0",
+   "family": "Торговля и производство",
+   "current": false
+  },
+  "ЗиК 7.7": {
+   "product": "ЗиК 7.7",
+   "edition": null,
+   "family": "Зарплата и кадры",
+   "current": false
+  },
+  "ЗУП 2.5": {
+   "product": "ЗУП",
+   "edition": "2.5",
+   "family": "Зарплата и кадры",
+   "current": false
+  },
+  "КА 1.1": {
+   "product": "КА",
+   "edition": "1.1",
+   "family": "Торговля и производство",
+   "current": false
+  },
+  "РМК 1.1": {
+   "product": "РМК",
+   "edition": "1.1",
+   "family": "Розница и касса",
+   "current": true
+  },
+  "Маркировка": {
+   "product": "Маркировка",
+   "edition": null,
+   "family": "Розница и касса",
+   "current": true
+  },
+  "Отчетность предпринимателя 2.0": {
+   "product": "Отчетность предпринимателя",
+   "edition": "2.0",
+   "family": "Бухгалтерия",
+   "current": true
+  },
+  "Прежние программы (не уточнено)": {
+   "product": "Прежние программы (не уточнено)",
+   "edition": null,
+   "family": "Зарплата и кадры",
+   "current": false
+  },
+  "Розница 1.0": {
+   "product": "Розница",
+   "edition": "1.0",
+   "family": "Розница и касса",
+   "current": false
+  },
+  "ТиС 7.7": {
+   "product": "ТиС 7.7",
+   "edition": null,
+   "family": "Торговля и производство",
+   "current": false
+  },
+  "Клиент ЭДО 2.5": {
+   "product": "Клиент ЭДО",
+   "edition": "2.5",
+   "family": "Документооборот",
+   "current": false
+  },
+  "Клиент ЭДО 2.9": {
+   "product": "Клиент ЭДО",
+   "edition": "2.9",
+   "family": "Документооборот",
+   "current": false
+  },
+  "ЗУП КОРП 2.5": {
+   "product": "ЗУП КОРП",
+   "edition": "2.5",
+   "family": "Зарплата и кадры",
+   "current": false
+  }
+ }
 }

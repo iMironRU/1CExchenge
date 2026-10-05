@@ -135,6 +135,71 @@ details.more summary { cursor: pointer; color: var(--sync); font-size: 12px; }
 .ct-tbl td { padding: 2px 4px; border-bottom: 1px dashed var(--line); word-break: break-word; vertical-align: top; }
 .ct-tbl td:first-child { width: 55%; }
 .dim { color: var(--faint); }
+.mob-hint { display: none; color: var(--warn); }
+@media (max-width: 700px) { .mob-hint { display: inline; } }
+
+/* «Пара» */
+.picker { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 10px 12px; align-items: end; padding: 14px 16px; }
+.pick { display: grid; gap: 4px; min-width: 0; }
+.pick label { color: var(--muted); font-size: 12px; letter-spacing: .03em; }
+.pick select { font-size: 16px; padding: 10px 12px; width: 100%; }
+.swap { appearance: none; border: 1px solid var(--line-strong); background: var(--surface2); color: var(--fg); border-radius: 999px;
+  width: 40px; height: 40px; font-size: 18px; cursor: pointer; transform: rotate(90deg); }
+.popular { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.presult { display: grid; gap: 14px; }
+.ptitle { font-size: 20px; font-weight: 700; text-wrap: balance; }
+.ptitle .arr { color: var(--faint); font-weight: 400; }
+.pnote { border-radius: var(--r); padding: 12px 14px; background: var(--surface); border: 1px solid var(--line); font-size: 14px; }
+.pnote.warn { border-color: var(--warn); background: var(--trans-dim); color: var(--fg); }
+.pcard { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; display: grid; gap: 12px; }
+.pcard.muted { opacity: .8; }
+.ph { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; }
+.ph h2 { font-size: 17px; }
+.pi { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: var(--surface2); font-weight: 700; }
+.pi.s { background: var(--sync-dim); color: var(--sync-ink); }
+.pi.t { background: var(--trans-dim); color: var(--trans-ink); }
+.mech { border-top: 1px solid var(--line); padding-top: 12px; display: grid; gap: 8px; }
+.mech:first-of-type { border-top: 0; padding-top: 0; }
+.mh { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; }
+.mt { font-weight: 600; }
+.pill.ok { background: var(--ed-dim); color: var(--ed); }
+.pill.old { background: var(--trans-dim); color: var(--trans-ink); }
+.req { color: var(--muted); font-size: 13.5px; overflow-wrap: anywhere; }
+.req b { color: var(--fg); }
+.dirs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+.dir { background: var(--surface2); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 10px 12px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.dir.none { opacity: .7; }
+.dh2 { font-weight: 600; font-size: 14px; }
+.sum { font-variant-numeric: tabular-nums; font-size: 14px; }
+details.objs summary { cursor: pointer; color: var(--sync); font-weight: 500; font-size: 14px; padding: 4px 0; }
+.objs-body { display: grid; gap: 8px; margin-top: 6px; }
+.ofilter { width: 100%; font-size: 16px !important; }
+.olist { list-style: none; margin: 0; padding: 0; max-height: 60vh; overflow: auto; border-top: 1px solid var(--line); }
+.olist li { padding: 6px 2px; border-bottom: 1px dashed var(--line); font-size: 13.5px; line-height: 1.35; word-break: break-word; }
+.olist li.kh { position: sticky; top: 0; background: var(--surface2); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); border-bottom: 1px solid var(--line); }
+.olist .arr { color: var(--faint); }
+.olist .via { display: block; color: var(--faint); font-size: 11.5px; }
+
+/* телефон: одна колонка, крупные элементы управления, таблицы — карточками */
+@media (max-width: 700px) {
+  .wrap { padding-inline: 12px; gap: 14px; }
+  h1 { font-size: 22px; }
+  .lede { font-size: 13.5px; }
+  .stats { gap: 4px 14px; }
+  .stat b { font-size: 16px; }
+  .tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); }
+  .picker { grid-template-columns: minmax(0, 1fr); }
+  .swap { justify-self: center; transform: none; }
+  .dirs { grid-template-columns: minmax(0, 1fr); }
+  input[type="search"], select { font-size: 16px; width: 100%; }
+  .bar { gap: 8px; }
+  table.list thead { display: none; }
+  table.list, table.list tbody, table.list tr, table.list td { display: block; width: 100%; }
+  table.list tr { border-bottom: 1px solid var(--line-strong); padding: 8px 0; }
+  table.list td { border: 0; padding: 2px 12px; }
+  .detail { padding: 12px; }
+  .mx-scroll { max-height: 70vh; }
+}
 .warn { color: var(--warn); }
 .chip.old { color: var(--faint); border-style: dashed; }
 select { font: 13px var(--font); color: var(--fg); background: var(--surface); border: 1px solid var(--line-strong); border-radius: var(--r-sm); padding: 5px 8px; max-width: 100%; }
@@ -203,7 +268,8 @@ footer { color: var(--faint); font-size: 12px; }
   </header>
 
   <nav class="tabs" role="tablist" aria-label="Разделы">
-    <button class="tab" role="tab" id="tab-matrix" data-tab="matrix" aria-selected="true">Матрица</button>
+    <button class="tab" role="tab" id="tab-pair" data-tab="pair" aria-selected="true">Пара</button>
+    <button class="tab" role="tab" id="tab-matrix" data-tab="matrix" aria-selected="false">Матрица</button>
     <button class="tab" role="tab" id="tab-cls" data-tab="cls" aria-selected="false">Классы</button>
     <button class="tab" role="tab" id="tab-obj" data-tab="obj" aria-selected="false">Объекты</button>
     <button class="tab" role="tab" id="tab-list" data-tab="list" aria-selected="false">Связи</button>
@@ -211,7 +277,23 @@ footer { color: var(--faint); font-size: 12px; }
     <button class="tab" role="tab" id="tab-dist" data-tab="dist" aria-selected="false">Поставки</button>
   </nav>
 
-  <section id="p-matrix" class="section" role="tabpanel" aria-labelledby="tab-matrix">
+  <section id="p-pair" class="section" role="tabpanel" aria-labelledby="tab-pair">
+    <div class="picker card">
+      <div class="pick">
+        <label for="pa">У меня есть</label>
+        <select id="pa"></select>
+      </div>
+      <button class="swap" id="pswap" type="button" aria-label="Поменять местами" title="Поменять местами">⇅</button>
+      <div class="pick">
+        <label for="pb">и</label>
+        <select id="pb"></select>
+      </div>
+      <div class="popular" id="ppop"></div>
+    </div>
+    <div id="presult" class="presult" aria-live="polite"></div>
+  </section>
+
+  <section id="p-matrix" class="section" role="tabpanel" aria-labelledby="tab-matrix" hidden>
     <div class="bar">
       <div class="seg" role="group" aria-label="Тип связи" id="f-kind">
         <button data-k="all" aria-pressed="true">Все</button>
@@ -233,6 +315,7 @@ footer { color: var(--faint); font-size: 12px; }
       <span><i style="background:var(--sync-dim);color:var(--sync-ink)">С</i>синхронизация</span>
       <span><i style="background:var(--trans-dim);color:var(--trans-ink)">П</i>переход</span>
       <span>строка — откуда, столбец — куда; цифра — число связей в ячейке; клик по названию — все связи конфигурации</span>
+      <span class="mob-hint">На телефоне удобнее вкладка «Пара».</span>
     </div>
     <div class="split">
       <div class="card"><div class="mx-scroll" id="mx"></div></div>
@@ -317,6 +400,21 @@ const store = {
   set(k, v) { try { localStorage.setItem('reg1c.' + k, JSON.stringify(v)); } catch {} },
 };
 const KIND = { s: 'синхронизация', t: 'переход' };
+// Содержимое правил (что во что) — отдельный content.json, грузится при первой необходимости
+let CT = null, ctLoading = null;
+function ensureCT() {
+  if (CT) return Promise.resolve(CT);
+  if (!ctLoading) ctLoading = fetch('content.json').then(r => r.json()).then(j => (CT = j)).catch(() => (CT = {}));
+  return ctLoading;
+}
+const rowsOf = l => (CT && CT[l.id]) || null;
+// «Документ.РеализацияТоваровУслуг» -> «Реализация товаров услуг»
+function human(s) {
+  if (!s) return s;
+  const n = s.includes('.') ? s.slice(s.indexOf('.') + 1) : s;
+  const words = n.replace(/_/g, ' ').split(/(?<=[а-яёa-z0-9])(?=[А-ЯЁA-Z])|(?<=[А-ЯЁA-Z])(?=[А-ЯЁA-Z][а-яёa-z])|s+/).filter(Boolean);
+  return words.map((w, i) => (i === 0 || /^[А-ЯЁA-Z0-9]{2,}$/.test(w) ? w : w.toLowerCase())).join(' ');
+}
 const SRC = { files: 'файл поставки', cf: 'код CF', releases: 'releases.1c.ru' };
 const links = DATA.links;
 const lineInfo = DATA.lines; // line -> {order, family}
@@ -343,10 +441,10 @@ function showTab(name) {
     b.setAttribute('aria-selected', on);
     $('#p-' + b.dataset.tab).hidden = !on;
   }
-  store.set('tab', name);
+  store.set('tab2', name);
 }
 tabs.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
-{ const h = location.hash.slice(1); showTab(['matrix', 'cls', 'obj', 'list', 'ed', 'dist'].includes(h) ? h : store.get('tab', 'matrix')); }
+{ const h = decodeURIComponent(location.hash.slice(1)); showTab(h.includes('~') ? 'pair' : ['pair', 'matrix', 'cls', 'obj', 'list', 'ed', 'dist'].includes(h) ? h : store.get('tab2', 'pair')); }
 
 // ---------- матрица
 const F = { kind: 'all', mech: new Set(['kd2', 'ed', 'proc', 'doc']), hide77: false, q: '', task: '', actual: false };
@@ -416,7 +514,7 @@ function linkItem(l, opts = {}) {
     ? `<ul class="ev">${ev.slice(0, 3).join('')}</ul><details class="more"><summary>ещё ${ev.length - 3}</summary><ul class="ev">${ev.slice(3).join('')}</ul></details>`
     : `<ul class="ev">${ev.join('')}</ul>`;
   const fv = l.fv && l.fv.length ? `<div class="notes">версии формата: ${esc(l.fv.join(', '))}</div>` : '';
-  const ct = l.ct ? contentHtml(l.ct) : '';
+  const ct = l.cs ? contentHtml(l) : '';
   const urls = (l.urls || []).map(u => `<a href="${esc(u)}" target="_blank" rel="noopener">открыть файл на releases.1c.ru</a>`).join(' · ');
   return `<div class="item">
     <div class="top"><span class="pill ${l.k}">${KIND[l.k]}</span>${mechPill}<span class="mech">${esc(l.mech)}</span>
@@ -438,7 +536,9 @@ const KIND_PL = { 'Справочник': 'справочники', 'Докум�
   'Регистр накопления': 'регистры накопления', 'Регистр бухгалтерии': 'регистры бухгалтерии', 'ПВХ': 'ПВХ',
   'План счетов': 'планы счетов', 'Перечисление': 'перечисления', 'Константа': 'константы', 'Прочее': 'прочее' };
 const KIND_ORDER = ['Документ', 'Справочник', 'Регистр сведений', 'Регистр накопления', 'Регистр бухгалтерии', 'ПВХ', 'План счетов', 'Константа', 'Перечисление', 'Прочее'];
-function contentHtml(ct) {
+function contentHtml(l) {
+  const ct = { ...l.cs, export: rowsOf(l) || [] };
+  const loaded = !!rowsOf(l);
   const kinds = Object.entries(ct.summary).sort((a, b) => KIND_ORDER.indexOf(a[0]) - KIND_ORDER.indexOf(b[0]));
   const sum = kinds.map(([k, n]) => `<b>${n}</b> ${esc(KIND_PL[k] || k)}`).join(' · ');
   const extra = ct.ed
@@ -464,10 +564,11 @@ function contentHtml(ct) {
   const lead = ct.ed ? 'Ездит через EnterpriseData' : 'Выгружается';
   const basis = ct.basis && ct.basis.length ? `<div class="notes warn">${esc(ct.basis.join(' · '))}</div>` : '';
   return `<div class="ct"><div>${lead}: ${sum || '—'}</div><div class="notes">${esc(extra)}</div>${basis}
-    <details class="more"><summary>что во что (${ct.export.length})</summary><div class="ct-scroll"><table class="ct-tbl">${rows}</table></div></details></div>`;
+    <details class="more"><summary>что во что (${ct.n})</summary>${loaded ? '' : '<div class="dim">загрузка…</div>'}<div class="ct-scroll"><table class="ct-tbl">${rows}</table></div></details></div>`;
 }
 
 function renderDetail() {
+  if (!CT) ensureCT().then(() => renderDetail());
   const box = $('#detail');
   const ls = filtered();
   if (selected.line) {
@@ -495,7 +596,7 @@ function renderDetail() {
   }
   box.innerHTML = `<div class="dh">
       <div class="route">${esc(selected.from)}<span class="arrow">→</span>${esc(selected.to)}</div>
-      <div class="sub">${list.length} ${list.length === 1 ? 'связь' : list.length < 5 ? 'связи' : 'связей'}${back ? ` · <button class="linkbtn" data-from="${esc(selected.to)}" data-to="${esc(selected.from)}">обратное направление</button>` : ''}</div>
+      <div class="sub"><button class="linkbtn" data-open-a="${esc(selected.from)}" data-open-b="${esc(selected.to)}">открыть как пару</button> · ${list.length} ${list.length === 1 ? 'связь' : list.length < 5 ? 'связи' : 'связей'}${back ? ` · <button class="linkbtn" data-from="${esc(selected.to)}" data-to="${esc(selected.from)}">обратное направление</button>` : ''}</div>
     </div>
     <div class="items">${list.map(l => linkItem(l)).join('')}</div>`;
 }
@@ -539,21 +640,25 @@ $('#f-actual').addEventListener('change', e => { F.actual = e.target.checked; re
 $('#f-q').addEventListener('input', e => { F.q = e.target.value; renderMatrix(); });
 
 // ---------- объекты: обратный индекс «объект -> где и во что ездит»
-const OBJ = (() => {
+let OBJ = [];
+function buildObj() {
   const idx = new Map();
   const add = (key, row) => { if (!key) return; if (!idx.has(key)) idx.set(key, { key, rows: [], links: new Set() }); const e = idx.get(key); e.rows.push(row); e.links.add(row.l.id); };
   for (const l of links) {
-    if (!l.ct) continue;
-    for (const [from, to, via] of l.ct.export) {
-      const row = { l, from, to, via: l.ct.ed ? via : null };
+    const rows = rowsOf(l);
+    if (!rows) continue;
+    for (const [from, to, via] of rows) {
+      const row = { l, from, to, via: l.cs.ed ? via : null };
       add(from, row);
       if (to && to !== from) add(to, row);
     }
   }
-  return [...idx.values()].sort((a, b) => b.links.size - a.links.size || a.key.localeCompare(b.key, 'ru'));
-})();
+  OBJ = [...idx.values()].sort((a, b) => b.links.size - a.links.size || a.key.localeCompare(b.key, 'ru'));
+}
 const O = { q: '', kind: 'all', sel: null };
 function renderObjList() {
+  if (!CT) { $('#o-list').innerHTML = '<div class="mx-empty">Загружаю содержимое правил…</div>'; ensureCT().then(() => { buildObj(); renderObjList(); }); return; }
+  if (!OBJ.length) buildObj();
   const q = O.q.trim().toLowerCase();
   const list = OBJ.filter(o => (O.kind === 'all' || o.key.startsWith(O.kind)) && (!q || o.key.toLowerCase().includes(q)));
   $('#o-count').textContent = `${list.length} объектов`;
@@ -580,7 +685,7 @@ function renderObjDetail() {
     for (const r of p.rows) uniq.set(`${r.from}|${r.to}|${r.via}|${r.l.k}|${r.l.m}`, r);
     const items = [...uniq.values()].map(r => {
       const role = r.from === o.key ? 'отсюда' : 'сюда';
-      const other = r.from === o.key ? (r.to || (r.l.ct.ed ? 'не разобрано' : 'в обработчике')) : (r.from || 'не разобрано');
+      const other = r.from === o.key ? (r.to || (r.l.cs.ed ? 'не разобрано' : 'в обработчике')) : (r.from || 'не разобрано');
       const arrow = r.from === o.key ? `→ ${esc(other)}` : `← ${esc(other)}`;
       return `<li><span class="pill ${r.l.k}">${r.l.m === 'ed' ? 'ED' : r.l.m === 'kd2' ? 'КД2' : 'обр.'}</span> <span class="mono">${arrow}</span>${r.via ? ` <span class="dim mono">через ${esc(r.via)}</span>` : ''} <span class="dim">(${role})</span></li>`;
     }).join('');
@@ -605,7 +710,8 @@ const L = { kind: 'all', q: '' };
 function renderList() {
   const q = L.q.trim().toLowerCase();
   const rows = links.filter(l => (L.kind === 'all' || l.k === L.kind) &&
-    (!q || l.text.includes(q)));
+    (!q || l.text.includes(q) || ((rowsOf(l) || []).some(r => r.some(x => x && x.toLowerCase().includes(q))))));
+  if (q && !CT) ensureCT().then(renderList);
   $('#l-count').textContent = `${rows.length} из ${links.length}`;
   $('#l-table').innerHTML = `<thead><tr><th>#</th><th>Тип</th><th>Задача</th><th>Откуда</th><th>Куда</th><th>Механизм</th><th>План обмена</th><th>Где найдено</th></tr></thead><tbody>` +
     rows.map(l => `<tr>
@@ -668,6 +774,8 @@ $('#l-q').addEventListener('input', e => { L.q = e.target.value; renderList(); }
       <span class="st ${c.status}">${label[c.status]}</span></div>`;
   }).join('');
 })();
+
+/*__PAIR__*/
 
 (function renderCls() {
   const MECH = ['Правила КД2', 'КД2, правила из файла', 'EnterpriseData', 'Обработка', 'Пакет перехода', 'Только описание'];
