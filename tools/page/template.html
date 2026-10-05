@@ -1,0 +1,501 @@
+<title>Реестр обменов 1С</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: шапка со сводкой → вкладки; матрица «из → в» слева, панель доказательств справа (на телефоне — под матрицей).
+   Палитра и шрифты — как у Апдейкона (upd.imiron.ru), чтобы страница могла стать его вкладкой. */
+:root {
+  --bg: #EEF1F8; --surface: #FFFFFF; --surface2: #F5F7FC; --line: #DDE3EF; --line-strong: #C8D0E4;
+  --fg: #171E33; --muted: #6472A0; --faint: #9BA5C2;
+  --sync: #1355FF; --sync-dim: #E6EDFF; --sync-ink: #0D3DC0;
+  --trans: #E8650C; --trans-dim: #FFEFE3; --trans-ink: #A84405;
+  --ed: #057A5A; --ed-dim: #E3F6EF;
+  --warn: #B45309; --focus: #1355FF;
+  --font: 'Golos Text', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  --r: 10px; --r-sm: 6px;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0C1120; --surface: #141B2D; --surface2: #1A2340; --line: #263048; --line-strong: #354268;
+  --fg: #E4EAF8; --muted: #8A96BC; --faint: #56637F;
+  --sync: #6E96FF; --sync-dim: #18234A; --sync-ink: #B9CBFF;
+  --trans: #FB923C; --trans-dim: #2E1A08; --trans-ink: #FDC08F;
+  --ed: #34D399; --ed-dim: #0B2A20; --warn: #FBBF24; --focus: #6E96FF; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0C1120; --surface: #141B2D; --surface2: #1A2340; --line: #263048; --line-strong: #354268;
+  --fg: #E4EAF8; --muted: #8A96BC; --faint: #56637F;
+  --sync: #6E96FF; --sync-dim: #18234A; --sync-ink: #B9CBFF;
+  --trans: #FB923C; --trans-dim: #2E1A08; --trans-ink: #FDC08F;
+  --ed: #34D399; --ed-dim: #0B2A20; --warn: #FBBF24; --focus: #6E96FF; color-scheme: dark }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font: 14px/1.5 var(--font); margin: 0; }
+.wrap { max-width: 1480px; margin: 0 auto; padding-inline: 20px; padding-block: 22px 48px; display: grid; gap: 18px; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: 17px; font-weight: 600; }
+h3 { font-size: 15px; font-weight: 600; }
+a { color: var(--sync); }
+code, .mono { font-family: var(--mono); font-size: 12px; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* шапка */
+.head { display: grid; gap: 10px; }
+.lede { color: var(--muted); max-width: 72ch; margin: 0; }
+.stats { display: flex; flex-wrap: wrap; gap: 8px 22px; font-variant-numeric: tabular-nums; }
+.stat { display: flex; align-items: baseline; gap: 6px; }
+.stat b { font-size: 20px; font-weight: 700; }
+.stat span { color: var(--muted); }
+.stat.s b { color: var(--sync); } .stat.t b { color: var(--trans); }
+
+/* вкладки */
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); overflow-x: auto; }
+.tab { appearance: none; border: 0; background: none; font: 500 14px var(--font); color: var(--muted);
+  padding: 9px 14px; border-bottom: 2px solid transparent; margin-bottom: -1px; cursor: pointer; white-space: nowrap; }
+.tab[aria-selected="true"] { color: var(--fg); border-bottom-color: var(--sync); }
+.tab:hover { color: var(--fg); }
+
+/* панель фильтров */
+.bar { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; }
+.seg { display: inline-flex; border: 1px solid var(--line-strong); border-radius: var(--r-sm); overflow: hidden; background: var(--surface); }
+.seg button { appearance: none; border: 0; background: none; font: 500 13px var(--font); color: var(--muted); padding: 6px 12px; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--line-strong); }
+.seg button[aria-pressed="true"] { background: var(--fg); color: var(--surface); }
+.chips { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.chip { appearance: none; font: 500 12px var(--font); border: 1px solid var(--line-strong); background: var(--surface); color: var(--muted);
+  border-radius: 999px; padding: 4px 10px; cursor: pointer; }
+.chip[aria-pressed="true"] { border-color: var(--fg); color: var(--fg); background: var(--surface2); }
+.chip[aria-pressed="false"] { text-decoration: line-through; opacity: .7; }
+.check { display: inline-flex; gap: 6px; align-items: center; color: var(--muted); font-size: 13px; cursor: pointer; }
+input[type="search"] { font: 14px var(--font); color: var(--fg); background: var(--surface); border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm); padding: 6px 10px; min-width: 0; width: 220px; max-width: 100%; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; color: var(--muted); font-size: 12px; align-items: center; }
+.legend i { display: inline-block; width: 18px; height: 18px; border-radius: 4px; vertical-align: -4px; margin-right: 4px;
+  font: 700 11px/18px var(--font); text-align: center; font-style: normal; }
+
+/* матрица + панель */
+.split { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 16px; align-items: start; }
+@media (max-width: 1000px) { .split { grid-template-columns: minmax(0, 1fr); } }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); }
+.mx-scroll { overflow: auto; max-height: 78vh; border-radius: var(--r); }
+table.mx { border-collapse: separate; border-spacing: 0; font-variant-numeric: tabular-nums; }
+.mx th, .mx td { padding: 0; }
+.mx thead th { position: sticky; top: 0; z-index: 2; background: var(--surface); vertical-align: bottom; border-bottom: 1px solid var(--line); }
+.mx thead th.corner { left: 0; z-index: 3; text-align: left; padding: 8px 10px; color: var(--muted); font: 500 11px var(--font); letter-spacing: .04em; text-transform: uppercase; }
+.mx .colh { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; padding: 8px 4px; font: 500 12px var(--font);
+  color: var(--muted); cursor: pointer; appearance: none; border: 0; background: none; text-align: left; width: 34px; }
+.mx tbody th { position: sticky; left: 0; z-index: 1; background: var(--surface); text-align: left; border-right: 1px solid var(--line); }
+.mx .rowh { appearance: none; border: 0; background: none; font: 500 12.5px var(--font); color: var(--fg); padding: 0 10px; height: 30px;
+  white-space: nowrap; cursor: pointer; width: 100%; text-align: left; }
+.mx .colh.hl, .mx .rowh.hl { color: var(--sync); }
+.mx .colh.sel, .mx .rowh.sel { color: var(--sync); font-weight: 700; }
+.mx td { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); width: 34px; height: 30px; text-align: center; }
+.mx td.diag { background: repeating-linear-gradient(135deg, transparent 0 4px, var(--line) 4px 5px); }
+.mx td.fam { border-left: 1px solid var(--line-strong); }
+.mx tr.fam > * { border-top: 1px solid var(--line-strong); }
+.cell { appearance: none; border: 0; width: 100%; height: 100%; min-height: 29px; cursor: pointer; font: 700 11px var(--font);
+  display: flex; align-items: center; justify-content: center; gap: 1px; background: none; color: var(--fg); position: relative; }
+.cell.s { background: var(--sync-dim); color: var(--sync-ink); }
+.cell.t { background: var(--trans-dim); color: var(--trans-ink); }
+.cell.st { background: linear-gradient(135deg, var(--sync-dim) 50%, var(--trans-dim) 50%); color: var(--fg); }
+.cell sup { font-size: 9px; font-weight: 500; opacity: .75; margin-left: 1px; }
+.cell:hover, .cell.sel { box-shadow: inset 0 0 0 2px var(--fg); }
+.mx-empty { padding: 28px; color: var(--muted); }
+
+.detail { position: sticky; top: 12px; max-height: calc(100vh - 24px); overflow: auto; padding: 16px; display: grid; gap: 14px; }
+@media (max-width: 1000px) { .detail { position: static; max-height: none; } }
+.detail .dh { display: grid; gap: 4px; }
+.detail .route { font-size: 18px; font-weight: 700; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; }
+.detail .route .arrow { color: var(--faint); font-weight: 400; }
+.detail .sub { color: var(--muted); font-size: 13px; }
+.linkbtn { appearance: none; border: 0; background: none; color: var(--sync); font: 500 13px var(--font); padding: 0; cursor: pointer; text-align: left; }
+.items { display: grid; gap: 10px; }
+.item { border: 1px solid var(--line); border-radius: var(--r-sm); padding: 10px 12px; display: grid; gap: 6px; background: var(--surface2); }
+.item .top { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.pill { font: 600 11px var(--font); border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
+.pill.s { background: var(--sync-dim); color: var(--sync-ink); }
+.pill.t { background: var(--trans-dim); color: var(--trans-ink); }
+.pill.ed { background: var(--ed-dim); color: var(--ed); }
+.pill.n { background: var(--surface); color: var(--muted); border: 1px solid var(--line); }
+.item .mech { font-weight: 600; }
+.item .vers { font-family: var(--mono); font-size: 12px; color: var(--fg); }
+.item .plan { font-family: var(--mono); font-size: 11.5px; color: var(--muted); word-break: break-word; }
+.item .notes { color: var(--muted); font-size: 12.5px; }
+.item .notes.warn { color: var(--warn); }
+.ev { margin: 0; padding: 0; list-style: none; display: grid; gap: 3px; }
+.ev li { font-family: var(--mono); font-size: 11px; color: var(--muted); word-break: break-word; line-height: 1.45; }
+.ev li b { color: var(--fg); font-weight: 500; }
+details.more summary { cursor: pointer; color: var(--sync); font-size: 12px; }
+.partners { display: grid; gap: 4px; }
+.partner { display: flex; justify-content: space-between; gap: 8px; align-items: center; padding: 4px 0; border-bottom: 1px dashed var(--line); }
+.partner:last-child { border-bottom: 0; }
+
+/* список связей */
+.tbl-scroll { overflow-x: auto; }
+table.list { border-collapse: collapse; width: 100%; font-size: 13px; }
+.list th { text-align: left; font: 600 11px var(--font); letter-spacing: .04em; text-transform: uppercase; color: var(--muted);
+  padding: 10px 10px; border-bottom: 1px solid var(--line-strong); white-space: nowrap; position: sticky; top: 0; background: var(--surface); }
+.list td { padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.list td.num { font-variant-numeric: tabular-nums; color: var(--faint); }
+.list td .v { display: block; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.list tr:hover td { background: var(--surface2); }
+.count { color: var(--muted); font-size: 13px; }
+
+/* EnterpriseData */
+.ed-grid { border-collapse: separate; border-spacing: 0; font-variant-numeric: tabular-nums; }
+.ed-grid th, .ed-grid td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: center; white-space: nowrap; }
+.ed-grid th:first-child, .ed-grid td:first-child { text-align: left; position: sticky; left: 0; background: var(--surface); }
+.ed-grid thead th { font: 500 11px var(--mono); color: var(--muted); }
+.dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: var(--ed); }
+.dot.no { background: none; border: 1px solid var(--line-strong); width: 6px; height: 6px; }
+.ed-pair td.v { font-family: var(--mono); font-weight: 500; }
+.ed-pair td.best { background: var(--ed-dim); color: var(--ed); }
+.ed-pair td.none { color: var(--faint); }
+
+/* поставки */
+.dist { display: grid; gap: 6px; }
+.dist-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 10px 14px; border-bottom: 1px solid var(--line); align-items: center; }
+.dist-row:last-child { border-bottom: 0; }
+.dist-row .t { font-weight: 500; min-width: 0; }
+.dist-row .m { color: var(--muted); font-size: 12.5px; }
+.st { font: 600 11px var(--font); border-radius: 999px; padding: 2px 9px; white-space: nowrap; }
+.st.ok { background: var(--ed-dim); color: var(--ed); }
+.st.old { background: var(--trans-dim); color: var(--trans-ink); }
+.st.no { background: var(--surface2); color: var(--muted); border: 1px solid var(--line); }
+.note { color: var(--muted); font-size: 13px; max-width: 80ch; margin: 0; }
+.cols2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+@media (max-width: 900px) { .cols2 { grid-template-columns: minmax(0, 1fr); } }
+.section { display: grid; gap: 12px; }
+.pad { padding: 14px 16px; display: grid; gap: 10px; }
+footer { color: var(--faint); font-size: 12px; }
+@media (prefers-reduced-motion: no-preference) { .cell, .chip, .tab { transition: background-color .12s, color .12s, box-shadow .12s; } }
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <h1>Реестр обменов 1С</h1>
+    <p class="lede">Из какой типовой конфигурации в какую есть синхронизация (обмен данными) и переход (перенос данных при смене программы).
+      Связи найдены в полных поставках: в файлах правил КД2 и в коде конфигурации (планы обмена, EnterpriseData, помощники перехода).</p>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Разделы">
+    <button class="tab" role="tab" id="tab-matrix" data-tab="matrix" aria-selected="true">Матрица</button>
+    <button class="tab" role="tab" id="tab-list" data-tab="list" aria-selected="false">Связи</button>
+    <button class="tab" role="tab" id="tab-ed" data-tab="ed" aria-selected="false">EnterpriseData</button>
+    <button class="tab" role="tab" id="tab-dist" data-tab="dist" aria-selected="false">Поставки</button>
+  </nav>
+
+  <section id="p-matrix" class="section" role="tabpanel" aria-labelledby="tab-matrix">
+    <div class="bar">
+      <div class="seg" role="group" aria-label="Тип связи" id="f-kind">
+        <button data-k="all" aria-pressed="true">Все</button>
+        <button data-k="s" aria-pressed="false">Синхронизация</button>
+        <button data-k="t" aria-pressed="false">Переход</button>
+      </div>
+      <div class="chips" role="group" aria-label="Механизм" id="f-mech">
+        <button class="chip" data-m="kd2" aria-pressed="true">Правила КД2</button>
+        <button class="chip" data-m="ed" aria-pressed="true">EnterpriseData</button>
+        <button class="chip" data-m="proc" aria-pressed="true">Обработки</button>
+        <button class="chip" data-m="doc" aria-pressed="true">Только описание</button>
+      </div>
+      <label class="check"><input type="checkbox" id="f-77"> Скрыть конфигурации 7.7</label>
+      <input type="search" id="f-q" placeholder="Фильтр: УТ, БП 3.0…" aria-label="Фильтр конфигураций">
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--sync-dim);color:var(--sync-ink)">С</i>синхронизация</span>
+      <span><i style="background:var(--trans-dim);color:var(--trans-ink)">П</i>переход</span>
+      <span>строка — откуда, столбец — куда; цифра — число связей в ячейке; клик по названию — все связи конфигурации</span>
+    </div>
+    <div class="split">
+      <div class="card"><div class="mx-scroll" id="mx"></div></div>
+      <aside class="card detail" id="detail" aria-live="polite"></aside>
+    </div>
+  </section>
+
+  <section id="p-list" class="section" role="tabpanel" aria-labelledby="tab-list" hidden>
+    <div class="bar">
+      <input type="search" id="l-q" placeholder="Поиск: план обмена, версия, файл…" aria-label="Поиск по связям" style="width:320px">
+      <div class="seg" role="group" aria-label="Тип связи" id="l-kind">
+        <button data-k="all" aria-pressed="true">Все</button>
+        <button data-k="s" aria-pressed="false">Синхронизация</button>
+        <button data-k="t" aria-pressed="false">Переход</button>
+      </div>
+      <span class="count" id="l-count"></span>
+    </div>
+    <div class="card tbl-scroll"><table class="list" id="l-table"></table></div>
+  </section>
+
+  <section id="p-ed" class="section" role="tabpanel" aria-labelledby="tab-ed" hidden>
+    <p class="note">Версии формата EnterpriseData, которые конфигурация объявляет для обмена (<code>ВерсииФормата.Вставить(…)</code> в коде CF).
+      Обмен через универсальный формат возможен, когда у пары есть общая версия; стороны договариваются о максимальной общей.</p>
+    <div class="card tbl-scroll"><table class="ed-grid" id="ed-ladder"></table></div>
+    <h2>Максимальная общая версия</h2>
+    <div class="card tbl-scroll"><table class="ed-grid ed-pair" id="ed-pair"></table></div>
+  </section>
+
+  <section id="p-dist" class="section" role="tabpanel" aria-labelledby="tab-dist" hidden>
+    <p class="note">Реестр строится по полным поставкам из каталога шаблонов. Чем больше поставок разобрано, тем полнее матрица.
+      Полные дистрибутивы скачиваются с releases.1c.ru под учётной записью ИТС; для части конфигураций портал требует одноразовый код, поэтому их качают вручную в браузере.</p>
+    <div class="cols2">
+      <div class="card">
+        <div class="pad"><h2>Разобраны</h2><p class="note" id="d-scanned-note"></p></div>
+        <div class="dist" id="d-scanned"></div>
+      </div>
+      <div class="card">
+        <div class="pad"><h2>Актуальные типовые для России</h2><p class="note" id="d-cat-note"></p></div>
+        <div class="dist" id="d-catalog"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="foot"></footer>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const store = {
+  get(k, d) { try { const v = localStorage.getItem('reg1c.' + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem('reg1c.' + k, JSON.stringify(v)); } catch {} },
+};
+const KIND = { s: 'синхронизация', t: 'переход' };
+const links = DATA.links;
+const lineInfo = DATA.lines; // line -> {order, family}
+
+// ---------- шапка
+(function stats() {
+  const s = links.filter(l => l.k === 's').length, t = links.length - s;
+  const scanned = DATA.templates.filter(t => t.count > 0).length;
+  const lines = new Set(links.flatMap(l => [l.from.line, l.to.line])).size;
+  $('#stats').innerHTML = `
+    <div class="stat"><b>${links.length}</b><span>связей</span></div>
+    <div class="stat s"><b>${s}</b><span>синхронизаций</span></div>
+    <div class="stat t"><b>${t}</b><span>переходов</span></div>
+    <div class="stat"><b>${lines}</b><span>конфигураций и редакций</span></div>
+    <div class="stat"><b>${scanned}</b><span>поставок разобрано из ${DATA.catalog.length} актуальных</span></div>`;
+  $('#foot').textContent = `Данные: ${DATA.generated.slice(0, 10)} · каталог шаблонов ${DATA.root} · сканеры tools/scan-templates.js, tools/scan-cf.js · проект C:\\.dev\\1CExchenge`;
+})();
+
+// ---------- вкладки
+const tabs = [...document.querySelectorAll('.tab')];
+function showTab(name) {
+  for (const b of tabs) {
+    const on = b.dataset.tab === name;
+    b.setAttribute('aria-selected', on);
+    $('#p-' + b.dataset.tab).hidden = !on;
+  }
+  store.set('tab', name);
+}
+tabs.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+{ const h = location.hash.slice(1); showTab(['matrix', 'list', 'ed', 'dist'].includes(h) ? h : store.get('tab', 'matrix')); }
+
+// ---------- матрица
+const F = { kind: 'all', mech: new Set(['kd2', 'ed', 'proc', 'doc']), hide77: false, q: '' };
+let selected = { from: 'УТ 11', to: 'БП 3.0' };
+
+const byOrder = (a, b) => (lineInfo[a]?.order ?? 999) - (lineInfo[b]?.order ?? 999) || a.localeCompare(b, 'ru');
+const is77 = line => /7\.7$/.test(line) || /^Прежние/.test(line);
+
+function filtered() {
+  return links.filter(l => (F.kind === 'all' || l.k === F.kind) && F.mech.has(l.m) &&
+    !(F.hide77 && (is77(l.from.line) || is77(l.to.line))));
+}
+
+function renderMatrix() {
+  const ls = filtered();
+  const q = F.q.trim().toLowerCase();
+  const cells = new Map();
+  for (const l of ls) {
+    const k = l.from.line + '→' + l.to.line;
+    if (!cells.has(k)) cells.set(k, []);
+    cells.get(k).push(l);
+  }
+  let rows = [...new Set(ls.map(l => l.from.line))].sort(byOrder);
+  let cols = [...new Set(ls.map(l => l.to.line))].sort(byOrder);
+  if (q) {
+    const hit = x => x.toLowerCase().includes(q);
+    const keep = new Set([...rows, ...cols].filter(hit));
+    rows = rows.filter(r => keep.has(r) || cols.some(c => keep.has(c) && cells.has(r + '→' + c)));
+    cols = cols.filter(c => keep.has(c) || rows.some(r => keep.has(r) && cells.has(r + '→' + c)));
+  }
+  const box = $('#mx');
+  if (!rows.length) { box.innerHTML = '<div class="mx-empty">Под фильтр ничего не попало. Сбросьте поиск или включите механизмы обратно.</div>'; return; }
+  const famStart = (arr, i) => i > 0 && lineInfo[arr[i]]?.family !== lineInfo[arr[i - 1]]?.family;
+  let h = '<table class="mx"><thead><tr><th class="corner">из \\ в</th>';
+  cols.forEach((c, i) => {
+    h += `<th${famStart(cols, i) ? ' class="fam"' : ''}><button class="colh${c === selected.to ? ' sel' : ''}" data-line="${esc(c)}" title="Все связи: ${esc(c)}">${esc(c)}</button></th>`;
+  });
+  h += '</tr></thead><tbody>';
+  rows.forEach((r, ri) => {
+    h += `<tr${famStart(rows, ri) ? ' class="fam"' : ''}><th><button class="rowh${r === selected.from ? ' sel' : ''}" data-line="${esc(r)}">${esc(r)}</button></th>`;
+    cols.forEach((c, ci) => {
+      const fam = famStart(cols, ci) ? ' fam' : '';
+      if (r === c) { h += `<td class="diag${fam}"></td>`; return; }
+      const list = cells.get(r + '→' + c);
+      if (!list) { h += `<td class="${fam.trim()}"></td>`; return; }
+      const kinds = [...new Set(list.map(l => l.k))].sort().join('');
+      const letters = kinds.split('').map(k => k === 's' ? 'С' : 'П').join('');
+      const sel = selected.from === r && selected.to === c ? ' sel' : '';
+      h += `<td class="${fam.trim()}"><button class="cell ${kinds}${sel}" data-from="${esc(r)}" data-to="${esc(c)}"
+        title="${esc(r)} → ${esc(c)}: ${list.length} ${list.length === 1 ? 'связь' : list.length < 5 ? 'связи' : 'связей'}">${letters}${list.length > 1 ? `<sup>${list.length}</sup>` : ''}</button></td>`;
+    });
+    h += '</tr>';
+  });
+  box.innerHTML = h + '</tbody></table>';
+}
+
+function linkItem(l, opts = {}) {
+  const mechPill = l.m === 'ed' ? '<span class="pill ed">EnterpriseData</span>' : '';
+  const vers = (l.from.ver || l.to.ver) ? `<div class="vers">${esc(l.from.ver || '—')} → ${esc(l.to.ver || '—')}</div>` : '';
+  const route = opts.route ? `<div><b>${esc(l.from.line)}</b> → <b>${esc(l.to.line)}</b></div>` : '';
+  const notes = l.notes.filter(n => !/^«/.test(n) || l.m !== 'kd2' || true);
+  const warn = notes.filter(n => /не уточнено|не проверена|нужна/.test(n));
+  const plain = notes.filter(n => !warn.includes(n));
+  const ev = l.ev.map(e => { const i = e.indexOf(': '); return `<li><b>${esc(e.slice(0, i))}</b>: ${esc(e.slice(i + 2))}</li>`; });
+  const evHtml = ev.length > 3
+    ? `<ul class="ev">${ev.slice(0, 3).join('')}</ul><details class="more"><summary>ещё ${ev.length - 3}</summary><ul class="ev">${ev.slice(3).join('')}</ul></details>`
+    : `<ul class="ev">${ev.join('')}</ul>`;
+  const fv = l.fv && l.fv.length ? `<div class="notes">версии формата: ${esc(l.fv.join(', '))}</div>` : '';
+  return `<div class="item">
+    <div class="top"><span class="pill ${l.k}">${KIND[l.k]}</span>${mechPill}<span class="mech">${esc(l.mech)}</span>
+      <span class="pill n" title="Где найдено">${l.src.map(s => s === 'cf' ? 'код CF' : 'файл поставки').join(' + ')}</span></div>
+    ${route}${vers}
+    ${l.plan ? `<div class="plan">ПланОбмена.${esc(l.plan)}</div>` : ''}
+    ${plain.length ? `<div class="notes">${esc(plain.join(' · '))}</div>` : ''}
+    ${warn.length ? `<div class="notes warn">${esc(warn.join(' · '))}</div>` : ''}
+    ${fv}
+    ${evHtml}
+  </div>`;
+}
+
+function renderDetail() {
+  const box = $('#detail');
+  const ls = filtered();
+  if (selected.line) {
+    const out = ls.filter(l => l.from.line === selected.line), inn = ls.filter(l => l.to.line === selected.line);
+    const group = (arr, key) => {
+      const m = new Map();
+      for (const l of arr) { const p = l[key].line; if (!m.has(p)) m.set(p, new Set()); m.get(p).add(l.k); }
+      return [...m].sort((a, b) => byOrder(a[0], b[0]));
+    };
+    const part = (arr, key, dir) => group(arr, key).map(([p, ks]) => `<div class="partner">
+        <button class="linkbtn" data-from="${esc(dir === 'out' ? selected.line : p)}" data-to="${esc(dir === 'out' ? p : selected.line)}">${esc(p)}</button>
+        <span>${[...ks].sort().map(k => `<span class="pill ${k}">${KIND[k]}</span>`).join(' ')}</span></div>`).join('') || '<div class="sub">нет</div>';
+    box.innerHTML = `<div class="dh"><div class="route">${esc(selected.line)}</div>
+        <div class="sub">исходящих связей ${out.length}, входящих ${inn.length} (с учётом фильтров)</div></div>
+      <div class="partners"><h3>Куда</h3>${part(out, 'to', 'out')}</div>
+      <div class="partners"><h3>Откуда</h3>${part(inn, 'from', 'in')}</div>`;
+    return;
+  }
+  const list = ls.filter(l => l.from.line === selected.from && l.to.line === selected.to);
+  const back = ls.some(l => l.from.line === selected.to && l.to.line === selected.from);
+  if (!list.length) {
+    box.innerHTML = `<div class="dh"><div class="route">${esc(selected.from)}<span class="arrow">→</span>${esc(selected.to)}</div>
+      <div class="sub">Под текущий фильтр связей нет. Выберите ячейку в матрице.</div></div>`;
+    return;
+  }
+  box.innerHTML = `<div class="dh">
+      <div class="route">${esc(selected.from)}<span class="arrow">→</span>${esc(selected.to)}</div>
+      <div class="sub">${list.length} ${list.length === 1 ? 'связь' : list.length < 5 ? 'связи' : 'связей'}${back ? ` · <button class="linkbtn" data-from="${esc(selected.to)}" data-to="${esc(selected.from)}">обратное направление</button>` : ''}</div>
+    </div>
+    <div class="items">${list.map(l => linkItem(l)).join('')}</div>`;
+}
+
+function select(sel) { selected = sel; renderMatrix(); renderDetail(); }
+
+document.addEventListener('click', e => {
+  const c = e.target.closest('[data-from][data-to]');
+  if (c) { select({ from: c.dataset.from, to: c.dataset.to }); if (c.closest('#detail')) $('#detail').scrollTop = 0; return; }
+  const h = e.target.closest('.rowh, .colh');
+  if (h) select({ line: h.dataset.line });
+});
+$('#mx').addEventListener('mouseover', e => {
+  const c = e.target.closest('.cell');
+  document.querySelectorAll('.mx .hl').forEach(x => x.classList.remove('hl'));
+  if (!c) return;
+  document.querySelectorAll(`.mx .rowh[data-line="${CSS.escape(c.dataset.from)}"], .mx .colh[data-line="${CSS.escape(c.dataset.to)}"]`).forEach(x => x.classList.add('hl'));
+});
+
+function segment(id, onPick) {
+  const g = $(id);
+  g.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    g.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    onPick(b.dataset.k);
+  });
+}
+segment('#f-kind', k => { F.kind = k; renderMatrix(); renderDetail(); });
+$('#f-mech').addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if (!b) return;
+  const on = b.getAttribute('aria-pressed') !== 'true';
+  b.setAttribute('aria-pressed', on);
+  on ? F.mech.add(b.dataset.m) : F.mech.delete(b.dataset.m);
+  renderMatrix(); renderDetail();
+});
+$('#f-77').addEventListener('change', e => { F.hide77 = e.target.checked; renderMatrix(); renderDetail(); });
+$('#f-q').addEventListener('input', e => { F.q = e.target.value; renderMatrix(); });
+
+// ---------- список связей
+const L = { kind: 'all', q: '' };
+function renderList() {
+  const q = L.q.trim().toLowerCase();
+  const rows = links.filter(l => (L.kind === 'all' || l.k === L.kind) &&
+    (!q || l.text.includes(q)));
+  $('#l-count').textContent = `${rows.length} из ${links.length}`;
+  $('#l-table').innerHTML = `<thead><tr><th>#</th><th>Тип</th><th>Откуда</th><th>Куда</th><th>Механизм</th><th>План обмена</th><th>Где найдено</th></tr></thead><tbody>` +
+    rows.map(l => `<tr>
+      <td class="num">${l.id}</td>
+      <td><span class="pill ${l.k}">${KIND[l.k]}</span></td>
+      <td>${esc(l.from.line)}${l.from.ver ? `<span class="v">${esc(l.from.ver)}</span>` : ''}</td>
+      <td>${esc(l.to.line)}${l.to.ver ? `<span class="v">${esc(l.to.ver)}</span>` : ''}</td>
+      <td>${esc(l.mech)}${l.notes.length ? `<span class="v">${esc(l.notes.join(' · '))}</span>` : ''}</td>
+      <td>${l.plan ? `<code>${esc(l.plan)}</code>` : ''}</td>
+      <td>${l.ev.length ? `<span class="v">${esc(l.ev[0])}</span>` : ''}${l.ev.length > 1 ? `<details class="more"><summary>ещё ${l.ev.length - 1}</summary><ul class="ev">${l.ev.slice(1).map(e => `<li>${esc(e)}</li>`).join('')}</ul></details>` : ''}</td>
+    </tr>`).join('') + '</tbody>';
+}
+segment('#l-kind', k => { L.kind = k; renderList(); });
+$('#l-q').addEventListener('input', e => { L.q = e.target.value; renderList(); });
+
+// ---------- EnterpriseData
+(function renderED() {
+  const ed = DATA.ed.filter(e => e.declared.length);
+  const cmp = (a, b) => { const x = a.split('.').map(Number), y = b.split('.').map(Number); return x[0] - y[0] || x[1] - y[1]; };
+  const all = [...new Set(ed.flatMap(e => e.declared))].sort(cmp);
+  $('#ed-ladder').innerHTML = `<thead><tr><th>Конфигурация</th>${all.map(v => `<th>${v}</th>`).join('')}</tr></thead><tbody>` +
+    ed.map(e => `<tr><td><b>${esc(e.config)}</b> <span class="mono" style="color:var(--muted)">${esc(e.version)}</span></td>${all.map(v =>
+      `<td>${e.declared.includes(v) ? `<span class="dot" title="${esc(e.config)}: ${v}"></span>` : '<span class="dot no"></span>'}</td>`).join('')}</tr>`).join('') +
+    `</tbody>` + (DATA.ed.some(e => !e.declared.length) ? `<tfoot><tr><td colspan="${all.length + 1}" style="text-align:left;color:var(--muted)">Без EnterpriseData: ${esc(DATA.ed.filter(e => !e.declared.length).map(e => e.config).join(', '))}</td></tr></tfoot>` : '');
+  $('#ed-pair').innerHTML = `<thead><tr><th></th>${ed.map(e => `<th>${esc(e.config)}</th>`).join('')}</tr></thead><tbody>` +
+    ed.map(a => `<tr><td><b>${esc(a.config)}</b></td>${ed.map(b => {
+      if (a === b) return '<td class="none">—</td>';
+      const common = a.declared.filter(v => b.declared.includes(v)).sort(cmp);
+      if (!common.length) return '<td class="none">нет общей</td>';
+      const best = common[common.length - 1];
+      return `<td class="v${best === all[all.length - 1] ? ' best' : ''}" title="общие: ${common.join(', ')}">${best}</td>`;
+    }).join('')}</tr>`).join('') + '</tbody>';
+})();
+
+// ---------- поставки
+(function renderDist() {
+  $('#d-scanned-note').textContent = `Каталог шаблонов: ${DATA.root}. Для каждой поставки разобраны файлы и CF.`;
+  $('#d-scanned').innerHTML = DATA.templates.map(t => `<div class="dist-row">
+      <div class="t">${esc(t.synonym || t.name)} <span class="mono" style="color:var(--muted)">${esc(t.version)}</span>
+        <div class="m mono">${esc(t.path)}</div></div>
+      <span class="${t.count ? 'st ok' : 'st no'}">${t.count ? t.count + ' связей' : 'не прикладная'}</span></div>`).join('');
+  const cat = DATA.catalog;
+  const n = s => cat.filter(c => c.status === s).length;
+  $('#d-cat-note').textContent = `${cat.length} конфигураций из каталога Апдейкона: разобрано ${n('ok')}, другая редакция ${n('old')}, не разобрано ${n('no')}.`;
+  const label = { ok: 'разобрана', old: 'другая редакция', no: 'не разобрана' };
+  const ord = { no: 0, old: 1, ok: 2 };
+  $('#d-catalog').innerHTML = [...cat].sort((a, b) => ord[a.status] - ord[b.status] || a.title.localeCompare(b.title, 'ru')).map(c => `<div class="dist-row">
+      <div class="t">${c.releases ? `<a href="${esc(c.releases)}" target="_blank" rel="noopener">${esc(c.title)}</a>` : esc(c.title)}
+        <div class="m"><span class="mono">${esc(c.version)}</span>${c.date ? ` · ${esc(c.date)}` : ''}${c.scanned ? ` · в реестре: <span class="mono">${esc(c.scanned)}</span>` : ''}${c.note ? ` · ${esc(c.note)}` : ''}</div></div>
+      <span class="st ${c.status}">${label[c.status]}</span></div>`).join('');
+})();
+
+renderMatrix(); renderDetail(); renderList();
+</script>

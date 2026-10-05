@@ -38,7 +38,11 @@
 node tools/scan-templates.js      # файлы поставок      -> data/templates.json
 node tools/scan-cf.js             # CF (≈5–7 мин/поставка, кеш в work/) -> data/cf/*.json
 node tools/build-registry.js      # -> data/registry.json, data/registry.csv, REGISTRY.md
+node tools/build-page.js          # страница с матрицей -> work/page/registry.html
 ```
+
+Страница опубликована как артефакт: https://claude.ai/artifact/F7cwxeovhDSFgpzhjsKerp
+(шаблон `tools/page/template.html`, каталог типовых — снимок `/api/configs` в `data/catalog-ru.json`).
 
 `scan-cf.js --only trade/11_6` — одна поставка. Повторный запуск пропускает готовые шаги
 (база, список объектов, выгрузка) и только переанализирует.
