@@ -24,6 +24,8 @@
    - `Conv*\` — переходы с конфигураций 7.7 (обработка `.ert` + правила КД2 `.xml`).
    - С УТ 11.6 внешние обработки перехода (УПП/ЗУП/БП → УТ 11) **убраны из поставки** и
      публикуются отдельным файлом на странице версии releases.1c.ru.
+3. **Пакеты перехода на releases.1c.ru** — файлы «Для перехода с …» среди файлов последней версии
+   (`/api/files` Апдейкона), разметка названий — `releaseFiles` в `data/annotations.json`.
 2. **Внутри CF** (сканер `tools/scan-cf.js`, через `ibcmd`, лицензия не нужна):
    - планы обмена с макетами `ПравилаОбмена` / `ПравилаОбменаКорреспондента` / `ПравилаРегистрации`;
    - EnterpriseData: план `СинхронизацияДанныхЧерезУниверсальныйФормат`, варианты настройки
@@ -37,6 +39,7 @@
 ```powershell
 node tools/scan-templates.js      # файлы поставок      -> data/templates.json
 node tools/scan-cf.js             # CF (≈5–7 мин/поставка, кеш в work/) -> data/cf/*.json
+node tools/fetch-files.js         # файлы последних версий из API Апдейкона -> data/catalog-files.json
 node tools/build-registry.js      # -> data/registry.json, data/registry.csv, REGISTRY.md
 node tools/build-page.js          # страница с матрицей -> work/page/registry.html
 ```

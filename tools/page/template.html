@@ -164,6 +164,8 @@ table.list { border-collapse: collapse; width: 100%; font-size: 13px; }
 .st.old { background: var(--trans-dim); color: var(--trans-ink); }
 .st.no { background: var(--surface2); color: var(--muted); border: 1px solid var(--line); }
 .note { color: var(--muted); font-size: 13px; max-width: 80ch; margin: 0; }
+.dist-row .m a { color: var(--sync); }
+.trans { margin: 4px 0 0; padding-left: 18px; display: grid; gap: 2px; }
 .cols2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: start; }
 @media (max-width: 900px) { .cols2 { grid-template-columns: minmax(0, 1fr); } }
 .section { display: grid; gap: 12px; }
@@ -237,7 +239,9 @@ footer { color: var(--faint); font-size: 12px; }
 
   <section id="p-dist" class="section" role="tabpanel" aria-labelledby="tab-dist" hidden>
     <p class="note">Реестр строится по полным поставкам из каталога шаблонов. Чем больше поставок разобрано, тем полнее матрица.
-      Полные дистрибутивы скачиваются с releases.1c.ru под учётной записью ИТС; для части конфигураций портал требует одноразовый код, поэтому их качают вручную в браузере.</p>
+      Ссылки ведут на страницы файлов releases.1c.ru (из API Апдейкона): портал пускает под учётной записью ИТС с подпиской,
+      а полные дистрибутивы части конфигураций отдаёт только после одноразового кода, поэтому их качают вручную в браузере.
+      Пакеты перехода с других конфигураций перечислены под каждой конфигурацией и уже учтены в матрице.</p>
     <div class="cols2">
       <div class="card">
         <div class="pad"><h2>Разобраны</h2><p class="note" id="d-scanned-note"></p></div>
@@ -263,6 +267,7 @@ const store = {
   set(k, v) { try { localStorage.setItem('reg1c.' + k, JSON.stringify(v)); } catch {} },
 };
 const KIND = { s: 'синхронизация', t: 'переход' };
+const SRC = { files: 'файл поставки', cf: 'код CF', releases: 'releases.1c.ru' };
 const links = DATA.links;
 const lineInfo = DATA.lines; // line -> {order, family}
 
@@ -360,9 +365,11 @@ function linkItem(l, opts = {}) {
     ? `<ul class="ev">${ev.slice(0, 3).join('')}</ul><details class="more"><summary>ещё ${ev.length - 3}</summary><ul class="ev">${ev.slice(3).join('')}</ul></details>`
     : `<ul class="ev">${ev.join('')}</ul>`;
   const fv = l.fv && l.fv.length ? `<div class="notes">версии формата: ${esc(l.fv.join(', '))}</div>` : '';
+  const urls = (l.urls || []).map(u => `<a href="${esc(u)}" target="_blank" rel="noopener">открыть файл на releases.1c.ru</a>`).join(' · ');
   return `<div class="item">
     <div class="top"><span class="pill ${l.k}">${KIND[l.k]}</span>${mechPill}<span class="mech">${esc(l.mech)}</span>
-      <span class="pill n" title="Где найдено">${l.src.map(s => s === 'cf' ? 'код CF' : 'файл поставки').join(' + ')}</span></div>
+      <span class="pill n" title="Где найдено">${l.src.map(s => SRC[s] || 'файл поставки').join(' + ')}</span></div>
+    ${urls ? `<div class="notes">${urls}</div>` : ''}
     ${route}${vers}
     ${l.plan ? `<div class="plan">ПланОбмена.${esc(l.plan)}</div>` : ''}
     ${plain.length ? `<div class="notes">${esc(plain.join(' · '))}</div>` : ''}
@@ -491,10 +498,20 @@ $('#l-q').addEventListener('input', e => { L.q = e.target.value; renderList(); }
   $('#d-cat-note').textContent = `${cat.length} конфигураций из каталога Апдейкона: разобрано ${n('ok')}, другая редакция ${n('old')}, не разобрано ${n('no')}.`;
   const label = { ok: 'разобрана', old: 'другая редакция', no: 'не разобрана' };
   const ord = { no: 0, old: 1, ok: 2 };
-  $('#d-catalog').innerHTML = [...cat].sort((a, b) => ord[a.status] - ord[b.status] || a.title.localeCompare(b.title, 'ru')).map(c => `<div class="dist-row">
-      <div class="t">${c.releases ? `<a href="${esc(c.releases)}" target="_blank" rel="noopener">${esc(c.title)}</a>` : esc(c.title)}
-        <div class="m"><span class="mono">${esc(c.version)}</span>${c.date ? ` · ${esc(c.date)}` : ''}${c.scanned ? ` · в реестре: <span class="mono">${esc(c.scanned)}</span>` : ''}${c.note ? ` · ${esc(c.note)}` : ''}</div></div>
-      <span class="st ${c.status}">${label[c.status]}</span></div>`).join('');
+  const a = (href, text) => `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(text)}</a>`;
+  $('#d-catalog').innerHTML = [...cat].sort((a, b) => ord[a.status] - ord[b.status] || a.title.localeCompare(b.title, 'ru')).map(c => {
+    const d = c.dl || {};
+    const ver = d.version || c.version;
+    const dlLinks = [d.full && a(d.full, 'полный дистрибутив'), d.page && a(d.page, 'все файлы версии')].filter(Boolean).join(' · ');
+    const trans = (d.trans || []).map(t => `<li>${a(t.url, t.title)}</li>`).join('');
+    return `<div class="dist-row">
+      <div class="t">${c.releases ? a(c.releases, c.title) : esc(c.title)}
+        <div class="m"><span class="mono">${esc(ver)}</span>${c.date ? ` · ${esc(c.date)}` : ''}${c.scanned ? ` · в реестре: <span class="mono">${esc(c.scanned)}</span>` : ''}${c.note ? ` · ${esc(c.note)}` : ''}</div>
+        ${dlLinks ? `<div class="m">${dlLinks}</div>` : ''}
+        ${d.error ? `<div class="m" style="color:var(--warn)">API: ${esc(d.error)}</div>` : ''}
+        ${trans ? `<ul class="m trans">${trans}</ul>` : ''}</div>
+      <span class="st ${c.status}">${label[c.status]}</span></div>`;
+  }).join('');
 })();
 
 renderMatrix(); renderDetail(); renderList();

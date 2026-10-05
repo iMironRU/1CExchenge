@@ -1,0 +1,2931 @@
+{
+ "source": "https://upd.imiron.ru/api/files",
+ "fetched": "2026-10-05T10:59:07.126Z",
+ "files": {
+  "9": {
+   "config_id": 9,
+   "version": "2.0.110.66",
+   "release_date": "2026-08-27",
+   "nick": "StateAccounting20",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=StateAccounting20&ver=2.0.110.66&path=StateAccounting%5C2_0_110_66%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=StateAccounting20&ver=2.0.110.66&path=StateAccounting%5C2_0_110_66%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=StateAccounting20&ver=2.0.110.66&path=StateAccounting%5C2_0_110_66%5CStateAccounting_2_0_110_66_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=StateAccounting20&ver=2.0.110.66&path=StateAccounting%5C2_0_110_66%5CStateAccounting_2_0_110_66_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=StateAccounting20&ver=2.0.110.66"
+   },
+   "files": [
+    {
+     "title": "Бухгалтерия государственного учреждения, редакция 2.0. Версия 2.0.110.66. Новое в версии",
+     "path": "StateAccounting\\2_0_110_66\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccounting20&ver=2.0.110.66&path=StateAccounting%5C2_0_110_66%5Cnews.htm"
+    },
+    {
+     "title": "Бухгалтерия государственного учреждения, редакция 2.0. Версия 2.0.110.66. Изменения типовых операций",
+     "path": "StateAccounting\\2_0_110_66\\object.htm",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccounting20&ver=2.0.110.66&path=StateAccounting%5C2_0_110_66%5Cobject.htm"
+    },
+    {
+     "title": "Бухгалтерия государственного учреждения, редакция 2.0. Версия 2.0.110.66. Порядок обновления",
+     "path": "StateAccounting\\2_0_110_66\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccounting20&ver=2.0.110.66&path=StateAccounting%5C2_0_110_66%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "StateAccounting\\2_0_110_66\\StateAccounting_2_0_110_66_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccounting20&ver=2.0.110.66&path=StateAccounting%5C2_0_110_66%5CStateAccounting_2_0_110_66_updsetup.zip"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с базовой версии",
+     "path": "StateAccounting\\2_0_110_66\\StateAccounting_2_0_110_66_updstpb.zip",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccounting20&ver=2.0.110.66&path=StateAccounting%5C2_0_110_66%5CStateAccounting_2_0_110_66_updstpb.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "StateAccounting\\2_0_110_66\\StateAccounting_2_0_110_66_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccounting20&ver=2.0.110.66&path=StateAccounting%5C2_0_110_66%5CStateAccounting_2_0_110_66_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "StateAccounting\\2_0_110_66\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccounting20&ver=2.0.110.66&path=StateAccounting%5C2_0_110_66%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "StateAccounting\\2_0_110_66\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccounting20&ver=2.0.110.66&path=StateAccounting%5C2_0_110_66%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "21": {
+   "config_id": 21,
+   "version": "2.5.27.95",
+   "release_date": "2026-10-02",
+   "nick": "ARAutomation20",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=ARAutomation20&ver=2.5.27.95&path=ARAutomation%5C2_5_27_95%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=ARAutomation20&ver=2.5.27.95&path=ARAutomation%5C2_5_27_95%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=ARAutomation20&ver=2.5.27.95&path=ARAutomation%5C2_5_27_95%5CARAutomation_2_5_27_95_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=ARAutomation20&ver=2.5.27.95&path=ARAutomation%5C2_5_27_95%5CARAutomation_2_5_27_95_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=ARAutomation20&ver=2.5.27.95"
+   },
+   "files": [
+    {
+     "title": "Комплексная автоматизация, редакция 2. Версия 2.5.27.95. Новое в версии",
+     "path": "ARAutomation\\2_5_27_95\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=ARAutomation20&ver=2.5.27.95&path=ARAutomation%5C2_5_27_95%5Cnews.htm"
+    },
+    {
+     "title": "Комплексная автоматизация, редакция 2. Версия 2.5.27.95. Порядок обновления",
+     "path": "ARAutomation\\2_5_27_95\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=ARAutomation20&ver=2.5.27.95&path=ARAutomation%5C2_5_27_95%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "ARAutomation\\2_5_27_95\\ARAutomation_2_5_27_95_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=ARAutomation20&ver=2.5.27.95&path=ARAutomation%5C2_5_27_95%5CARAutomation_2_5_27_95_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "ARAutomation\\2_5_27_95\\ARAutomation_2_5_27_95_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=ARAutomation20&ver=2.5.27.95&path=ARAutomation%5C2_5_27_95%5CARAutomation_2_5_27_95_setup1c.zip"
+    },
+    {
+     "title": "Дистрибутив обновления с конфигурации \"Управление торговлей, редакция 11\"",
+     "path": "ARAutomation\\2_5_27_95\\ARAutomation_2_5_27_95_updsetuptrade.zip",
+     "url": "https://releases.1c.ru/version_file?nick=ARAutomation20&ver=2.5.27.95&path=ARAutomation%5C2_5_27_95%5CARAutomation_2_5_27_95_updsetuptrade.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "ARAutomation\\2_5_27_95\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=ARAutomation20&ver=2.5.27.95&path=ARAutomation%5C2_5_27_95%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "ARAutomation\\2_5_27_95\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=ARAutomation20&ver=2.5.27.95&path=ARAutomation%5C2_5_27_95%5CLibraryVersions.txt"
+    },
+    {
+     "title": "Для перехода с \"Управление производственным предприятием\", ред.1.3 / \"Комплексная автоматизация\", ред. 1.1",
+     "path": "ARAutomation\\2_5_27_95\\ARAutomation_2_5_27_95_updsetup_UPP1_3_KA1_1.zip",
+     "url": "https://releases.1c.ru/version_file?nick=ARAutomation20&ver=2.5.27.95&path=ARAutomation%5C2_5_27_95%5CARAutomation_2_5_27_95_updsetup_UPP1_3_KA1_1.zip"
+    },
+    {
+     "title": "Для перехода с \"Зарплата и Управление Персоналом, редакция 3\"",
+     "path": "ARAutomation\\2_5_27_95\\ARAutomation_2_5_27_95_updsetup_HRM3.zip",
+     "url": "https://releases.1c.ru/version_file?nick=ARAutomation20&ver=2.5.27.95&path=ARAutomation%5C2_5_27_95%5CARAutomation_2_5_27_95_updsetup_HRM3.zip"
+    },
+    {
+     "title": "Для перехода с \"Бухгалтерия предприятия, редакция 3.0\"",
+     "path": "ARAutomation\\2_5_27_95\\ARAutomation_2_5_27_95_updsetup_accounting3.zip",
+     "url": "https://releases.1c.ru/version_file?nick=ARAutomation20&ver=2.5.27.95&path=ARAutomation%5C2_5_27_95%5CARAutomation_2_5_27_95_updsetup_accounting3.zip"
+    }
+   ]
+  },
+  "22": {
+   "error": "https://upd.imiron.ru/api/files?config_id=22: HTTP 404 {\"error\":\"У конфигурации нет версий на releases.1c.ru\"}"
+  },
+  "39": {
+   "config_id": 39,
+   "version": "3.0.14.159",
+   "release_date": "2026-09-25",
+   "nick": "SmallBusinessBase30",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=SmallBusinessBase30&ver=3.0.14.159&path=SmallBusinessBase%5C3_0_14_159%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=SmallBusinessBase30&ver=3.0.14.159&path=SmallBusinessBase%5C3_0_14_159%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=SmallBusinessBase30&ver=3.0.14.159&path=SmallBusinessBase%5C3_0_14_159%5CSmallBusinessBase_3_0_14_159_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=SmallBusinessBase30&ver=3.0.14.159&path=SmallBusinessBase%5C3_0_14_159%5CSmallBusinessBase_3_0_14_159_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=SmallBusinessBase30&ver=3.0.14.159"
+   },
+   "files": [
+    {
+     "title": "Управление нашей фирмой базовая, редакция 3.0. Версия 3.0.14.159. Новое в версии",
+     "path": "SmallBusinessBase\\3_0_14_159\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=SmallBusinessBase30&ver=3.0.14.159&path=SmallBusinessBase%5C3_0_14_159%5Cnews.htm"
+    },
+    {
+     "title": "Управление нашей фирмой базовая, редакция 3.0. Версия 3.0.14.159. Порядок обновления",
+     "path": "SmallBusinessBase\\3_0_14_159\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=SmallBusinessBase30&ver=3.0.14.159&path=SmallBusinessBase%5C3_0_14_159%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "SmallBusinessBase\\3_0_14_159\\SmallBusinessBase_3_0_14_159_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=SmallBusinessBase30&ver=3.0.14.159&path=SmallBusinessBase%5C3_0_14_159%5CSmallBusinessBase_3_0_14_159_updsetup.zip"
+    },
+    {
+     "title": "Управление нашей фирмой базовая, редакция 3.0. Версия 3.0.14.159. Порядок перехода с \"Розница базовая\", редакция 3.0",
+     "path": "SmallBusinessBase\\3_0_14_159\\1cv8updrt.htm",
+     "url": "https://releases.1c.ru/version_file?nick=SmallBusinessBase30&ver=3.0.14.159&path=SmallBusinessBase%5C3_0_14_159%5C1cv8updrt.htm"
+    },
+    {
+     "title": "Дистрибутив перехода с конфигурации \"Розница базовая\", редакция 3.0",
+     "path": "SmallBusinessBase\\3_0_14_159\\SmallBusinessBase_3_0_14_159_updstprtb.zip",
+     "url": "https://releases.1c.ru/version_file?nick=SmallBusinessBase30&ver=3.0.14.159&path=SmallBusinessBase%5C3_0_14_159%5CSmallBusinessBase_3_0_14_159_updstprtb.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "SmallBusinessBase\\3_0_14_159\\SmallBusinessBase_3_0_14_159_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=SmallBusinessBase30&ver=3.0.14.159&path=SmallBusinessBase%5C3_0_14_159%5CSmallBusinessBase_3_0_14_159_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "SmallBusinessBase\\3_0_14_159\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=SmallBusinessBase30&ver=3.0.14.159&path=SmallBusinessBase%5C3_0_14_159%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "SmallBusinessBase\\3_0_14_159\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=SmallBusinessBase30&ver=3.0.14.159&path=SmallBusinessBase%5C3_0_14_159%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "41": {
+   "config_id": 41,
+   "version": "3.0.14.159",
+   "release_date": "2026-09-25",
+   "nick": "SmallBusiness30",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=SmallBusiness30&ver=3.0.14.159&path=SmallBusiness%5C3_0_14_159%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=SmallBusiness30&ver=3.0.14.159&path=SmallBusiness%5C3_0_14_159%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=SmallBusiness30&ver=3.0.14.159&path=SmallBusiness%5C3_0_14_159%5CSmallBusiness_3_0_14_159_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=SmallBusiness30&ver=3.0.14.159&path=SmallBusiness%5C3_0_14_159%5CSmallBusiness_3_0_14_159_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=SmallBusiness30&ver=3.0.14.159"
+   },
+   "files": [
+    {
+     "title": "Управление нашей фирмой, редакция 3.0. Версия 3.0.14.159. Новое в версии",
+     "path": "SmallBusiness\\3_0_14_159\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=SmallBusiness30&ver=3.0.14.159&path=SmallBusiness%5C3_0_14_159%5Cnews.htm"
+    },
+    {
+     "title": "Управление нашей фирмой, редакция 3.0. Версия 3.0.14.159. Порядок обновления",
+     "path": "SmallBusiness\\3_0_14_159\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=SmallBusiness30&ver=3.0.14.159&path=SmallBusiness%5C3_0_14_159%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив перехода с конфигураций \"Розница\" и \"Розница базовая\" редакция 3.0",
+     "path": "SmallBusiness\\3_0_14_159\\SmallBusiness_3_0_14_159_updstprt.zip",
+     "url": "https://releases.1c.ru/version_file?nick=SmallBusiness30&ver=3.0.14.159&path=SmallBusiness%5C3_0_14_159%5CSmallBusiness_3_0_14_159_updstprt.zip"
+    },
+    {
+     "title": "Управление нашей фирмой, редакция 3.0. Версия 3.0.14.159. Порядок обновления для перехода с базовой",
+     "path": "SmallBusiness\\3_0_14_159\\1cv8updb.htm",
+     "url": "https://releases.1c.ru/version_file?nick=SmallBusiness30&ver=3.0.14.159&path=SmallBusiness%5C3_0_14_159%5C1cv8updb.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "SmallBusiness\\3_0_14_159\\SmallBusiness_3_0_14_159_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=SmallBusiness30&ver=3.0.14.159&path=SmallBusiness%5C3_0_14_159%5CSmallBusiness_3_0_14_159_updsetup.zip"
+    },
+    {
+     "title": "Управление нашей фирмой, редакция 3.0. Версия 3.0.14.159. Порядок перехода с \"Розница базовая\", редакция 3.0",
+     "path": "SmallBusiness\\3_0_14_159\\1cv8updrt.htm",
+     "url": "https://releases.1c.ru/version_file?nick=SmallBusiness30&ver=3.0.14.159&path=SmallBusiness%5C3_0_14_159%5C1cv8updrt.htm"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с базовой версии",
+     "path": "SmallBusiness\\3_0_14_159\\SmallBusiness_3_0_14_159_updstpb.zip",
+     "url": "https://releases.1c.ru/version_file?nick=SmallBusiness30&ver=3.0.14.159&path=SmallBusiness%5C3_0_14_159%5CSmallBusiness_3_0_14_159_updstpb.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "SmallBusiness\\3_0_14_159\\SmallBusiness_3_0_14_159_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=SmallBusiness30&ver=3.0.14.159&path=SmallBusiness%5C3_0_14_159%5CSmallBusiness_3_0_14_159_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "SmallBusiness\\3_0_14_159\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=SmallBusiness30&ver=3.0.14.159&path=SmallBusiness%5C3_0_14_159%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "SmallBusiness\\3_0_14_159\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=SmallBusiness30&ver=3.0.14.159&path=SmallBusiness%5C3_0_14_159%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "45": {
+   "config_id": 45,
+   "version": "3.0.276.1",
+   "release_date": "2026-09-24",
+   "nick": "Taxes",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=Taxes&ver=3.0.276.1&path=Taxes%5C3_0_276_1%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=Taxes&ver=3.0.276.1&path=Taxes%5C3_0_276_1%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=Taxes&ver=3.0.276.1&path=Taxes%5C3_0_276_1%5CTaxes_3_0_276_1_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=Taxes&ver=3.0.276.1&path=Taxes%5C3_0_276_1%5CTaxes_3_0_276_1_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=Taxes&ver=3.0.276.1"
+   },
+   "files": [
+    {
+     "title": "Налогоплательщик. Версия 3.0.276.1. Новое в версии",
+     "path": "Taxes\\3_0_276_1\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Taxes&ver=3.0.276.1&path=Taxes%5C3_0_276_1%5Cnews.htm"
+    },
+    {
+     "title": "Налогоплательщик. Версия 3.0.276.1. Изменения в версии",
+     "path": "Taxes\\3_0_276_1\\change.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Taxes&ver=3.0.276.1&path=Taxes%5C3_0_276_1%5Cchange.htm"
+    },
+    {
+     "title": "Налогоплательщик. Версия 3.0.276.1. Измененные объекты",
+     "path": "Taxes\\3_0_276_1\\object.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Taxes&ver=3.0.276.1&path=Taxes%5C3_0_276_1%5Cobject.htm"
+    },
+    {
+     "title": "Налогоплательщик. Версия 3.0.276.1. Порядок обновления",
+     "path": "Taxes\\3_0_276_1\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Taxes&ver=3.0.276.1&path=Taxes%5C3_0_276_1%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "Taxes\\3_0_276_1\\Taxes_3_0_276_1_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Taxes&ver=3.0.276.1&path=Taxes%5C3_0_276_1%5CTaxes_3_0_276_1_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "Taxes\\3_0_276_1\\Taxes_3_0_276_1_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Taxes&ver=3.0.276.1&path=Taxes%5C3_0_276_1%5CTaxes_3_0_276_1_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "Taxes\\3_0_276_1\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=Taxes&ver=3.0.276.1&path=Taxes%5C3_0_276_1%5CReadMe.txt"
+    }
+   ]
+  },
+  "55": {
+   "config_id": 55,
+   "version": "3.1.38.92",
+   "release_date": "2026-09-02",
+   "nick": "HRMBase30",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=HRMBase30&ver=3.1.38.92&path=HRMBase%5C3_1_38_92%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=HRMBase30&ver=3.1.38.92&path=HRMBase%5C3_1_38_92%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=HRMBase30&ver=3.1.38.92&path=HRMBase%5C3_1_38_92%5CHRMBase_3_1_38_92_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=HRMBase30&ver=3.1.38.92&path=HRMBase%5C3_1_38_92%5CHRMBase_3_1_38_92_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=HRMBase30&ver=3.1.38.92"
+   },
+   "files": [
+    {
+     "title": "Зарплата и Управление Персоналом базовая, редакция 3. Версия 3.1.38.92. Новое в версии",
+     "path": "HRMBase\\3_1_38_92\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=HRMBase30&ver=3.1.38.92&path=HRMBase%5C3_1_38_92%5Cnews.htm"
+    },
+    {
+     "title": "Зарплата и Управление Персоналом базовая, редакция 3. Версия 3.1.38.92. Порядок обновления",
+     "path": "HRMBase\\3_1_38_92\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=HRMBase30&ver=3.1.38.92&path=HRMBase%5C3_1_38_92%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "HRMBase\\3_1_38_92\\HRMBase_3_1_38_92_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=HRMBase30&ver=3.1.38.92&path=HRMBase%5C3_1_38_92%5CHRMBase_3_1_38_92_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "HRMBase\\3_1_38_92\\HRMBase_3_1_38_92_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=HRMBase30&ver=3.1.38.92&path=HRMBase%5C3_1_38_92%5CHRMBase_3_1_38_92_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "HRMBase\\3_1_38_92\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=HRMBase30&ver=3.1.38.92&path=HRMBase%5C3_1_38_92%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "HRMBase\\3_1_38_92\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=HRMBase30&ver=3.1.38.92&path=HRMBase%5C3_1_38_92%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "57": {
+   "config_id": 57,
+   "version": "3.1.38.92",
+   "release_date": "2026-09-02",
+   "nick": "StateHRMBase",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=StateHRMBase&ver=3.1.38.92&path=StateHRMBase%5C3_1_38_92%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=StateHRMBase&ver=3.1.38.92&path=StateHRMBase%5C3_1_38_92%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=StateHRMBase&ver=3.1.38.92&path=StateHRMBase%5C3_1_38_92%5CStateHRMBase_3_1_38_92_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=StateHRMBase&ver=3.1.38.92&path=StateHRMBase%5C3_1_38_92%5CStateHRMBase_3_1_38_92_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=StateHRMBase&ver=3.1.38.92"
+   },
+   "files": [
+    {
+     "title": "Зарплата и кадры государственного учреждения базовая, редакция 3. Версия 3.1.38.92. Новое в версии",
+     "path": "StateHRMBase\\3_1_38_92\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRMBase&ver=3.1.38.92&path=StateHRMBase%5C3_1_38_92%5Cnews.htm"
+    },
+    {
+     "title": "Зарплата и кадры государственного учреждения базовая, редакция 3. Версия 3.1.38.92. Порядок обновления",
+     "path": "StateHRMBase\\3_1_38_92\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRMBase&ver=3.1.38.92&path=StateHRMBase%5C3_1_38_92%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "StateHRMBase\\3_1_38_92\\StateHRMBase_3_1_38_92_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRMBase&ver=3.1.38.92&path=StateHRMBase%5C3_1_38_92%5CStateHRMBase_3_1_38_92_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "StateHRMBase\\3_1_38_92\\StateHRMBase_3_1_38_92_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRMBase&ver=3.1.38.92&path=StateHRMBase%5C3_1_38_92%5CStateHRMBase_3_1_38_92_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "StateHRMBase\\3_1_38_92\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRMBase&ver=3.1.38.92&path=StateHRMBase%5C3_1_38_92%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "StateHRMBase\\3_1_38_92\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRMBase&ver=3.1.38.92&path=StateHRMBase%5C3_1_38_92%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "58": {
+   "config_id": 58,
+   "version": "3.1.38.92",
+   "release_date": "2026-09-02",
+   "nick": "HRM30",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=HRM30&ver=3.1.38.92&path=HRM%5C3_1_38_92%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=HRM30&ver=3.1.38.92&path=HRM%5C3_1_38_92%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=HRM30&ver=3.1.38.92&path=HRM%5C3_1_38_92%5CHRM_3_1_38_92_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=HRM30&ver=3.1.38.92&path=HRM%5C3_1_38_92%5CHRM_3_1_38_92_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=HRM30&ver=3.1.38.92"
+   },
+   "files": [
+    {
+     "title": "Зарплата и Управление Персоналом, редакция 3. Версия 3.1.38.92. Новое в версии",
+     "path": "HRM\\3_1_38_92\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=HRM30&ver=3.1.38.92&path=HRM%5C3_1_38_92%5Cnews.htm"
+    },
+    {
+     "title": "Зарплата и Управление Персоналом, редакция 3. Версия 3.1.38.92. Порядок обновления",
+     "path": "HRM\\3_1_38_92\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=HRM30&ver=3.1.38.92&path=HRM%5C3_1_38_92%5C1cv8upd.htm"
+    },
+    {
+     "title": "Зарплата и Управление Персоналом, редакция 3. Версия 3.1.38.92. Порядок обновления для перехода с базовой",
+     "path": "HRM\\3_1_38_92\\1cv8updb.htm",
+     "url": "https://releases.1c.ru/version_file?nick=HRM30&ver=3.1.38.92&path=HRM%5C3_1_38_92%5C1cv8updb.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "HRM\\3_1_38_92\\HRM_3_1_38_92_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=HRM30&ver=3.1.38.92&path=HRM%5C3_1_38_92%5CHRM_3_1_38_92_updsetup.zip"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с базовой версии",
+     "path": "HRM\\3_1_38_92\\HRM_3_1_38_92_updstpb.zip",
+     "url": "https://releases.1c.ru/version_file?nick=HRM30&ver=3.1.38.92&path=HRM%5C3_1_38_92%5CHRM_3_1_38_92_updstpb.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "HRM\\3_1_38_92\\HRM_3_1_38_92_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=HRM30&ver=3.1.38.92&path=HRM%5C3_1_38_92%5CHRM_3_1_38_92_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "HRM\\3_1_38_92\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=HRM30&ver=3.1.38.92&path=HRM%5C3_1_38_92%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "HRM\\3_1_38_92\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=HRM30&ver=3.1.38.92&path=HRM%5C3_1_38_92%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "59": {
+   "config_id": 59,
+   "version": "3.1.38.92",
+   "release_date": "2026-09-02",
+   "nick": "StateHRM30",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=StateHRM30&ver=3.1.38.92&path=StateHRM%5C3_1_38_92%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=StateHRM30&ver=3.1.38.92&path=StateHRM%5C3_1_38_92%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=StateHRM30&ver=3.1.38.92&path=StateHRM%5C3_1_38_92%5CStateHRM_3_1_38_92_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=StateHRM30&ver=3.1.38.92&path=StateHRM%5C3_1_38_92%5CStateHRM_3_1_38_92_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=StateHRM30&ver=3.1.38.92"
+   },
+   "files": [
+    {
+     "title": "Зарплата и кадры государственного учреждения, редакция 3. Версия 3.1.38.92. Новое в версии",
+     "path": "StateHRM\\3_1_38_92\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRM30&ver=3.1.38.92&path=StateHRM%5C3_1_38_92%5Cnews.htm"
+    },
+    {
+     "title": "Зарплата и кадры государственного учреждения, редакция 3. Версия 3.1.38.92. Порядок обновления",
+     "path": "StateHRM\\3_1_38_92\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRM30&ver=3.1.38.92&path=StateHRM%5C3_1_38_92%5C1cv8upd.htm"
+    },
+    {
+     "title": "Зарплата и кадры государственного учреждения, редакция 3. Версия 3.1.38.92. Порядок обновления для перехода с базовой",
+     "path": "StateHRM\\3_1_38_92\\1cv8updb.htm",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRM30&ver=3.1.38.92&path=StateHRM%5C3_1_38_92%5C1cv8updb.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "StateHRM\\3_1_38_92\\StateHRM_3_1_38_92_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRM30&ver=3.1.38.92&path=StateHRM%5C3_1_38_92%5CStateHRM_3_1_38_92_updsetup.zip"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с базовой версии",
+     "path": "StateHRM\\3_1_38_92\\StateHRM_3_1_38_92_updstpb.zip",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRM30&ver=3.1.38.92&path=StateHRM%5C3_1_38_92%5CStateHRM_3_1_38_92_updstpb.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "StateHRM\\3_1_38_92\\StateHRM_3_1_38_92_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRM30&ver=3.1.38.92&path=StateHRM%5C3_1_38_92%5CStateHRM_3_1_38_92_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "StateHRM\\3_1_38_92\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRM30&ver=3.1.38.92&path=StateHRM%5C3_1_38_92%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "StateHRM\\3_1_38_92\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRM30&ver=3.1.38.92&path=StateHRM%5C3_1_38_92%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "60": {
+   "config_id": 60,
+   "version": "3.1.38.92",
+   "release_date": "2026-09-02",
+   "nick": "HRMCorp30",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=HRMCorp30&ver=3.1.38.92&path=HRMCorp%5C3_1_38_92%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=HRMCorp30&ver=3.1.38.92&path=HRMCorp%5C3_1_38_92%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=HRMCorp30&ver=3.1.38.92&path=HRMCorp%5C3_1_38_92%5CHRMCorp_3_1_38_92_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=HRMCorp30&ver=3.1.38.92&path=HRMCorp%5C3_1_38_92%5CHRMCorp_3_1_38_92_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=HRMCorp30&ver=3.1.38.92"
+   },
+   "files": [
+    {
+     "title": "Зарплата и управление персоналом КОРП, редакция 3. Версия 3.1.38.92. Новое в версии",
+     "path": "HRMCorp\\3_1_38_92\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=HRMCorp30&ver=3.1.38.92&path=HRMCorp%5C3_1_38_92%5Cnews.htm"
+    },
+    {
+     "title": "Зарплата и управление персоналом КОРП, редакция 3. Версия 3.1.38.92. Порядок обновления",
+     "path": "HRMCorp\\3_1_38_92\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=HRMCorp30&ver=3.1.38.92&path=HRMCorp%5C3_1_38_92%5C1cv8upd.htm"
+    },
+    {
+     "title": "Зарплата и управление персоналом КОРП, редакция 3. Версия 3.1.38.92. Порядок обновления с версии ПРОФ",
+     "path": "HRMCorp\\3_1_38_92\\1cv8updp.htm",
+     "url": "https://releases.1c.ru/version_file?nick=HRMCorp30&ver=3.1.38.92&path=HRMCorp%5C3_1_38_92%5C1cv8updp.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "HRMCorp\\3_1_38_92\\HRMCorp_3_1_38_92_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=HRMCorp30&ver=3.1.38.92&path=HRMCorp%5C3_1_38_92%5CHRMCorp_3_1_38_92_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "HRMCorp\\3_1_38_92\\HRMCorp_3_1_38_92_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=HRMCorp30&ver=3.1.38.92&path=HRMCorp%5C3_1_38_92%5CHRMCorp_3_1_38_92_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "HRMCorp\\3_1_38_92\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=HRMCorp30&ver=3.1.38.92&path=HRMCorp%5C3_1_38_92%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "HRMCorp\\3_1_38_92\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=HRMCorp30&ver=3.1.38.92&path=HRMCorp%5C3_1_38_92%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "61": {
+   "config_id": 61,
+   "version": "3.1.38.92",
+   "release_date": "2026-09-02",
+   "nick": "StateHRMCorp3",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=StateHRMCorp3&ver=3.1.38.92&path=StateHRMCorp%5C3_1_38_92%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=StateHRMCorp3&ver=3.1.38.92&path=StateHRMCorp%5C3_1_38_92%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=StateHRMCorp3&ver=3.1.38.92&path=StateHRMCorp%5C3_1_38_92%5CStateHRMCorp_3_1_38_92_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=StateHRMCorp3&ver=3.1.38.92&path=StateHRMCorp%5C3_1_38_92%5CStateHRMCorp_3_1_38_92_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=StateHRMCorp3&ver=3.1.38.92"
+   },
+   "files": [
+    {
+     "title": "Зарплата и кадры государственного учреждения КОРП, редакция 3. Версия 3.1.38.92. Новое в версии",
+     "path": "StateHRMCorp\\3_1_38_92\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRMCorp3&ver=3.1.38.92&path=StateHRMCorp%5C3_1_38_92%5Cnews.htm"
+    },
+    {
+     "title": "Зарплата и кадры государственного учреждения КОРП, редакция 3. Версия 3.1.38.92. Порядок обновления",
+     "path": "StateHRMCorp\\3_1_38_92\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRMCorp3&ver=3.1.38.92&path=StateHRMCorp%5C3_1_38_92%5C1cv8upd.htm"
+    },
+    {
+     "title": "Зарплата и кадры государственного учреждения КОРП, редакция 3. Версия 3.1.38.92. Порядок обновления с версии ПРОФ",
+     "path": "StateHRMCorp\\3_1_38_92\\1cv8updp.htm",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRMCorp3&ver=3.1.38.92&path=StateHRMCorp%5C3_1_38_92%5C1cv8updp.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "StateHRMCorp\\3_1_38_92\\StateHRMCorp_3_1_38_92_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRMCorp3&ver=3.1.38.92&path=StateHRMCorp%5C3_1_38_92%5CStateHRMCorp_3_1_38_92_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "StateHRMCorp\\3_1_38_92\\StateHRMCorp_3_1_38_92_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRMCorp3&ver=3.1.38.92&path=StateHRMCorp%5C3_1_38_92%5CStateHRMCorp_3_1_38_92_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "StateHRMCorp\\3_1_38_92\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRMCorp3&ver=3.1.38.92&path=StateHRMCorp%5C3_1_38_92%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "StateHRMCorp\\3_1_38_92\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=StateHRMCorp3&ver=3.1.38.92&path=StateHRMCorp%5C3_1_38_92%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "73": {
+   "config_id": 73,
+   "version": "2.10.2.31",
+   "release_date": "2026-09-30",
+   "nick": "ClientEDOBase",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=ClientEDOBase&ver=2.10.2.31&path=ClientEDOBase%5C2_10_2_31%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=ClientEDOBase&ver=2.10.2.31&path=ClientEDOBase%5C2_10_2_31%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=ClientEDOBase&ver=2.10.2.31&path=ClientEDOBase%5C2_10_2_31%5CClientEDOBase_2_10_2_31_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=ClientEDOBase&ver=2.10.2.31&path=ClientEDOBase%5C2_10_2_31%5CClientEDOBase_2_10_2_31_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=ClientEDOBase&ver=2.10.2.31"
+   },
+   "files": [
+    {
+     "title": "1С:Клиент ЭДО 8 Базовая, редакция 2. Версия 2.10.2.31. Новое в версии",
+     "path": "ClientEDOBase\\2_10_2_31\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=ClientEDOBase&ver=2.10.2.31&path=ClientEDOBase%5C2_10_2_31%5Cnews.htm"
+    },
+    {
+     "title": "1С:Клиент ЭДО 8 Базовая, редакция 2. Версия 2.10.2.31. Порядок обновления",
+     "path": "ClientEDOBase\\2_10_2_31\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=ClientEDOBase&ver=2.10.2.31&path=ClientEDOBase%5C2_10_2_31%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "ClientEDOBase\\2_10_2_31\\ClientEDOBase_2_10_2_31_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=ClientEDOBase&ver=2.10.2.31&path=ClientEDOBase%5C2_10_2_31%5CClientEDOBase_2_10_2_31_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "ClientEDOBase\\2_10_2_31\\ClientEDOBase_2_10_2_31_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=ClientEDOBase&ver=2.10.2.31&path=ClientEDOBase%5C2_10_2_31%5CClientEDOBase_2_10_2_31_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "ClientEDOBase\\2_10_2_31\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=ClientEDOBase&ver=2.10.2.31&path=ClientEDOBase%5C2_10_2_31%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "ClientEDOBase\\2_10_2_31\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=ClientEDOBase&ver=2.10.2.31&path=ClientEDOBase%5C2_10_2_31%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "79": {
+   "config_id": 79,
+   "version": "11.5.27.95",
+   "release_date": "2026-10-02",
+   "nick": "Trade110",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=Trade110&ver=11.5.27.95&path=Trade%5C11_5_27_95%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=Trade110&ver=11.5.27.95&path=Trade%5C11_5_27_95%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=Trade110&ver=11.5.27.95&path=Trade%5C11_5_27_95%5CTrade_11_5_27_95_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=Trade110&ver=11.5.27.95&path=Trade%5C11_5_27_95%5CTrade_11_5_27_95_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=Trade110&ver=11.5.27.95"
+   },
+   "files": [
+    {
+     "title": "Управление торговлей, редакция 11. Версия 11.5.27.95. Новое в версии",
+     "path": "Trade\\11_5_27_95\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Trade110&ver=11.5.27.95&path=Trade%5C11_5_27_95%5Cnews.htm"
+    },
+    {
+     "title": "Управление торговлей, редакция 11. Версия 11.5.27.95. Порядок обновления",
+     "path": "Trade\\11_5_27_95\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Trade110&ver=11.5.27.95&path=Trade%5C11_5_27_95%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "Trade\\11_5_27_95\\Trade_11_5_27_95_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Trade110&ver=11.5.27.95&path=Trade%5C11_5_27_95%5CTrade_11_5_27_95_updsetup.zip"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с базовой версии",
+     "path": "Trade\\11_5_27_95\\Trade_11_5_27_95_updstpb.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Trade110&ver=11.5.27.95&path=Trade%5C11_5_27_95%5CTrade_11_5_27_95_updstpb.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "Trade\\11_5_27_95\\Trade_11_5_27_95_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Trade110&ver=11.5.27.95&path=Trade%5C11_5_27_95%5CTrade_11_5_27_95_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "Trade\\11_5_27_95\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=Trade110&ver=11.5.27.95&path=Trade%5C11_5_27_95%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "Trade\\11_5_27_95\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=Trade110&ver=11.5.27.95&path=Trade%5C11_5_27_95%5CLibraryVersions.txt"
+    },
+    {
+     "title": "Для перехода с \"Управление торговлей 10.3.\"",
+     "path": "Trade\\11_5_27_95\\Trade_11_5_27_95_updsetup_trade10_3.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Trade110&ver=11.5.27.95&path=Trade%5C11_5_27_95%5CTrade_11_5_27_95_updsetup_trade10_3.zip"
+    },
+    {
+     "title": "Для перехода с \"Бухгалтерия предприятия, редакция 3.0\"",
+     "path": "Trade\\11_5_27_95\\Trade_11_5_27_95_updsetup_accounting3.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Trade110&ver=11.5.27.95&path=Trade%5C11_5_27_95%5CTrade_11_5_27_95_updsetup_accounting3.zip"
+    }
+   ]
+  },
+  "80": {
+   "config_id": 80,
+   "version": "11.5.27.95",
+   "release_date": "2026-10-02",
+   "nick": "TradeBase110",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=TradeBase110&ver=11.5.27.95&path=TradeBase%5C11_5_27_95%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=TradeBase110&ver=11.5.27.95&path=TradeBase%5C11_5_27_95%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=TradeBase110&ver=11.5.27.95&path=TradeBase%5C11_5_27_95%5CTradeBase_11_5_27_95_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=TradeBase110&ver=11.5.27.95&path=TradeBase%5C11_5_27_95%5CTradeBase_11_5_27_95_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=TradeBase110&ver=11.5.27.95"
+   },
+   "files": [
+    {
+     "title": "Управление торговлей базовая, редакция 11. Версия 11.5.27.95. Новое в версии",
+     "path": "TradeBase\\11_5_27_95\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=TradeBase110&ver=11.5.27.95&path=TradeBase%5C11_5_27_95%5Cnews.htm"
+    },
+    {
+     "title": "Управление торговлей базовая, редакция 11. Версия 11.5.27.95. Порядок обновления",
+     "path": "TradeBase\\11_5_27_95\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=TradeBase110&ver=11.5.27.95&path=TradeBase%5C11_5_27_95%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "TradeBase\\11_5_27_95\\TradeBase_11_5_27_95_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=TradeBase110&ver=11.5.27.95&path=TradeBase%5C11_5_27_95%5CTradeBase_11_5_27_95_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "TradeBase\\11_5_27_95\\TradeBase_11_5_27_95_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=TradeBase110&ver=11.5.27.95&path=TradeBase%5C11_5_27_95%5CTradeBase_11_5_27_95_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "TradeBase\\11_5_27_95\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=TradeBase110&ver=11.5.27.95&path=TradeBase%5C11_5_27_95%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "TradeBase\\11_5_27_95\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=TradeBase110&ver=11.5.27.95&path=TradeBase%5C11_5_27_95%5CLibraryVersions.txt"
+    },
+    {
+     "title": "Для перехода с \"Торговля и Склад 9.2\"",
+     "path": "TradeBase\\11_5_27_95\\TradeBase_11_5_27_95_updsetup_TiS9_2.zip",
+     "url": "https://releases.1c.ru/version_file?nick=TradeBase110&ver=11.5.27.95&path=TradeBase%5C11_5_27_95%5CTradeBase_11_5_27_95_updsetup_TiS9_2.zip"
+    },
+    {
+     "title": "Для перехода с \"Управление торговлей 10.3.\"",
+     "path": "TradeBase\\11_5_27_95\\TradeBase_11_5_27_95_updsetup_trade10_3.zip",
+     "url": "https://releases.1c.ru/version_file?nick=TradeBase110&ver=11.5.27.95&path=TradeBase%5C11_5_27_95%5CTradeBase_11_5_27_95_updsetup_trade10_3.zip"
+    }
+   ]
+  },
+  "85": {
+   "config_id": 85,
+   "version": "3.0.14.159",
+   "release_date": "2026-09-25",
+   "nick": "Retail30",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=Retail30&ver=3.0.14.159&path=Retail%5C3_0_14_159%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=Retail30&ver=3.0.14.159&path=Retail%5C3_0_14_159%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=Retail30&ver=3.0.14.159&path=Retail%5C3_0_14_159%5CRetail_3_0_14_159_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=Retail30&ver=3.0.14.159&path=Retail%5C3_0_14_159%5CRetail_3_0_14_159_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=Retail30&ver=3.0.14.159"
+   },
+   "files": [
+    {
+     "title": "Розница, редакция 3.0 (рекомендуется). Версия 3.0.14.159. Новое в версии",
+     "path": "Retail\\3_0_14_159\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Retail30&ver=3.0.14.159&path=Retail%5C3_0_14_159%5Cnews.htm"
+    },
+    {
+     "title": "Розница, редакция 3.0 (рекомендуется). Версия 3.0.14.159. Порядок обновления",
+     "path": "Retail\\3_0_14_159\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Retail30&ver=3.0.14.159&path=Retail%5C3_0_14_159%5C1cv8upd.htm"
+    },
+    {
+     "title": "Розница, редакция 3.0 (рекомендуется). Версия 3.0.14.159. Порядок обновления для перехода с базовой",
+     "path": "Retail\\3_0_14_159\\1cv8updb.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Retail30&ver=3.0.14.159&path=Retail%5C3_0_14_159%5C1cv8updb.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "Retail\\3_0_14_159\\Retail_3_0_14_159_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Retail30&ver=3.0.14.159&path=Retail%5C3_0_14_159%5CRetail_3_0_14_159_updsetup.zip"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с базовой версии",
+     "path": "Retail\\3_0_14_159\\Retail_3_0_14_159_updstpb.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Retail30&ver=3.0.14.159&path=Retail%5C3_0_14_159%5CRetail_3_0_14_159_updstpb.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "Retail\\3_0_14_159\\Retail_3_0_14_159_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Retail30&ver=3.0.14.159&path=Retail%5C3_0_14_159%5CRetail_3_0_14_159_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "Retail\\3_0_14_159\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=Retail30&ver=3.0.14.159&path=Retail%5C3_0_14_159%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "Retail\\3_0_14_159\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=Retail30&ver=3.0.14.159&path=Retail%5C3_0_14_159%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "86": {
+   "config_id": 86,
+   "version": "3.0.14.159",
+   "release_date": "2026-09-25",
+   "nick": "RetailBase30",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=RetailBase30&ver=3.0.14.159&path=RetailBase%5C3_0_14_159%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=RetailBase30&ver=3.0.14.159&path=RetailBase%5C3_0_14_159%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=RetailBase30&ver=3.0.14.159&path=RetailBase%5C3_0_14_159%5CRetailBase_3_0_14_159_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=RetailBase30&ver=3.0.14.159&path=RetailBase%5C3_0_14_159%5CRetailBase_3_0_14_159_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=RetailBase30&ver=3.0.14.159"
+   },
+   "files": [
+    {
+     "title": "Розница базовая, редакция 3.0 (рекомендуется). Версия 3.0.14.159. Новое в версии",
+     "path": "RetailBase\\3_0_14_159\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=RetailBase30&ver=3.0.14.159&path=RetailBase%5C3_0_14_159%5Cnews.htm"
+    },
+    {
+     "title": "Розница базовая, редакция 3.0 (рекомендуется). Версия 3.0.14.159. Порядок обновления",
+     "path": "RetailBase\\3_0_14_159\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=RetailBase30&ver=3.0.14.159&path=RetailBase%5C3_0_14_159%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "RetailBase\\3_0_14_159\\RetailBase_3_0_14_159_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=RetailBase30&ver=3.0.14.159&path=RetailBase%5C3_0_14_159%5CRetailBase_3_0_14_159_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "RetailBase\\3_0_14_159\\RetailBase_3_0_14_159_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=RetailBase30&ver=3.0.14.159&path=RetailBase%5C3_0_14_159%5CRetailBase_3_0_14_159_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "RetailBase\\3_0_14_159\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=RetailBase30&ver=3.0.14.159&path=RetailBase%5C3_0_14_159%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "RetailBase\\3_0_14_159\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=RetailBase30&ver=3.0.14.159&path=RetailBase%5C3_0_14_159%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "95": {
+   "config_id": 95,
+   "version": "3.0.207.25",
+   "release_date": "2026-10-01",
+   "nick": "AccountingOneBase30",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=AccountingOneBase30&ver=3.0.207.25&path=AccountingOneBase%5C3_0_207_25%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=AccountingOneBase30&ver=3.0.207.25&path=AccountingOneBase%5C3_0_207_25%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=AccountingOneBase30&ver=3.0.207.25&path=AccountingOneBase%5C3_0_207_25%5CAccountingOneBase_3_0_207_25_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=AccountingOneBase30&ver=3.0.207.25&path=AccountingOneBase%5C3_0_207_25%5CAccountingOneBase_3_0_207_25_setup1c.zip",
+    "tech": "https://releases.1c.ru/version_file?nick=AccountingOneBase30&ver=3.0.207.25&path=AccountingOneBase%5C3_0_207_25%5CAccountingOneBase_3_0_207_25_setupt1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=AccountingOneBase30&ver=3.0.207.25"
+   },
+   "files": [
+    {
+     "title": "Бухгалтерия предприятия (базовая для 1), редакция 3.0; 1С:БизнесСтарт. Версия 3.0.207.25. Новое в версии",
+     "path": "AccountingOneBase\\3_0_207_25\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingOneBase30&ver=3.0.207.25&path=AccountingOneBase%5C3_0_207_25%5Cnews.htm"
+    },
+    {
+     "title": "Бухгалтерия предприятия (базовая для 1), редакция 3.0; 1С:БизнесСтарт. Версия 3.0.207.25. Порядок обновления",
+     "path": "AccountingOneBase\\3_0_207_25\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingOneBase30&ver=3.0.207.25&path=AccountingOneBase%5C3_0_207_25%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "AccountingOneBase\\3_0_207_25\\AccountingOneBase_3_0_207_25_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingOneBase30&ver=3.0.207.25&path=AccountingOneBase%5C3_0_207_25%5CAccountingOneBase_3_0_207_25_updsetup.zip"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с базовой версии",
+     "path": "AccountingOneBase\\3_0_207_25\\AccountingOneBase_3_0_207_25_updstpb.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingOneBase30&ver=3.0.207.25&path=AccountingOneBase%5C3_0_207_25%5CAccountingOneBase_3_0_207_25_updstpb.zip"
+    },
+    {
+     "title": "Дистрибутив создания новой базы",
+     "path": "AccountingOneBase\\3_0_207_25\\AccountingOneBase_3_0_207_25_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingOneBase30&ver=3.0.207.25&path=AccountingOneBase%5C3_0_207_25%5CAccountingOneBase_3_0_207_25_setup1c.zip"
+    },
+    {
+     "title": "Технологический дистрибутив",
+     "path": "AccountingOneBase\\3_0_207_25\\AccountingOneBase_3_0_207_25_setupt1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingOneBase30&ver=3.0.207.25&path=AccountingOneBase%5C3_0_207_25%5CAccountingOneBase_3_0_207_25_setupt1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "AccountingOneBase\\3_0_207_25\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingOneBase30&ver=3.0.207.25&path=AccountingOneBase%5C3_0_207_25%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "AccountingOneBase\\3_0_207_25\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingOneBase30&ver=3.0.207.25&path=AccountingOneBase%5C3_0_207_25%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "96": {
+   "config_id": 96,
+   "version": "3.0.207.25",
+   "release_date": "2026-10-01",
+   "nick": "Accounting30",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=Accounting30&ver=3.0.207.25&path=Accounting%5C3_0_207_25%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=Accounting30&ver=3.0.207.25&path=Accounting%5C3_0_207_25%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=Accounting30&ver=3.0.207.25&path=Accounting%5C3_0_207_25%5CAccounting_3_0_207_25_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=Accounting30&ver=3.0.207.25&path=Accounting%5C3_0_207_25%5CAccounting_3_0_207_25_setup1c.zip",
+    "tech": "https://releases.1c.ru/version_file?nick=Accounting30&ver=3.0.207.25&path=Accounting%5C3_0_207_25%5CAccounting_3_0_207_25_setupt1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=Accounting30&ver=3.0.207.25"
+   },
+   "files": [
+    {
+     "title": "Бухгалтерия предприятия, редакция 3.0. Версия 3.0.207.25. Новое в версии",
+     "path": "Accounting\\3_0_207_25\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Accounting30&ver=3.0.207.25&path=Accounting%5C3_0_207_25%5Cnews.htm"
+    },
+    {
+     "title": "Бухгалтерия предприятия, редакция 3.0. Версия 3.0.207.25. Порядок обновления",
+     "path": "Accounting\\3_0_207_25\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Accounting30&ver=3.0.207.25&path=Accounting%5C3_0_207_25%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "Accounting\\3_0_207_25\\Accounting_3_0_207_25_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Accounting30&ver=3.0.207.25&path=Accounting%5C3_0_207_25%5CAccounting_3_0_207_25_updsetup.zip"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с базовой версии для 1",
+     "path": "Accounting\\3_0_207_25\\Accounting_3_0_207_25_updstpo.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Accounting30&ver=3.0.207.25&path=Accounting%5C3_0_207_25%5CAccounting_3_0_207_25_updstpo.zip"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с базовой версии",
+     "path": "Accounting\\3_0_207_25\\Accounting_3_0_207_25_updstpb.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Accounting30&ver=3.0.207.25&path=Accounting%5C3_0_207_25%5CAccounting_3_0_207_25_updstpb.zip"
+    },
+    {
+     "title": "Дистрибутив создания новой базы",
+     "path": "Accounting\\3_0_207_25\\Accounting_3_0_207_25_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Accounting30&ver=3.0.207.25&path=Accounting%5C3_0_207_25%5CAccounting_3_0_207_25_setup1c.zip"
+    },
+    {
+     "title": "Технологический дистрибутив",
+     "path": "Accounting\\3_0_207_25\\Accounting_3_0_207_25_setupt1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Accounting30&ver=3.0.207.25&path=Accounting%5C3_0_207_25%5CAccounting_3_0_207_25_setupt1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "Accounting\\3_0_207_25\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=Accounting30&ver=3.0.207.25&path=Accounting%5C3_0_207_25%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "Accounting\\3_0_207_25\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=Accounting30&ver=3.0.207.25&path=Accounting%5C3_0_207_25%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "97": {
+   "config_id": 97,
+   "version": "3.0.207.25",
+   "release_date": "2026-10-01",
+   "nick": "AccountingCorp30",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=AccountingCorp30&ver=3.0.207.25&path=AccountingCorp%5C3_0_207_25%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=AccountingCorp30&ver=3.0.207.25&path=AccountingCorp%5C3_0_207_25%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=AccountingCorp30&ver=3.0.207.25&path=AccountingCorp%5C3_0_207_25%5CAccountingCorp_3_0_207_25_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=AccountingCorp30&ver=3.0.207.25&path=AccountingCorp%5C3_0_207_25%5CAccountingCorp_3_0_207_25_setup1c.zip",
+    "tech": "https://releases.1c.ru/version_file?nick=AccountingCorp30&ver=3.0.207.25&path=AccountingCorp%5C3_0_207_25%5CAccountingCorp_3_0_207_25_setupt1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=AccountingCorp30&ver=3.0.207.25"
+   },
+   "files": [
+    {
+     "title": "Бухгалтерия предприятия КОРП, редакция 3.0. Версия 3.0.207.25. Новое в версии",
+     "path": "AccountingCorp\\3_0_207_25\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingCorp30&ver=3.0.207.25&path=AccountingCorp%5C3_0_207_25%5Cnews.htm"
+    },
+    {
+     "title": "Бухгалтерия предприятия КОРП, редакция 3.0. Версия 3.0.207.25. Порядок обновления",
+     "path": "AccountingCorp\\3_0_207_25\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingCorp30&ver=3.0.207.25&path=AccountingCorp%5C3_0_207_25%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "AccountingCorp\\3_0_207_25\\AccountingCorp_3_0_207_25_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingCorp30&ver=3.0.207.25&path=AccountingCorp%5C3_0_207_25%5CAccountingCorp_3_0_207_25_updsetup.zip"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с версии ПРОФ",
+     "path": "AccountingCorp\\3_0_207_25\\AccountingCorp_3_0_207_25_updstpp.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingCorp30&ver=3.0.207.25&path=AccountingCorp%5C3_0_207_25%5CAccountingCorp_3_0_207_25_updstpp.zip"
+    },
+    {
+     "title": "Дистрибутив создания новой базы",
+     "path": "AccountingCorp\\3_0_207_25\\AccountingCorp_3_0_207_25_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingCorp30&ver=3.0.207.25&path=AccountingCorp%5C3_0_207_25%5CAccountingCorp_3_0_207_25_setup1c.zip"
+    },
+    {
+     "title": "Технологический дистрибутив",
+     "path": "AccountingCorp\\3_0_207_25\\AccountingCorp_3_0_207_25_setupt1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingCorp30&ver=3.0.207.25&path=AccountingCorp%5C3_0_207_25%5CAccountingCorp_3_0_207_25_setupt1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "AccountingCorp\\3_0_207_25\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingCorp30&ver=3.0.207.25&path=AccountingCorp%5C3_0_207_25%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "AccountingCorp\\3_0_207_25\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingCorp30&ver=3.0.207.25&path=AccountingCorp%5C3_0_207_25%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "98": {
+   "config_id": 98,
+   "version": "3.0.207.25",
+   "release_date": "2026-10-01",
+   "nick": "AccountingBase30",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=AccountingBase30&ver=3.0.207.25&path=AccountingBase%5C3_0_207_25%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=AccountingBase30&ver=3.0.207.25&path=AccountingBase%5C3_0_207_25%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=AccountingBase30&ver=3.0.207.25&path=AccountingBase%5C3_0_207_25%5CAccountingBase_3_0_207_25_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=AccountingBase30&ver=3.0.207.25&path=AccountingBase%5C3_0_207_25%5CAccountingBase_3_0_207_25_setup1c.zip",
+    "tech": "https://releases.1c.ru/version_file?nick=AccountingBase30&ver=3.0.207.25&path=AccountingBase%5C3_0_207_25%5CAccountingBase_3_0_207_25_setupt1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=AccountingBase30&ver=3.0.207.25"
+   },
+   "files": [
+    {
+     "title": "Бухгалтерия предприятия базовая, редакция 3.0; 1С:Упрощенка, редакция 3.0; 1С:Предприниматель, редакция 3.0. Версия 3.0.207.25. Новое в версии",
+     "path": "AccountingBase\\3_0_207_25\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingBase30&ver=3.0.207.25&path=AccountingBase%5C3_0_207_25%5Cnews.htm"
+    },
+    {
+     "title": "Бухгалтерия предприятия базовая, редакция 3.0; 1С:Упрощенка, редакция 3.0; 1С:Предприниматель, редакция 3.0. Версия 3.0.207.25. Порядок обновления",
+     "path": "AccountingBase\\3_0_207_25\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingBase30&ver=3.0.207.25&path=AccountingBase%5C3_0_207_25%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "AccountingBase\\3_0_207_25\\AccountingBase_3_0_207_25_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingBase30&ver=3.0.207.25&path=AccountingBase%5C3_0_207_25%5CAccountingBase_3_0_207_25_updsetup.zip"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с базовой версии для 1",
+     "path": "AccountingBase\\3_0_207_25\\AccountingBase_3_0_207_25_updstpo.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingBase30&ver=3.0.207.25&path=AccountingBase%5C3_0_207_25%5CAccountingBase_3_0_207_25_updstpo.zip"
+    },
+    {
+     "title": "Дистрибутив создания новой базы",
+     "path": "AccountingBase\\3_0_207_25\\AccountingBase_3_0_207_25_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingBase30&ver=3.0.207.25&path=AccountingBase%5C3_0_207_25%5CAccountingBase_3_0_207_25_setup1c.zip"
+    },
+    {
+     "title": "Технологический дистрибутив",
+     "path": "AccountingBase\\3_0_207_25\\AccountingBase_3_0_207_25_setupt1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingBase30&ver=3.0.207.25&path=AccountingBase%5C3_0_207_25%5CAccountingBase_3_0_207_25_setupt1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "AccountingBase\\3_0_207_25\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingBase30&ver=3.0.207.25&path=AccountingBase%5C3_0_207_25%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "AccountingBase\\3_0_207_25\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingBase30&ver=3.0.207.25&path=AccountingBase%5C3_0_207_25%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "132": {
+   "config_id": 132,
+   "version": "2.0.44.40",
+   "release_date": "2024-06-04",
+   "nick": "Money",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=Money&ver=2.0.44.40&path=Money%5C2_0_44_40%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=Money&ver=2.0.44.40&path=Money%5C2_0_44_40%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=Money&ver=2.0.44.40&path=Money%5C2_0_44_40%5CMoney_2_0_44_40_updsetup.zip",
+    "page": "https://releases.1c.ru/version_files?nick=Money&ver=2.0.44.40"
+   },
+   "files": [
+    {
+     "title": "Деньги. Версия 2.0.44.40. Новое в версии",
+     "path": "Money\\2_0_44_40\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Money&ver=2.0.44.40&path=Money%5C2_0_44_40%5Cnews.htm"
+    },
+    {
+     "title": "Деньги. Версия 2.0.44.40. Порядок обновления",
+     "path": "Money\\2_0_44_40\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Money&ver=2.0.44.40&path=Money%5C2_0_44_40%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "Money\\2_0_44_40\\Money_2_0_44_40_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Money&ver=2.0.44.40&path=Money%5C2_0_44_40%5CMoney_2_0_44_40_updsetup.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "Money\\2_0_44_40\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=Money&ver=2.0.44.40&path=Money%5C2_0_44_40%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "Money\\2_0_44_40\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=Money&ver=2.0.44.40&path=Money%5C2_0_44_40%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "157": {
+   "config_id": 157,
+   "version": "1.3.285.1",
+   "release_date": "2026-09-30",
+   "nick": "Enterprise13",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=Enterprise13&ver=1.3.285.1&path=Enterprise%5C1_3_285_1%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=Enterprise13&ver=1.3.285.1&path=Enterprise%5C1_3_285_1%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=Enterprise13&ver=1.3.285.1&path=Enterprise%5C1_3_285_1%5CEnterprise_1_3_285_1_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=Enterprise13&ver=1.3.285.1&path=Enterprise%5C1_3_285_1%5CEnterprise_1_3_285_1_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=Enterprise13&ver=1.3.285.1"
+   },
+   "files": [
+    {
+     "title": "Управление производственным предприятием, редакция 1.3. Версия 1.3.285.1. Новое в версии",
+     "path": "Enterprise\\1_3_285_1\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Enterprise13&ver=1.3.285.1&path=Enterprise%5C1_3_285_1%5Cnews.htm"
+    },
+    {
+     "title": "Управление производственным предприятием, редакция 1.3. Версия 1.3.285.1. Изменения в версии",
+     "path": "Enterprise\\1_3_285_1\\change.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Enterprise13&ver=1.3.285.1&path=Enterprise%5C1_3_285_1%5Cchange.htm"
+    },
+    {
+     "title": "Управление производственным предприятием, редакция 1.3. Версия 1.3.285.1. Измененные объекты",
+     "path": "Enterprise\\1_3_285_1\\object.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Enterprise13&ver=1.3.285.1&path=Enterprise%5C1_3_285_1%5Cobject.htm"
+    },
+    {
+     "title": "Управление производственным предприятием, редакция 1.3. Версия 1.3.285.1. Порядок обновления",
+     "path": "Enterprise\\1_3_285_1\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Enterprise13&ver=1.3.285.1&path=Enterprise%5C1_3_285_1%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "Enterprise\\1_3_285_1\\Enterprise_1_3_285_1_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Enterprise13&ver=1.3.285.1&path=Enterprise%5C1_3_285_1%5CEnterprise_1_3_285_1_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "Enterprise\\1_3_285_1\\Enterprise_1_3_285_1_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Enterprise13&ver=1.3.285.1&path=Enterprise%5C1_3_285_1%5CEnterprise_1_3_285_1_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "Enterprise\\1_3_285_1\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=Enterprise13&ver=1.3.285.1&path=Enterprise%5C1_3_285_1%5CReadMe.txt"
+    }
+   ]
+  },
+  "182": {
+   "config_id": 182,
+   "version": "1.1.53.1",
+   "release_date": "2026-06-26",
+   "nick": "GMZ",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=GMZ&ver=1.1.53.1&path=GMZ%5C1_1_53_1%5Cnews.htm",
+    "update": "https://releases.1c.ru/version_file?nick=GMZ&ver=1.1.53.1&path=GMZ%5C1_1_53_1%5CGMZ_1_1_53_1_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=GMZ&ver=1.1.53.1&path=GMZ%5C1_1_53_1%5CGMZ_1_1_53_1_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=GMZ&ver=1.1.53.1"
+   },
+   "files": [
+    {
+     "title": "Государственные и муниципальные закупки. Версия 1.1.53.1. Новое в версии",
+     "path": "GMZ\\1_1_53_1\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=GMZ&ver=1.1.53.1&path=GMZ%5C1_1_53_1%5Cnews.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "GMZ\\1_1_53_1\\GMZ_1_1_53_1_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=GMZ&ver=1.1.53.1&path=GMZ%5C1_1_53_1%5CGMZ_1_1_53_1_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "GMZ\\1_1_53_1\\GMZ_1_1_53_1_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=GMZ&ver=1.1.53.1&path=GMZ%5C1_1_53_1%5CGMZ_1_1_53_1_setup1c.zip"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "GMZ\\1_1_53_1\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=GMZ&ver=1.1.53.1&path=GMZ%5C1_1_53_1%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "210": {
+   "config_id": 210,
+   "version": "1.0.32.1",
+   "release_date": "2026-03-20",
+   "nick": "PayDocs",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=PayDocs&ver=1.0.32.1&path=PayDocs%5C1_0_32_1%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=PayDocs&ver=1.0.32.1&path=PayDocs%5C1_0_32_1%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=PayDocs&ver=1.0.32.1&path=PayDocs%5C1_0_32_1%5CPayDocs_1_0_32_1_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=PayDocs&ver=1.0.32.1&path=PayDocs%5C1_0_32_1%5CPayDocs_1_0_32_1_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=PayDocs&ver=1.0.32.1"
+   },
+   "files": [
+    {
+     "title": "Платежные документы. Версия 1.0.32.1. Новое в версии",
+     "path": "PayDocs\\1_0_32_1\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=PayDocs&ver=1.0.32.1&path=PayDocs%5C1_0_32_1%5Cnews.htm"
+    },
+    {
+     "title": "Платежные документы. Версия 1.0.32.1. Изменения в версии",
+     "path": "PayDocs\\1_0_32_1\\change.htm",
+     "url": "https://releases.1c.ru/version_file?nick=PayDocs&ver=1.0.32.1&path=PayDocs%5C1_0_32_1%5Cchange.htm"
+    },
+    {
+     "title": "Платежные документы. Версия 1.0.32.1. Измененные объекты",
+     "path": "PayDocs\\1_0_32_1\\object.htm",
+     "url": "https://releases.1c.ru/version_file?nick=PayDocs&ver=1.0.32.1&path=PayDocs%5C1_0_32_1%5Cobject.htm"
+    },
+    {
+     "title": "Платежные документы. Версия 1.0.32.1. Порядок обновления",
+     "path": "PayDocs\\1_0_32_1\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=PayDocs&ver=1.0.32.1&path=PayDocs%5C1_0_32_1%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "PayDocs\\1_0_32_1\\PayDocs_1_0_32_1_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=PayDocs&ver=1.0.32.1&path=PayDocs%5C1_0_32_1%5CPayDocs_1_0_32_1_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "PayDocs\\1_0_32_1\\PayDocs_1_0_32_1_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=PayDocs&ver=1.0.32.1&path=PayDocs%5C1_0_32_1%5CPayDocs_1_0_32_1_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "PayDocs\\1_0_32_1\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=PayDocs&ver=1.0.32.1&path=PayDocs%5C1_0_32_1%5CReadMe.txt"
+    }
+   ]
+  },
+  "223": {
+   "config_id": 223,
+   "version": "3.0.21.3",
+   "release_date": "2026-07-09",
+   "nick": "BudgetDocMng30",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=BudgetDocMng30&ver=3.0.21.3&path=BudgetDocMng%5C3_0_21_3%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=BudgetDocMng30&ver=3.0.21.3&path=BudgetDocMng%5C3_0_21_3%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=BudgetDocMng30&ver=3.0.21.3&path=BudgetDocMng%5C3_0_21_3%5CBudgetDocMng_3_0_21_3_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=BudgetDocMng30&ver=3.0.21.3&path=BudgetDocMng%5C3_0_21_3%5CBudgetDocMng_3_0_21_3_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=BudgetDocMng30&ver=3.0.21.3"
+   },
+   "files": [
+    {
+     "title": "Документооборот государственного учреждения 8, редакция 3.0. Версия 3.0.21.3. Новое в версии",
+     "path": "BudgetDocMng\\3_0_21_3\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=BudgetDocMng30&ver=3.0.21.3&path=BudgetDocMng%5C3_0_21_3%5Cnews.htm"
+    },
+    {
+     "title": "Документооборот государственного учреждения 8, редакция 3.0. Версия 3.0.21.3. Порядок обновления",
+     "path": "BudgetDocMng\\3_0_21_3\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=BudgetDocMng30&ver=3.0.21.3&path=BudgetDocMng%5C3_0_21_3%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "BudgetDocMng\\3_0_21_3\\BudgetDocMng_3_0_21_3_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=BudgetDocMng30&ver=3.0.21.3&path=BudgetDocMng%5C3_0_21_3%5CBudgetDocMng_3_0_21_3_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "BudgetDocMng\\3_0_21_3\\BudgetDocMng_3_0_21_3_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=BudgetDocMng30&ver=3.0.21.3&path=BudgetDocMng%5C3_0_21_3%5CBudgetDocMng_3_0_21_3_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "BudgetDocMng\\3_0_21_3\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=BudgetDocMng30&ver=3.0.21.3&path=BudgetDocMng%5C3_0_21_3%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "BudgetDocMng\\3_0_21_3\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=BudgetDocMng30&ver=3.0.21.3&path=BudgetDocMng%5C3_0_21_3%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "237": {
+   "config_id": 237,
+   "version": "1.0.6.2",
+   "release_date": "2025-08-29",
+   "nick": "AppealsBase",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=AppealsBase&ver=1.0.6.2&path=AppealsBase%5C1_0_6_2%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=AppealsBase&ver=1.0.6.2&path=AppealsBase%5C1_0_6_2%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=AppealsBase&ver=1.0.6.2&path=AppealsBase%5C1_0_6_2%5CAppealsBase_1_0_6_2_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=AppealsBase&ver=1.0.6.2&path=AppealsBase%5C1_0_6_2%5CAppealsBase_1_0_6_2_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=AppealsBase&ver=1.0.6.2"
+   },
+   "files": [
+    {
+     "title": "1С:Учет обращений Базовая. Версия 1.0.6.2. Новое в версии",
+     "path": "AppealsBase\\1_0_6_2\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AppealsBase&ver=1.0.6.2&path=AppealsBase%5C1_0_6_2%5Cnews.htm"
+    },
+    {
+     "title": "1С:Учет обращений Базовая. Версия 1.0.6.2. Порядок обновления",
+     "path": "AppealsBase\\1_0_6_2\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AppealsBase&ver=1.0.6.2&path=AppealsBase%5C1_0_6_2%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "AppealsBase\\1_0_6_2\\AppealsBase_1_0_6_2_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AppealsBase&ver=1.0.6.2&path=AppealsBase%5C1_0_6_2%5CAppealsBase_1_0_6_2_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "AppealsBase\\1_0_6_2\\AppealsBase_1_0_6_2_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AppealsBase&ver=1.0.6.2&path=AppealsBase%5C1_0_6_2%5CAppealsBase_1_0_6_2_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "AppealsBase\\1_0_6_2\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AppealsBase&ver=1.0.6.2&path=AppealsBase%5C1_0_6_2%5CReadMe.txt"
+    }
+   ]
+  },
+  "238": {
+   "config_id": 238,
+   "version": "1.0.6.2",
+   "release_date": "2025-08-29",
+   "nick": "AppealsProf",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=AppealsProf&ver=1.0.6.2&path=AppealsProf%5C1_0_6_2%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=AppealsProf&ver=1.0.6.2&path=AppealsProf%5C1_0_6_2%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=AppealsProf&ver=1.0.6.2&path=AppealsProf%5C1_0_6_2%5CAppealsProf_1_0_6_2_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=AppealsProf&ver=1.0.6.2&path=AppealsProf%5C1_0_6_2%5CAppealsProf_1_0_6_2_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=AppealsProf&ver=1.0.6.2"
+   },
+   "files": [
+    {
+     "title": "1С:Учет обращений ПРОФ. Версия 1.0.6.2. Новое в версии",
+     "path": "AppealsProf\\1_0_6_2\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AppealsProf&ver=1.0.6.2&path=AppealsProf%5C1_0_6_2%5Cnews.htm"
+    },
+    {
+     "title": "1С:Учет обращений ПРОФ. Версия 1.0.6.2. Порядок обновления",
+     "path": "AppealsProf\\1_0_6_2\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AppealsProf&ver=1.0.6.2&path=AppealsProf%5C1_0_6_2%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "AppealsProf\\1_0_6_2\\AppealsProf_1_0_6_2_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AppealsProf&ver=1.0.6.2&path=AppealsProf%5C1_0_6_2%5CAppealsProf_1_0_6_2_updsetup.zip"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с базовой версии",
+     "path": "AppealsProf\\1_0_6_2\\AppealsProf_1_0_6_2_updstpb.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AppealsProf&ver=1.0.6.2&path=AppealsProf%5C1_0_6_2%5CAppealsProf_1_0_6_2_updstpb.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "AppealsProf\\1_0_6_2\\AppealsProf_1_0_6_2_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AppealsProf&ver=1.0.6.2&path=AppealsProf%5C1_0_6_2%5CAppealsProf_1_0_6_2_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "AppealsProf\\1_0_6_2\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AppealsProf&ver=1.0.6.2&path=AppealsProf%5C1_0_6_2%5CReadMe.txt"
+    }
+   ]
+  },
+  "294": {
+   "config_id": 294,
+   "version": "2.0.110.66",
+   "release_date": "2026-08-27",
+   "nick": "StateAccountingBase20",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=StateAccountingBase20&ver=2.0.110.66&path=StateAccountingBase%5C2_0_110_66%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=StateAccountingBase20&ver=2.0.110.66&path=StateAccountingBase%5C2_0_110_66%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=StateAccountingBase20&ver=2.0.110.66&path=StateAccountingBase%5C2_0_110_66%5CStateAccountingBase_2_0_110_66_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=StateAccountingBase20&ver=2.0.110.66&path=StateAccountingBase%5C2_0_110_66%5CStateAccountingBase_2_0_110_66_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=StateAccountingBase20&ver=2.0.110.66"
+   },
+   "files": [
+    {
+     "title": "Бухгалтерия государственного учреждения базовая, редакция 2.0. Версия 2.0.110.66. Новое в версии",
+     "path": "StateAccountingBase\\2_0_110_66\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccountingBase20&ver=2.0.110.66&path=StateAccountingBase%5C2_0_110_66%5Cnews.htm"
+    },
+    {
+     "title": "Бухгалтерия государственного учреждения базовая, редакция 2.0. Версия 2.0.110.66. Изменения типовых операций",
+     "path": "StateAccountingBase\\2_0_110_66\\object.htm",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccountingBase20&ver=2.0.110.66&path=StateAccountingBase%5C2_0_110_66%5Cobject.htm"
+    },
+    {
+     "title": "Бухгалтерия государственного учреждения базовая, редакция 2.0. Версия 2.0.110.66. Порядок обновления",
+     "path": "StateAccountingBase\\2_0_110_66\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccountingBase20&ver=2.0.110.66&path=StateAccountingBase%5C2_0_110_66%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "StateAccountingBase\\2_0_110_66\\StateAccountingBase_2_0_110_66_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccountingBase20&ver=2.0.110.66&path=StateAccountingBase%5C2_0_110_66%5CStateAccountingBase_2_0_110_66_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "StateAccountingBase\\2_0_110_66\\StateAccountingBase_2_0_110_66_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccountingBase20&ver=2.0.110.66&path=StateAccountingBase%5C2_0_110_66%5CStateAccountingBase_2_0_110_66_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "StateAccountingBase\\2_0_110_66\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccountingBase20&ver=2.0.110.66&path=StateAccountingBase%5C2_0_110_66%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "StateAccountingBase\\2_0_110_66\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccountingBase20&ver=2.0.110.66&path=StateAccountingBase%5C2_0_110_66%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "342": {
+   "config_id": 342,
+   "version": "2.0.66.90",
+   "release_date": "2020-01-10",
+   "nick": "AccountingAI",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=AccountingAI&ver=2.0.66.90&path=AccountingAI%5C2_0_66_90%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=AccountingAI&ver=2.0.66.90&path=AccountingAI%5C2_0_66_90%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=AccountingAI&ver=2.0.66.90&path=AccountingAI%5C2_0_66_90%5CAccountingAI_2_0_66_90_updsetup.exe",
+    "page": "https://releases.1c.ru/version_files?nick=AccountingAI&ver=2.0.66.90"
+   },
+   "files": [
+    {
+     "title": "Бухгалтерия автономного учреждения. Версия 2.0.66.90. Новое в версии",
+     "path": "AccountingAI\\2_0_66_90\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingAI&ver=2.0.66.90&path=AccountingAI%5C2_0_66_90%5Cnews.htm"
+    },
+    {
+     "title": "Бухгалтерия автономного учреждения. Версия 2.0.66.90. Порядок обновления",
+     "path": "AccountingAI\\2_0_66_90\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingAI&ver=2.0.66.90&path=AccountingAI%5C2_0_66_90%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "AccountingAI\\2_0_66_90\\AccountingAI_2_0_66_90_updsetup.exe",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingAI&ver=2.0.66.90&path=AccountingAI%5C2_0_66_90%5CAccountingAI_2_0_66_90_updsetup.exe"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с базовой версии",
+     "path": "AccountingAI\\2_0_66_90\\AccountingAI_2_0_66_90_updstpb.exe",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingAI&ver=2.0.66.90&path=AccountingAI%5C2_0_66_90%5CAccountingAI_2_0_66_90_updstpb.exe"
+    },
+    {
+     "title": "ReadMe",
+     "path": "AccountingAI\\2_0_66_90\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingAI&ver=2.0.66.90&path=AccountingAI%5C2_0_66_90%5CReadMe.txt"
+    },
+    {
+     "title": "Внешняя форма декларации по налогу на прибыль организаций, утвержденная Приложением №1 к приказу ФНС России от 23 сентября 2019 г. № ММВ-7-3/475@, с возможностью выгрузки электронного представления в XML-формате версии 5.08 (версия внешнего отчета: 2.0.66.90.1)",
+     "path": "RO\\PRIBYL_BAU2066901_20200124.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingAI&ver=2.0.66.90&path=RO%5CPRIBYL_BAU2066901_20200124.zip"
+    },
+    {
+     "title": "Описание к внешнему регламентированному отчету",
+     "path": "RO\\PRIBYL_BAU2066901_20200124.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingAI&ver=2.0.66.90&path=RO%5CPRIBYL_BAU2066901_20200124.txt"
+    }
+   ]
+  },
+  "343": {
+   "config_id": 343,
+   "version": "2.0.66.90",
+   "release_date": "2020-01-10",
+   "nick": "AccountingAIBase",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=AccountingAIBase&ver=2.0.66.90&path=AccountingAIBase%5C2_0_66_90%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=AccountingAIBase&ver=2.0.66.90&path=AccountingAIBase%5C2_0_66_90%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=AccountingAIBase&ver=2.0.66.90&path=AccountingAIBase%5C2_0_66_90%5CAccountingAIBase_2_0_66_90_updsetup.exe",
+    "page": "https://releases.1c.ru/version_files?nick=AccountingAIBase&ver=2.0.66.90"
+   },
+   "files": [
+    {
+     "title": "Бухгалтерия автономного учреждения базовая. Версия 2.0.66.90. Новое в версии",
+     "path": "AccountingAIBase\\2_0_66_90\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingAIBase&ver=2.0.66.90&path=AccountingAIBase%5C2_0_66_90%5Cnews.htm"
+    },
+    {
+     "title": "Бухгалтерия автономного учреждения базовая. Версия 2.0.66.90. Порядок обновления",
+     "path": "AccountingAIBase\\2_0_66_90\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingAIBase&ver=2.0.66.90&path=AccountingAIBase%5C2_0_66_90%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "AccountingAIBase\\2_0_66_90\\AccountingAIBase_2_0_66_90_updsetup.exe",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingAIBase&ver=2.0.66.90&path=AccountingAIBase%5C2_0_66_90%5CAccountingAIBase_2_0_66_90_updsetup.exe"
+    },
+    {
+     "title": "ReadMe",
+     "path": "AccountingAIBase\\2_0_66_90\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingAIBase&ver=2.0.66.90&path=AccountingAIBase%5C2_0_66_90%5CReadMe.txt"
+    },
+    {
+     "title": "Внешняя форма декларации по налогу на прибыль организаций, утвержденная Приложением №1 к приказу ФНС России от 23 сентября 2019 г. № ММВ-7-3/475@, с возможностью выгрузки электронного представления в XML-формате версии 5.08 (версия внешнего отчета: 2.0.66.90.1)",
+     "path": "RO\\PRIBYL_BAUBASE2066901_20200124.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingAIBase&ver=2.0.66.90&path=RO%5CPRIBYL_BAUBASE2066901_20200124.zip"
+    },
+    {
+     "title": "Описание к внешнему регламентированному отчету",
+     "path": "RO\\PRIBYL_BAUBASE2066901_20200124.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingAIBase&ver=2.0.66.90&path=RO%5CPRIBYL_BAUBASE2066901_20200124.txt"
+    }
+   ]
+  },
+  "344": {
+   "config_id": 344,
+   "version": "2.0.66.90",
+   "release_date": "2020-01-10",
+   "nick": "AccountingAICorp",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=AccountingAICorp&ver=2.0.66.90&path=AccountingAICorp%5C2_0_66_90%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=AccountingAICorp&ver=2.0.66.90&path=AccountingAICorp%5C2_0_66_90%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=AccountingAICorp&ver=2.0.66.90&path=AccountingAICorp%5C2_0_66_90%5CAccountingAICorp_2_0_66_90_updsetup.exe",
+    "page": "https://releases.1c.ru/version_files?nick=AccountingAICorp&ver=2.0.66.90"
+   },
+   "files": [
+    {
+     "title": "Бухгалтерия автономного учреждения КОРП. Версия 2.0.66.90. Новое в версии",
+     "path": "AccountingAICorp\\2_0_66_90\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingAICorp&ver=2.0.66.90&path=AccountingAICorp%5C2_0_66_90%5Cnews.htm"
+    },
+    {
+     "title": "Бухгалтерия автономного учреждения КОРП. Версия 2.0.66.90. Порядок обновления",
+     "path": "AccountingAICorp\\2_0_66_90\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingAICorp&ver=2.0.66.90&path=AccountingAICorp%5C2_0_66_90%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "AccountingAICorp\\2_0_66_90\\AccountingAICorp_2_0_66_90_updsetup.exe",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingAICorp&ver=2.0.66.90&path=AccountingAICorp%5C2_0_66_90%5CAccountingAICorp_2_0_66_90_updsetup.exe"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с версии ПРОФ",
+     "path": "AccountingAICorp\\2_0_66_90\\AccountingAICorp_2_0_66_90_updstpp.exe",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingAICorp&ver=2.0.66.90&path=AccountingAICorp%5C2_0_66_90%5CAccountingAICorp_2_0_66_90_updstpp.exe"
+    },
+    {
+     "title": "ReadMe",
+     "path": "AccountingAICorp\\2_0_66_90\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingAICorp&ver=2.0.66.90&path=AccountingAICorp%5C2_0_66_90%5CReadMe.txt"
+    },
+    {
+     "title": "Внешняя форма декларации по налогу на прибыль организаций, утвержденная Приложением №1 к приказу ФНС России от 23 сентября 2019 г. № ММВ-7-3/475@, с возможностью выгрузки электронного представления в XML-формате версии 5.08 (версия внешнего отчета: 2.0.66.90.1)",
+     "path": "RO\\PRIBYL_BAUCORP2066901_20200124.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingAICorp&ver=2.0.66.90&path=RO%5CPRIBYL_BAUCORP2066901_20200124.zip"
+    },
+    {
+     "title": "Описание к внешнему регламентированному отчету",
+     "path": "RO\\PRIBYL_BAUCORP2066901_20200124.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingAICorp&ver=2.0.66.90&path=RO%5CPRIBYL_BAUCORP2066901_20200124.txt"
+    }
+   ]
+  },
+  "354": {
+   "config_id": 354,
+   "version": "1.1.72.1",
+   "release_date": "2026-09-09",
+   "nick": "BudgetReports",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=BudgetReports&ver=1.1.72.1&path=BudgetReports%5C1_1_72_1%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=BudgetReports&ver=1.1.72.1&path=BudgetReports%5C1_1_72_1%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=BudgetReports&ver=1.1.72.1&path=BudgetReports%5C1_1_72_1%5Cbudgetreports_1_1_72_1_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=BudgetReports&ver=1.1.72.1&path=BudgetReports%5C1_1_72_1%5Cbudgetreports_1_1_72_1_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=BudgetReports&ver=1.1.72.1"
+   },
+   "files": [
+    {
+     "title": "Бюджетная отчетность. Версия 1.1.72.1. Новое в версии",
+     "path": "BudgetReports\\1_1_72_1\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=BudgetReports&ver=1.1.72.1&path=BudgetReports%5C1_1_72_1%5Cnews.htm"
+    },
+    {
+     "title": "Бюджетная отчетность. Версия 1.1.72.1. Порядок обновления",
+     "path": "BudgetReports\\1_1_72_1\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=BudgetReports&ver=1.1.72.1&path=BudgetReports%5C1_1_72_1%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "BudgetReports\\1_1_72_1\\budgetreports_1_1_72_1_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=BudgetReports&ver=1.1.72.1&path=BudgetReports%5C1_1_72_1%5Cbudgetreports_1_1_72_1_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "BudgetReports\\1_1_72_1\\budgetreports_1_1_72_1_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=BudgetReports&ver=1.1.72.1&path=BudgetReports%5C1_1_72_1%5Cbudgetreports_1_1_72_1_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "BudgetReports\\1_1_72_1\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=BudgetReports&ver=1.1.72.1&path=BudgetReports%5C1_1_72_1%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "BudgetReports\\1_1_72_1\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=BudgetReports&ver=1.1.72.1&path=BudgetReports%5C1_1_72_1%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "374": {
+   "config_id": 374,
+   "version": "2.0.43.11",
+   "release_date": "2026-08-31",
+   "nick": "UniformAllowances20",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=UniformAllowances20&ver=2.0.43.11&path=UniformAllowances%5C2_0_43_11%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=UniformAllowances20&ver=2.0.43.11&path=UniformAllowances%5C2_0_43_11%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=UniformAllowances20&ver=2.0.43.11&path=UniformAllowances%5C2_0_43_11%5CUniformAllowances_2_0_43_11_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=UniformAllowances20&ver=2.0.43.11&path=UniformAllowances%5C2_0_43_11%5CUniformAllowances_2_0_43_11_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=UniformAllowances20&ver=2.0.43.11"
+   },
+   "files": [
+    {
+     "title": "Вещевое довольствие, редакция 2.0. Версия 2.0.43.11. Новое в версии",
+     "path": "UniformAllowances\\2_0_43_11\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=UniformAllowances20&ver=2.0.43.11&path=UniformAllowances%5C2_0_43_11%5Cnews.htm"
+    },
+    {
+     "title": "Вещевое довольствие, редакция 2.0. Версия 2.0.43.11. Порядок обновления",
+     "path": "UniformAllowances\\2_0_43_11\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=UniformAllowances20&ver=2.0.43.11&path=UniformAllowances%5C2_0_43_11%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "UniformAllowances\\2_0_43_11\\UniformAllowances_2_0_43_11_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=UniformAllowances20&ver=2.0.43.11&path=UniformAllowances%5C2_0_43_11%5CUniformAllowances_2_0_43_11_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "UniformAllowances\\2_0_43_11\\UniformAllowances_2_0_43_11_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=UniformAllowances20&ver=2.0.43.11&path=UniformAllowances%5C2_0_43_11%5CUniformAllowances_2_0_43_11_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "UniformAllowances\\2_0_43_11\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=UniformAllowances20&ver=2.0.43.11&path=UniformAllowances%5C2_0_43_11%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "UniformAllowances\\2_0_43_11\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=UniformAllowances20&ver=2.0.43.11&path=UniformAllowances%5C2_0_43_11%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "400": {
+   "config_id": 400,
+   "version": "1.3.56.50",
+   "release_date": "2026-06-05",
+   "nick": "SettlementBudgetBase",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=SettlementBudgetBase&ver=1.3.56.50&path=SettlementBudgetBase%5C1_3_56_50%5Cnews.htm",
+    "update": "https://releases.1c.ru/version_file?nick=SettlementBudgetBase&ver=1.3.56.50&path=SettlementBudgetBase%5C1_3_56_50%5CSettlementBudgetBase_1_3_56_50_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=SettlementBudgetBase&ver=1.3.56.50&path=SettlementBudgetBase%5C1_3_56_50%5CSettlementBudgetBase_1_3_56_50_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=SettlementBudgetBase&ver=1.3.56.50"
+   },
+   "files": [
+    {
+     "title": "1С:Бюджет поселения 8 (базовая). Версия 1.3.56.50. Новое в версии",
+     "path": "SettlementBudgetBase\\1_3_56_50\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=SettlementBudgetBase&ver=1.3.56.50&path=SettlementBudgetBase%5C1_3_56_50%5Cnews.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "SettlementBudgetBase\\1_3_56_50\\SettlementBudgetBase_1_3_56_50_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=SettlementBudgetBase&ver=1.3.56.50&path=SettlementBudgetBase%5C1_3_56_50%5CSettlementBudgetBase_1_3_56_50_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "SettlementBudgetBase\\1_3_56_50\\SettlementBudgetBase_1_3_56_50_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=SettlementBudgetBase&ver=1.3.56.50&path=SettlementBudgetBase%5C1_3_56_50%5CSettlementBudgetBase_1_3_56_50_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "SettlementBudgetBase\\1_3_56_50\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=SettlementBudgetBase&ver=1.3.56.50&path=SettlementBudgetBase%5C1_3_56_50%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "SettlementBudgetBase\\1_3_56_50\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=SettlementBudgetBase&ver=1.3.56.50&path=SettlementBudgetBase%5C1_3_56_50%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "401": {
+   "config_id": 401,
+   "version": "1.3.56.50",
+   "release_date": "2026-06-05",
+   "nick": "SettlementBudget",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=SettlementBudget&ver=1.3.56.50&path=SettlementBudget%5C1_3_56_50%5Cnews.htm",
+    "update": "https://releases.1c.ru/version_file?nick=SettlementBudget&ver=1.3.56.50&path=SettlementBudget%5C1_3_56_50%5CSettlementBudget_1_3_56_50_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=SettlementBudget&ver=1.3.56.50&path=SettlementBudget%5C1_3_56_50%5CSettlementBudget_1_3_56_50_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=SettlementBudget&ver=1.3.56.50"
+   },
+   "files": [
+    {
+     "title": "1С:Бюджет поселения 8. Версия 1.3.56.50. Новое в версии",
+     "path": "SettlementBudget\\1_3_56_50\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=SettlementBudget&ver=1.3.56.50&path=SettlementBudget%5C1_3_56_50%5Cnews.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "SettlementBudget\\1_3_56_50\\SettlementBudget_1_3_56_50_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=SettlementBudget&ver=1.3.56.50&path=SettlementBudget%5C1_3_56_50%5CSettlementBudget_1_3_56_50_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "SettlementBudget\\1_3_56_50\\SettlementBudget_1_3_56_50_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=SettlementBudget&ver=1.3.56.50&path=SettlementBudget%5C1_3_56_50%5CSettlementBudget_1_3_56_50_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "SettlementBudget\\1_3_56_50\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=SettlementBudget&ver=1.3.56.50&path=SettlementBudget%5C1_3_56_50%5CReadMe.txt"
+    }
+   ]
+  },
+  "415": {
+   "config_id": 415,
+   "version": "1.3.59.60",
+   "release_date": "2026-10-01",
+   "nick": "BMO",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=BMO&ver=1.3.59.60&path=BMO%5C1_3_59_60%5Cnews.htm",
+    "update": "https://releases.1c.ru/version_file?nick=BMO&ver=1.3.59.60&path=BMO%5C1_3_59_60%5CBMO_1_3_59_60_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=BMO&ver=1.3.59.60&path=BMO%5C1_3_59_60%5CBMO_1_3_59_60_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=BMO&ver=1.3.59.60"
+   },
+   "files": [
+    {
+     "title": "1С:Бюджет муниципального образования 8. Версия 1.3.59.60. Новое в версии",
+     "path": "BMO\\1_3_59_60\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=BMO&ver=1.3.59.60&path=BMO%5C1_3_59_60%5Cnews.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "BMO\\1_3_59_60\\BMO_1_3_59_60_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=BMO&ver=1.3.59.60&path=BMO%5C1_3_59_60%5CBMO_1_3_59_60_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "BMO\\1_3_59_60\\BMO_1_3_59_60_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=BMO&ver=1.3.59.60&path=BMO%5C1_3_59_60%5CBMO_1_3_59_60_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "BMO\\1_3_59_60\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=BMO&ver=1.3.59.60&path=BMO%5C1_3_59_60%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "BMO\\1_3_59_60\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=BMO&ver=1.3.59.60&path=BMO%5C1_3_59_60%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "496": {
+   "config_id": 496,
+   "version": "2.0.22.2",
+   "release_date": "2018-06-09",
+   "nick": "erbase20",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=erbase20&ver=2.0.22.2&path=erbase%5C2_0_22_2%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=erbase20&ver=2.0.22.2&path=erbase%5C2_0_22_2%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=erbase20&ver=2.0.22.2&path=erbase%5C2_0_22_2%5Cerbase_2_0_22_2_updsetup.exe",
+    "page": "https://releases.1c.ru/version_files?nick=erbase20&ver=2.0.22.2"
+   },
+   "files": [
+    {
+     "title": "Отчетность предпринимателя, редакция 2.0. Версия 2.0.22.2. Новое в версии",
+     "path": "erbase\\2_0_22_2\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=erbase20&ver=2.0.22.2&path=erbase%5C2_0_22_2%5Cnews.htm"
+    },
+    {
+     "title": "Отчетность предпринимателя, редакция 2.0. Версия 2.0.22.2. Порядок обновления",
+     "path": "erbase\\2_0_22_2\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=erbase20&ver=2.0.22.2&path=erbase%5C2_0_22_2%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "erbase\\2_0_22_2\\erbase_2_0_22_2_updsetup.exe",
+     "url": "https://releases.1c.ru/version_file?nick=erbase20&ver=2.0.22.2&path=erbase%5C2_0_22_2%5Cerbase_2_0_22_2_updsetup.exe"
+    },
+    {
+     "title": "ReadMe",
+     "path": "erbase\\2_0_22_2\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=erbase20&ver=2.0.22.2&path=erbase%5C2_0_22_2%5CReadMe.txt"
+    }
+   ]
+  },
+  "692": {
+   "config_id": 692,
+   "version": "3.0.11.109",
+   "release_date": "2022-11-21",
+   "nick": "CConstrBase",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=CConstrBase&ver=3.0.11.109&path=CConstrBase%5C3_0_11_109%5Cnews.htm",
+    "update": "https://releases.1c.ru/version_file?nick=CConstrBase&ver=3.0.11.109&path=CConstrBase%5C3_0_11_109%5CCConstrBase_3_0_11_109_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=CConstrBase&ver=3.0.11.109&path=CConstrBase%5C3_0_11_109%5CCConstrBase_3_0_11_109_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=CConstrBase&ver=3.0.11.109"
+   },
+   "files": [
+    {
+     "title": "1С:Электронное обучение. Конструктор курсов. Базовая версия. Версия 3.0.11.109. Новое в версии",
+     "path": "CConstrBase\\3_0_11_109\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=CConstrBase&ver=3.0.11.109&path=CConstrBase%5C3_0_11_109%5Cnews.htm"
+    },
+    {
+     "title": "Описание конфигурации \"Электронное обучение. Конструктор курсов. Базовая версия\", версия 3.0.11.109",
+     "path": "CConstrBase\\3_0_11_109\\Konstruktor_kursov_3.0.11.106.pdf",
+     "url": "https://releases.1c.ru/version_file?nick=CConstrBase&ver=3.0.11.109&path=CConstrBase%5C3_0_11_109%5CKonstruktor_kursov_3.0.11.106.pdf"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "CConstrBase\\3_0_11_109\\CConstrBase_3_0_11_109_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=CConstrBase&ver=3.0.11.109&path=CConstrBase%5C3_0_11_109%5CCConstrBase_3_0_11_109_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "CConstrBase\\3_0_11_109\\CConstrBase_3_0_11_109_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=CConstrBase&ver=3.0.11.109&path=CConstrBase%5C3_0_11_109%5CCConstrBase_3_0_11_109_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "CConstrBase\\3_0_11_109\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=CConstrBase&ver=3.0.11.109&path=CConstrBase%5C3_0_11_109%5CReadMe.txt"
+    }
+   ]
+  },
+  "694": {
+   "config_id": 694,
+   "version": "3.0.9.155",
+   "release_date": "2019-05-28",
+   "nick": "EduOrganization",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=EduOrganization&ver=3.0.9.155&path=EduOrganization%5C3_0_9_155%5Cnews.htm",
+    "update": "https://releases.1c.ru/version_file?nick=EduOrganization&ver=3.0.9.155&path=EduOrganization%5C3_0_9_155%5CEduOrganization_3_0_9_155_updsetup.exe",
+    "full": "https://releases.1c.ru/version_file?nick=EduOrganization&ver=3.0.9.155&path=EduOrganization%5C3_0_9_155%5CEduOrganization_3_0_9_155_setup1c.exe",
+    "page": "https://releases.1c.ru/version_files?nick=EduOrganization&ver=3.0.9.155"
+   },
+   "files": [
+    {
+     "title": "1С:Электронное обучение. Образовательная организация. Версия 3.0.9.155. Новое в версии",
+     "path": "EduOrganization\\3_0_9_155\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=EduOrganization&ver=3.0.9.155&path=EduOrganization%5C3_0_9_155%5Cnews.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "EduOrganization\\3_0_9_155\\EduOrganization_3_0_9_155_updsetup.exe",
+     "url": "https://releases.1c.ru/version_file?nick=EduOrganization&ver=3.0.9.155&path=EduOrganization%5C3_0_9_155%5CEduOrganization_3_0_9_155_updsetup.exe"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "EduOrganization\\3_0_9_155\\EduOrganization_3_0_9_155_setup1c.exe",
+     "url": "https://releases.1c.ru/version_file?nick=EduOrganization&ver=3.0.9.155&path=EduOrganization%5C3_0_9_155%5CEduOrganization_3_0_9_155_setup1c.exe"
+    },
+    {
+     "title": "ReadMe",
+     "path": "EduOrganization\\3_0_9_155\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=EduOrganization&ver=3.0.9.155&path=EduOrganization%5C3_0_9_155%5CReadMe.txt"
+    }
+   ]
+  },
+  "695": {
+   "config_id": 695,
+   "version": "3.0.21.109",
+   "release_date": "2023-03-01",
+   "nick": "Exam",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=Exam&ver=3.0.21.109&path=Exam%5C3_0_21_109%5Cnews.htm",
+    "update": "https://releases.1c.ru/version_file?nick=Exam&ver=3.0.21.109&path=Exam%5C3_0_21_109%5CExam_3_0_21_109_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=Exam&ver=3.0.21.109&path=Exam%5C3_0_21_109%5CExam_3_0_21_109_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=Exam&ver=3.0.21.109"
+   },
+   "files": [
+    {
+     "title": "1С:Электронное обучение. Экзаменатор. Версия 3.0.21.109. Новое в версии",
+     "path": "Exam\\3_0_21_109\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Exam&ver=3.0.21.109&path=Exam%5C3_0_21_109%5Cnews.htm"
+    },
+    {
+     "title": "Описание конфигурации \"Электронное обучение. Экзаменатор\", версия 3.0.21.109",
+     "path": "Exam\\3_0_21_109\\Ekzm._3.0.21.109.pdf",
+     "url": "https://releases.1c.ru/version_file?nick=Exam&ver=3.0.21.109&path=Exam%5C3_0_21_109%5CEkzm._3.0.21.109.pdf"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "Exam\\3_0_21_109\\Exam_3_0_21_109_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Exam&ver=3.0.21.109&path=Exam%5C3_0_21_109%5CExam_3_0_21_109_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "Exam\\3_0_21_109\\Exam_3_0_21_109_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Exam&ver=3.0.21.109&path=Exam%5C3_0_21_109%5CExam_3_0_21_109_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "Exam\\3_0_21_109\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=Exam&ver=3.0.21.109&path=Exam%5C3_0_21_109%5CReadMe.txt"
+    }
+   ]
+  },
+  "1880": {
+   "config_id": 1880,
+   "version": "2.5.14.1",
+   "release_date": "2026-07-24",
+   "nick": "MDM25",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=MDM25&ver=2.5.14.1&path=MDM%5C2_5_14_1%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=MDM25&ver=2.5.14.1&path=MDM%5C2_5_14_1%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=MDM25&ver=2.5.14.1&path=MDM%5C2_5_14_1%5CMDM_2_5_14_1_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=MDM25&ver=2.5.14.1&path=MDM%5C2_5_14_1%5CMDM_2_5_14_1_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=MDM25&ver=2.5.14.1"
+   },
+   "files": [
+    {
+     "title": "1С:MDM Управление нормативно-справочной информацией, редакция 2.5. Версия 2.5.14.1. Новое в версии",
+     "path": "MDM\\2_5_14_1\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=MDM25&ver=2.5.14.1&path=MDM%5C2_5_14_1%5Cnews.htm"
+    },
+    {
+     "title": "1С:MDM Управление нормативно-справочной информацией, редакция 2.5. Версия 2.5.14.1. Изменения в версии",
+     "path": "MDM\\2_5_14_1\\change.htm",
+     "url": "https://releases.1c.ru/version_file?nick=MDM25&ver=2.5.14.1&path=MDM%5C2_5_14_1%5Cchange.htm"
+    },
+    {
+     "title": "1С:MDM Управление нормативно-справочной информацией, редакция 2.5. Версия 2.5.14.1. Измененные объекты",
+     "path": "MDM\\2_5_14_1\\object.htm",
+     "url": "https://releases.1c.ru/version_file?nick=MDM25&ver=2.5.14.1&path=MDM%5C2_5_14_1%5Cobject.htm"
+    },
+    {
+     "title": "1С:MDM Управление нормативно-справочной информацией, редакция 2.5. Версия 2.5.14.1. Порядок обновления",
+     "path": "MDM\\2_5_14_1\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=MDM25&ver=2.5.14.1&path=MDM%5C2_5_14_1%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "MDM\\2_5_14_1\\MDM_2_5_14_1_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=MDM25&ver=2.5.14.1&path=MDM%5C2_5_14_1%5CMDM_2_5_14_1_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "MDM\\2_5_14_1\\MDM_2_5_14_1_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=MDM25&ver=2.5.14.1&path=MDM%5C2_5_14_1%5CMDM_2_5_14_1_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "MDM\\2_5_14_1\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=MDM25&ver=2.5.14.1&path=MDM%5C2_5_14_1%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "MDM\\2_5_14_1\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=MDM25&ver=2.5.14.1&path=MDM%5C2_5_14_1%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "1963": {
+   "config_id": 1963,
+   "version": "3.1.4.66",
+   "release_date": "2026-07-07",
+   "nick": "CorpUniversity",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=CorpUniversity&ver=3.1.4.66&path=CorpUniversity%5C3_1_4_66%5Cnews.htm",
+    "update": "https://releases.1c.ru/version_file?nick=CorpUniversity&ver=3.1.4.66&path=CorpUniversity%5C3_1_4_66%5CCorpUniversity_3_1_4_66_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=CorpUniversity&ver=3.1.4.66&path=CorpUniversity%5C3_1_4_66%5CCorpUniversity_3_1_4_66_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=CorpUniversity&ver=3.1.4.66"
+   },
+   "files": [
+    {
+     "title": "1С:Электронное обучение. Корпоративный университет. Версия 3.1.4.66. Новое в версии",
+     "path": "CorpUniversity\\3_1_4_66\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=CorpUniversity&ver=3.1.4.66&path=CorpUniversity%5C3_1_4_66%5Cnews.htm"
+    },
+    {
+     "title": "Описание конфигурации \"Электронное обучение. Корпоративный университет\", версия 3.1.4.66",
+     "path": "CorpUniversity\\3_1_4_66\\KU_3.1.4.66.pdf",
+     "url": "https://releases.1c.ru/version_file?nick=CorpUniversity&ver=3.1.4.66&path=CorpUniversity%5C3_1_4_66%5CKU_3.1.4.66.pdf"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "CorpUniversity\\3_1_4_66\\CorpUniversity_3_1_4_66_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=CorpUniversity&ver=3.1.4.66&path=CorpUniversity%5C3_1_4_66%5CCorpUniversity_3_1_4_66_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "CorpUniversity\\3_1_4_66\\CorpUniversity_3_1_4_66_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=CorpUniversity&ver=3.1.4.66&path=CorpUniversity%5C3_1_4_66%5CCorpUniversity_3_1_4_66_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "CorpUniversity\\3_1_4_66\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=CorpUniversity&ver=3.1.4.66&path=CorpUniversity%5C3_1_4_66%5CReadMe.txt"
+    }
+   ]
+  },
+  "5022": {
+   "config_id": 5022,
+   "version": "1.0.7.2",
+   "release_date": "2025-12-23",
+   "nick": "Contracts",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=Contracts&ver=1.0.7.2&path=Contracts%5C1_0_7_2%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=Contracts&ver=1.0.7.2&path=Contracts%5C1_0_7_2%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=Contracts&ver=1.0.7.2&path=Contracts%5C1_0_7_2%5CContracts_1_0_7_2_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=Contracts&ver=1.0.7.2&path=Contracts%5C1_0_7_2%5CContracts_1_0_7_2_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=Contracts&ver=1.0.7.2"
+   },
+   "files": [
+    {
+     "title": "Договоры ПРОФ. Версия 1.0.7.2. Новое в версии",
+     "path": "Contracts\\1_0_7_2\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Contracts&ver=1.0.7.2&path=Contracts%5C1_0_7_2%5Cnews.htm"
+    },
+    {
+     "title": "Договоры ПРОФ. Версия 1.0.7.2. Порядок обновления",
+     "path": "Contracts\\1_0_7_2\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Contracts&ver=1.0.7.2&path=Contracts%5C1_0_7_2%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "Contracts\\1_0_7_2\\Contracts_1_0_7_2_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Contracts&ver=1.0.7.2&path=Contracts%5C1_0_7_2%5CContracts_1_0_7_2_updsetup.zip"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с базовой версии",
+     "path": "Contracts\\1_0_7_2\\Contracts_1_0_7_2_updstpb.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Contracts&ver=1.0.7.2&path=Contracts%5C1_0_7_2%5CContracts_1_0_7_2_updstpb.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "Contracts\\1_0_7_2\\Contracts_1_0_7_2_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Contracts&ver=1.0.7.2&path=Contracts%5C1_0_7_2%5CContracts_1_0_7_2_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "Contracts\\1_0_7_2\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=Contracts&ver=1.0.7.2&path=Contracts%5C1_0_7_2%5CReadMe.txt"
+    }
+   ]
+  },
+  "5023": {
+   "config_id": 5023,
+   "version": "3.0.21.3",
+   "release_date": "2026-07-09",
+   "nick": "DocMngRegion30",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=DocMngRegion30&ver=3.0.21.3&path=DocMngRegion%5C3_0_21_3%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=DocMngRegion30&ver=3.0.21.3&path=DocMngRegion%5C3_0_21_3%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=DocMngRegion30&ver=3.0.21.3&path=DocMngRegion%5C3_0_21_3%5CDocMngRegion_3_0_21_3_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=DocMngRegion30&ver=3.0.21.3&path=DocMngRegion%5C3_0_21_3%5CDocMngRegion_3_0_21_3_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=DocMngRegion30&ver=3.0.21.3"
+   },
+   "files": [
+    {
+     "title": "Документооборот государственного учреждения КОРП. Регион, редакция 3.0. Версия 3.0.21.3. Новое в версии",
+     "path": "DocMngRegion\\3_0_21_3\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=DocMngRegion30&ver=3.0.21.3&path=DocMngRegion%5C3_0_21_3%5Cnews.htm"
+    },
+    {
+     "title": "Документооборот государственного учреждения КОРП. Регион, редакция 3.0. Версия 3.0.21.3. Порядок обновления",
+     "path": "DocMngRegion\\3_0_21_3\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=DocMngRegion30&ver=3.0.21.3&path=DocMngRegion%5C3_0_21_3%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "DocMngRegion\\3_0_21_3\\DocMngRegion_3_0_21_3_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=DocMngRegion30&ver=3.0.21.3&path=DocMngRegion%5C3_0_21_3%5CDocMngRegion_3_0_21_3_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "DocMngRegion\\3_0_21_3\\DocMngRegion_3_0_21_3_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=DocMngRegion30&ver=3.0.21.3&path=DocMngRegion%5C3_0_21_3%5CDocMngRegion_3_0_21_3_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "DocMngRegion\\3_0_21_3\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=DocMngRegion30&ver=3.0.21.3&path=DocMngRegion%5C3_0_21_3%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "DocMngRegion\\3_0_21_3\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=DocMngRegion30&ver=3.0.21.3&path=DocMngRegion%5C3_0_21_3%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "5970": {
+   "config_id": 5970,
+   "version": "3.0.206.3",
+   "release_date": "2026-09-15",
+   "nick": "AccountingNPO",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=AccountingNPO&ver=3.0.206.3&path=AccountingNPO%5C3_0_206_3%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=AccountingNPO&ver=3.0.206.3&path=AccountingNPO%5C3_0_206_3%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=AccountingNPO&ver=3.0.206.3&path=AccountingNPO%5C3_0_206_3%5CAccountingNPO_3_0_206_3_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=AccountingNPO&ver=3.0.206.3&path=AccountingNPO%5C3_0_206_3%5CAccountingNPO_3_0_206_3_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=AccountingNPO&ver=3.0.206.3"
+   },
+   "files": [
+    {
+     "title": "Бухгалтерия некоммерческой организации. Версия 3.0.206.3. Новое в версии",
+     "path": "AccountingNPO\\3_0_206_3\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPO&ver=3.0.206.3&path=AccountingNPO%5C3_0_206_3%5Cnews.htm"
+    },
+    {
+     "title": "Бухгалтерия некоммерческой организации. Версия 3.0.206.3. Порядок обновления",
+     "path": "AccountingNPO\\3_0_206_3\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPO&ver=3.0.206.3&path=AccountingNPO%5C3_0_206_3%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "AccountingNPO\\3_0_206_3\\AccountingNPO_3_0_206_3_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPO&ver=3.0.206.3&path=AccountingNPO%5C3_0_206_3%5CAccountingNPO_3_0_206_3_updsetup.zip"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с базовой версии",
+     "path": "AccountingNPO\\3_0_206_3\\AccountingNPO_3_0_206_3_updstpb.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPO&ver=3.0.206.3&path=AccountingNPO%5C3_0_206_3%5CAccountingNPO_3_0_206_3_updstpb.zip"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с 1С:Бухгалтерия ПРОФ",
+     "path": "AccountingNPO\\3_0_206_3\\AccountingNPO_3_0_206_3_updstpbp.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPO&ver=3.0.206.3&path=AccountingNPO%5C3_0_206_3%5CAccountingNPO_3_0_206_3_updstpbp.zip"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с 1С:Бухгалтерия Базовая для 1",
+     "path": "AccountingNPO\\3_0_206_3\\AccountingNPO_3_0_206_3_updstpbo.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPO&ver=3.0.206.3&path=AccountingNPO%5C3_0_206_3%5CAccountingNPO_3_0_206_3_updstpbo.zip"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с 1С:Бухгалтерия Базовая",
+     "path": "AccountingNPO\\3_0_206_3\\AccountingNPO_3_0_206_3_updstpbb.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPO&ver=3.0.206.3&path=AccountingNPO%5C3_0_206_3%5CAccountingNPO_3_0_206_3_updstpbb.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "AccountingNPO\\3_0_206_3\\AccountingNPO_3_0_206_3_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPO&ver=3.0.206.3&path=AccountingNPO%5C3_0_206_3%5CAccountingNPO_3_0_206_3_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "AccountingNPO\\3_0_206_3\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPO&ver=3.0.206.3&path=AccountingNPO%5C3_0_206_3%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "AccountingNPO\\3_0_206_3\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPO&ver=3.0.206.3&path=AccountingNPO%5C3_0_206_3%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "8912": {
+   "config_id": 8912,
+   "version": "3.0.206.2",
+   "release_date": "2026-09-18",
+   "nick": "AccountingGP",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=AccountingGP&ver=3.0.206.2&path=AccountingGP%5C3_0_206_2%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=AccountingGP&ver=3.0.206.2&path=AccountingGP%5C3_0_206_2%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=AccountingGP&ver=3.0.206.2&path=AccountingGP%5C3_0_206_2%5CAccountingGP_3_0_206_2_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=AccountingGP&ver=3.0.206.2&path=AccountingGP%5C3_0_206_2%5CAccountingGP_3_0_206_2_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=AccountingGP&ver=3.0.206.2"
+   },
+   "files": [
+    {
+     "title": "1С:Садовод. Версия 3.0.206.2. Новое в версии",
+     "path": "AccountingGP\\3_0_206_2\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingGP&ver=3.0.206.2&path=AccountingGP%5C3_0_206_2%5Cnews.htm"
+    },
+    {
+     "title": "1С:Садовод. Версия 3.0.206.2. Порядок обновления",
+     "path": "AccountingGP\\3_0_206_2\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingGP&ver=3.0.206.2&path=AccountingGP%5C3_0_206_2%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "AccountingGP\\3_0_206_2\\AccountingGP_3_0_206_2_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingGP&ver=3.0.206.2&path=AccountingGP%5C3_0_206_2%5CAccountingGP_3_0_206_2_updsetup.zip"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с базовой версии",
+     "path": "AccountingGP\\3_0_206_2\\AccountingGP_3_0_206_2_updstpb.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingGP&ver=3.0.206.2&path=AccountingGP%5C3_0_206_2%5CAccountingGP_3_0_206_2_updstpb.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "AccountingGP\\3_0_206_2\\AccountingGP_3_0_206_2_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingGP&ver=3.0.206.2&path=AccountingGP%5C3_0_206_2%5CAccountingGP_3_0_206_2_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "AccountingGP\\3_0_206_2\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingGP&ver=3.0.206.2&path=AccountingGP%5C3_0_206_2%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "AccountingGP\\3_0_206_2\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingGP&ver=3.0.206.2&path=AccountingGP%5C3_0_206_2%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "8913": {
+   "config_id": 8913,
+   "version": "3.0.206.2",
+   "release_date": "2026-09-18",
+   "nick": "AccountingGPBase",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=AccountingGPBase&ver=3.0.206.2&path=AccountingGPBase%5C3_0_206_2%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=AccountingGPBase&ver=3.0.206.2&path=AccountingGPBase%5C3_0_206_2%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=AccountingGPBase&ver=3.0.206.2&path=AccountingGPBase%5C3_0_206_2%5CAccountingGPBase_3_0_206_2_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=AccountingGPBase&ver=3.0.206.2&path=AccountingGPBase%5C3_0_206_2%5CAccountingGPBase_3_0_206_2_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=AccountingGPBase&ver=3.0.206.2"
+   },
+   "files": [
+    {
+     "title": "1С:Садовод (базовая версия). Версия 3.0.206.2. Новое в версии",
+     "path": "AccountingGPBase\\3_0_206_2\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingGPBase&ver=3.0.206.2&path=AccountingGPBase%5C3_0_206_2%5Cnews.htm"
+    },
+    {
+     "title": "1С:Садовод (базовая версия). Версия 3.0.206.2. Порядок обновления",
+     "path": "AccountingGPBase\\3_0_206_2\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingGPBase&ver=3.0.206.2&path=AccountingGPBase%5C3_0_206_2%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "AccountingGPBase\\3_0_206_2\\AccountingGPBase_3_0_206_2_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingGPBase&ver=3.0.206.2&path=AccountingGPBase%5C3_0_206_2%5CAccountingGPBase_3_0_206_2_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "AccountingGPBase\\3_0_206_2\\AccountingGPBase_3_0_206_2_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingGPBase&ver=3.0.206.2&path=AccountingGPBase%5C3_0_206_2%5CAccountingGPBase_3_0_206_2_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "AccountingGPBase\\3_0_206_2\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingGPBase&ver=3.0.206.2&path=AccountingGPBase%5C3_0_206_2%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "AccountingGPBase\\3_0_206_2\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingGPBase&ver=3.0.206.2&path=AccountingGPBase%5C3_0_206_2%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "9723": {
+   "config_id": 9723,
+   "version": "3.0.206.3",
+   "release_date": "2026-09-15",
+   "nick": "AccountingNPOCorp",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=AccountingNPOCorp&ver=3.0.206.3&path=AccountingNPOCorp%5C3_0_206_3%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=AccountingNPOCorp&ver=3.0.206.3&path=AccountingNPOCorp%5C3_0_206_3%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=AccountingNPOCorp&ver=3.0.206.3&path=AccountingNPOCorp%5C3_0_206_3%5CAccountingNPOCorp_3_0_206_3_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=AccountingNPOCorp&ver=3.0.206.3&path=AccountingNPOCorp%5C3_0_206_3%5CAccountingNPOCorp_3_0_206_3_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=AccountingNPOCorp&ver=3.0.206.3"
+   },
+   "files": [
+    {
+     "title": "Бухгалтерия некоммерческой организации КОРП. Версия 3.0.206.3. Новое в версии",
+     "path": "AccountingNPOCorp\\3_0_206_3\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPOCorp&ver=3.0.206.3&path=AccountingNPOCorp%5C3_0_206_3%5Cnews.htm"
+    },
+    {
+     "title": "Бухгалтерия некоммерческой организации КОРП. Версия 3.0.206.3. Порядок обновления",
+     "path": "AccountingNPOCorp\\3_0_206_3\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPOCorp&ver=3.0.206.3&path=AccountingNPOCorp%5C3_0_206_3%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с 1С:Бухгалтерия 8 КОРП",
+     "path": "AccountingNPOCorp\\3_0_206_3\\AccountingNPOCorp_3_0_206_3_updstpbc.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPOCorp&ver=3.0.206.3&path=AccountingNPOCorp%5C3_0_206_3%5CAccountingNPOCorp_3_0_206_3_updstpbc.zip"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "AccountingNPOCorp\\3_0_206_3\\AccountingNPOCorp_3_0_206_3_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPOCorp&ver=3.0.206.3&path=AccountingNPOCorp%5C3_0_206_3%5CAccountingNPOCorp_3_0_206_3_updsetup.zip"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с 1С:Бухгалтерия некоммерческой организации ПРОФ",
+     "path": "AccountingNPOCorp\\3_0_206_3\\AccountingNPOCorp_3_0_206_3_updstpnp.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPOCorp&ver=3.0.206.3&path=AccountingNPOCorp%5C3_0_206_3%5CAccountingNPOCorp_3_0_206_3_updstpnp.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "AccountingNPOCorp\\3_0_206_3\\AccountingNPOCorp_3_0_206_3_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPOCorp&ver=3.0.206.3&path=AccountingNPOCorp%5C3_0_206_3%5CAccountingNPOCorp_3_0_206_3_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "AccountingNPOCorp\\3_0_206_3\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPOCorp&ver=3.0.206.3&path=AccountingNPOCorp%5C3_0_206_3%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "AccountingNPOCorp\\3_0_206_3\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPOCorp&ver=3.0.206.3&path=AccountingNPOCorp%5C3_0_206_3%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "9774": {
+   "config_id": 9774,
+   "version": "4.1.10.11",
+   "release_date": "2026-09-21",
+   "nick": "CashboxBase",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=CashboxBase&ver=4.1.10.11&path=CashboxBase%5C4_1_10_11%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=CashboxBase&ver=4.1.10.11&path=CashboxBase%5C4_1_10_11%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=CashboxBase&ver=4.1.10.11&path=CashboxBase%5C4_1_10_11%5CCashboxBase_4_1_10_11_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=CashboxBase&ver=4.1.10.11&path=CashboxBase%5C4_1_10_11%5CCashboxBase_4_1_10_11_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=CashboxBase&ver=4.1.10.11"
+   },
+   "files": [
+    {
+     "title": "1C:Касса (приложение для ПК), редакция 4.1. Версия 4.1.10.11. Новое в версии",
+     "path": "CashboxBase\\4_1_10_11\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=CashboxBase&ver=4.1.10.11&path=CashboxBase%5C4_1_10_11%5Cnews.htm"
+    },
+    {
+     "title": "1C:Касса (приложение для ПК), редакция 4.1. Версия 4.1.10.11. Порядок обновления",
+     "path": "CashboxBase\\4_1_10_11\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=CashboxBase&ver=4.1.10.11&path=CashboxBase%5C4_1_10_11%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "CashboxBase\\4_1_10_11\\CashboxBase_4_1_10_11_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=CashboxBase&ver=4.1.10.11&path=CashboxBase%5C4_1_10_11%5CCashboxBase_4_1_10_11_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "CashboxBase\\4_1_10_11\\CashboxBase_4_1_10_11_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=CashboxBase&ver=4.1.10.11&path=CashboxBase%5C4_1_10_11%5CCashboxBase_4_1_10_11_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "CashboxBase\\4_1_10_11\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=CashboxBase&ver=4.1.10.11&path=CashboxBase%5C4_1_10_11%5CReadMe.txt"
+    }
+   ]
+  },
+  "19028": {
+   "config_id": 19028,
+   "version": "1.1.4.105",
+   "release_date": "2026-09-24",
+   "nick": "PayDesk",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=PayDesk&ver=1.1.4.105&path=PayDesk%5C1_1_4_105%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=PayDesk&ver=1.1.4.105&path=PayDesk%5C1_1_4_105%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=PayDesk&ver=1.1.4.105&path=PayDesk%5C1_1_4_105%5CPayDesk_1_1_4_105_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=PayDesk&ver=1.1.4.105&path=PayDesk%5C1_1_4_105%5CPayDesk_1_1_4_105_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=PayDesk&ver=1.1.4.105"
+   },
+   "files": [
+    {
+     "title": "1С:РМК. Версия 1.1.4.105. Новое в версии",
+     "path": "PayDesk\\1_1_4_105\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=PayDesk&ver=1.1.4.105&path=PayDesk%5C1_1_4_105%5Cnews.htm"
+    },
+    {
+     "title": "1С:РМК. Версия 1.1.4.105. Порядок обновления",
+     "path": "PayDesk\\1_1_4_105\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=PayDesk&ver=1.1.4.105&path=PayDesk%5C1_1_4_105%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "PayDesk\\1_1_4_105\\PayDesk_1_1_4_105_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=PayDesk&ver=1.1.4.105&path=PayDesk%5C1_1_4_105%5CPayDesk_1_1_4_105_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "PayDesk\\1_1_4_105\\PayDesk_1_1_4_105_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=PayDesk&ver=1.1.4.105&path=PayDesk%5C1_1_4_105%5CPayDesk_1_1_4_105_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "PayDesk\\1_1_4_105\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=PayDesk&ver=1.1.4.105&path=PayDesk%5C1_1_4_105%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "PayDesk\\1_1_4_105\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=PayDesk&ver=1.1.4.105&path=PayDesk%5C1_1_4_105%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "19361": {
+   "config_id": 19361,
+   "version": "2.0.110.66",
+   "release_date": "2026-08-27",
+   "nick": "StateAccountingCorp",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=StateAccountingCorp&ver=2.0.110.66&path=StateAccountingCorp%5C2_0_110_66%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=StateAccountingCorp&ver=2.0.110.66&path=StateAccountingCorp%5C2_0_110_66%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=StateAccountingCorp&ver=2.0.110.66&path=StateAccountingCorp%5C2_0_110_66%5CStateAccountingCorp_2_0_110_66_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=StateAccountingCorp&ver=2.0.110.66&path=StateAccountingCorp%5C2_0_110_66%5CStateAccountingCorp_2_0_110_66_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=StateAccountingCorp&ver=2.0.110.66"
+   },
+   "files": [
+    {
+     "title": "Бухгалтерия государственного учреждения КОРП. Версия 2.0.110.66. Новое в версии",
+     "path": "StateAccountingCorp\\2_0_110_66\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccountingCorp&ver=2.0.110.66&path=StateAccountingCorp%5C2_0_110_66%5Cnews.htm"
+    },
+    {
+     "title": "Бухгалтерия государственного учреждения КОРП. Версия 2.0.110.66. Изменения типовых операций",
+     "path": "StateAccountingCorp\\2_0_110_66\\object.htm",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccountingCorp&ver=2.0.110.66&path=StateAccountingCorp%5C2_0_110_66%5Cobject.htm"
+    },
+    {
+     "title": "Бухгалтерия государственного учреждения КОРП. Версия 2.0.110.66. Порядок обновления",
+     "path": "StateAccountingCorp\\2_0_110_66\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccountingCorp&ver=2.0.110.66&path=StateAccountingCorp%5C2_0_110_66%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "StateAccountingCorp\\2_0_110_66\\StateAccountingCorp_2_0_110_66_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccountingCorp&ver=2.0.110.66&path=StateAccountingCorp%5C2_0_110_66%5CStateAccountingCorp_2_0_110_66_updsetup.zip"
+    },
+    {
+     "title": "Дистрибутив обновления для перехода с версии ПРОФ",
+     "path": "StateAccountingCorp\\2_0_110_66\\StateAccountingCorp_2_0_110_66_updstpp.zip",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccountingCorp&ver=2.0.110.66&path=StateAccountingCorp%5C2_0_110_66%5CStateAccountingCorp_2_0_110_66_updstpp.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "StateAccountingCorp\\2_0_110_66\\StateAccountingCorp_2_0_110_66_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccountingCorp&ver=2.0.110.66&path=StateAccountingCorp%5C2_0_110_66%5CStateAccountingCorp_2_0_110_66_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "StateAccountingCorp\\2_0_110_66\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccountingCorp&ver=2.0.110.66&path=StateAccountingCorp%5C2_0_110_66%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "StateAccountingCorp\\2_0_110_66\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=StateAccountingCorp&ver=2.0.110.66&path=StateAccountingCorp%5C2_0_110_66%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "19597": {
+   "config_id": 19597,
+   "version": "3.0.206.2",
+   "release_date": "2026-09-25",
+   "nick": "AccountingGC",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=AccountingGC&ver=3.0.206.2&path=AccountingGC%5C3_0_206_2%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=AccountingGC&ver=3.0.206.2&path=AccountingGC%5C3_0_206_2%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=AccountingGC&ver=3.0.206.2&path=AccountingGC%5C3_0_206_2%5CAccountingGC_3_0_206_2_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=AccountingGC&ver=3.0.206.2&path=AccountingGC%5C3_0_206_2%5CAccountingGC_3_0_206_2_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=AccountingGC&ver=3.0.206.2"
+   },
+   "files": [
+    {
+     "title": "1С:Гаражи. Версия 3.0.206.2. Новое в версии",
+     "path": "AccountingGC\\3_0_206_2\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingGC&ver=3.0.206.2&path=AccountingGC%5C3_0_206_2%5Cnews.htm"
+    },
+    {
+     "title": "1С:Гаражи. Версия 3.0.206.2. Порядок обновления",
+     "path": "AccountingGC\\3_0_206_2\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingGC&ver=3.0.206.2&path=AccountingGC%5C3_0_206_2%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "AccountingGC\\3_0_206_2\\AccountingGC_3_0_206_2_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingGC&ver=3.0.206.2&path=AccountingGC%5C3_0_206_2%5CAccountingGC_3_0_206_2_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "AccountingGC\\3_0_206_2\\AccountingGC_3_0_206_2_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingGC&ver=3.0.206.2&path=AccountingGC%5C3_0_206_2%5CAccountingGC_3_0_206_2_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "AccountingGC\\3_0_206_2\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingGC&ver=3.0.206.2&path=AccountingGC%5C3_0_206_2%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "AccountingGC\\3_0_206_2\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingGC&ver=3.0.206.2&path=AccountingGC%5C3_0_206_2%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "21215": {
+   "config_id": 21215,
+   "version": "3.0.21.3",
+   "release_date": "2026-07-09",
+   "nick": "DocMngCorp30",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=DocMngCorp30&ver=3.0.21.3&path=DocMngCorp%5C3_0_21_3%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=DocMngCorp30&ver=3.0.21.3&path=DocMngCorp%5C3_0_21_3%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=DocMngCorp30&ver=3.0.21.3&path=DocMngCorp%5C3_0_21_3%5CDocMngCorp_3_0_21_3_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=DocMngCorp30&ver=3.0.21.3&path=DocMngCorp%5C3_0_21_3%5CDocMngCorp_3_0_21_3_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=DocMngCorp30&ver=3.0.21.3"
+   },
+   "files": [
+    {
+     "title": "Документооборот КОРП, редакция 3.0. Версия 3.0.21.3. Новое в версии",
+     "path": "DocMngCorp\\3_0_21_3\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=DocMngCorp30&ver=3.0.21.3&path=DocMngCorp%5C3_0_21_3%5Cnews.htm"
+    },
+    {
+     "title": "Документооборот КОРП, редакция 3.0. Версия 3.0.21.3. Порядок обновления",
+     "path": "DocMngCorp\\3_0_21_3\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=DocMngCorp30&ver=3.0.21.3&path=DocMngCorp%5C3_0_21_3%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "DocMngCorp\\3_0_21_3\\DocMngCorp_3_0_21_3_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=DocMngCorp30&ver=3.0.21.3&path=DocMngCorp%5C3_0_21_3%5CDocMngCorp_3_0_21_3_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "DocMngCorp\\3_0_21_3\\DocMngCorp_3_0_21_3_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=DocMngCorp30&ver=3.0.21.3&path=DocMngCorp%5C3_0_21_3%5CDocMngCorp_3_0_21_3_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "DocMngCorp\\3_0_21_3\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=DocMngCorp30&ver=3.0.21.3&path=DocMngCorp%5C3_0_21_3%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "DocMngCorp\\3_0_21_3\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=DocMngCorp30&ver=3.0.21.3&path=DocMngCorp%5C3_0_21_3%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "24136": {
+   "config_id": 24136,
+   "version": "1.0.14.6",
+   "release_date": "2026-09-14",
+   "nick": "Archive",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=Archive&ver=1.0.14.6&path=Archive%5C1_0_14_6%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=Archive&ver=1.0.14.6&path=Archive%5C1_0_14_6%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=Archive&ver=1.0.14.6&path=Archive%5C1_0_14_6%5CArchive_1_0_14_6_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=Archive&ver=1.0.14.6&path=Archive%5C1_0_14_6%5CArchive_1_0_14_6_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=Archive&ver=1.0.14.6"
+   },
+   "files": [
+    {
+     "title": "1С:Архив. Версия 1.0.14.6. Новое в версии",
+     "path": "Archive\\1_0_14_6\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Archive&ver=1.0.14.6&path=Archive%5C1_0_14_6%5Cnews.htm"
+    },
+    {
+     "title": "1С:Архив. Версия 1.0.14.6. Порядок обновления",
+     "path": "Archive\\1_0_14_6\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Archive&ver=1.0.14.6&path=Archive%5C1_0_14_6%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "Archive\\1_0_14_6\\Archive_1_0_14_6_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Archive&ver=1.0.14.6&path=Archive%5C1_0_14_6%5CArchive_1_0_14_6_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "Archive\\1_0_14_6\\Archive_1_0_14_6_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=Archive&ver=1.0.14.6&path=Archive%5C1_0_14_6%5CArchive_1_0_14_6_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "Archive\\1_0_14_6\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=Archive&ver=1.0.14.6&path=Archive%5C1_0_14_6%5CReadMe.txt"
+    }
+   ]
+  },
+  "25850": {
+   "config_id": 25850,
+   "version": "3.0.206.3",
+   "release_date": "2026-09-15",
+   "nick": "AccountingNPOBase",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=AccountingNPOBase&ver=3.0.206.3&path=AccountingNPOBase%5C3_0_206_3%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=AccountingNPOBase&ver=3.0.206.3&path=AccountingNPOBase%5C3_0_206_3%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=AccountingNPOBase&ver=3.0.206.3&path=AccountingNPOBase%5C3_0_206_3%5CAccountingNPOBase_3_0_206_3_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=AccountingNPOBase&ver=3.0.206.3&path=AccountingNPOBase%5C3_0_206_3%5CAccountingNPOBase_3_0_206_3_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=AccountingNPOBase&ver=3.0.206.3"
+   },
+   "files": [
+    {
+     "title": "Бухгалтерия некоммерческой организации (базовая). Версия 3.0.206.3. Новое в версии",
+     "path": "AccountingNPOBase\\3_0_206_3\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPOBase&ver=3.0.206.3&path=AccountingNPOBase%5C3_0_206_3%5Cnews.htm"
+    },
+    {
+     "title": "Бухгалтерия некоммерческой организации (базовая). Версия 3.0.206.3. Порядок обновления",
+     "path": "AccountingNPOBase\\3_0_206_3\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPOBase&ver=3.0.206.3&path=AccountingNPOBase%5C3_0_206_3%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "AccountingNPOBase\\3_0_206_3\\AccountingNPOBase_3_0_206_3_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPOBase&ver=3.0.206.3&path=AccountingNPOBase%5C3_0_206_3%5CAccountingNPOBase_3_0_206_3_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "AccountingNPOBase\\3_0_206_3\\AccountingNPOBase_3_0_206_3_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPOBase&ver=3.0.206.3&path=AccountingNPOBase%5C3_0_206_3%5CAccountingNPOBase_3_0_206_3_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "AccountingNPOBase\\3_0_206_3\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPOBase&ver=3.0.206.3&path=AccountingNPOBase%5C3_0_206_3%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "AccountingNPOBase\\3_0_206_3\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=AccountingNPOBase&ver=3.0.206.3&path=AccountingNPOBase%5C3_0_206_3%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "25874": {
+   "config_id": 25874,
+   "version": "3.0.21.3",
+   "release_date": "2026-08-13",
+   "nick": "DocMngCorpRuEng30",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=DocMngCorpRuEng30&ver=3.0.21.3&path=DocMngCorpRuEng%5C3_0_21_3%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=DocMngCorpRuEng30&ver=3.0.21.3&path=DocMngCorpRuEng%5C3_0_21_3%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=DocMngCorpRuEng30&ver=3.0.21.3&path=DocMngCorpRuEng%5C3_0_21_3%5CDocMngCorpRuEng_3_0_21_3_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=DocMngCorpRuEng30&ver=3.0.21.3&path=DocMngCorpRuEng%5C3_0_21_3%5CDocMngCorpRuEng_3_0_21_3_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=DocMngCorpRuEng30&ver=3.0.21.3"
+   },
+   "files": [
+    {
+     "title": "Дистрибутив обновления для перехода с версии КОРП",
+     "path": "DocMngCorpRuEng\\3_0_21_3\\DocMngCorpRuEng_3_0_21_3_updstpc.zip",
+     "url": "https://releases.1c.ru/version_file?nick=DocMngCorpRuEng30&ver=3.0.21.3&path=DocMngCorpRuEng%5C3_0_21_3%5CDocMngCorpRuEng_3_0_21_3_updstpc.zip"
+    },
+    {
+     "title": "Документооборот КОРП (русский и английский интерфейс), редакция 3.0. Версия 3.0.21.3. Новое в версии",
+     "path": "DocMngCorpRuEng\\3_0_21_3\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=DocMngCorpRuEng30&ver=3.0.21.3&path=DocMngCorpRuEng%5C3_0_21_3%5Cnews.htm"
+    },
+    {
+     "title": "Документооборот КОРП (русский и английский интерфейс), редакция 3.0. Версия 3.0.21.3. Порядок обновления",
+     "path": "DocMngCorpRuEng\\3_0_21_3\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=DocMngCorpRuEng30&ver=3.0.21.3&path=DocMngCorpRuEng%5C3_0_21_3%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "DocMngCorpRuEng\\3_0_21_3\\DocMngCorpRuEng_3_0_21_3_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=DocMngCorpRuEng30&ver=3.0.21.3&path=DocMngCorpRuEng%5C3_0_21_3%5CDocMngCorpRuEng_3_0_21_3_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "DocMngCorpRuEng\\3_0_21_3\\DocMngCorpRuEng_3_0_21_3_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=DocMngCorpRuEng30&ver=3.0.21.3&path=DocMngCorpRuEng%5C3_0_21_3%5CDocMngCorpRuEng_3_0_21_3_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "DocMngCorpRuEng\\3_0_21_3\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=DocMngCorpRuEng30&ver=3.0.21.3&path=DocMngCorpRuEng%5C3_0_21_3%5CReadMe.txt"
+    },
+    {
+     "title": "Версии библиотек",
+     "path": "DocMngCorpRuEng\\3_0_21_3\\LibraryVersions.txt",
+     "url": "https://releases.1c.ru/version_file?nick=DocMngCorpRuEng30&ver=3.0.21.3&path=DocMngCorpRuEng%5C3_0_21_3%5CLibraryVersions.txt"
+    }
+   ]
+  },
+  "34673": {
+   "config_id": 34673,
+   "version": "1.0.7.2",
+   "release_date": "2025-12-23",
+   "nick": "ContractsBase",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=ContractsBase&ver=1.0.7.2&path=ContractsBase%5C1_0_7_2%5Cnews.htm",
+    "order": "https://releases.1c.ru/version_file?nick=ContractsBase&ver=1.0.7.2&path=ContractsBase%5C1_0_7_2%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=ContractsBase&ver=1.0.7.2&path=ContractsBase%5C1_0_7_2%5CContractsBase_1_0_7_2_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=ContractsBase&ver=1.0.7.2&path=ContractsBase%5C1_0_7_2%5CContractsBase_1_0_7_2_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=ContractsBase&ver=1.0.7.2"
+   },
+   "files": [
+    {
+     "title": "Договоры базовая. Версия 1.0.7.2. Новое в версии",
+     "path": "ContractsBase\\1_0_7_2\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=ContractsBase&ver=1.0.7.2&path=ContractsBase%5C1_0_7_2%5Cnews.htm"
+    },
+    {
+     "title": "Договоры базовая. Версия 1.0.7.2. Порядок обновления",
+     "path": "ContractsBase\\1_0_7_2\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=ContractsBase&ver=1.0.7.2&path=ContractsBase%5C1_0_7_2%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "ContractsBase\\1_0_7_2\\ContractsBase_1_0_7_2_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=ContractsBase&ver=1.0.7.2&path=ContractsBase%5C1_0_7_2%5CContractsBase_1_0_7_2_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "ContractsBase\\1_0_7_2\\ContractsBase_1_0_7_2_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=ContractsBase&ver=1.0.7.2&path=ContractsBase%5C1_0_7_2%5CContractsBase_1_0_7_2_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "ContractsBase\\1_0_7_2\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=ContractsBase&ver=1.0.7.2&path=ContractsBase%5C1_0_7_2%5CReadMe.txt"
+    }
+   ]
+  },
+  "46681": {
+   "config_id": 46681,
+   "version": "1.1.56.1",
+   "release_date": "2026-06-26",
+   "nick": "PurchasesStAcc2",
+   "read": true,
+   "links": {
+    "news": "https://releases.1c.ru/version_file?nick=PurchasesStAcc2&ver=1.1.56.1&path=PurchasesStAcc2%5C1_1_56_1%5Cnews.htm",
+    "update": "https://releases.1c.ru/version_file?nick=PurchasesStAcc2&ver=1.1.56.1&path=PurchasesStAcc2%5C1_1_56_1%5CPurchasesStAcc2_1_1_56_1_updsetup.zip",
+    "page": "https://releases.1c.ru/version_files?nick=PurchasesStAcc2&ver=1.1.56.1"
+   },
+   "files": [
+    {
+     "title": "Закупки. Дополнение к \"1С:Бухгалтерии государственного учреждения 8\" для редакции 2. Версия 1.1.56.1. Новое в версии",
+     "path": "PurchasesStAcc2\\1_1_56_1\\news.htm",
+     "url": "https://releases.1c.ru/version_file?nick=PurchasesStAcc2&ver=1.1.56.1&path=PurchasesStAcc2%5C1_1_56_1%5Cnews.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "PurchasesStAcc2\\1_1_56_1\\PurchasesStAcc2_1_1_56_1_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=PurchasesStAcc2&ver=1.1.56.1&path=PurchasesStAcc2%5C1_1_56_1%5CPurchasesStAcc2_1_1_56_1_updsetup.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "PurchasesStAcc2\\1_1_56_1\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=PurchasesStAcc2&ver=1.1.56.1&path=PurchasesStAcc2%5C1_1_56_1%5CReadMe.txt"
+    },
+    {
+     "title": "Расширение для устранения ошибки \"Поле не найдено \"Организации.КодКОПФ.Наименование\" (20.08.2026)",
+     "path": "PurchasesStAcc2\\Extrafiles\\Rasshirenie20260812_BGU20_v1.zip",
+     "url": "https://releases.1c.ru/version_file?nick=PurchasesStAcc2&ver=1.1.56.1&path=PurchasesStAcc2%5CExtrafiles%5CRasshirenie20260812_BGU20_v1.zip"
+    }
+   ]
+  },
+  "47940": {
+   "config_id": 47940,
+   "version": "1.0.2.12",
+   "release_date": "2016-05-19",
+   "nick": "Treasury275",
+   "read": true,
+   "links": {
+    "order": "https://releases.1c.ru/version_file?nick=Treasury275&ver=1.0.2.12&path=Treasury275%5C1_0_2_12%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=Treasury275&ver=1.0.2.12&path=Treasury275%5C1_0_2_12%5Cupdsetup.exe",
+    "full": "https://releases.1c.ru/version_file?nick=Treasury275&ver=1.0.2.12&path=Treasury275%5C1_0_2_12%5Csetup1c.exe",
+    "page": "https://releases.1c.ru/version_files?nick=Treasury275&ver=1.0.2.12"
+   },
+   "files": [
+    {
+     "title": "1С:275ФЗ. Версия 1.0.2.12. Порядок обновления",
+     "path": "Treasury275\\1_0_2_12\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Treasury275&ver=1.0.2.12&path=Treasury275%5C1_0_2_12%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "Treasury275\\1_0_2_12\\updsetup.exe",
+     "url": "https://releases.1c.ru/version_file?nick=Treasury275&ver=1.0.2.12&path=Treasury275%5C1_0_2_12%5Cupdsetup.exe"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "Treasury275\\1_0_2_12\\setup1c.exe",
+     "url": "https://releases.1c.ru/version_file?nick=Treasury275&ver=1.0.2.12&path=Treasury275%5C1_0_2_12%5Csetup1c.exe"
+    },
+    {
+     "title": "ReadMe",
+     "path": "Treasury275\\1_0_2_12\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=Treasury275&ver=1.0.2.12&path=Treasury275%5C1_0_2_12%5CReadMe.txt"
+    }
+   ]
+  },
+  "47943": {
+   "config_id": 47943,
+   "version": "1.0.2.12",
+   "release_date": "2016-05-20",
+   "nick": "Treasury275Base",
+   "read": true,
+   "links": {
+    "order": "https://releases.1c.ru/version_file?nick=Treasury275Base&ver=1.0.2.12&path=Treasury275Base%5C1_0_2_12%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=Treasury275Base&ver=1.0.2.12&path=Treasury275Base%5C1_0_2_12%5Cupdsetup.exe",
+    "full": "https://releases.1c.ru/version_file?nick=Treasury275Base&ver=1.0.2.12&path=Treasury275Base%5C1_0_2_12%5Csetup1c.exe",
+    "page": "https://releases.1c.ru/version_files?nick=Treasury275Base&ver=1.0.2.12"
+   },
+   "files": [
+    {
+     "title": "1С:275ФЗ (базовая). Версия 1.0.2.12. Порядок обновления",
+     "path": "Treasury275Base\\1_0_2_12\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=Treasury275Base&ver=1.0.2.12&path=Treasury275Base%5C1_0_2_12%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "Treasury275Base\\1_0_2_12\\updsetup.exe",
+     "url": "https://releases.1c.ru/version_file?nick=Treasury275Base&ver=1.0.2.12&path=Treasury275Base%5C1_0_2_12%5Cupdsetup.exe"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "Treasury275Base\\1_0_2_12\\setup1c.exe",
+     "url": "https://releases.1c.ru/version_file?nick=Treasury275Base&ver=1.0.2.12&path=Treasury275Base%5C1_0_2_12%5Csetup1c.exe"
+    },
+    {
+     "title": "ReadMe",
+     "path": "Treasury275Base\\1_0_2_12\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=Treasury275Base&ver=1.0.2.12&path=Treasury275Base%5C1_0_2_12%5CReadMe.txt"
+    }
+   ]
+  },
+  "58770": {
+   "config_id": 58770,
+   "version": "3.0.20.21",
+   "release_date": "2026-08-04",
+   "nick": "DocMng30",
+   "read": true,
+   "links": {
+    "order": "https://releases.1c.ru/version_file?nick=DocMng30&ver=3.0.20.21&path=DocMng%5C3_0_20_21%5C1cv8upd.htm",
+    "update": "https://releases.1c.ru/version_file?nick=DocMng30&ver=3.0.20.21&path=DocMng%5C3_0_20_21%5CDocMng_3_0_20_21_updsetup.zip",
+    "full": "https://releases.1c.ru/version_file?nick=DocMng30&ver=3.0.20.21&path=DocMng%5C3_0_20_21%5CDocMng_3_0_20_21_setup1c.zip",
+    "page": "https://releases.1c.ru/version_files?nick=DocMng30&ver=3.0.20.21"
+   },
+   "files": [
+    {
+     "title": "Документооборот ПРОФ, редакция 3.0. Версия 3.0.20.21. Порядок обновления",
+     "path": "DocMng\\3_0_20_21\\1cv8upd.htm",
+     "url": "https://releases.1c.ru/version_file?nick=DocMng30&ver=3.0.20.21&path=DocMng%5C3_0_20_21%5C1cv8upd.htm"
+    },
+    {
+     "title": "Дистрибутив обновления",
+     "path": "DocMng\\3_0_20_21\\DocMng_3_0_20_21_updsetup.zip",
+     "url": "https://releases.1c.ru/version_file?nick=DocMng30&ver=3.0.20.21&path=DocMng%5C3_0_20_21%5CDocMng_3_0_20_21_updsetup.zip"
+    },
+    {
+     "title": "Полный дистрибутив",
+     "path": "DocMng\\3_0_20_21\\DocMng_3_0_20_21_setup1c.zip",
+     "url": "https://releases.1c.ru/version_file?nick=DocMng30&ver=3.0.20.21&path=DocMng%5C3_0_20_21%5CDocMng_3_0_20_21_setup1c.zip"
+    },
+    {
+     "title": "ReadMe",
+     "path": "DocMng\\3_0_20_21\\ReadMe.txt",
+     "url": "https://releases.1c.ru/version_file?nick=DocMng30&ver=3.0.20.21&path=DocMng%5C3_0_20_21%5CReadMe.txt"
+    }
+   ]
+  }
+ }
+}

@@ -39,7 +39,7 @@ const links = reg.links.map(l => {
     from: { line: lineOf(l.from), ver: l.from.version || null },
     to: { line: lineOf(l.to), ver: l.to.version || null },
     plan: l.exchangePlan || null, src: l.sources || ['files'],
-    ev: l.evidence, notes: l.notes, fv: l.formatVersions || null,
+    ev: l.evidence, notes: l.notes, fv: l.formatVersions || null, urls: l.urls || [],
   };
   o.text = [o.from.line, o.to.line, o.from.ver, o.to.ver, o.mech, o.plan, ...o.notes, ...o.ev].join(' ').toLowerCase();
   return o;
@@ -49,15 +49,26 @@ const templates = reg.templates.map(t => ({
   ...t, count: reg.links.filter(l => l.shippedIn.some(s => s.path === t.path)).length,
 }));
 
+const filesPath = path.join(ROOT, 'data', 'catalog-files.json');
+const files = fs.existsSync(filesPath) ? JSON.parse(fs.readFileSync(filesPath, 'utf8')).files : {};
+const RE_TRANS = /перехода? с|обновления с конфигурац/i;
+const RE_EDITION_UPD = /с базовой версии|с версии (ПРОФ|КОРП)|^Порядок/i;
+
 // Статус конфигурации каталога: разобрана (та же редакция) / другая редакция / нет
 const cat = catalog.map(c => {
+  const f = files[c.id] || {};
+  const dl = f.links ? {
+    version: f.version, full: f.links.full || null, page: f.links.page || null,
+    trans: (f.files || []).map(x => ({ title: x.title.replace(/^.*Версия [\d.]+\.\s*/, ''), url: x.url }))
+      .filter(x => RE_TRANS.test(x.title) && !RE_EDITION_UPD.test(x.title)),
+  } : { error: f.error ? f.error.replace(/^.*HTTP \d+ /, '') : null };
   const same = reg.templates.filter(t => t.name === c.name);
   const ed = P.edition(c.version);
   const hit = same.filter(t => P.edition(t.version) === ed || (parseInt(ed, 10) >= 11 && parseInt(P.edition(t.version), 10) === parseInt(ed, 10)));
   const status = hit.length ? 'ok' : same.length ? 'old' : 'no';
   const releases = c.releases || (c.name === 'УправлениеПредприятием' ? 'https://releases.1c.ru/project/EnterpriseERP20' : null);
   return { id: c.id, name: c.name, title: c.title, version: c.version, date: c.date, releases, note: c.note,
-    status, scanned: (hit.length ? hit : same).map(t => t.version).join(', ') || null };
+    status, scanned: (hit.length ? hit : same).map(t => t.version).join(', ') || null, dl };
 });
 
 const data = {

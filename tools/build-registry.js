@@ -30,6 +30,7 @@ function addLink(l) {
     if (!ex.sources.includes(source)) ex.sources.push(source);
     ex.exchangePlan = ex.exchangePlan || l.exchangePlan;
     if (l.formatVersions) ex.formatVersions = l.formatVersions;
+    for (const u of l.urls || []) if (!(ex.urls || (ex.urls = [])).includes(u)) ex.urls.push(u);
     return;
   }
   links.set(key, { ...l, shippedIn: [l.shippedIn], evidence: ev, sources: [source] });
@@ -210,6 +211,32 @@ for (const cf of cfScans) {
   }
 }
 
+// ---------- releases.1c.ru: пакеты перехода среди файлов последних версий (API Апдейкона)
+const filesPath = path.join(ROOT, 'data', 'catalog-files.json');
+const catPath = path.join(ROOT, 'data', 'catalog-ru.json');
+if (fs.existsSync(filesPath) && fs.existsSync(catPath)) {
+  const files = JSON.parse(fs.readFileSync(filesPath, 'utf8')).files;
+  const relRules = (ann.releaseFiles || []).map(a => ({ ...a, re: new RegExp(a.match, 'i') }));
+  for (const c of JSON.parse(fs.readFileSync(catPath, 'utf8')).configs) {
+    const f = files[c.id];
+    if (!f || !f.files) continue;
+    const self = P.fromTemplate({ name: c.name, version: f.version, synonym: c.title });
+    const shippedIn = { path: `releases:${f.nick}/${f.version}`, product: self.product, version: f.version, name: c.name };
+    for (const x of f.files) {
+      const title = x.title.replace(/^.*Версия [\d.]+\.\s*/, '');
+      const r = relRules.find(a => a.re.test(title));
+      if (!r || r.skip) continue;
+      for (const s of r.from) {
+        addLink({
+          shippedIn, source: 'releases', kind: 'переход', mechanism: r.mechanism || 'пакет перехода',
+          exchangePlan: null, from: P.fromLabel(s), to: { ...self, version: null },
+          evidence: [`releases.1c.ru: ${x.path}`], notes: [`«${title}» (${c.title})`], urls: [x.url],
+        });
+      }
+    }
+  }
+}
+
 const list = [...links.values()].sort((a, b) =>
   P.line(a.from).localeCompare(P.line(b.from), 'ru') || P.line(a.to).localeCompare(P.line(b.to), 'ru') ||
   a.shippedIn[0].path.localeCompare(b.shippedIn[0].path));
@@ -225,7 +252,7 @@ const out = {
     from: { ...l.from, line: P.line(l.from) }, to: { ...l.to, line: P.line(l.to) },
     exchangePlan: l.exchangePlan, rulesFormat: l.rulesFormat || null, rulesCreated: l.rulesCreated || null,
     formatVersions: l.formatVersions || null,
-    sources: l.sources, shippedIn: l.shippedIn, evidence: l.evidence, notes: l.notes,
+    sources: l.sources, shippedIn: l.shippedIn, evidence: l.evidence, notes: l.notes, urls: l.urls || [],
   })),
   enterpriseData: enterpriseData.map(e => ({ config: P.display(e.config), version: e.config.version, declared: e.declared, packages: e.packages })),
 };
@@ -288,13 +315,13 @@ if (out.enterpriseData.length) {
   }
 }
 
-md.push('', '## Связи', '', 'Источник: **ф** — файл поставки, **CF** — объект конфигурации.', '',
+md.push('', '## Связи', '', 'Источник: **ф** — файл поставки, **CF** — объект конфигурации, **rel** — файл версии на releases.1c.ru.', '',
   '| # | Тип | Из | В | Механизм | План обмена | Ист. | Где найдено |', '|---|---|---|---|---|---|---|---|');
 for (const l of out.links) {
   const ver = c => (c.version ? ` <sub>${c.version}</sub>` : '');
   const where = l.evidence.slice(0, 2).map(e => '`' + e + '`').join('<br>') + (l.evidence.length > 2 ? `<br><sub>…ещё ${l.evidence.length - 2}</sub>` : '');
   const notes = l.notes.length ? `<br><sub>${l.notes.join('; ')}</sub>` : '';
-  const src = l.sources.map(s => (s === 'cf' ? 'CF' : 'ф')).join('+');
+  const src = l.sources.map(s => ({ cf: 'CF', releases: 'rel' })[s] || 'ф').join('+');
   md.push(`| ${l.id} | ${l.kind} | ${l.from.line}${ver(l.from)} | ${l.to.line}${ver(l.to)} | ${l.mechanism}${notes} | ${l.exchangePlan ? '`' + l.exchangePlan + '`' : ''} | ${src} | ${where} |`);
 }
 fs.writeFileSync(path.join(ROOT, 'REGISTRY.md'), md.join('\n') + '\n');
