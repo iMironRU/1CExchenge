@@ -1,0 +1,50 @@
+{
+ "id": "1c__OrdersMob__4_0_62",
+ "path": "1c/OrdersMob/4_0_62",
+ "name": "МобильноеПриложениеЗаказы",
+ "version": "4.0.62",
+ "scanned": "2026-10-05T14:04:30.864Z",
+ "enterpriseData": {
+  "declared": [],
+  "xdtoPackages": [],
+  "rules": {
+   "modules": [],
+   "rules": 0,
+   "send": [],
+   "receive": []
+  }
+ },
+ "exchangePlans": [
+  {
+   "name": "Архивирование",
+   "synonym": "Архивирование",
+   "comment": null,
+   "distributed": false,
+   "xdto": false,
+   "correspondents": [],
+   "sourceConfigName": null,
+   "rules": []
+  },
+  {
+   "name": "МобильноеПриложениеЗаказыКлиентов",
+   "synonym": "Мобильное приложение заказы клиентов",
+   "comment": null,
+   "distributed": false,
+   "xdto": false,
+   "correspondents": [],
+   "sourceConfigName": null,
+   "rules": []
+  },
+  {
+   "name": "ОбменСМобильнымиПриложениями",
+   "synonym": "Обмен с мобильными приложениями",
+   "comment": null,
+   "distributed": false,
+   "xdto": false,
+   "correspondents": [],
+   "sourceConfigName": null,
+   "rules": []
+  }
+ ],
+ "processors": []
+}

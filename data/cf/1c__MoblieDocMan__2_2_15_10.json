@@ -1,0 +1,30 @@
+{
+ "id": "1c__MoblieDocMan__2_2_15_10",
+ "path": "1c/MoblieDocMan/2_2_15_10",
+ "name": "МобильныйДокументооборот",
+ "version": "2.2.15.10",
+ "scanned": "2026-10-05T14:03:23.011Z",
+ "enterpriseData": {
+  "declared": [],
+  "xdtoPackages": [],
+  "rules": {
+   "modules": [],
+   "rules": 0,
+   "send": [],
+   "receive": []
+  }
+ },
+ "exchangePlans": [
+  {
+   "name": "ОбменССервером",
+   "synonym": "Обмен с сервером",
+   "comment": null,
+   "distributed": false,
+   "xdto": false,
+   "correspondents": [],
+   "sourceConfigName": null,
+   "rules": []
+  }
+ ],
+ "processors": []
+}

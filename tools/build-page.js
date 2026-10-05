@@ -15,10 +15,11 @@ const catPath = path.join(ROOT, 'data', 'catalog-ru.json');
 const catalog = fs.existsSync(catPath) ? JSON.parse(fs.readFileSync(catPath, 'utf8')).configs : [];
 
 // Порядок продуктов в матрице: семейства рядом, редакции по возрастанию
-const FAMILY = ['БП', 'БП КОРП', 'УТ', 'КА', 'ERP', 'УПП', 'Розница', 'УНФ', 'ЗУП', 'ЗУП КОРП', 'ДО КОРП',
+const FAMILY = ['БП', 'БП КОРП', 'БНО', 'УТ', 'КА', 'ERP', 'УПП', 'Розница', 'УНФ', 'ЗУП', 'ЗУП КОРП', 'ДО КОРП',
+  'БГУ', 'ЗКГУ', 'ЗБУ', 'Вещевое довольствие', 'Больничная аптека', 'Плановое питание',
   '1С:Касса', '1С:Мобильная касса', 'РМК', 'Отчетность предпринимателя', 'Клиент ЭДО', 'КАМИН Зарплата',
   'ТиС 7.7', 'Аспект 7.7', 'ЗиК 7.7', 'Бухгалтерия 7.7'];
-const FAMILY_GROUP = { 'БП КОРП': 'БП', 'ЗУП КОРП': 'ЗУП', 'КА': 'УТ', 'ERP': 'УТ', '1С:Мобильная касса': '1С:Касса', 'РМК': '1С:Касса' };
+const FAMILY_GROUP = { 'БП КОРП': 'БП', 'БНО': 'БП', 'ЗУП КОРП': 'ЗУП', 'ЗКГУ': 'БГУ', 'ЗБУ': 'БГУ', 'Вещевое довольствие': 'БГУ', 'Больничная аптека': 'БГУ', 'Плановое питание': 'БГУ', 'КА': 'УТ', 'ERP': 'УТ', '1С:Мобильная касса': '1С:Касса', 'РМК': '1С:Касса' };
 
 const mechClass = m => (/^КД2/.test(m) ? 'kd2' : /EnterpriseData/.test(m) ? 'ed' : /встроен в конфигурацию/.test(m) ? 'doc' : 'proc');
 
@@ -40,8 +41,10 @@ const links = reg.links.map(l => {
     to: { line: lineOf(l.to), ver: l.to.version || null },
     plan: l.exchangePlan || null, src: l.sources || ['files'],
     ev: l.evidence, notes: l.notes, fv: l.formatVersions || null, urls: l.urls || [],
+    ct: l.content || null,
   };
-  o.text = [o.from.line, o.to.line, o.from.ver, o.to.ver, o.mech, o.plan, ...o.notes, ...o.ev].join(' ').toLowerCase();
+  const objs = o.ct ? o.ct.export.flatMap(e => [e[0], e[1]]).filter(Boolean) : [];
+  o.text = [o.from.line, o.to.line, o.from.ver, o.to.ver, o.mech, o.plan, ...o.notes, ...o.ev, ...objs].join(' ').toLowerCase();
   return o;
 });
 

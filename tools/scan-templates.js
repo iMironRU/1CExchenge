@@ -7,6 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const { listEntries, readEntry } = require('./lib/zip');
 const { decodeText, rootElement, parseRules } = require('./lib/rules');
+const { rulesContent } = require('./lib/rules-content');
 
 const args = Object.fromEntries(process.argv.slice(2).reduce((a, v, i, arr) => {
   if (v.startsWith('--')) a.push([v.slice(2), arr[i + 1]]);
@@ -71,7 +72,7 @@ function context(rel) {
 function xmlArtifact(buf, where) {
   const text = decodeText(buf);
   const rules = parseRules(text);
-  if (rules) return { type: 'rules', ...where, ...rules };
+  if (rules) return { type: 'rules', ...where, ...rules, content: rulesContent(text) };
   return { type: 'xml', ...where, root: rootElement(text) };
 }
 

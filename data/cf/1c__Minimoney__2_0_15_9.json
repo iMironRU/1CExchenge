@@ -1,0 +1,30 @@
+{
+ "id": "1c__Minimoney__2_0_15_9",
+ "path": "1c/Minimoney/2_0_15_9",
+ "name": "Миниденьги",
+ "version": "2.0.15.9",
+ "scanned": "2026-10-05T14:02:20.234Z",
+ "enterpriseData": {
+  "declared": [],
+  "xdtoPackages": [],
+  "rules": {
+   "modules": [],
+   "rules": 0,
+   "send": [],
+   "receive": []
+  }
+ },
+ "exchangePlans": [
+  {
+   "name": "МобильноеПриложение",
+   "synonym": "Мобильное приложение",
+   "comment": null,
+   "distributed": false,
+   "xdto": false,
+   "correspondents": [],
+   "sourceConfigName": null,
+   "rules": []
+  }
+ ],
+ "processors": []
+}

@@ -12,6 +12,8 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { decodeText, parseRules, unescapeXml } = require('./lib/rules');
+const { rulesContent } = require('./lib/rules-content');
+const { edRules } = require('./lib/ed-rules');
 
 const args = Object.fromEntries(process.argv.slice(2).reduce((a, v, i, arr) => {
   if (v.startsWith('--')) a.push([v.slice(2), arr[i + 1] && !arr[i + 1].startsWith('--') ? arr[i + 1] : true]);
@@ -231,11 +233,21 @@ function rulesTemplates(objDir) {
     for (const f of ['Template.txt', 'Template.xml']) {
       const p = path.join(ext, f);
       if (!fs.existsSync(p)) continue;
-      const rules = parseRules(readText(p));
-      if (rules) res.push({ template: d.name, ...rules });
+      const text = readText(p);
+      const rules = parseRules(text);
+      if (rules) res.push({ template: d.name, ...rules, content: rulesContent(text) });
     }
   }
   return res;
+}
+
+// Модули правил EnterpriseData (по одному на версию формата у ДО и Розницы)
+function edModules(xmlDir) {
+  const dir = path.join(xmlDir, 'CommonModules');
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir)
+    .filter(n => /^МенеджерОбменаЧерезУниверсальныйФормат/.test(n) && fs.existsSync(path.join(dir, n, 'Ext', 'Module.bsl')))
+    .map(n => ({ name: n, text: readText(path.join(dir, n, 'Ext', 'Module.bsl')) }));
 }
 
 function analyze(id, cfDir, meta) {
@@ -278,7 +290,7 @@ function analyze(id, cfDir, meta) {
   return {
     id, ...meta,
     scanned: new Date().toISOString(),
-    enterpriseData: { declared: [...fv].sort(verCmp), xdtoPackages: edPackages.sort(verCmp) },
+    enterpriseData: { declared: [...fv].sort(verCmp), xdtoPackages: edPackages.sort(verCmp), rules: edRules(edModules(xmlDir)) },
     exchangePlans: plans,
     processors,
   };

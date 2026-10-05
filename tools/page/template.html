@@ -127,6 +127,23 @@ table.mx { border-collapse: separate; border-spacing: 0; font-variant-numeric: t
 .ev li { font-family: var(--mono); font-size: 11px; color: var(--muted); word-break: break-word; line-height: 1.45; }
 .ev li b { color: var(--fg); font-weight: 500; }
 details.more summary { cursor: pointer; color: var(--sync); font-size: 12px; }
+.ct { display: grid; gap: 4px; font-size: 13px; padding: 8px 10px; border-radius: var(--r-sm); background: var(--surface); border: 1px solid var(--line); }
+.ct b { font-variant-numeric: tabular-nums; }
+.ct-scroll { max-height: 320px; overflow: auto; margin-top: 6px; }
+.ct-tbl { border-collapse: collapse; width: 100%; font-family: var(--mono); font-size: 11px; }
+.ct-tbl th { text-align: left; font: 600 11px var(--font); color: var(--muted); padding: 6px 4px 2px; position: sticky; top: 0; background: var(--surface); }
+.ct-tbl td { padding: 2px 4px; border-bottom: 1px dashed var(--line); word-break: break-word; vertical-align: top; }
+.ct-tbl td:first-child { width: 55%; }
+.dim { color: var(--faint); }
+.obj-list { max-height: 78vh; overflow: auto; display: grid; }
+.obj { appearance: none; border: 0; border-bottom: 1px solid var(--line); background: none; text-align: left; cursor: pointer;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 10px; align-items: baseline; padding: 7px 14px; font: 13px var(--font); color: var(--fg); }
+.obj:hover { background: var(--surface2); }
+.obj.sel { background: var(--sync-dim); }
+.obj .on { font-family: var(--mono); font-size: 12px; word-break: break-word; min-width: 0; }
+.obj .ok { color: var(--muted); font-size: 11px; }
+.obj .oc { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--sync); min-width: 2ch; text-align: right; }
+.objrows li { display: block; }
 .partners { display: grid; gap: 4px; }
 .partner { display: flex; justify-content: space-between; gap: 8px; align-items: center; padding: 4px 0; border-bottom: 1px dashed var(--line); }
 .partner:last-child { border-bottom: 0; }
@@ -184,6 +201,7 @@ footer { color: var(--faint); font-size: 12px; }
 
   <nav class="tabs" role="tablist" aria-label="Разделы">
     <button class="tab" role="tab" id="tab-matrix" data-tab="matrix" aria-selected="true">Матрица</button>
+    <button class="tab" role="tab" id="tab-obj" data-tab="obj" aria-selected="false">Объекты</button>
     <button class="tab" role="tab" id="tab-list" data-tab="list" aria-selected="false">Связи</button>
     <button class="tab" role="tab" id="tab-ed" data-tab="ed" aria-selected="false">EnterpriseData</button>
     <button class="tab" role="tab" id="tab-dist" data-tab="dist" aria-selected="false">Поставки</button>
@@ -213,6 +231,25 @@ footer { color: var(--faint); font-size: 12px; }
     <div class="split">
       <div class="card"><div class="mx-scroll" id="mx"></div></div>
       <aside class="card detail" id="detail" aria-live="polite"></aside>
+    </div>
+  </section>
+
+  <section id="p-obj" class="section" role="tabpanel" aria-labelledby="tab-obj" hidden>
+    <p class="note">Какие объекты «ездят» между конфигурациями — по правилам КД2 (ПВД + ПКО) и правилам EnterpriseData
+      (отправка одной стороны ∩ получение другой по объекту формата). Объект ищется по имени метаданных в любой из сторон.</p>
+    <div class="bar">
+      <input type="search" id="o-q" placeholder="Объект: РеализацияТоваровУслуг, Номенклатура…" aria-label="Поиск объекта" style="width:320px">
+      <div class="seg" role="group" aria-label="Вид объекта" id="o-kind">
+        <button data-k="all" aria-pressed="true">Все</button>
+        <button data-k="Документ" aria-pressed="false">Документы</button>
+        <button data-k="Справочник" aria-pressed="false">Справочники</button>
+        <button data-k="Регистр" aria-pressed="false">Регистры</button>
+      </div>
+      <span class="count" id="o-count"></span>
+    </div>
+    <div class="split">
+      <div class="card"><div class="obj-list" id="o-list"></div></div>
+      <aside class="card detail" id="o-detail" aria-live="polite"></aside>
     </div>
   </section>
 
@@ -296,11 +333,11 @@ function showTab(name) {
   store.set('tab', name);
 }
 tabs.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
-{ const h = location.hash.slice(1); showTab(['matrix', 'list', 'ed', 'dist'].includes(h) ? h : store.get('tab', 'matrix')); }
+{ const h = location.hash.slice(1); showTab(['matrix', 'obj', 'list', 'ed', 'dist'].includes(h) ? h : store.get('tab', 'matrix')); }
 
 // ---------- матрица
 const F = { kind: 'all', mech: new Set(['kd2', 'ed', 'proc', 'doc']), hide77: false, q: '' };
-let selected = { from: 'УТ 11', to: 'БП 3.0' };
+let selected = { from: 'УТ 11', to: 'Розница 2' };
 
 const byOrder = (a, b) => (lineInfo[a]?.order ?? 999) - (lineInfo[b]?.order ?? 999) || a.localeCompare(b, 'ru');
 const is77 = line => /7\.7$/.test(line) || /^Прежние/.test(line);
@@ -365,6 +402,7 @@ function linkItem(l, opts = {}) {
     ? `<ul class="ev">${ev.slice(0, 3).join('')}</ul><details class="more"><summary>ещё ${ev.length - 3}</summary><ul class="ev">${ev.slice(3).join('')}</ul></details>`
     : `<ul class="ev">${ev.join('')}</ul>`;
   const fv = l.fv && l.fv.length ? `<div class="notes">версии формата: ${esc(l.fv.join(', '))}</div>` : '';
+  const ct = l.ct ? contentHtml(l.ct) : '';
   const urls = (l.urls || []).map(u => `<a href="${esc(u)}" target="_blank" rel="noopener">открыть файл на releases.1c.ru</a>`).join(' · ');
   return `<div class="item">
     <div class="top"><span class="pill ${l.k}">${KIND[l.k]}</span>${mechPill}<span class="mech">${esc(l.mech)}</span>
@@ -375,8 +413,43 @@ function linkItem(l, opts = {}) {
     ${plain.length ? `<div class="notes">${esc(plain.join(' · '))}</div>` : ''}
     ${warn.length ? `<div class="notes warn">${esc(warn.join(' · '))}</div>` : ''}
     ${fv}
+    ${ct}
     ${evHtml}
   </div>`;
+}
+
+// Что передают правила КД2: сводка по видам объектов и таблица «что во что»
+const KIND_PL = { 'Справочник': 'справочники', 'Документ': 'документы', 'Регистр сведений': 'регистры сведений',
+  'Регистр накопления': 'регистры накопления', 'Регистр бухгалтерии': 'регистры бухгалтерии', 'ПВХ': 'ПВХ',
+  'План счетов': 'планы счетов', 'Перечисление': 'перечисления', 'Константа': 'константы', 'Прочее': 'прочее' };
+const KIND_ORDER = ['Документ', 'Справочник', 'Регистр сведений', 'Регистр накопления', 'Регистр бухгалтерии', 'ПВХ', 'План счетов', 'Константа', 'Перечисление', 'Прочее'];
+function contentHtml(ct) {
+  const kinds = Object.entries(ct.summary).sort((a, b) => KIND_ORDER.indexOf(a[0]) - KIND_ORDER.indexOf(b[0]));
+  const sum = kinds.map(([k, n]) => `<b>${n}</b> ${esc(KIND_PL[k] || k)}`).join(' · ');
+  const extra = ct.ed
+    ? [`объектов формата ${ct.formats}`].join(' · ')
+    : [`ПКО ${ct.pko}`, ct.off ? `отключено правил ${ct.off}` : '', ct.reg ? `регистрация: ${ct.reg.count} объектов` : ''].filter(Boolean).join(' · ');
+  const split = s => { if (!s) return [null, null]; const i = s.indexOf('.'); return [s.slice(0, i), s.slice(i + 1)]; };
+  const byKind = new Map();
+  for (const [from, to, via] of ct.export) {
+    const [k, n] = split(from || to);
+    if (!byKind.has(k)) byKind.set(k, []);
+    byKind.get(k).push([from ? n : null, to, via]);
+  }
+  const rows = [...byKind].sort((a, b) => KIND_ORDER.indexOf(a[0]) - KIND_ORDER.indexOf(b[0])).map(([k, list]) =>
+    `<tr><th colspan="2">${esc(KIND_PL[k] || k || '—')} (${list.length})</th></tr>` +
+    list.map(([n, to, via]) => {
+      const [tk, tn] = split(to);
+      const same = tn === n && tk === k;
+      const unknown = ct.ed ? 'не разобрано' : 'в обработчике';
+      const dst = !to ? `<span class="dim">${unknown}</span>` : same ? '<span class="dim">то же</span>' : esc(tk === k ? tn : to);
+      const fmt = ct.ed && via ? `<div class="dim">через ${esc(via)}</div>` : '';
+      return `<tr><td>${n ? esc(n) : '<span class="dim">не разобрано</span>'}${fmt}</td><td>${dst}</td></tr>`;
+    }).join('')).join('');
+  const lead = ct.ed ? 'Ездит через EnterpriseData' : 'Выгружается';
+  const basis = ct.basis && ct.basis.length ? `<div class="notes warn">${esc(ct.basis.join(' · '))}</div>` : '';
+  return `<div class="ct"><div>${lead}: ${sum || '—'}</div><div class="notes">${esc(extra)}</div>${basis}
+    <details class="more"><summary>что во что (${ct.export.length})</summary><div class="ct-scroll"><table class="ct-tbl">${rows}</table></div></details></div>`;
 }
 
 function renderDetail() {
@@ -446,6 +519,68 @@ $('#f-mech').addEventListener('click', e => {
 $('#f-77').addEventListener('change', e => { F.hide77 = e.target.checked; renderMatrix(); renderDetail(); });
 $('#f-q').addEventListener('input', e => { F.q = e.target.value; renderMatrix(); });
 
+// ---------- объекты: обратный индекс «объект -> где и во что ездит»
+const OBJ = (() => {
+  const idx = new Map();
+  const add = (key, row) => { if (!key) return; if (!idx.has(key)) idx.set(key, { key, rows: [], links: new Set() }); const e = idx.get(key); e.rows.push(row); e.links.add(row.l.id); };
+  for (const l of links) {
+    if (!l.ct) continue;
+    for (const [from, to, via] of l.ct.export) {
+      const row = { l, from, to, via: l.ct.ed ? via : null };
+      add(from, row);
+      if (to && to !== from) add(to, row);
+    }
+  }
+  return [...idx.values()].sort((a, b) => b.links.size - a.links.size || a.key.localeCompare(b.key, 'ru'));
+})();
+const O = { q: '', kind: 'all', sel: null };
+function renderObjList() {
+  const q = O.q.trim().toLowerCase();
+  const list = OBJ.filter(o => (O.kind === 'all' || o.key.startsWith(O.kind)) && (!q || o.key.toLowerCase().includes(q)));
+  $('#o-count').textContent = `${list.length} объектов`;
+  if (!O.sel || !list.some(o => o.key === O.sel)) O.sel = list.length ? list[0].key : null;
+  $('#o-list').innerHTML = list.slice(0, 400).map(o => `<button class="obj${o.key === O.sel ? ' sel' : ''}" data-obj="${esc(o.key)}">
+      <span class="on">${esc(o.key.slice(o.key.indexOf('.') + 1))}</span><span class="ok">${esc(o.key.split('.')[0])}</span><span class="oc">${o.links.size}</span></button>`).join('') +
+    (list.length > 400 ? `<div class="mx-empty">показаны первые 400 — уточните поиск</div>` : '') +
+    (!list.length ? '<div class="mx-empty">Объект не найден в правилах. Проверьте имя или сбросьте фильтр вида.</div>' : '');
+  renderObjDetail();
+}
+function renderObjDetail() {
+  const box = $('#o-detail');
+  const o = OBJ.find(x => x.key === O.sel);
+  if (!o) { box.innerHTML = '<div class="sub">Выберите объект слева.</div>'; return; }
+  // группируем по паре «откуда → куда»
+  const pairs = new Map();
+  for (const r of o.rows) {
+    const k = `${r.l.from.line}→${r.l.to.line}`;
+    if (!pairs.has(k)) pairs.set(k, { from: r.l.from.line, to: r.l.to.line, rows: [] });
+    pairs.get(k).rows.push(r);
+  }
+  const html = [...pairs.values()].sort((a, b) => byOrder(a.from, b.from) || byOrder(a.to, b.to)).map(p => {
+    const uniq = new Map();
+    for (const r of p.rows) uniq.set(`${r.from}|${r.to}|${r.via}|${r.l.k}|${r.l.m}`, r);
+    const items = [...uniq.values()].map(r => {
+      const role = r.from === o.key ? 'отсюда' : 'сюда';
+      const other = r.from === o.key ? (r.to || (r.l.ct.ed ? 'не разобрано' : 'в обработчике')) : (r.from || 'не разобрано');
+      const arrow = r.from === o.key ? `→ ${esc(other)}` : `← ${esc(other)}`;
+      return `<li><span class="pill ${r.l.k}">${r.l.m === 'ed' ? 'ED' : r.l.m === 'kd2' ? 'КД2' : 'обр.'}</span> <span class="mono">${arrow}</span>${r.via ? ` <span class="dim mono">через ${esc(r.via)}</span>` : ''} <span class="dim">(${role})</span></li>`;
+    }).join('');
+    return `<div class="item"><div><button class="linkbtn" data-goto-from="${esc(p.from)}" data-goto-to="${esc(p.to)}">${esc(p.from)} → ${esc(p.to)}</button></div><ul class="ev objrows">${items}</ul></div>`;
+  }).join('');
+  box.innerHTML = `<div class="dh"><div class="route">${esc(o.key)}</div>
+    <div class="sub">ездит в ${o.links.size} ${o.links.size === 1 ? 'связи' : 'связях'} между ${pairs.size} парами конфигураций</div></div>
+    <div class="items">${html}</div>`;
+}
+$('#o-list').addEventListener('click', e => { const b = e.target.closest('[data-obj]'); if (!b) return; O.sel = b.dataset.obj; renderObjList(); });
+$('#o-q').addEventListener('input', e => { O.q = e.target.value; renderObjList(); });
+segment('#o-kind', k => { O.kind = k; renderObjList(); });
+document.addEventListener('click', e => {
+  const g = e.target.closest('[data-goto-from]');
+  if (!g) return;
+  showTab('matrix');
+  select({ from: g.dataset.gotoFrom, to: g.dataset.gotoTo });
+});
+
 // ---------- список связей
 const L = { kind: 'all', q: '' };
 function renderList() {
@@ -514,5 +649,5 @@ $('#l-q').addEventListener('input', e => { L.q = e.target.value; renderList(); }
   }).join('');
 })();
 
-renderMatrix(); renderDetail(); renderList();
+renderMatrix(); renderDetail(); renderList(); renderObjList();
 </script>

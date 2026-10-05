@@ -29,6 +29,7 @@ function addLink(l) {
     for (const n of l.notes) if (!ex.notes.includes(n)) ex.notes.push(n);
     if (!ex.sources.includes(source)) ex.sources.push(source);
     ex.exchangePlan = ex.exchangePlan || l.exchangePlan;
+    ex.content = ex.content || l.content || null;
     if (l.formatVersions) ex.formatVersions = l.formatVersions;
     for (const u of l.urls || []) if (!(ex.urls || (ex.urls = [])).includes(u)) ex.urls.push(u);
     return;
@@ -41,6 +42,19 @@ function addLink(l) {
 function withSelf(c, self) {
   if (c && !c.edition && c.product === self.product) return { ...c, edition: self.edition };
   return c;
+}
+
+// Что передают правила: включённые ПВД (откуда → куда, группа), число ПКО, состав регистрации
+function linkContent(conv, reg) {
+  const c = conv && conv.content;
+  if (!c || c.kind !== 'conversion') return null;
+  const on = c.export.filter(e => !e.off);
+  const r = reg && reg.content && reg.content.kind === 'registration' ? reg.content : null;
+  return {
+    summary: c.summary, pko: c.pko, off: c.export.length - on.length,
+    export: on.map(e => [e.from, e.to, e.group]),
+    reg: r ? { summary: r.summary, count: r.composition.length } : null,
+  };
 }
 
 function evidence(a) {
@@ -85,6 +99,7 @@ for (const t of scan.templates) {
         from, to, kind,
         mechanism: 'КД2: правила конвертации',
         exchangePlan: plan ? plan.exchangePlan : null,
+        content: linkContent(a, plan),
         rulesFormat: a.formatVersion,
         rulesCreated: a.created,
         shippedIn,
@@ -150,6 +165,7 @@ for (const cf of cfScans) {
         from: withSelf(P.fromRules(r.source), self), to: withSelf(P.fromRules(r.target), self),
         rulesFormat: r.formatVersion, rulesCreated: r.created,
         evidence: [`${where}.Макет.${r.template}`], notes: r.title ? [`«${r.title}»`] : [],
+        content: linkContent(r, p.rules.find(x => x.kind === 'registration')),
       });
     }
     if (!p.xdto) continue;
@@ -237,6 +253,49 @@ if (fs.existsSync(filesPath) && fs.existsSync(catPath)) {
   }
 }
 
+// ---------- EnterpriseData: какие объекты «ездят» — отправка одной стороны ∩ получение другой по объекту формата
+const verCmp = (a, b) => String(a).split('.').map(Number).reduce((r, x, i) => r || x - (String(b).split('.').map(Number)[i] || 0), 0);
+const edBy = new Map();
+for (const cf of cfScans) {
+  const r = cf.enterpriseData && cf.enterpriseData.rules;
+  if (!r || !r.rules) continue;
+  const self = P.fromTemplate(cf);
+  const ln = P.line(self);
+  const prev = edBy.get(ln);
+  if (!prev || verCmp(cf.version, prev.version) > 0) edBy.set(ln, { ...r, version: cf.version, display: P.display(self) });
+}
+// линейки без своей поставки берём по родственной конфигурации (общая кодовая база)
+const ED_ALIAS = { 'БП КОРП 3.0': 'БП 3.0', 'ЗУП 3': 'ЗУП КОРП 3', 'ЗУП КОРП 3': 'ЗУП 3', 'ERP 2': 'КА 2', 'ДО КОРП': 'ДО КОРП 3' };
+const edFor = line => edBy.get(line) || (ED_ALIAS[line] && edBy.get(ED_ALIAS[line]) ? { ...edBy.get(ED_ALIAS[line]), alias: ED_ALIAS[line] } : null);
+
+function edContent(fromLine, toLine) {
+  const A = edFor(fromLine), B = edFor(toLine);
+  if (!A && !B) return null;
+  const rows = [];
+  if (A) {
+    const recv = new Map();
+    if (B) for (const [f, d] of B.receive) { if (!recv.has(f)) recv.set(f, []); recv.get(f).push(d); }
+    for (const [d, f] of A.send) {
+      if (!B) { rows.push([d, null, f]); continue; }
+      for (const y of recv.get(f) || []) rows.push([d, y, f]);
+    }
+  } else {
+    for (const [f, y] of B.receive) rows.push([null, y, f]);
+  }
+  const objs = [...new Set(rows.map(r => r[0] || r[1]))];
+  const summary = {};
+  for (const o of objs) { const k = o.split('.')[0]; summary[k] = (summary[k] || 0) + 1; }
+  const basis = [];
+  if (A && A.alias) basis.push(`отправка — по ${A.alias} (общая кодовая база)`);
+  if (B && B.alias) basis.push(`получение — по ${B.alias} (общая кодовая база)`);
+  if (!A) basis.push(`${fromLine} не разобрана: показано, что принимает ${toLine}`);
+  if (!B) basis.push(`${toLine} не разобрана: показано, что отправляет ${fromLine}`);
+  return { ed: true, summary, export: rows, formats: new Set(rows.map(r => r[2])).size, pko: null, off: 0, reg: null, basis };
+}
+for (const l of links.values()) {
+  if (l.mechanism === 'EnterpriseData') l.content = edContent(P.line(l.from), P.line(l.to));
+}
+
 const list = [...links.values()].sort((a, b) =>
   P.line(a.from).localeCompare(P.line(b.from), 'ru') || P.line(a.to).localeCompare(P.line(b.to), 'ru') ||
   a.shippedIn[0].path.localeCompare(b.shippedIn[0].path));
@@ -251,7 +310,7 @@ const out = {
     id: l.id, kind: l.kind, mechanism: l.mechanism,
     from: { ...l.from, line: P.line(l.from) }, to: { ...l.to, line: P.line(l.to) },
     exchangePlan: l.exchangePlan, rulesFormat: l.rulesFormat || null, rulesCreated: l.rulesCreated || null,
-    formatVersions: l.formatVersions || null,
+    formatVersions: l.formatVersions || null, content: l.content || null,
     sources: l.sources, shippedIn: l.shippedIn, evidence: l.evidence, notes: l.notes, urls: l.urls || [],
   })),
   enterpriseData: enterpriseData.map(e => ({ config: P.display(e.config), version: e.config.version, declared: e.declared, packages: e.packages })),

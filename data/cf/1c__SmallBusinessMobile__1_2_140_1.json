@@ -1,0 +1,30 @@
+{
+ "id": "1c__SmallBusinessMobile__1_2_140_1",
+ "path": "1c/SmallBusinessMobile/1_2_140_1",
+ "name": "МобильноеУправлениеНебольшойФирмой",
+ "version": "1.2.140.1",
+ "scanned": "2026-10-05T14:07:00.435Z",
+ "enterpriseData": {
+  "declared": [],
+  "xdtoPackages": [],
+  "rules": {
+   "modules": [],
+   "rules": 0,
+   "send": [],
+   "receive": []
+  }
+ },
+ "exchangePlans": [
+  {
+   "name": "МобильноеПриложение",
+   "synonym": "Мобильное приложение",
+   "comment": null,
+   "distributed": false,
+   "xdto": false,
+   "correspondents": [],
+   "sourceConfigName": null,
+   "rules": []
+  }
+ ],
+ "processors": []
+}
