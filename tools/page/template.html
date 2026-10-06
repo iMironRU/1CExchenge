@@ -415,10 +415,13 @@ function ensureCT() {
 }
 const rowsOf = l => (CT && CT[l.id]) || null;
 // «Документ.РеализацияТоваровУслуг» -> «Реализация товаров услуг»
+// служебные объекты — понятными словами
+const HUMAN_FIX = { 'СсылкиОбъектовED': 'Ссылки на объекты учётной программы' };
 function human(s) {
   if (!s) return s;
   const n = s.includes('.') ? s.slice(s.indexOf('.') + 1) : s;
-  const words = n.replace(/_/g, ' ').split(/(?<=[а-яёa-z0-9])(?=[А-ЯЁA-Z])|(?<=[А-ЯЁA-Z])(?=[А-ЯЁA-Z][а-яёa-z])|s+/).filter(Boolean);
+  if (HUMAN_FIX[n]) return HUMAN_FIX[n];
+  const words = n.replace(/_/g, ' ').split(/(?<=[а-яёa-z0-9])(?=[А-ЯЁA-Z])|(?<=[А-ЯЁA-Z])(?=[А-ЯЁA-Z][а-яёa-z])|\s+/).filter(Boolean);
   return words.map((w, i) => (i === 0 || /^[А-ЯЁA-Z0-9]{2,}$/.test(w) ? w : w.toLowerCase())).join(' ');
 }
 const SRC = { files: 'файл поставки', cf: 'код CF', releases: 'releases.1c.ru' };

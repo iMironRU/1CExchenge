@@ -3,7 +3,7 @@
  "path": "Captain/FoodComb/2_0_13_683",
  "name": "КомбинатПитания",
  "version": "2.0.13.683",
- "scanned": "2026-10-06T06:19:39.996Z",
+ "scanned": "2026-10-06T08:04:12.996Z",
  "enterpriseData": {
   "declared": [
    "1.2",
@@ -33,6 +33,7 @@
    "receive": []
   }
  },
+ "planRules": {},
  "exchangePlans": [
   {
    "name": "АвтономнаяРабота",

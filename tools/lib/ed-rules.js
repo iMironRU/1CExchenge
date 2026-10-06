@@ -73,4 +73,105 @@ function edRules(modules) {
   };
 }
 
-module.exports = { edRules, edRulesFromModule };
+// ---------- Рукописный EnterpriseData (1С:Мобильная касса): без ПКО — диспетчеры по типам
+//   отправка:  ПолучитьОбъектXDTO — ветки «ТипЗнч(Данные) = Тип("ДокументОбъект.Чек")» -> Выгрузить*(…)
+//              -> СоздатьОбъектXDTO(…, "Документ.ЧекККМ", …)
+//   получение: ЗагрузитьОбъект — ветки «ОбъектXDTO.Тип().Имя = "Справочник.Номенклатура"» -> Загрузить*(…)
+//              -> Справочники.Номенклатура.СоздатьЭлемент()
+const TYPE_KIND = {
+  'СправочникОбъект': 'Справочник', 'СправочникСсылка': 'Справочник', 'ДокументОбъект': 'Документ', 'ДокументСсылка': 'Документ',
+  'РегистрСведенийНаборЗаписей': 'Регистр сведений', 'РегистрСведенийЗапись': 'Регистр сведений',
+};
+// объект формата верхнего уровня (не «КлючевыеСвойства…», не табличные части «….Строка»)
+const TOP_FORMAT = /^(Документ|Справочник|РегистрСведений|ПланВидовХарактеристик)\.[^."]+$/;
+const CREATE = new RegExp(`(Справочники|Документы|РегистрыСведений|РегистрыНакопления)\\.(${ID})\\.(?:СоздатьЭлемент|СоздатьГруппу|СоздатьДокумент|СоздатьНаборЗаписей|СоздатьМенеджерЗаписи)(?=\\s*\\()`, 'g');
+
+// Ветки верхнего уровня первого «Если … ИначеЕсли … КонецЕсли» и следующих: [{cond, block}]
+function topBranches(body) {
+  const out = [];
+  let depth = 0, cur = null, inCond = false;
+  const thenEnd = s => /(^|\s)Тогда$/.test(s);
+  for (const raw of body.split('\n')) {
+    const line = raw.replace(/\/\/.*$/, '').trim();
+    if (!line) continue;
+    if (inCond) { cur.cond += ' ' + line; inCond = !thenEnd(line); continue; }
+    const isIf = /^Если[\s(]/.test(line), oneLine = isIf && /КонецЕсли/.test(line);
+    if ((depth === 0 && isIf && !oneLine) || (depth === 1 && /^ИначеЕсли[\s(]/.test(line))) {
+      cur = { cond: line, block: '' };
+      out.push(cur);
+      depth = 1;
+      inCond = !thenEnd(line);
+      continue;
+    }
+    if (depth === 1 && /^Иначе$/.test(line)) { cur = { cond: '', block: '' }; out.push(cur); continue; }
+    if (isIf && !oneLine) depth++;
+    if (/^КонецЕсли/.test(line)) { depth--; if (depth === 0) { cur = null; continue; } }
+    if (cur) cur.block += line + '\n';
+  }
+  return out;
+}
+
+const callsOf = (code, prefix) => [...new Set([...code.matchAll(new RegExp(`(?:^|[^0-9A-Za-zА-Яа-яЁё_.])(${prefix}${ID})\\s*\\(`, 'g'))].map(m => m[1]))];
+
+// объекты формата, создаваемые функцией выгрузки (и вложенными Выгрузить*)
+function createdFormats(text, fn, seen = new Set()) {
+  if (seen.has(fn)) return [];
+  seen.add(fn);
+  const body = methodBody(text, fn);
+  if (!body) return [];
+  const own = [...body.matchAll(/СоздатьОбъектXDTO\(\s*[^,()]+,\s*"([^"]+)"/g)].map(m => m[1]).filter(f => TOP_FORMAT.test(f));
+  const all = [...new Set([...own, ...callsOf(body, 'Выгрузить').flatMap(c => createdFormats(text, c, seen))])];
+  // «Справочник.ШтрихкодыНоменклатурыЗаписи» при «Справочник.ШтрихкодыНоменклатуры» — тип строки, не объект
+  return all.filter(f => !all.some(g => g !== f && f.startsWith(g) && /^(Запись|Записи|Строка)/.test(f.slice(g.length))));
+}
+
+// объекты ИБ, создаваемые функцией загрузки (и вложенными Загрузить*/НайтиДобавить*/Создать*)
+function createdData(text, fn, depth = 0, seen = new Set()) {
+  if (seen.has(fn) || depth > 2) return [];
+  seen.add(fn);
+  const body = methodBody(text, fn);
+  if (!body) return [];
+  const own = [...body.matchAll(CREATE)].map(m => `${COLLECTION[m[1]] || m[1]}.${m[2]}`);
+  if (own.length) return [...new Set(own)];
+  // без прямого создания: поиск/создание по ключевым свойствам, обновление найденного документа,
+  // ссылки на объекты учётной системы в СсылкиОбъектовED, запись в найденную номенклатуру
+  const refs = [
+    ...[...body.matchAll(/СсылкаНаСправочникПоКлючевымСвойствам\([^;]*?,\s*"([^"]+)"\s*\)/g)].map(m => `Справочник.${m[1]}`),
+    ...[...body.matchAll(/ДесериализоватьСсылкуНаДокумент\([^;]*?,\s*"([^"]+)"\s*\)/g)].map(m => `Документ.${m[1]}`),
+    ...(/ТипыОбъектовEnterpriseData\./.test(body) ? ['Справочник.СсылкиОбъектовED'] : []),
+    ...(/СсылкаНаНоменклатуру/.test(body) ? ['Справочник.Номенклатура'] : []),
+  ];
+  if (refs.length) return [...new Set(refs)];
+  return [...new Set(callsOf(body, '(?:Загрузить|НайтиДобавить|Создать)').flatMap(c => createdData(text, c, depth + 1, seen)))];
+}
+
+function handEdRules(modules) {
+  const send = new Map(), receive = new Map();
+  let count = 0;
+  for (const { text } of modules) {
+    for (const b of topBranches(methodBody(text, 'ПолучитьОбъектXDTO') || '')) {
+      const data = [...new Set([...b.cond.matchAll(new RegExp(`Тип\\("(${ID})\\.(${ID})"\\)`, 'g'))]
+        .filter(m => TYPE_KIND[m[1]]).map(m => `${TYPE_KIND[m[1]]}.${m[2]}`))];
+      const formats = [...new Set(callsOf(b.block, 'Выгрузить').flatMap(c => createdFormats(text, c)))];
+      for (const f of formats) {
+        count++;
+        for (const d of data.length ? data : [null]) send.set(`${d}|${f}`, [d, f]);
+      }
+    }
+    for (const b of topBranches(methodBody(text, 'ЗагрузитьОбъект') || '')) {
+      const formats = [...new Set([...b.cond.matchAll(/Тип\(\)\.Имя\s*=\s*"([^"]+)"/g)].map(m => m[1]).filter(f => TOP_FORMAT.test(f)))];
+      if (!formats.length) continue;
+      const data = [...new Set(callsOf(b.block, '(?:Загрузить|НайтиДобавить)').flatMap(c => createdData(text, c)))];
+      for (const f of formats) {
+        count++;
+        for (const d of data.length ? data : [null]) receive.set(`${f}|${d}`, [f, d]);
+      }
+    }
+  }
+  // отправка из структуры (штрихкоды, цены) — объект ИБ по встречной загрузке того же объекта формата
+  const recvData = f => [...receive.values()].filter(([rf, d]) => rf === f && d).map(([, d]) => d);
+  const sendRows = [...send.values()].flatMap(([d, f]) => (d ? [[d, f]] : recvData(f).length ? recvData(f).map(x => [x, f]) : [[null, f]]));
+  return { modules: modules.map(m => m.name), rules: count, hand: true, send: sendRows, receive: [...receive.values()] };
+}
+
+module.exports = { edRules, edRulesFromModule, handEdRules, topBranches };

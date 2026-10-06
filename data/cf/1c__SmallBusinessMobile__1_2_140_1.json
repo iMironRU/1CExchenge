@@ -3,7 +3,7 @@
  "path": "1c/SmallBusinessMobile/1_2_140_1",
  "name": "МобильноеУправлениеНебольшойФирмой",
  "version": "1.2.140.1",
- "scanned": "2026-10-06T06:14:02.514Z",
+ "scanned": "2026-10-06T08:03:58.075Z",
  "enterpriseData": {
   "declared": [],
   "xdtoPackages": [],
@@ -14,6 +14,7 @@
    "receive": []
   }
  },
+ "planRules": {},
  "exchangePlans": [
   {
    "name": "МобильноеПриложение",

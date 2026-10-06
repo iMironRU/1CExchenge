@@ -13,7 +13,7 @@ const path = require('path');
 const { spawnSync } = require('child_process');
 const { decodeText, parseRules, unescapeXml } = require('./lib/rules');
 const { rulesContent } = require('./lib/rules-content');
-const { edRules } = require('./lib/ed-rules');
+const { edRules, handEdRules } = require('./lib/ed-rules');
 
 const args = Object.fromEntries(process.argv.slice(2).reduce((a, v, i, arr) => {
   if (v.startsWith('--')) a.push([v.slice(2), arr[i + 1] && !arr[i + 1].startsWith('--') ? arr[i + 1] : true]);
@@ -253,6 +253,21 @@ function edModules(xmlDir) {
     .map(n => ({ name: n, text: readText(path.join(dir, n, 'Ext', 'Module.bsl')) }));
 }
 
+// Правила EnterpriseData: модули БСП (ПКО), иначе — рукописный обмен (1С:Мобильная касса):
+// общий модуль с диспетчерами ПолучитьОбъектXDTO (выгрузка) и ЗагрузитьОбъект (загрузка)
+function edRulesOf(xmlDir) {
+  const mods = edModules(xmlDir);
+  if (mods.length) return edRules(mods);
+  const dir = path.join(xmlDir, 'CommonModules');
+  if (!fs.existsSync(dir)) return edRules([]);
+  const hand = fs.readdirSync(dir)
+    .map(n => ({ name: n, file: path.join(dir, n, 'Ext', 'Module.bsl') }))
+    .filter(m => fs.existsSync(m.file))
+    .map(m => ({ name: m.name, text: readText(m.file) }))
+    .filter(m => /^\s*Функция\s+ПолучитьОбъектXDTO\s*\(/m.test(m.text) && /^\s*Процедура\s+ЗагрузитьОбъект\s*\(/m.test(m.text));
+  return hand.length ? handEdRules(hand) : edRules([]);
+}
+
 // Обмены в собственном формате (не EnterpriseData), но с правилами в модуле того же вида (ДобавитьПКО_*):
 // план обмена -> общий модуль менеджера обмена
 const PLAN_FORMAT_MODULES = { 'ФИБОбменБГУ': 'ФИББГУМенеджерОбмена' };
@@ -307,7 +322,7 @@ function analyze(id, cfDir, meta) {
   return {
     id, ...meta,
     scanned: new Date().toISOString(),
-    enterpriseData: { declared: [...fv].sort(verCmp), xdtoPackages: edPackages.sort(verCmp), rules: edRules(edModules(xmlDir)) },
+    enterpriseData: { declared: [...fv].sort(verCmp), xdtoPackages: edPackages.sort(verCmp), rules: edRulesOf(xmlDir) },
     planRules: planRules(xmlDir),
     exchangePlans: plans,
     processors,

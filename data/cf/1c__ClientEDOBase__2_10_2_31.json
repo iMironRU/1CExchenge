@@ -3,7 +3,7 @@
  "path": "1c/ClientEDOBase/2_10_2_31",
  "name": "КлиентЭДОБазовая",
  "version": "2.10.2.31",
- "scanned": "2026-10-06T06:13:33.123Z",
+ "scanned": "2026-10-06T08:03:45.084Z",
  "enterpriseData": {
   "declared": [
    "1.2",
@@ -275,6 +275,7 @@
    ]
   }
  },
+ "planRules": {},
  "exchangePlans": [
   {
    "name": "МиграцияПриложений",
