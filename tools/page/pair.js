@@ -3,16 +3,17 @@ const LINES = Object.keys(lineInfo).sort(byOrder);
 const bySlug = Object.fromEntries(LINES.map(l => [lineInfo[l].slug, l]));
 const FAM_ORDER = ['Бухгалтерия', 'Торговля и производство', 'Розница и касса', 'Малый бизнес', 'Зарплата и кадры', 'Документооборот', 'Госсектор', 'Прочее'];
 const POPULAR = ['УТ 11', 'БП 3.0', 'КА 2', 'ERP 2', 'Розница 3', 'УНФ 3', 'ЗУП КОРП 3', 'ДО КОРП 3', 'РМК 1.1', 'Розница 2'].filter(l => lineInfo[l]);
-const MECH_ORDER = ['EnterpriseData', 'Правила КД2', 'КД2, правила из файла', 'Только описание', 'Обработка', 'Пакет перехода'];
+const MECH_ORDER = ['EnterpriseData', 'Собственный формат', 'Правила КД2', 'КД2, правила из файла', 'Только описание', 'Обработка', 'Пакет перехода'];
 const MECH_TEXT = {
   'EnterpriseData': 'через универсальный формат EnterpriseData',
+  'Собственный формат': 'в собственном XDTO-формате (не EnterpriseData)',
   'Правила КД2': 'по правилам конвертации (КД2)',
   'КД2, правила из файла': 'по правилам КД2, загружаемым из файла',
   'Только описание': 'встроенный обмен (в поставке только описание)',
   'Обработка': 'обработкой',
   'Пакет перехода': 'пакетом перехода с releases.1c.ru',
 };
-const KIND_SHORT = { 'Документ': 'док', 'Справочник': 'спр', 'Регистр сведений': 'рег', 'Регистр накопления': 'рег.н', 'ПВХ': 'ПВХ', 'Перечисление': 'пер', 'Прочее': 'проч' };
+const KIND_SHORT = { 'Документ': 'док', 'Справочник': 'спр', 'Регистр сведений': 'рег', 'Регистр накопления': 'рег.н', 'Регистр бухгалтерии': 'рег.б', 'План счетов': 'план сч', 'Константа': 'конст', 'ПВХ': 'ПВХ', 'Перечисление': 'пер', 'Прочее': 'проч' };
 const PA = { a: 'УТ 11', b: 'БП 3.0' };
 
 // КОРП-редакции и базовые — одна кодовая база: связи одной считаются и для другой (с пометкой)
@@ -39,7 +40,7 @@ function fillSelect(sel) {
   }
   sel.innerHTML = [...groups].sort((x, y) => FAM_ORDER.indexOf(x[0]) - FAM_ORDER.indexOf(y[0])).map(([f, ls]) =>
     `<optgroup label="${esc(f)}">${ls.sort((x, y) => (lineInfo[y].cur - lineInfo[x].cur) || byOrder(x, y))
-      .map(l => `<option value="${esc(l)}">${esc(l)}${lineInfo[l].cur ? '' : ' · устаревшая'}</option>`).join('')}</optgroup>`).join('');
+      .map(l => `<option value="${esc(l)}">${esc(l)}${!lineInfo[l].cur ? ' · устаревшая' : lineInfo[l].sup === 'поддерживается' ? ' · поддерживается' : ''}</option>`).join('')}</optgroup>`).join('');
 }
 
 // лучшая связь направления: актуальная, с содержимым побольше, правила посвежее
@@ -102,6 +103,7 @@ function dirBlock(x, y, list) {
   const more = others && !(b.cs && b.cs.ed) ? `<div class="dim">ещё вариантов правил: ${others} (другие версии)</div>` : '';
   return `<div class="dir"><div class="dh2">${esc(x)} → ${esc(y)}</div>
     ${b.cs ? `<div class="sum">${sumText(b.cs)}</div>` : '<div class="dim">состав не разобран</div>'}
+    ${b.cs && b.cs.basis && b.cs.basis.length ? `<div class="notes warn">${esc(b.cs.basis.join(' · '))}</div>` : ''}
     ${ver}${more}
     ${b.cs ? `<details class="objs" data-link="${b.id}"><summary>Что будет передаваться</summary><div class="objs-body"></div></details>` : ''}</div>`;
 }
@@ -175,6 +177,16 @@ function fallbackHtml(A, B) {
     : `<div class="pcard"><div class="ph"><span class="pi">?</span><h2>Прямой синхронизации нет</h2></div><div class="req">Ни общих версий EnterpriseData, ни общих партнёров по обмену в реестре не найдено.</div></div>`;
 }
 
+// Ограничения базовых версий: заметки по продукту; with — только в паре с этими продуктами
+function baseBlock(A, B) {
+  const pa = lineInfo[A].prod, pb = lineInfo[B].prod;
+  const hit = (p, other) => (DATA.baseNotes || []).filter(n => n.products.includes(p) && (!n.with || n.with.includes(other)));
+  const rows = [...new Set([...hit(pa, pb), ...hit(pb, pa)])];
+  if (!rows.length) return '';
+  return `<details class="base"><summary>Если одна из программ — базовая версия</summary><ul>${
+    rows.map(n => `<li><b>${esc(n.products.join(', '))}:</b> ${esc(n.text)}</li>`).join('')}</ul></details>`;
+}
+
 function renderPair() {
   const A = PA.a, B = PA.b;
   $('#pa').value = A;
@@ -183,9 +195,11 @@ function renderPair() {
   const ab = between(A, B), ba = between(B, A);
   const syncs = [...ab, ...ba].filter(l => l.k === 's');
   const trAB = ab.filter(l => l.k === 't'), trBA = ba.filter(l => l.k === 't');
-  const notes = (DATA.pairNotes || []).filter(n => (n.a === A && n.b === B) || (n.a === B && n.b === A));
+  // без b — заметка о программе, показывается в любой её паре
+  const notes = (DATA.pairNotes || []).filter(n => (n.b ? (n.a === A && n.b === B) || (n.a === B && n.b === A) : n.a === A || n.a === B));
   const html = [];
-  const cur = l => (lineInfo[l].cur ? '' : ' <span class="pill old">устаревшая редакция</span>');
+  const cur = l => (!lineInfo[l].cur ? ' <span class="pill old">устаревшая редакция</span>'
+    : lineInfo[l].sup === 'поддерживается' ? ' <span class="pill n">поддерживается, есть новая редакция</span>' : '');
   html.push(`<div class="ptitle">${esc(A)}${cur(A)} <span class="arr">и</span> ${esc(B)}${cur(B)}</div>`);
   for (const n of notes) html.push(`<div class="pnote ${n.kind === 'warn' ? 'warn' : ''}">${esc(n.text)}</div>`);
   if (A === B) {
@@ -197,7 +211,7 @@ function renderPair() {
     const ordered = [...groups].sort((a, b) => (b[1].some(isAct) - a[1].some(isAct)) || MECH_ORDER.indexOf(a[0]) - MECH_ORDER.indexOf(b[0]));
     const task = syncs.find(l => l.cls) ? syncs.find(l => l.cls).cls.task : '';
     html.push(`<div class="pcard"><div class="ph"><span class="pi s">⇄</span><h2>Синхронизация</h2><span class="dim">${esc(task)}</span></div>
-      ${ordered.map(([m, g]) => mechBlock(A, B, m, g)).join('')}</div>`);
+      ${ordered.map(([m, g]) => mechBlock(A, B, m, g)).join('')}${baseBlock(A, B)}</div>`);
   } else if (A !== B) {
     html.push(fallbackHtml(A, B));
   }
@@ -210,15 +224,21 @@ function renderPair() {
 function initPair() {
   fillSelect($('#pa'));
   fillSelect($('#pb'));
-  const h = decodeURIComponent(location.hash.slice(1));
-  if (h.includes('~')) {
+  // пара из адреса #slugA~slugB
+  const fromHash = () => {
+    const h = decodeURIComponent(location.hash.slice(1));
+    if (!h.includes('~')) return false;
     const [a, b] = h.split('~');
     if (bySlug[a]) PA.a = bySlug[a];
     if (bySlug[b]) PA.b = bySlug[b];
-  } else {
+    return true;
+  };
+  if (!fromHash()) {
     const saved = store.get('pair', null);
     if (saved && lineInfo[saved.a] && lineInfo[saved.b]) Object.assign(PA, saved);
   }
+  // ссылка на другую пару при уже открытой странице
+  window.addEventListener('hashchange', () => { if (fromHash()) { showTab('pair'); renderPair(); } });
   $('#ppop').innerHTML = '<span class="dim">быстро:</span> ' + POPULAR.map(l => `<button class="chip" data-quick="${esc(l)}">${esc(l)}</button>`).join(' ');
   const set = (k, v) => { PA[k] = v; store.set('pair', PA); renderPair(); };
   $('#pa').addEventListener('change', e => set('a', e.target.value));

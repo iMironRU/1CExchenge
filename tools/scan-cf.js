@@ -213,6 +213,9 @@ function correspondents(bsl, xmlDir) {
 function formatVersions(bsl) {
   const vers = new Set();
   for (const m of bsl.matchAll(/ВерсииФормата\w*\.Вставить\(\s*"(\d+\.\d+(?:\.\d+)*)"/g)) vers.add(m[1]);
+  // рукописный EnterpriseData (1С:Мобильная касса): Функция ПоддерживаемыеВерсииФорматаОбмена() с Массив.Добавить("1.x")
+  const fn = bsl.match(/Функция\s+ПоддерживаемыеВерсииФорматаОбмена\s*\([\s\S]*?КонецФункции/);
+  if (fn) for (const m of fn[0].matchAll(/\.Добавить\(\s*"(\d+\.\d+(?:\.\d+)*)"\s*\)/g)) vers.add(m[1]);
   return [...vers];
 }
 
@@ -248,6 +251,20 @@ function edModules(xmlDir) {
   return fs.readdirSync(dir)
     .filter(n => /^МенеджерОбменаЧерезУниверсальныйФормат/.test(n) && fs.existsSync(path.join(dir, n, 'Ext', 'Module.bsl')))
     .map(n => ({ name: n, text: readText(path.join(dir, n, 'Ext', 'Module.bsl')) }));
+}
+
+// Обмены в собственном формате (не EnterpriseData), но с правилами в модуле того же вида (ДобавитьПКО_*):
+// план обмена -> общий модуль менеджера обмена
+const PLAN_FORMAT_MODULES = { 'ФИБОбменБГУ': 'ФИББГУМенеджерОбмена' };
+function planRules(xmlDir) {
+  const out = {};
+  for (const [plan, mod] of Object.entries(PLAN_FORMAT_MODULES)) {
+    const file = path.join(xmlDir, 'CommonModules', mod, 'Ext', 'Module.bsl');
+    if (fs.existsSync(path.join(xmlDir, 'ExchangePlans', `${plan}.xml`)) && fs.existsSync(file)) {
+      out[plan] = edRules([{ name: mod, text: readText(file) }]);
+    }
+  }
+  return out;
 }
 
 function analyze(id, cfDir, meta) {
@@ -291,6 +308,7 @@ function analyze(id, cfDir, meta) {
     id, ...meta,
     scanned: new Date().toISOString(),
     enterpriseData: { declared: [...fv].sort(verCmp), xdtoPackages: edPackages.sort(verCmp), rules: edRules(edModules(xmlDir)) },
+    planRules: planRules(xmlDir),
     exchangePlans: plans,
     processors,
   };

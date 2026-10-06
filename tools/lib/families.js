@@ -12,6 +12,7 @@ const FAMILIES = {
 };
 
 const familyOf = product => Object.keys(FAMILIES).find(f => FAMILIES[f].includes(product)) || 'Прочее';
-const is77 = c => /7\.7$/.test(c.product) || /^Прежние/.test(c.product);
+// «ТиС 7.7» — 7.7 в имени продукта; «Вещевое довольствие 7.7» — в редакции
+const is77 = c => /7\.7$/.test(c.product) || c.edition === '7.7' || /^Прежние/.test(c.product);
 
 module.exports = { FAMILIES, familyOf, is77 };

@@ -152,6 +152,8 @@ const cfScans = fs.existsSync(cfDir)
   : [];
 const skipPlans = new RegExp(ann.skipPlans || '^$');
 const cfProc = (ann.cfProcessors || []).map(a => ({ ...a, re: new RegExp(a.match) }));
+// обмен по плану в собственном XDTO-формате конфигураций (не EnterpriseData), правила — в модуле менеджера обмена
+const OWN_FORMAT = 'собственный формат XDTO';
 const planPartners = (ann.planPartners || []).map(a => ({ ...a, re: new RegExp(a.plan) }));
 const enterpriseData = [];
 
@@ -180,7 +182,7 @@ for (const cf of cfScans) {
       for (const label of a.partners) {
         const corr = P.withCurrent(P.fromLabel(label));
         const common = { ...base, kind: 'синхронизация', exchangePlan: p.name, evidence: [where], notes: a.note ? [a.note] : [],
-          mechanism: p.xdto ? 'EnterpriseData' : 'КД2: план обмена, правила из файла' };
+          mechanism: a.mechanism || ((cf.planRules || {})[p.name] ? OWN_FORMAT : p.xdto ? 'EnterpriseData' : 'КД2: план обмена, правила из файла') };
         addLink({ ...common, from: selfRef, to: corr });
         addLink({ ...common, from: corr, to: selfRef });
       }
@@ -285,8 +287,16 @@ for (const cf of cfScans) {
 const ED_ALIAS = { 'БП КОРП 3.0': 'БП 3.0', 'ЗУП 3': 'ЗУП КОРП 3', 'ЗУП КОРП 3': 'ЗУП 3', 'ERP 2': 'КА 2', 'ДО КОРП': 'ДО КОРП 3' };
 const edFor = line => edBy.get(line) || (ED_ALIAS[line] && edBy.get(ED_ALIAS[line]) ? { ...edBy.get(ED_ALIAS[line]), alias: ED_ALIAS[line] } : null);
 
-function edContent(fromLine, toLine) {
-  const A = edFor(fromLine), B = edFor(toLine);
+// Правила обменов в собственном формате (planRules): линейка -> план -> {send, receive}
+const planBy = new Map();
+for (const cf of cfScans) {
+  const ln = P.line(P.fromTemplate(cf));
+  for (const [plan, r] of Object.entries(cf.planRules || {})) if (r && r.rules) planBy.set(ln + '|' + plan, r);
+}
+
+function edContent(fromLine, toLine, plan) {
+  const get = plan ? ln => planBy.get(ln + '|' + plan) || null : edFor;
+  const A = get(fromLine), B = get(toLine);
   if (!A && !B) return null;
   const rows = [];
   if (A) {
@@ -305,12 +315,15 @@ function edContent(fromLine, toLine) {
   const basis = [];
   if (A && A.alias) basis.push(`отправка — по ${A.alias} (общая кодовая база)`);
   if (B && B.alias) basis.push(`получение — по ${B.alias} (общая кодовая база)`);
-  if (!A) basis.push(`${fromLine} не разобрана: показано, что принимает ${toLine}`);
-  if (!B) basis.push(`${toLine} не разобрана: показано, что отправляет ${fromLine}`);
+  if (!A) basis.push(`правила ${fromLine} не разобраны: показано всё, что умеет принимать ${toLine} — фактический состав меньше`);
+  if (!B) basis.push(`правила ${toLine} не разобраны: показано всё, что умеет отправлять ${fromLine} — фактический состав меньше`);
   return { ed: true, summary, export: rows, formats: new Set(rows.map(r => r[2])).size, pko: null, off: 0, reg: null, basis };
 }
 for (const l of links.values()) {
-  if (l.mechanism === 'EnterpriseData') l.content = edContent(P.line(l.from), P.line(l.to));
+  if (l.mechanism !== 'EnterpriseData' && l.mechanism !== OWN_FORMAT) continue;
+  l.content = planBy.has(P.line(l.from) + '|' + l.exchangePlan) || planBy.has(P.line(l.to) + '|' + l.exchangePlan)
+    ? edContent(P.line(l.from), P.line(l.to), l.exchangePlan)
+    : edContent(P.line(l.from), P.line(l.to));
 }
 
 const list = [...links.values()].sort((a, b) =>
@@ -329,12 +342,29 @@ if (fs.existsSync(catPath)) {
     currentLines.add(P.line(P.fromTemplate({ name: c.name, version: c.version })));
   }
 }
-const isCurrent = c => !is77(c) && (!c.edition || currentLines.has(P.line(c)));
+// поддержка по всему каталогу (tools/fetch-support.js): последняя редакция и дата последнего релиза
+const supPath = path.join(ROOT, 'data', 'catalog-support.json');
+const support = fs.existsSync(supPath) ? JSON.parse(fs.readFileSync(supPath, 'utf8')).lines : {};
+const YEAR = 365 * 864e5;
+const recent = d => !!d && Date.now() - Date.parse(d) <= YEAR;
+// актуальная — последняя редакция с релизами за год; поддерживается — не последняя, но релизы за год ещё выходят
+// (Розница 2.3 при Рознице 3.0); без даты в каталоге — по последним редакциям «типовых» (ERP, ЗБУ)
+function supportOf(c) {
+  if (is77(c)) return 'устаревшая';
+  const ln = P.line(c), s = support[ln];
+  if ((ann.supportOverride || {})[ln]) return ann.supportOverride[ln];
+  if (s && s.lastRelease) return recent(s.lastRelease) ? (s.latest ? 'актуальная' : 'поддерживается') : 'устаревшая';
+  // линейка без редакции (Касса, Архив, Мобильная касса, сервисы) — одна, она и актуальна
+  if (!c.edition || ln === c.product || currentLines.has(ln)) return 'актуальная';
+  return 'устаревшая';
+}
+const isCurrent = c => supportOf(c) !== 'устаревшая';
 
 function mechClass(m) {
   if (/^КД2: правила конвертации/.test(m)) return 'Правила КД2';
   if (/правила из файла/.test(m)) return 'КД2, правила из файла';
   if (/EnterpriseData/.test(m)) return 'EnterpriseData';
+  if (m === OWN_FORMAT) return 'Собственный формат';
   if (/пакет перехода|дистрибутив обновления/.test(m)) return 'Пакет перехода';
   if (/встроен в конфигурацию/.test(m)) return 'Только описание';
   return 'Обработка';
@@ -348,13 +378,15 @@ function task(l) {
     return 'Переход на другую программу';
   }
   if (l.from.product === l.to.product) return 'Между базами одной программы';
+  // Клиент ЭДО — электронный обмен документами с контрагентами, а не внутренний документооборот
+  if (l.from.product === 'Клиент ЭДО' || l.to.product === 'Клиент ЭДО') return 'ЭДО с контрагентами ↔ учёт';
   if (fams.has('Документооборот')) return 'Документооборот и архив';
   if (fams.has('Госсектор')) return 'Госсектор';
   if (fams.has('Зарплата и кадры')) return 'Зарплата и кадры → учёт';
   if (fams.has('Бухгалтерия')) return 'Оперативный учёт ↔ бухгалтерия';
   if (fams.has('Розница и касса')) return 'Розница и касса ↔ управление';
-  if (a === b) return 'Внутри линейки';
-  return 'Оперативный учёт: разные программы';
+  // УПП ↔ УТ 10.3, КА ↔ УПП, УНФ ↔ УТ 11 — разные программы оперативного учёта
+  return 'Оперативный учёт: между программами';
 }
 
 const pairKey = l => `${P.line(l.from)}→${P.line(l.to)}`;
@@ -364,7 +396,8 @@ for (const l of list) {
     task: task(l),
     mech: mechClass(l.mechanism),
     dir: l.kind === 'переход' ? 'перенос' : syncPairs.has(`${P.line(l.to)}→${P.line(l.from)}`) ? 'двусторонняя' : 'односторонняя',
-    actual: isCurrent(l.from) && isCurrent(l.to) ? 'актуальная' : 'устаревшая сторона',
+    // переход со старой программы — норма: актуален, если приёмник актуален
+    actual: (l.kind === 'переход' ? isCurrent(l.to) : isCurrent(l.from) && isCurrent(l.to)) ? 'актуальная' : 'устаревшая сторона',
   };
 }
 
@@ -382,7 +415,7 @@ const out = {
   })),
   enterpriseData: enterpriseData.map(e => ({ config: P.display(e.config), line: P.line(e.config), version: e.config.version, declared: e.declared, packages: e.packages })),
   // линейки: семейство и актуальность — для выбора пары на странице
-  lines: Object.fromEntries([...new Map(list.flatMap(l => [l.from, l.to]).map(c => [P.line(c), c])).entries()].map(([ln, c]) => [ln, { product: c.product, edition: c.edition || null, family: familyOf(c), current: isCurrent(c) }])),
+  lines: Object.fromEntries([...new Map(list.flatMap(l => [l.from, l.to]).map(c => [P.line(c), c])).entries()].map(([ln, c]) => [ln, { product: c.product, edition: c.edition || null, family: familyOf(c), current: isCurrent(c), support: supportOf(c) }])),
 };
 fs.writeFileSync(path.join(ROOT, 'data', 'registry.json'), JSON.stringify(out, null, 1));
 

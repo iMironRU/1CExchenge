@@ -42,6 +42,7 @@
 node tools/scan-templates.js      # файлы поставок      -> data/templates.json
 node tools/scan-cf.js             # CF (≈5–7 мин/поставка, кеш в work/) -> data/cf/*.json
 node tools/fetch-files.js         # файлы последних версий из API Апдейкона -> data/catalog-files.json
+node tools/fetch-support.js       # статус линеек (актуальная / поддерживается / устаревшая) -> data/catalog-support.json
 node tools/build-registry.js      # -> data/registry.json, data/registry.csv, REGISTRY.md
 node tools/build-page.js --pages  # страница -> work/page/registry.html и docs/index.html (GitHub Pages)
 ```

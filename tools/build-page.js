@@ -35,7 +35,7 @@ const lineOf = c => {
     const ed = parseFloat(c.edition) || 0;
     const meta = (reg.lines || {})[line] || {};
     lines[line] = { order: (fi < 0 ? 900 : fi * 10) + Math.min(ed, 99) / 100, family: FAMILY_GROUP[c.product] || c.product,
-      fam: meta.family || 'Прочее', cur: meta.current !== false, slug: slug(line) };
+      fam: meta.family || 'Прочее', cur: meta.current !== false, sup: meta.support || null, slug: slug(line), prod: c.product };
   }
   return line;
 };
@@ -86,7 +86,7 @@ const cat = catalog.map(c => {
 
 const data = {
   generated: reg.generated, root: reg.templatesRoot, links, lines, templates,
-  ed: reg.enterpriseData, catalog: cat, pairNotes: ann.pairNotes || [],
+  ed: reg.enterpriseData, catalog: cat, pairNotes: ann.pairNotes || [], baseNotes: ann.baseNotes || [],
 };
 const contentJson = JSON.stringify(content);
 const json = JSON.stringify(data).replace(/</g, '\\u003c');
