@@ -309,6 +309,7 @@ footer { color: var(--faint); font-size: 12px; }
       <div class="chips" role="group" aria-label="Механизм" id="f-mech">
         <button class="chip" data-m="kd2" aria-pressed="true">Правила КД2</button>
         <button class="chip" data-m="ed" aria-pressed="true">EnterpriseData</button>
+        <button class="chip" data-m="http" aria-pressed="true">Веб-сервис / свой формат</button>
         <button class="chip" data-m="proc" aria-pressed="true">Обработки</button>
         <button class="chip" data-m="doc" aria-pressed="true">Только описание</button>
       </div>
@@ -456,7 +457,7 @@ tabs.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
 { const h = decodeURIComponent(location.hash.slice(1)); showTab(h.includes('~') ? 'pair' : ['pair', 'matrix', 'cls', 'obj', 'list', 'ed', 'dist'].includes(h) ? h : store.get('tab2', 'pair')); }
 
 // ---------- матрица
-const F = { kind: 'all', mech: new Set(['kd2', 'ed', 'proc', 'doc']), hide77: false, q: '', task: '', actual: false };
+const F = { kind: 'all', mech: new Set(['kd2', 'ed', 'http', 'proc', 'doc']), hide77: false, q: '', task: '', actual: false };
 let selected = { from: 'УТ 11', to: 'Розница 2' };
 
 const byOrder = (a, b) => (lineInfo[a]?.order ?? 999) - (lineInfo[b]?.order ?? 999) || a.localeCompare(b, 'ru');
@@ -696,7 +697,7 @@ function renderObjDetail() {
       const role = r.from === o.key ? 'отсюда' : 'сюда';
       const other = r.from === o.key ? (r.to || (r.l.cs.ed ? 'не разобрано' : 'в обработчике')) : (r.from || 'не разобрано');
       const arrow = r.from === o.key ? `→ ${esc(other)}` : `← ${esc(other)}`;
-      return `<li><span class="pill ${r.l.k}">${r.l.m === 'ed' ? 'ED' : r.l.m === 'kd2' ? 'КД2' : 'обр.'}</span> <span class="mono">${arrow}</span>${r.via ? ` <span class="dim mono">через ${esc(r.via)}</span>` : ''} <span class="dim">(${role})</span></li>`;
+      return `<li><span class="pill ${r.l.k}">${r.l.m === 'ed' ? 'ED' : r.l.m === 'kd2' ? 'КД2' : r.l.m === 'http' ? 'XDTO/HTTP' : 'обр.'}</span> <span class="mono">${arrow}</span>${r.via ? ` <span class="dim mono">через ${esc(r.via)}</span>` : ''} <span class="dim">(${role})</span></li>`;
     }).join('');
     return `<div class="item"><div><button class="linkbtn" data-goto-from="${esc(p.from)}" data-goto-to="${esc(p.to)}">${esc(p.from)} → ${esc(p.to)}</button></div><ul class="ev objrows">${items}</ul></div>`;
   }).join('');
@@ -787,7 +788,7 @@ $('#l-q').addEventListener('input', e => { L.q = e.target.value; renderList(); }
 /*__PAIR__*/
 
 (function renderCls() {
-  const MECH = ['Правила КД2', 'КД2, правила из файла', 'EnterpriseData', 'Собственный формат', 'Обработка', 'Пакет перехода', 'Только описание'];
+  const MECH = ['Правила КД2', 'КД2, правила из файла', 'EnterpriseData', 'Собственный формат', 'Веб-сервис (HTTP)', 'Обработка', 'Пакет перехода', 'Только описание'];
   const by = new Map();
   for (const l of links) {
     if (!l.cls) continue;

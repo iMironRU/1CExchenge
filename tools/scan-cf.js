@@ -249,7 +249,8 @@ function edModules(xmlDir) {
   const dir = path.join(xmlDir, 'CommonModules');
   if (!fs.existsSync(dir)) return [];
   return fs.readdirSync(dir)
-    .filter(n => /^МенеджерОбменаЧерезУниверсальныйФормат/.test(n) && fs.existsSync(path.join(dir, n, 'Ext', 'Module.bsl')))
+    // бывают с префиксом подсистемы: «нсиМенеджерОбмена…» (MDM), «Питание_МенеджерОбмена…» (Комбинат питания)
+    .filter(n => /^[А-Яа-яЁёA-Za-z]*_?МенеджерОбменаЧерезУниверсальныйФормат(_?[\d_]+|[А-ЯЁ]{1,3})?$/.test(n) && fs.existsSync(path.join(dir, n, 'Ext', 'Module.bsl')))
     .map(n => ({ name: n, text: readText(path.join(dir, n, 'Ext', 'Module.bsl')) }));
 }
 

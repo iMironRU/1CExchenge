@@ -46,6 +46,9 @@ function addLink(l) {
 // поставки — берём редакцию поставки
 function withSelf(c, self) {
   if (c && !c.edition && c.product === self.product) return { ...c, edition: self.edition };
+  // общий код: в Больнице правила подписаны «МедицинаПоликлиника» — это она сама
+  // (и правила в собственном CF, подписанные старой версией: Поликлиника 3.0 с правилами «1.4»)
+  if (c && ((ann.selfAliases || {})[self.product] || []).includes(c.product)) return { ...self, version: c.version };
   return c;
 }
 
@@ -183,8 +186,8 @@ for (const cf of cfScans) {
         const corr = P.withCurrent(P.fromLabel(label));
         const common = { ...base, kind: 'синхронизация', exchangePlan: p.name, evidence: [where], notes: a.note ? [a.note] : [],
           mechanism: a.mechanism || ((cf.planRules || {})[p.name] ? OWN_FORMAT : p.xdto ? 'EnterpriseData' : 'КД2: план обмена, правила из файла') };
-        addLink({ ...common, from: selfRef, to: corr });
-        addLink({ ...common, from: corr, to: selfRef });
+        if (a.direction !== 'in') addLink({ ...common, from: selfRef, to: corr });
+        if (a.direction !== 'out') addLink({ ...common, from: corr, to: selfRef });
       }
     }
     if (!p.xdto) continue;
@@ -199,6 +202,19 @@ for (const cf of cfScans) {
         addLink({ ...common, from: selfRef, to: corr });
         addLink({ ...common, from: corr, to: selfRef });
       }
+    }
+  }
+
+  // интеграции без плана обмена (веб-сервисы, HTTP, расширение у партнёра) — по ручной разметке;
+  // direction: out — отсюда к партнёру, in — от партнёра сюда, both (по умолчанию)
+  for (const a of ann.integrations || []) {
+    if (!a.for.includes(self.product)) continue;
+    for (const label of a.partners) {
+      const corr = P.withCurrent(P.fromLabel(label));
+      const common = { ...base, kind: 'синхронизация', exchangePlan: a.plan || null, mechanism: a.mechanism,
+        evidence: (a.evidence || []).map(e => `CF: ${e}`), notes: a.note ? [a.note] : [] };
+      if (a.direction !== 'in') addLink({ ...common, from: selfRef, to: corr });
+      if (a.direction !== 'out') addLink({ ...common, from: corr, to: selfRef });
     }
   }
 
@@ -367,6 +383,7 @@ function mechClass(m) {
   if (m === OWN_FORMAT) return 'Собственный формат';
   if (/пакет перехода|дистрибутив обновления/.test(m)) return 'Пакет перехода';
   if (/встроен в конфигурацию/.test(m)) return 'Только описание';
+  if (/веб-сервис|HTTP/i.test(m)) return 'Веб-сервис (HTTP)';
   return 'Обработка';
 }
 
@@ -380,6 +397,9 @@ function task(l) {
   if (l.from.product === l.to.product) return 'Между базами одной программы';
   // Клиент ЭДО — электронный обмен документами с контрагентами, а не внутренний документооборот
   if (l.from.product === 'Клиент ЭДО' || l.to.product === 'Клиент ЭДО') return 'ЭДО с контрагентами ↔ учёт';
+  // MDM — центр нормативно-справочной информации: раздаёт и собирает справочники
+  if (fams.has('НСИ (MDM)')) return 'НСИ (MDM) ↔ учётные системы';
+  if (l.from.product === 'Корпоративный университет' || l.to.product === 'Корпоративный университет') return 'Обучение персонала ← кадры';
   if (fams.has('Документооборот')) return 'Документооборот и архив';
   if (fams.has('Госсектор')) return 'Госсектор';
   if (fams.has('Зарплата и кадры')) return 'Зарплата и кадры → учёт';

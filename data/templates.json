@@ -1,6 +1,6 @@
 {
  "root": "C:\\.temp\\tmplts",
- "scanned": "2026-10-06T06:01:00.593Z",
+ "scanned": "2026-10-07T14:18:40.913Z",
  "templates": [
   {
    "path": "1c/Accounting/3_0_203_24",
@@ -4861,6 +4861,61 @@
    "artifacts": []
   },
   {
+   "path": "1c/ContractsProf/1_0_7_2",
+   "vendor": "Фирма \"1С\"",
+   "name": "Договоры",
+   "version": "1.0.7.2",
+   "synonym": "1С:Договоры ПРОФ",
+   "artifacts": [
+    {
+     "type": "rules",
+     "file": "Прочие обмены\\Бухгалтерия предприятия\\Правила обмена Бухгалтерия - Договоры.xml",
+     "section": null,
+     "partner": null,
+     "kind": "conversion",
+     "root": "ПравилаОбмена",
+     "formatVersion": "2.01",
+     "compatibility": "РежимСовместимостиСБСП20",
+     "id": "832b0420-ec65-49ab-a16d-c94ae5de400a",
+     "title": "БухгалтерияПредприятия --> Договорчики",
+     "created": "2025-12-09T15:25:47",
+     "source": {
+      "name": "БухгалтерияПредприятияКОРП",
+      "version": "3.0.166",
+      "synonym": "Бухгалтерия предприятия КОРП, редакция 3.0",
+      "platform": "8.0"
+     },
+     "target": {
+      "name": "Договоры",
+      "version": "1.0.7",
+      "synonym": "Договоры ПРОФ, редакция 1.0",
+      "platform": "8.0"
+     },
+     "content": {
+      "kind": "conversion",
+      "export": [
+       {
+        "group": "Справочники",
+        "name": "Номенклатура",
+        "from": "Справочник.Номенклатура",
+        "to": "Справочник.Номенклатура"
+       },
+       {
+        "group": "Справочники",
+        "name": "Контрагенты",
+        "from": "Справочник.Контрагенты",
+        "to": "Справочник.Контрагенты"
+       }
+      ],
+      "pko": 5,
+      "summary": {
+       "Справочник": 2
+      }
+     }
+    }
+   ]
+  },
+  {
    "path": "1c/Conversion/2_1_8_2",
    "vendor": "Фирма \"1С\"",
    "name": "КонвертацияДанныхРедакция21",
@@ -7313,6 +7368,31 @@
    "version": "3.1.38.41",
    "synonym": "1С:Зарплата и управление персоналом КОРП",
    "artifacts": []
+  },
+  {
+   "path": "1c/MDM/2_5_14_1",
+   "vendor": "Фирма \"1С\"",
+   "name": "УправлениеНСИ",
+   "version": "2.5.14.1",
+   "synonym": "1С:MDM Управление нормативно-справочной информацией",
+   "artifacts": [
+    {
+     "type": "xml",
+     "file": "sppr.zip",
+     "section": null,
+     "partner": null,
+     "entry": "model_data.xml",
+     "root": "_1CV8ModelData"
+    },
+    {
+     "type": "xml",
+     "file": "sppr.zip",
+     "section": null,
+     "partner": null,
+     "entry": "model_refmap.xml",
+     "root": "_1CV8ModelRefMap"
+    }
+   ]
   },
   {
    "path": "1c/Minimoney/2_0_15_9",
@@ -24117,6 +24197,14 @@
      "partner": "Розница, ред. 2.3"
     }
    ]
+  },
+  {
+   "path": "1c/SDO/CorpUniversity/3_1_4_66",
+   "vendor": "Фирма \"1С\"",
+   "name": "КорпоративныйУниверситет",
+   "version": "3.1.4.66",
+   "synonym": "1С:Электронное обучение\\1С:Корпоративный университет",
+   "artifacts": []
   },
   {
    "path": "1c/smallbusiness/3_0_14_159",
@@ -47945,6 +48033,1002 @@
    ]
   },
   {
+   "path": "informed/hospital/2_0_21_2",
+   "vendor": "ООО «Информатика медицины»",
+   "name": "МедицинаБольница",
+   "version": "2.0.21.2",
+   "synonym": "1С:Медицина. Больница",
+   "artifacts": [
+    {
+     "type": "processing",
+     "file": "ExtFiles\\_ДемоРаботаСУсловнымОформлением.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\АктВыполненныхУслуг_НеРаботает.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\АктПоВыполненнымРаботамСКД.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ВоинскийУчетЗапросСтатусовПередачиСведенийИзРегиона.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ДемоДоговорПлатныхМедицинскихУслуг.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ДемоКонтрольнаяКартаДиспансерногоНаблюденияФорма030-6у.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ДемоМедицинскаяКартаАмбулаторногоБольногоФорма025у.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ДемоПечатьМедицинскойКарты.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ДемоПечатьПластиковойКартыПациента.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ДемоПечатьСтационарнойКарты.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ДемоСогласиеНаАнестезиологическоеВмешательство_v1.2.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ДемоУведомленияОВизитахПациентов.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ДешифровкаЭлектронногоПолиса.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ДниРожденияПациентов.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЖурналЗаписиРодовВСтационаре.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЗагрузкаВнешнихМД.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЗагрузкаВыгрузкаСтруктуры.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЗагрузкаПациентов.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЗагрузкаПациентовВРегистрПрикрепленныеПациенты.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЗагрузкаПрикрепленийКВрачебнымУчасткам.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЗагрузкаСправочниковИНВИТРО.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЗаказНарядыСКД.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЗаявлениеОВыбореМедицинскойОрганизации.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ИнформированноеСогласиеПациента.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\КарточкаРасчетовСКлиентами.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\КоличествоИСтоимостьОказанныхУслугПоВрачамСКД.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЛабораторныеУслугиБланки.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЛабораторныеУслугиБланкиПоОтделениям.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЛекарственныеНазначенияОтчет.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЛицеваяCтраницаДиспансеризацииФорма131у.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\Менеджеры загрузки КСГ\\ЗагрузкаГруппировщикаКСГ.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\Менеджеры загрузки КСГ\\ЗагрузкаИндексовИКСГ.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\Менеджеры загрузки КСГ\\ЗагрузкаСпециализированныхКСГ.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\МониторингСозданияДокументовВИМИС.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\НазначениеМикробиологии.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\НапоминаниеОВизитеВРамкахДиспансеризации.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОбновлениеОписанийШМД.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОбновлениеПациентовИзРегион.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОбработкаСЭМД_РетроспективныеДанныеПоПациентамСОнкологическойПатологией.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОтказОтМедицинскогоВмешательства.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОтчетПоВыполненнымУслугам.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОтчетПоГоспитализированнымКаналГоспитализации.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОтчетПоДиагнозам.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОтчетПоНазначеннымУслугам.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОтчетПоПациентамВСменномЗадании.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОтчетПоПриемамПациентов.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОтчетПоПрисоединеннымФайламМедицинскихДокументов.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОтчетПоСтраховымКомпаниям.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОтчетПоТалонамАмбулаторногоПациента.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОтчетПревышениеСроковГоспитализацииПоСтандартуДляСлучая.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\Очистка талонов.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПаспортВрачебногоУчасткаПедиатрического.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПаспортВрачебногоУчасткаТерапевтического.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПаспортЗдоровьяПечатнаяФорма.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПечатнаяФорма096у.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПечатнаяФорма096у20.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПечатнаяФорма097у.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПечатнаяФорма_ИндивидуальнаяКартаБеременнойИРодильницы.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПечатнаяФормаКартаОбратившегосяЗаПсихологическойНаркологическойПомощью.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПечатьЛабораторныхИсследований.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПланЛечения.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПоискМДБезОсновногоДиагноза.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПоместитьМССВСправочникЭМДДляРегиона.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПроверкаОбъектовБольницы.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПФ_MXL_УчетнаяФормаКартаПациентаГинекологическогоПрофиля.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПФ_MXL_УчетнаяФормаКартаПациентаДневногоСтационараАкушерскоГинПрофиля.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПФ_MXL_УчетнаяФормаКартаПациентаПриИскусственномПрерыванииБеременности.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\РамочныйДоговорОказанияПлатныхМедУслуг.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\РасчетСкидкиНаценкиЗаУченуюСтепеньСотрудника.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\РасчетыПоДоговорамИКонтрагентам.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\РегистрацияВОчередиОбменаСЛИС.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\РегламентированныйОтчетФорма035.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\РегламентированныйОтчетФорма131.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\СведенияОЛечебнойРаботеСтоматологическогоПодразделения.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\СведенияОПричинахНетрудоспособности.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\СводкаДляПожарнойЧасти.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\СводныеДанныеИспользованияКоечногоФонда.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\СписокОформленныхПациентов.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\СтатистическаяФормаN030ПО_о.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\СтатистическаяФормаN039у02.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ТабличныйВизуализаторА5СОтдельнойСекциейДиагнозы.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ТабличныйВизуализаторСОтдельнойСекциейДиагнозы.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\УведомлениеОбИзмененииСменногоЗадания.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\УведомлениеОбИстеченииСрокаВыдачиЛН.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\УведомлениеОВыполненииУслугиЦИТО.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\УведомлениеОНеобходимостиЗаполненияЭтапногоЭпикриза.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\УведомлениеОНеобходимостиСозываВрачебнойКомиссии.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\УведомленияСтартаИЗавершенияЗадачСогласованияМД.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\Ф037уЛистокЕжедневногоУчетаРаботыВрачаСтоматолога.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\Ф043у МедицинскаяКартаСтоматологическогоБольного.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\Ф069у ЖурналАмбулаторныхОпераций.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\Ф112у ИсторияРазвитияРебенка.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\Ф32 СведенияОМедицинскойПомощиБеременным.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\Ф36 СведенияОКонтингентахПсихическиБольных.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\Ф62таблица2000ф.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\Форма30Таблица3100.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЧтениеФайловMedML.epf",
+     "section": null,
+     "partner": null
+    }
+   ]
+  },
+  {
+   "path": "informed/poliklinika/3_0_21_2",
+   "vendor": "ООО «Информатика медицины»",
+   "name": "МедицинаПоликлиника",
+   "version": "3.0.21.2",
+   "synonym": "1С:Медицина. Поликлиника",
+   "artifacts": [
+    {
+     "type": "processing",
+     "file": "ExtFiles\\_ДемоРаботаСУсловнымОформлением.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\АктВыполненныхУслуг_НеРаботает.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\АктПоВыполненнымРаботамСКД.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ВоинскийУчетЗапросСтатусовПередачиСведенийИзРегиона.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ДемоДоговорПлатныхМедицинскихУслуг.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ДемоКонтрольнаяКартаДиспансерногоНаблюденияФорма030-6у.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ДемоМедицинскаяКартаАмбулаторногоБольногоФорма025у.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ДемоПечатьМедицинскойКарты.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ДемоПечатьПластиковойКартыПациента.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ДемоСогласиеНаАнестезиологическоеВмешательство_v1.2.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ДемоУведомленияОВизитахПациентов.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ДешифровкаЭлектронногоПолиса.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ДниРожденияПациентов.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЗагрузкаВнешнихМД.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЗагрузкаПациентов.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЗагрузкаПациентовВРегистрПрикрепленныеПациенты.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЗагрузкаПрикрепленийКВрачебнымУчасткам.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЗагрузкаСправочниковИНВИТРО.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЗаказНарядыСКД.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЗаявлениеОВыбореМедицинскойОрганизации.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ИнформированноеСогласиеПациента.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\КарточкаРасчетовСКлиентами.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\КоличествоИСтоимостьОказанныхУслугПоВрачамСКД.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЛабораторныеУслугиБланки.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЛицеваяCтраницаДиспансеризацииФорма131у.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\МониторингСозданияДокументовВИМИС.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\НазначениеМикробиологии.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\НапоминаниеОВизитеВРамкахДиспансеризации.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОбновлениеОписанийШМД.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОбновлениеПациентовИзРегион.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОбработкаСЭМД_РетроспективныеДанныеПоПациентамСОнкологическойПатологией.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОтказОтМедицинскогоВмешательства.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОтчетПоВыполненнымУслугам.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОтчетПоДиагнозам.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОтчетПоНазначеннымУслугам.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОтчетПоПациентамВСменномЗадании.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОтчетПоПриемамПациентов.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОтчетПоПрисоединеннымФайламМедицинскихДокументов.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОтчетПоСтраховымКомпаниям.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ОтчетПоТалонамАмбулаторногоПациента.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\Очистка талонов.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПаспортВрачебногоУчасткаПедиатрического.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПаспортВрачебногоУчасткаТерапевтического.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПаспортЗдоровьяПечатнаяФорма.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПечатнаяФормаКартаОбратившегосяЗаПсихологическойНаркологическойПомощью.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПечатьЛабораторныхИсследований.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПоискМДБезОсновногоДиагноза.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\РамочныйДоговорОказанияПлатныхМедУслуг.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\РасчетСкидкиНаценкиЗаУченуюСтепеньСотрудника.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\РасчетыПоДоговорамИКонтрагентам.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\РегистрацияВОчередиОбменаСЛИС.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\РегламентированныйОтчетФорма035.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\РегламентированныйОтчетФорма131.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\СведенияОЛечебнойРаботеСтоматологическогоПодразделения.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\СведенияОПричинахНетрудоспособности.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\СтатистическаяФормаN030ПО_о.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\СтатистическаяФормаN039у02.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ТабличныйВизуализаторА5СОтдельнойСекциейДиагнозы.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ТабличныйВизуализаторСОтдельнойСекциейДиагнозы.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\УведомлениеОбИстеченииСрокаВыдачиЛН.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\УведомленияСтартаИЗавершенияЗадачСогласованияМД.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\Ф037уЛистокЕжедневногоУчетаРаботыВрачаСтоматолога.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\Ф043у МедицинскаяКартаСтоматологическогоБольного.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\Ф069у ЖурналАмбулаторныхОпераций.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\Ф112у ИсторияРазвитияРебенка.erf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ЧтениеФайловMedML.epf",
+     "section": null,
+     "partner": null
+    }
+   ]
+  },
+  {
    "path": "MedSol/HospitalPharmacy/2_2_8_14",
    "vendor": "Фирма \"1С\"",
    "name": "БольничнаяАптека",
@@ -48766,6 +49850,833 @@
        "Справочник": 14,
        "ПВХ": 1,
        "Документ": 21
+      }
+     }
+    }
+   ]
+  },
+  {
+   "path": "MedSol/HospitalPharmacy/3_0_3_16",
+   "vendor": "Фирма \"1С\"",
+   "name": "БольничнаяАптека",
+   "version": "3.0.3.16",
+   "synonym": "1C:Медицина. Больничная аптека\\Больничная аптека",
+   "artifacts": [
+    {
+     "type": "processing",
+     "file": "АвтоматическийОбменМДЛП.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "АдминистрированиеМДЛП.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "Синхронизация данных\\БГУ, ред. 1.0\\Обмен данными БА 3 - БГУ 1.0.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "Синхронизация данных\\БГУ, ред. 1.0\\Обмен данными БГУ 1.0 - БА 3.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "rules",
+     "file": "Синхронизация данных\\БГУ, ред. 2.0\\Правила конвертации для БГУ 2.0.zip",
+     "section": null,
+     "partner": null,
+     "entry": "CorrespondentExchangeRules.xml",
+     "kind": "conversion",
+     "root": "ПравилаОбмена",
+     "formatVersion": "2.01",
+     "compatibility": "РежимСовместимостиСБСП21",
+     "id": "0b21c110-b276-44e2-aba6-ba2e9f8cd457",
+     "title": "БА_3_0_3 --> БГУ_2_0_109",
+     "created": "2026-05-18T16:43:58",
+     "source": {
+      "name": "БольничнаяАптека",
+      "version": "3.0.3.12",
+      "synonym": "Медицина. Больничная аптека, редакция 3.0",
+      "platform": "8.0"
+     },
+     "target": {
+      "name": "БухгалтерияГосударственногоУчреждения",
+      "version": "2.0.109.47",
+      "synonym": "Бухгалтерия государственного учреждения, редакция 2.0",
+      "platform": "8.0"
+     },
+     "content": {
+      "kind": "conversion",
+      "export": [
+       {
+        "group": "Справочники",
+        "name": "Валюты",
+        "from": "Справочник.Валюты",
+        "to": "Справочник.Валюты"
+       },
+       {
+        "group": "Справочники",
+        "name": "Единицы измерения",
+        "from": "Справочник.ЕдиницыИзмерения",
+        "to": "Справочник.КлассификаторЕдиницИзмерения"
+       },
+       {
+        "group": "Справочники",
+        "name": "Страны мира",
+        "from": "Справочник.СтраныМира",
+        "to": "Справочник.СтраныМира"
+       },
+       {
+        "group": "Справочники",
+        "name": "Организации",
+        "from": "Справочник.Организации",
+        "to": "Справочник.Организации"
+       },
+       {
+        "group": "Справочники",
+        "name": "Виды контактной информации",
+        "from": "Справочник.ВидыКонтактнойИнформации",
+        "to": "Справочник.ВидыКонтактнойИнформации"
+       },
+       {
+        "group": "Справочники",
+        "name": "Контрагенты",
+        "from": "Справочник.Контрагенты",
+        "to": "Справочник.Контрагенты"
+       },
+       {
+        "group": "Справочники",
+        "name": "Договоры контрагентов",
+        "from": "Справочник.ДоговорыКонтрагентов",
+        "to": "Справочник.Договоры"
+       },
+       {
+        "group": "Справочники",
+        "name": "Номенклатура",
+        "from": "Справочник.Номенклатура",
+        "to": "Справочник.Номенклатура"
+       },
+       {
+        "group": "Справочники",
+        "name": "Группы бухгалтерского учета",
+        "from": "Справочник.ГруппыБухгалтерскогоУчета",
+        "to": "Справочник.Номенклатура"
+       },
+       {
+        "group": "Справочники",
+        "name": "Подразделения организаций",
+        "from": "Справочник.ПодразделенияОрганизаций",
+        "to": "Справочник.Подразделения"
+       },
+       {
+        "group": "Справочники",
+        "name": "Отделения организаций",
+        "from": "Справочник.ОтделенияОрганизаций",
+        "to": "Справочник.Подразделения"
+       },
+       {
+        "group": "Справочники",
+        "name": "Пользователи",
+        "from": "Справочник.Пользователи",
+        "to": "Справочник.Пользователи"
+       },
+       {
+        "group": "Справочники",
+        "name": "Статьи расходов",
+        "from": "ПВХ.СтатьиРасходов",
+        "to": "Справочник.ВидыЗатрат"
+       },
+       {
+        "group": "Справочники",
+        "name": "Склады",
+        "from": "Справочник.Склады",
+        "to": "Справочник.ЦМО"
+       },
+       {
+        "group": "Справочники",
+        "name": "Физические лица",
+        "from": "Справочник.ФизическиеЛица",
+        "to": "Справочник.Контрагенты"
+       },
+       {
+        "group": "Покупка",
+        "name": "Поступление товаров",
+        "from": "Документ.ПоступлениеТоваров",
+        "to": "Документ.ПоступлениеМЗ"
+       },
+       {
+        "group": "Покупка",
+        "name": "Возврат товаров поставщику",
+        "from": "Документ.ВозвратТоваровПоставщику",
+        "to": "Документ.НакладнаяНаОтпускМ15"
+       },
+       {
+        "group": "Продажа",
+        "name": "Отчет о розничных продажах",
+        "from": "Документ.ОтчетОРозничныхПродажах",
+        "to": "Документ.ОтчетОРозничныхПродажах"
+       },
+       {
+        "group": "Продажа",
+        "name": "Передача товаров на сторону",
+        "from": "Документ.ПередачаТоваровНаСторону",
+        "to": "Документ.НакладнаяНаОтпускМ15"
+       },
+       {
+        "group": "Продажа",
+        "name": "Возврат товаров от клиента",
+        "from": "Документ.ВозвратТоваровОтКлиента",
+        "to": "Документ.ПоступлениеМЗ"
+       },
+       {
+        "group": "Списание на расходы",
+        "name": "Внутреннее потребление товаров",
+        "from": "Документ.ВнутреннееПотреблениеТоваров",
+        "to": "Документ.ВедомостьНаВыдачуМЗНаНуждыУчреждения"
+       },
+       {
+        "group": "Списание на расходы",
+        "name": "Внутреннее потребление товаров в отделении",
+        "from": "Документ.ВнутреннееПотреблениеТоваровВОтделении",
+        "to": "Документ.ВедомостьНаВыдачуМЗНаНуждыУчреждения"
+       },
+       {
+        "group": "Списание на расходы",
+        "name": "Списание по назначениям врачей",
+        "from": "Документ.ПотреблениеТоваровПоНазначениямВрачей",
+        "to": "Документ.АктСписанияМЗ"
+       },
+       {
+        "group": "Излишки недостачи",
+        "name": "Оприходование излишков товаров",
+        "from": "Документ.ОприходованиеИзлишковТоваров",
+        "to": "Документ.ПоступлениеМЗ"
+       },
+       {
+        "group": "Излишки недостачи",
+        "name": "Оприходование излишков товаров в отделении",
+        "from": "Документ.ОприходованиеИзлишковТоваровВОтделении",
+        "to": "Документ.ПоступлениеМЗ"
+       },
+       {
+        "group": "Излишки недостачи",
+        "name": "Списание недостач товаров",
+        "from": "Документ.СписаниеНедостачТоваров",
+        "to": "Документ.АктСписанияМЗ"
+       },
+       {
+        "group": "Излишки недостачи",
+        "name": "Списание недостач товаров из отделения",
+        "from": "Документ.СписаниеНедостачТоваровВОтделении",
+        "to": "Документ.АктСписанияМЗ"
+       },
+       {
+        "group": "Излишки недостачи",
+        "name": "Пересортица товаров",
+        "from": "Документ.ПересортицаТоваров",
+        "to": null
+       },
+       {
+        "group": "Излишки недостачи",
+        "name": "Пересортица товаров в отделении",
+        "from": "Документ.ПересортицаТоваровВОтделении",
+        "to": null
+       },
+       {
+        "group": "Перемещения товаров",
+        "name": "Перемещение товаров",
+        "from": "Документ.ПеремещениеТоваров",
+        "to": "Документ.ТребованиеНакладная0315006"
+       },
+       {
+        "group": "Перемещения товаров",
+        "name": "Перемещение товаров",
+        "from": "Документ.ПеремещениеТоваровМеждуОтделениями",
+        "to": "Документ.ТребованиеНакладная0315006"
+       },
+       {
+        "group": "Перемещения товаров",
+        "name": "Отпуск в отделение",
+        "from": "Документ.ОтпускТоваровВОтделение",
+        "to": "Документ.ТребованиеНакладная0315006"
+       },
+       {
+        "group": "Перемещения товаров",
+        "name": "Возврат из отделения",
+        "from": "Документ.ВозвратТоваровИзОтделения",
+        "to": "Документ.ТребованиеНакладная0315006"
+       },
+       {
+        "group": "Производство",
+        "name": "Изготовление по лекарственной прописи",
+        "from": "Документ.ИзготовлениеПоЛекарственнойПрописи",
+        "to": null
+       },
+       {
+        "group": "Документы",
+        "name": "Расчет себестоимости товаров",
+        "from": "Документ.РасчетСебестоимостиТоваров",
+        "to": "Документ.ОперацияБух"
+       },
+       {
+        "group": "Документы",
+        "name": "Ввод начальных остатков",
+        "from": "Документ.ВводОстатков",
+        "to": "Документ.ВводНачальныхОстатков"
+       }
+      ],
+      "pko": 59,
+      "summary": {
+       "Справочник": 14,
+       "ПВХ": 1,
+       "Документ": 21
+      }
+     }
+    },
+    {
+     "type": "rules",
+     "file": "Синхронизация данных\\БГУ, ред. 2.0\\Правила конвертации для БГУ 2.0.zip",
+     "section": null,
+     "partner": null,
+     "entry": "ExchangeRules.xml",
+     "kind": "conversion",
+     "root": "ПравилаОбмена",
+     "formatVersion": "2.01",
+     "compatibility": "РежимСовместимостиСБСП21",
+     "id": "2a34de02-4b0a-4b35-87b3-e0e0f211ecdc",
+     "title": "БГУ_2_0_109 --> БА_3_0_3",
+     "created": "2026-05-18T16:44:17",
+     "source": {
+      "name": "БухгалтерияГосударственногоУчреждения",
+      "version": "2.0.109.47",
+      "synonym": "Бухгалтерия государственного учреждения, редакция 2.0",
+      "platform": "8.0"
+     },
+     "target": {
+      "name": "БольничнаяАптека",
+      "version": "3.0.3.12",
+      "synonym": "Медицина. Больничная аптека, редакция 3.0",
+      "platform": "8.0"
+     },
+     "content": {
+      "kind": "conversion",
+      "export": [
+       {
+        "group": "Справочники",
+        "name": "Валюты",
+        "from": "Справочник.Валюты",
+        "to": "Справочник.Валюты"
+       },
+       {
+        "group": "Справочники",
+        "name": "Организации",
+        "from": "Справочник.Организации",
+        "to": "Справочник.Организации"
+       },
+       {
+        "group": "Справочники",
+        "name": "ВидыКонтактнойИнформации",
+        "from": "Справочник.ВидыКонтактнойИнформации",
+        "to": "Справочник.ВидыКонтактнойИнформации"
+       },
+       {
+        "group": "Справочники",
+        "name": "Контрагенты",
+        "from": "Справочник.Контрагенты",
+        "to": "Справочник.Контрагенты"
+       },
+       {
+        "group": "Справочники",
+        "name": "Договоры",
+        "from": "Справочник.Договоры",
+        "to": "Справочник.ДоговорыКонтрагентов"
+       },
+       {
+        "group": "Справочники",
+        "name": "Физические лица",
+        "from": "Справочник.ФизическиеЛица",
+        "to": "Справочник.ФизическиеЛица"
+       },
+       {
+        "group": "Справочники",
+        "name": "Подразделения",
+        "from": "Справочник.Подразделения",
+        "to": null
+       }
+      ],
+      "pko": 12,
+      "summary": {
+       "Справочник": 7
+      }
+     }
+    },
+    {
+     "type": "rules",
+     "file": "Синхронизация данных\\БГУ, ред. 2.0\\Правила конвертации для БГУ 2.0.zip",
+     "section": null,
+     "partner": null,
+     "entry": "RegistrationRules.xml",
+     "kind": "registration",
+     "root": "ПравилаРегистрации",
+     "formatVersion": "2.01",
+     "compatibility": null,
+     "id": "b21f0989-9ad2-11f0-9005-04d4c4f070a2",
+     "title": "БГУ 2_0_109 --> БА 3_0_3",
+     "created": "2026-05-18T16:42:23",
+     "exchangePlan": "ОбменБАБГУ2",
+     "config": {
+      "name": "БухгалтерияГосударственногоУчреждения",
+      "version": "2.0.109.47",
+      "synonym": "Бухгалтерия государственного учреждения, редакция 2.0",
+      "platform": "8.2"
+     },
+     "content": {
+      "kind": "registration",
+      "composition": [
+       {
+        "obj": "Справочник.ЦМО"
+       },
+       {
+        "obj": "Справочник.ФизическиеЛица"
+       },
+       {
+        "obj": "Справочник.Подразделения"
+       },
+       {
+        "obj": "Регистр сведений.СоответствияОбъектовИнформационныхБаз"
+       },
+       {
+        "obj": "Справочник.ВидыКонтактнойИнформации"
+       },
+       {
+        "obj": "Справочник.Валюты"
+       },
+       {
+        "obj": "Справочник.Договоры"
+       },
+       {
+        "obj": "Справочник.Контрагенты"
+       },
+       {
+        "obj": "Справочник.Организации"
+       }
+      ],
+      "registered": [
+       "Справочник.Валюты",
+       "Справочник.ВидыКонтактнойИнформации",
+       "Справочник.Организации",
+       "Справочник.Контрагенты",
+       "Справочник.Договоры",
+       "Справочник.ФизическиеЛица",
+       "Справочник.ЦМО",
+       "Справочник.Подразделения"
+      ],
+      "summary": {
+       "Справочник": 8,
+       "Регистр сведений": 1
+      }
+     }
+    },
+    {
+     "type": "rules",
+     "file": "Синхронизация данных\\БГУ, ред. 2.0\\Правила конвертации для БГУ КОРП 2.0.zip",
+     "section": null,
+     "partner": null,
+     "entry": "CorrespondentExchangeRules.xml",
+     "kind": "conversion",
+     "root": "ПравилаОбмена",
+     "formatVersion": "2.01",
+     "compatibility": "РежимСовместимостиСБСП21",
+     "id": "0b21c110-b276-44e2-aba6-ba2e9f8cd457",
+     "title": "БА_3_0_3 --> БГУ_2_0_109",
+     "created": "2026-05-18T16:43:58",
+     "source": {
+      "name": "БольничнаяАптека",
+      "version": "3.0.3.12",
+      "synonym": "Медицина. Больничная аптека, редакция 3.0",
+      "platform": "8.0"
+     },
+     "target": {
+      "name": "БухгалтерияГосударственногоУчрежденияКорп",
+      "version": "2.0.109.47",
+      "synonym": "Бухгалтерия государственного учреждения, редакция 2.0",
+      "platform": "8.0"
+     },
+     "content": {
+      "kind": "conversion",
+      "export": [
+       {
+        "group": "Справочники",
+        "name": "Валюты",
+        "from": "Справочник.Валюты",
+        "to": "Справочник.Валюты"
+       },
+       {
+        "group": "Справочники",
+        "name": "Единицы измерения",
+        "from": "Справочник.ЕдиницыИзмерения",
+        "to": "Справочник.КлассификаторЕдиницИзмерения"
+       },
+       {
+        "group": "Справочники",
+        "name": "Страны мира",
+        "from": "Справочник.СтраныМира",
+        "to": "Справочник.СтраныМира"
+       },
+       {
+        "group": "Справочники",
+        "name": "Организации",
+        "from": "Справочник.Организации",
+        "to": "Справочник.Организации"
+       },
+       {
+        "group": "Справочники",
+        "name": "Виды контактной информации",
+        "from": "Справочник.ВидыКонтактнойИнформации",
+        "to": "Справочник.ВидыКонтактнойИнформации"
+       },
+       {
+        "group": "Справочники",
+        "name": "Контрагенты",
+        "from": "Справочник.Контрагенты",
+        "to": "Справочник.Контрагенты"
+       },
+       {
+        "group": "Справочники",
+        "name": "Договоры контрагентов",
+        "from": "Справочник.ДоговорыКонтрагентов",
+        "to": "Справочник.Договоры"
+       },
+       {
+        "group": "Справочники",
+        "name": "Номенклатура",
+        "from": "Справочник.Номенклатура",
+        "to": "Справочник.Номенклатура"
+       },
+       {
+        "group": "Справочники",
+        "name": "Группы бухгалтерского учета",
+        "from": "Справочник.ГруппыБухгалтерскогоУчета",
+        "to": "Справочник.Номенклатура"
+       },
+       {
+        "group": "Справочники",
+        "name": "Подразделения организаций",
+        "from": "Справочник.ПодразделенияОрганизаций",
+        "to": "Справочник.Подразделения"
+       },
+       {
+        "group": "Справочники",
+        "name": "Отделения организаций",
+        "from": "Справочник.ОтделенияОрганизаций",
+        "to": "Справочник.Подразделения"
+       },
+       {
+        "group": "Справочники",
+        "name": "Пользователи",
+        "from": "Справочник.Пользователи",
+        "to": "Справочник.Пользователи"
+       },
+       {
+        "group": "Справочники",
+        "name": "Статьи расходов",
+        "from": "ПВХ.СтатьиРасходов",
+        "to": "Справочник.ВидыЗатрат"
+       },
+       {
+        "group": "Справочники",
+        "name": "Склады",
+        "from": "Справочник.Склады",
+        "to": "Справочник.ЦМО"
+       },
+       {
+        "group": "Справочники",
+        "name": "Физические лица",
+        "from": "Справочник.ФизическиеЛица",
+        "to": "Справочник.Контрагенты"
+       },
+       {
+        "group": "Покупка",
+        "name": "Поступление товаров",
+        "from": "Документ.ПоступлениеТоваров",
+        "to": "Документ.ПоступлениеМЗ"
+       },
+       {
+        "group": "Покупка",
+        "name": "Возврат товаров поставщику",
+        "from": "Документ.ВозвратТоваровПоставщику",
+        "to": "Документ.НакладнаяНаОтпускМ15"
+       },
+       {
+        "group": "Продажа",
+        "name": "Отчет о розничных продажах",
+        "from": "Документ.ОтчетОРозничныхПродажах",
+        "to": "Документ.ОтчетОРозничныхПродажах"
+       },
+       {
+        "group": "Продажа",
+        "name": "Передача товаров на сторону",
+        "from": "Документ.ПередачаТоваровНаСторону",
+        "to": "Документ.НакладнаяНаОтпускМ15"
+       },
+       {
+        "group": "Продажа",
+        "name": "Возврат товаров от клиента",
+        "from": "Документ.ВозвратТоваровОтКлиента",
+        "to": "Документ.ПоступлениеМЗ"
+       },
+       {
+        "group": "Списание на расходы",
+        "name": "Внутреннее потребление товаров",
+        "from": "Документ.ВнутреннееПотреблениеТоваров",
+        "to": "Документ.ВедомостьНаВыдачуМЗНаНуждыУчреждения"
+       },
+       {
+        "group": "Списание на расходы",
+        "name": "Внутреннее потребление товаров в отделении",
+        "from": "Документ.ВнутреннееПотреблениеТоваровВОтделении",
+        "to": "Документ.ВедомостьНаВыдачуМЗНаНуждыУчреждения"
+       },
+       {
+        "group": "Списание на расходы",
+        "name": "Списание по назначениям врачей",
+        "from": "Документ.ПотреблениеТоваровПоНазначениямВрачей",
+        "to": "Документ.АктСписанияМЗ"
+       },
+       {
+        "group": "Излишки недостачи",
+        "name": "Оприходование излишков товаров",
+        "from": "Документ.ОприходованиеИзлишковТоваров",
+        "to": "Документ.ПоступлениеМЗ"
+       },
+       {
+        "group": "Излишки недостачи",
+        "name": "Оприходование излишков товаров в отделении",
+        "from": "Документ.ОприходованиеИзлишковТоваровВОтделении",
+        "to": "Документ.ПоступлениеМЗ"
+       },
+       {
+        "group": "Излишки недостачи",
+        "name": "Списание недостач товаров",
+        "from": "Документ.СписаниеНедостачТоваров",
+        "to": "Документ.АктСписанияМЗ"
+       },
+       {
+        "group": "Излишки недостачи",
+        "name": "Списание недостач товаров из отделения",
+        "from": "Документ.СписаниеНедостачТоваровВОтделении",
+        "to": "Документ.АктСписанияМЗ"
+       },
+       {
+        "group": "Излишки недостачи",
+        "name": "Пересортица товаров",
+        "from": "Документ.ПересортицаТоваров",
+        "to": null
+       },
+       {
+        "group": "Излишки недостачи",
+        "name": "Пересортица товаров в отделении",
+        "from": "Документ.ПересортицаТоваровВОтделении",
+        "to": null
+       },
+       {
+        "group": "Перемещения товаров",
+        "name": "Перемещение товаров",
+        "from": "Документ.ПеремещениеТоваров",
+        "to": "Документ.ТребованиеНакладная0315006"
+       },
+       {
+        "group": "Перемещения товаров",
+        "name": "Перемещение товаров",
+        "from": "Документ.ПеремещениеТоваровМеждуОтделениями",
+        "to": "Документ.ТребованиеНакладная0315006"
+       },
+       {
+        "group": "Перемещения товаров",
+        "name": "Отпуск в отделение",
+        "from": "Документ.ОтпускТоваровВОтделение",
+        "to": "Документ.ТребованиеНакладная0315006"
+       },
+       {
+        "group": "Перемещения товаров",
+        "name": "Возврат из отделения",
+        "from": "Документ.ВозвратТоваровИзОтделения",
+        "to": "Документ.ТребованиеНакладная0315006"
+       },
+       {
+        "group": "Производство",
+        "name": "Изготовление по лекарственной прописи",
+        "from": "Документ.ИзготовлениеПоЛекарственнойПрописи",
+        "to": null
+       },
+       {
+        "group": "Документы",
+        "name": "Расчет себестоимости товаров",
+        "from": "Документ.РасчетСебестоимостиТоваров",
+        "to": "Документ.ОперацияБух"
+       },
+       {
+        "group": "Документы",
+        "name": "Ввод начальных остатков",
+        "from": "Документ.ВводОстатков",
+        "to": "Документ.ВводНачальныхОстатков"
+       }
+      ],
+      "pko": 59,
+      "summary": {
+       "Справочник": 14,
+       "ПВХ": 1,
+       "Документ": 21
+      }
+     }
+    },
+    {
+     "type": "rules",
+     "file": "Синхронизация данных\\БГУ, ред. 2.0\\Правила конвертации для БГУ КОРП 2.0.zip",
+     "section": null,
+     "partner": null,
+     "entry": "ExchangeRules.xml",
+     "kind": "conversion",
+     "root": "ПравилаОбмена",
+     "formatVersion": "2.01",
+     "compatibility": "РежимСовместимостиСБСП21",
+     "id": "2a34de02-4b0a-4b35-87b3-e0e0f211ecdc",
+     "title": "БГУ_2_0_109 --> БА_3_0_3",
+     "created": "2026-05-18T16:44:17",
+     "source": {
+      "name": "БухгалтерияГосударственногоУчрежденияКорп",
+      "version": "2.0.109.47",
+      "synonym": "Бухгалтерия государственного учреждения, редакция 2.0",
+      "platform": "8.0"
+     },
+     "target": {
+      "name": "БольничнаяАптека",
+      "version": "3.0.3.12",
+      "synonym": "Медицина. Больничная аптека, редакция 3.0",
+      "platform": "8.0"
+     },
+     "content": {
+      "kind": "conversion",
+      "export": [
+       {
+        "group": "Справочники",
+        "name": "Валюты",
+        "from": "Справочник.Валюты",
+        "to": "Справочник.Валюты"
+       },
+       {
+        "group": "Справочники",
+        "name": "Организации",
+        "from": "Справочник.Организации",
+        "to": "Справочник.Организации"
+       },
+       {
+        "group": "Справочники",
+        "name": "ВидыКонтактнойИнформации",
+        "from": "Справочник.ВидыКонтактнойИнформации",
+        "to": "Справочник.ВидыКонтактнойИнформации"
+       },
+       {
+        "group": "Справочники",
+        "name": "Контрагенты",
+        "from": "Справочник.Контрагенты",
+        "to": "Справочник.Контрагенты"
+       },
+       {
+        "group": "Справочники",
+        "name": "Договоры",
+        "from": "Справочник.Договоры",
+        "to": "Справочник.ДоговорыКонтрагентов"
+       },
+       {
+        "group": "Справочники",
+        "name": "Физические лица",
+        "from": "Справочник.ФизическиеЛица",
+        "to": "Справочник.ФизическиеЛица"
+       },
+       {
+        "group": "Справочники",
+        "name": "Подразделения",
+        "from": "Справочник.Подразделения",
+        "to": null
+       }
+      ],
+      "pko": 12,
+      "summary": {
+       "Справочник": 7
+      }
+     }
+    },
+    {
+     "type": "rules",
+     "file": "Синхронизация данных\\БГУ, ред. 2.0\\Правила конвертации для БГУ КОРП 2.0.zip",
+     "section": null,
+     "partner": null,
+     "entry": "RegistrationRules.xml",
+     "kind": "registration",
+     "root": "ПравилаРегистрации",
+     "formatVersion": "2.01",
+     "compatibility": null,
+     "id": "b21f0989-9ad2-11f0-9005-04d4c4f070a2",
+     "title": "БГУ 2_0_109 --> БА 3_0_3",
+     "created": "2026-05-18T16:42:23",
+     "exchangePlan": "ОбменБАБГУ2",
+     "config": {
+      "name": "БухгалтерияГосударственногоУчрежденияКорп",
+      "version": "2.0.109.47",
+      "synonym": "Бухгалтерия государственного учреждения, редакция 2.0",
+      "platform": "8.2"
+     },
+     "content": {
+      "kind": "registration",
+      "composition": [
+       {
+        "obj": "Справочник.ЦМО"
+       },
+       {
+        "obj": "Справочник.ФизическиеЛица"
+       },
+       {
+        "obj": "Справочник.Подразделения"
+       },
+       {
+        "obj": "Регистр сведений.СоответствияОбъектовИнформационныхБаз"
+       },
+       {
+        "obj": "Справочник.ВидыКонтактнойИнформации"
+       },
+       {
+        "obj": "Справочник.Валюты"
+       },
+       {
+        "obj": "Справочник.Договоры"
+       },
+       {
+        "obj": "Справочник.Контрагенты"
+       },
+       {
+        "obj": "Справочник.Организации"
+       }
+      ],
+      "registered": [
+       "Справочник.Валюты",
+       "Справочник.ВидыКонтактнойИнформации",
+       "Справочник.Организации",
+       "Справочник.Контрагенты",
+       "Справочник.Договоры",
+       "Справочник.ФизическиеЛица",
+       "Справочник.ЦМО",
+       "Справочник.Подразделения"
+      ],
+      "summary": {
+       "Справочник": 8,
+       "Регистр сведений": 1
       }
      }
     }

@@ -1,10 +1,11 @@
 // ---------- Пара: «у меня есть А и Б — что с ними можно сделать и что будет передаваться»
 const LINES = Object.keys(lineInfo).sort(byOrder);
 const bySlug = Object.fromEntries(LINES.map(l => [lineInfo[l].slug, l]));
-const FAM_ORDER = ['Бухгалтерия', 'Торговля и производство', 'Розница и касса', 'Малый бизнес', 'Зарплата и кадры', 'Документооборот', 'Госсектор', 'Прочее'];
+const FAM_ORDER = ['Бухгалтерия', 'Торговля и производство', 'Розница и касса', 'Малый бизнес', 'Зарплата и кадры', 'Документооборот', 'НСИ (MDM)', 'Госсектор', 'Прочее'];
 const POPULAR = ['УТ 11', 'БП 3.0', 'КА 2', 'ERP 2', 'Розница 3', 'УНФ 3', 'ЗУП КОРП 3', 'ДО КОРП 3', 'РМК 1.1', 'Розница 2'].filter(l => lineInfo[l]);
-const MECH_ORDER = ['EnterpriseData', 'Собственный формат', 'Правила КД2', 'КД2, правила из файла', 'Только описание', 'Обработка', 'Пакет перехода'];
+const MECH_ORDER = ['EnterpriseData', 'Собственный формат', 'Правила КД2', 'КД2, правила из файла', 'Веб-сервис (HTTP)', 'Только описание', 'Обработка', 'Пакет перехода'];
 const MECH_TEXT = {
+  'Веб-сервис (HTTP)': 'через веб-сервис / HTTP (собственный протокол, без плана обмена БСП)',
   'EnterpriseData': 'через универсальный формат EnterpriseData',
   'Собственный формат': 'в собственном XDTO-формате (не EnterpriseData)',
   'Правила КД2': 'по правилам конвертации (КД2)',
@@ -102,7 +103,9 @@ function dirBlock(x, y, list) {
   const others = list.filter(l => l !== b && l.mech === b.mech).length;
   const more = others && !(b.cs && b.cs.ed) ? `<div class="dim">ещё вариантов правил: ${others} (другие версии)</div>` : '';
   return `<div class="dir"><div class="dh2">${esc(x)} → ${esc(y)}</div>
-    ${b.cs ? `<div class="sum">${sumText(b.cs)}</div>` : '<div class="dim">состав не разобран</div>'}
+    ${b.cs && b.cs.n === 0 ? '<div class="dim">по правилам обмена в эту сторону ничего не передаётся</div>'
+      : b.cs ? `<div class="sum">${sumText(b.cs)}</div>`
+      : b.cls && b.cls.mech === 'Веб-сервис (HTTP)' ? '<div class="dim">состав — в описании выше</div>' : '<div class="dim">состав не разобран</div>'}
     ${b.cs && b.cs.basis && b.cs.basis.length ? `<div class="notes warn">${esc(b.cs.basis.join(' · '))}</div>` : ''}
     ${ver}${more}
     ${b.cs ? `<details class="objs" data-link="${b.id}"><summary>Что будет передаваться</summary><div class="objs-body"></div></details>` : ''}</div>`;
@@ -123,7 +126,11 @@ function mechBlock(A, B, mech, group) {
   if (mech === 'EnterpriseData' && group.some(l => /переход с КД2/.test(l.mech))) req.push('В поставке есть обработка перевода действующего обмена по правилам КД2 на EnterpriseData.');
   if (srcs.has('releases')) req.push('Файл — на странице версии releases.1c.ru.');
   const urls = [...new Set(group.flatMap(l => l.urls || []))];
-  const notes = [...new Set(group.flatMap(l => l.notes).filter(n => /не уточнено|не проверена|нужна|только описание/.test(n)))];
+  // у интеграций без плана обмена протокол и состав описаны в разметке — показываем целиком
+  const http = mech === 'Веб-сервис (HTTP)';
+  if (http) req.push(`Протокол: ${[...new Set(group.map(l => l.mech))].map(esc).join('; ')}.`);
+  if (http) for (const n of new Set(group.flatMap(l => l.notes))) req.push(esc(n));
+  const notes = http ? [] : [...new Set(group.flatMap(l => l.notes).filter(n => /не уточнено|не проверена|нужна|только описание/.test(n)))];
   const tw = group.filter(l => l.twin).map(l => `${l.from.line} → ${l.to.line}`);
   if (tw.length) req.push(`Найдено для родственной редакции (общая кодовая база): ${[...new Set(tw)].map(esc).join(', ')}.`);
   const evid = [...new Set(group.flatMap(l => l.ev))].slice(0, 6);
