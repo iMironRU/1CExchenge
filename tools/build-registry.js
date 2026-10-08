@@ -290,7 +290,7 @@ if (fs.existsSync(filesPath) && fs.existsSync(catPath)) {
         addLink({
           shippedIn, source: 'releases', kind: 'переход', mechanism: r.mechanism || 'пакет перехода',
           exchangePlan: null, from: P.fromLabel(s), to: { ...self, version: null },
-          evidence: [`releases.1c.ru: ${x.path}`], notes: [`«${title}» (${c.title})`], urls: [x.url],
+          evidence: [`releases.1c.ru: ${x.path}`], notes: [`«${title}» (${c.title})`, ...(r.note ? [r.note] : [])], urls: [x.url],
         });
       }
     }
@@ -398,7 +398,9 @@ for (const l of links.values()) {
   if (!prev || l.content.export.length > prev.content.export.length) rulesByPair.set(k, l);
 }
 for (const l of links.values()) {
-  if (l.kind !== 'переход' || l.content) continue;
+  // пакеты releases.1c.ru: проверенные оказались дистрибутивами обновления (.cfu, база целиком) —
+  // правила соседней пары к ним не относятся; нескачанные — без состава
+  if (l.kind !== 'переход' || l.content || /дистрибутив обновления|пакет перехода/.test(l.mechanism)) continue;
   const sib = rulesByPair.get(`${P.line(l.from)}|${P.line(l.to)}`);
   if (!sib) continue;
   const where = ((sib.evidence || [])[0] || '').replace(/^[^:]+: /, '');
@@ -409,7 +411,9 @@ for (const l of links.values()) {
 for (const l of links.values()) {
   if (l.kind !== 'переход' || l.content) continue;
   const ev = (l.evidence || []).join(' ');
-  l.noContent = /пакет перехода|дистрибутив обновления/.test(l.mechanism) ? 'состав — внутри пакета на releases.1c.ru (пакет не скачан)'
+  l.noContent = /дистрибутив обновления/.test(l.mechanism)
+    ? 'переход обновлением конфигурации (файл .cfu): база становится новой конфигурацией, данные сохраняются целиком; версии источника и приёмника должны совпадать'
+    : /пакет перехода/.test(l.mechanism) ? 'пакет на releases.1c.ru не скачан; проверенные пакеты такого вида — обновление конфигурации файлом .cfu (база целиком)'
     : /ПомощникПереходаСРедакции20/.test(ev) ? 'переход обновлением конфигурации: база обновляется до новой редакции, данные сохраняются целиком'
     : /ПомощникПереходаСПрежнихПрограмм/.test(ev) ? 'перенос кодом помощника (без правил конвертации): кадровые и расчётные данные прежней программы'
     : /Обработка\.(ЗагрузкаДанныхИз|ПереносДанныхИз|ПомощникПереходаС(Торговля|ДругихКонфигураций)|ПомощникПереходаВ)/.test(ev)
