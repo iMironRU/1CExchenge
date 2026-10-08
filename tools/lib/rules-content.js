@@ -65,6 +65,14 @@ function conversionContent(root) {
       off: rule.attrs['Отключить'] === 'true' || undefined,
     });
   }
+  // выгрузка задана только алгоритмом (ПВД без объекта выборки — помощник выгрузки из БП 3.0 в ЗУП):
+  // состав — по правилам конвертации объектов «источник → приёмник»
+  if (pko.size && !exp.some(e => e.from)) {
+    const byPko = [...pko.values()].map(p => ({ src: objectRef(p.source), dst: objectRef(p.target), code: p.code }))
+      .filter(x => x.src && x.src.kind !== 'Прочее' && x.src.kind !== 'Перечисление') // перечисления — конвертация значений, не данные
+      .map(x => ({ group: 'правила конвертации объектов', name: x.code, from: short(x.src), to: short(x.dst) }));
+    if (byPko.length) return { export: byPko, pko: pko.size, byPko: true };
+  }
   return { export: exp, pko: pko.size };
 }
 

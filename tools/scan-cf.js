@@ -14,6 +14,8 @@ const { spawnSync } = require('child_process');
 const { decodeText, parseRules, unescapeXml } = require('./lib/rules');
 const { rulesContent } = require('./lib/rules-content');
 const { edRules, handEdRules } = require('./lib/ed-rules');
+const v8 = require('./lib/v8container');
+const { listEntries, readEntry } = require('./lib/zip');
 
 const args = Object.fromEntries(process.argv.slice(2).reduce((a, v, i, arr) => {
   if (v.startsWith('--')) a.push([v.slice(2), arr[i + 1] && !arr[i + 1].startsWith('--') ? arr[i + 1] : true]);
@@ -226,6 +228,27 @@ const verCmp = (a, b) => {
 };
 
 // Макеты объекта, содержащие правила КД2 (Template.txt / Template.xml)
+// Тексты правил из двоичных данных: контейнер 1С (epf — макет «ПравилаОбмена») или zip (xml внутри)
+function binaryTexts(buf) {
+  const out = [];
+  try {
+    if (v8.isContainer(buf)) {
+      const items = v8.walk(buf);
+      const names = new Map();
+      for (const it of items) for (const m of it.data.subarray(0, 600).toString('utf8').matchAll(/\{1,0,([0-9a-f-]{36})\},"([^"]+)"/g)) names.set(m[1], m[2]);
+      for (const it of items) {
+        const text = decodeText(it.data);
+        if (!/^\s*<ПравилаОбмена[\s>]/.test(text.slice(0, 200))) continue;
+        const uuid = (it.path.match(/([0-9a-f-]{36})\.\d+$/) || [])[1];
+        out.push({ name: names.get(uuid) || it.path, text });
+      }
+    } else if (buf.subarray(0, 2).toString('latin1') === 'PK') {
+      for (const e of listEntries(buf)) if (!e.dir && /\.xml$/i.test(e.name)) out.push({ name: e.name, text: decodeText(readEntry(buf, e)) });
+    }
+  } catch { /* не разобрали — пропускаем */ }
+  return out;
+}
+
 function rulesTemplates(objDir) {
   const res = [];
   const tdir = path.join(objDir, 'Templates');
@@ -239,6 +262,14 @@ function rulesTemplates(objDir) {
       const text = readText(p);
       const rules = parseRules(text);
       if (rules) res.push({ template: d.name, ...rules, content: rulesContent(text) });
+    }
+    // двоичный макет: вложенная обработка (помощник выгрузки для программы-источника) или zip с правилами
+    const bin = path.join(ext, 'Template.bin');
+    if (fs.existsSync(bin)) {
+      for (const { name, text } of binaryTexts(fs.readFileSync(bin))) {
+        const rules = parseRules(text);
+        if (rules) res.push({ template: `${d.name}/${name}`, embedded: true, ...rules, content: rulesContent(text) });
+      }
     }
   }
   return res;

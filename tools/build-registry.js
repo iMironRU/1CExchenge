@@ -34,7 +34,8 @@ function addLink(l) {
       ex.exchangePlan = ex.exchangePlan ? `${ex.exchangePlan}, ${l.exchangePlan}` : l.exchangePlan;
     }
     for (const n of l.notes) if (!ex.notes.includes(n)) ex.notes.push(n);
-    ex.content = ex.content || l.content || null;
+    // два набора правил под одной связью (КА: помощник из БП и помощник зарплаты из БП) — объединяем
+    ex.content = ex.content && l.content && ex.content !== l.content ? mergeContent([ex.content, l.content]) : (ex.content || l.content || null);
     if (l.formatVersions) ex.formatVersions = l.formatVersions;
     for (const u of l.urls || []) if (!(ex.urls || (ex.urls = [])).includes(u)) ex.urls.push(u);
     if (l.compFromReceiver) ex.compFromReceiver = true;
@@ -59,21 +60,30 @@ function linkContent(conv, reg) {
   if (!c || c.kind !== 'conversion') return null;
   const on = c.export.filter(e => !e.off);
   const r = reg && reg.content && reg.content.kind === 'registration' ? reg.content : null;
+  // сводка по уникальным объектам (на один объект бывает несколько правил) — как в списке на странице
+  const summary = {};
+  for (const o of new Set(on.map(e => e.from || e.to).filter(Boolean))) { const k = o.split('.')[0]; summary[k] = (summary[k] || 0) + 1; }
   return {
-    summary: c.summary, pko: c.pko, off: c.export.length - on.length,
+    summary, pko: c.pko, off: c.export.length - on.length,
     export: on.map(e => [e.from, e.to, e.group]),
     reg: r ? { summary: r.summary, count: r.composition.length } : null,
+    ...(c.byPko ? { basis: ['выгрузка в правилах задана алгоритмом — состав по правилам конвертации объектов'] } : {}),
   };
 }
 
 // несколько наборов правил одного перехода (УПП: правила УПП + зарплатной части) — один состав
 function mergeContent(list) {
+  list = list.filter(Boolean);
   if (!list.length) return null;
   if (list.length === 1) return list[0];
+  // строки без повторов (одни и те же правила приходят из нескольких поставок), сводка — по уникальным объектам
+  const seen = new Set();
+  const exp = list.flatMap(c => c.export || []).filter(r => { const k = `${r[0]}|${r[1]}`; if (seen.has(k)) return false; seen.add(k); return true; });
   const summary = {};
-  for (const c of list) for (const [k, n] of Object.entries(c.summary || {})) summary[k] = (summary[k] || 0) + n;
-  return { summary, pko: list.reduce((n, c) => n + (c.pko || 0), 0), off: list.reduce((n, c) => n + (c.off || 0), 0),
-    export: list.flatMap(c => c.export), reg: null };
+  for (const o of new Set(exp.map(r => r[0] || r[1]).filter(Boolean))) { const k = o.split('.')[0]; summary[k] = (summary[k] || 0) + 1; }
+  const basis = [...new Set(list.flatMap(c => c.basis || []))];
+  return { summary, pko: Math.max(...list.map(c => c.pko || 0)), off: Math.max(...list.map(c => c.off || 0)),
+    export: exp, reg: null, ...(basis.length ? { basis } : {}) };
 }
 
 function evidence(a) {
@@ -454,7 +464,6 @@ for (const l of links.values()) {
     ? 'переход обновлением конфигурации (файл .cfu): база становится новой конфигурацией, данные сохраняются целиком; версии источника и приёмника должны совпадать'
     : /пакет перехода/.test(l.mechanism) ? 'пакет на releases.1c.ru не скачан (бывает обновление конфигурации .cfu или обработка выгрузки с правилами; разбор — tools/scan-packages.js)'
     : /ПомощникПереходаСРедакции20/.test(ev) ? 'переход обновлением конфигурации: база обновляется до новой редакции, данные сохраняются целиком'
-    : /ПомощникПереходаСПрежнихПрограмм/.test(ev) ? 'перенос кодом помощника (без правил конвертации): кадровые и расчётные данные прежней программы'
     : /Обработка\.(ЗагрузкаДанныхИз|ПереносДанныхИз|ПомощникПереходаС(Торговля|ДругихКонфигураций)|ПомощникПереходаВ)/.test(ev)
       ? 'загрузчик читает файл, выгруженный программой-источником по её правилам; в поставке приёмника правил нет'
       : /Подготовка/.test(ev) ? 'подготовительная обработка (проверка и очистка данных перед переходом), данные не переносит'
