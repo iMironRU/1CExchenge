@@ -1,6 +1,6 @@
 {
  "source": "https://upd.imiron.ru/api/configs",
- "fetched": "2026-10-08T10:06:23.956Z",
+ "fetched": "2026-10-08T13:28:54.199Z",
  "lines": {
   "1С:Архив": {
    "latest": true,
@@ -219,12 +219,62 @@
     "182"
    ]
   },
+  "ДО ГУ 1.4": {
+   "latest": false,
+   "lastRelease": "2015-09-09",
+   "version": "1.4.13.1",
+   "ids": [
+    "58539"
+   ]
+  },
+  "ДО ГУ 2.1": {
+   "latest": false,
+   "lastRelease": "2026-09-09",
+   "version": "2.1.38.11",
+   "ids": [
+    "58540",
+    "58563"
+   ]
+  },
+  "ДО ГУ 3": {
+   "latest": true,
+   "lastRelease": "2026-07-09",
+   "version": "3.0.21.3",
+   "ids": [
+    "223",
+    "5023"
+   ]
+  },
   "ДО КОРП 3": {
    "latest": true,
    "lastRelease": "2026-07-09",
    "version": "3.0.21.3",
    "ids": [
     "21215"
+   ]
+  },
+  "ДО ПРОФ 1.4": {
+   "latest": false,
+   "lastRelease": "2015-09-09",
+   "version": "1.4.13.1",
+   "ids": [
+    "45532"
+   ]
+  },
+  "ДО ПРОФ 2.1": {
+   "latest": false,
+   "lastRelease": "2026-09-08",
+   "version": "2.1.38.11",
+   "ids": [
+    "222"
+   ]
+  },
+  "ДО ПРОФ 3": {
+   "latest": true,
+   "lastRelease": "2026-08-04",
+   "version": "3.0.20.21",
+   "ids": [
+    "58770"
    ]
   },
   "ЗБУ 1.0": {
@@ -287,8 +337,8 @@
   },
   "КА 2": {
    "latest": true,
-   "lastRelease": "2026-10-02",
-   "version": "2.5.27.95",
+   "lastRelease": "2026-09-30",
+   "version": "2.6.1.70",
    "ids": [
     "21",
     "18554",
@@ -540,8 +590,8 @@
   },
   "УТ 11": {
    "latest": true,
-   "lastRelease": "2026-10-02",
-   "version": "11.5.27.95",
+   "lastRelease": "2026-09-30",
+   "version": "11.6.1.70",
    "ids": [
     "80",
     "79"

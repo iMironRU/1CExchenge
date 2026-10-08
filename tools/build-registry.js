@@ -65,6 +65,16 @@ function linkContent(conv, reg) {
   };
 }
 
+// несколько наборов правил одного перехода (УПП: правила УПП + зарплатной части) — один состав
+function mergeContent(list) {
+  if (!list.length) return null;
+  if (list.length === 1) return list[0];
+  const summary = {};
+  for (const c of list) for (const [k, n] of Object.entries(c.summary || {})) summary[k] = (summary[k] || 0) + n;
+  return { summary, pko: list.reduce((n, c) => n + (c.pko || 0), 0), off: list.reduce((n, c) => n + (c.off || 0), 0),
+    export: list.flatMap(c => c.export), reg: null };
+}
+
 function evidence(a) {
   return a.entry ? `${a.file} :: ${a.entry}` : a.file;
 }
@@ -272,6 +282,8 @@ for (const cf of cfScans) {
 }
 
 // ---------- releases.1c.ru: пакеты перехода среди файлов последних версий (API Апдейкона)
+const pkgPath = path.join(ROOT, 'data', 'packages.json');
+const packages = fs.existsSync(pkgPath) ? JSON.parse(fs.readFileSync(pkgPath, 'utf8')).packages : {};
 const filesPath = path.join(ROOT, 'data', 'catalog-files.json');
 const catPath = path.join(ROOT, 'data', 'catalog-ru.json');
 if (fs.existsSync(filesPath) && fs.existsSync(catPath)) {
@@ -286,11 +298,30 @@ if (fs.existsSync(filesPath) && fs.existsSync(catPath)) {
       const title = x.title.replace(/^.*Версия [\d.]+\.\s*/, '');
       const r = relRules.find(a => a.re.test(title));
       if (!r || r.skip) continue;
+      // скачанный и разобранный пакет (tools/scan-packages.js): обновление .cfu или обработка выгрузки с правилами
+      const pkg = packages[x.path.split(/[\\/]/).pop()];
       for (const s of r.from) {
+        const src = P.fromLabel(s);
+        let mechanism = r.mechanism || 'пакет перехода', content = null;
+        const notes = [`«${title}» (${c.title})`, ...(r.note ? [r.note] : [])];
+        if (pkg && pkg.type === 'cfu') {
+          mechanism = 'дистрибутив обновления с другой конфигурации';
+          if (!r.note) notes.push(`Проверено по пакету: ${pkg.files.filter(f => /\.cfu$/i.test(f)).join(', ')}, режим «Обновление конфигурации»`);
+        } else if (pkg && pkg.type === 'processing') {
+          // правила той же программы-источника (КОРП и базовая/ПРОФ — один продукт; КА 1.1 — правила УПП)
+          const base = p => String(p).replace(/ КОРП$/, '');
+          const want = base(src.product === 'КА' && src.edition === '1.1' ? 'УПП' : src.product);
+          const rs = (pkg.rules || []).filter(x => base(P.fromRules(x.source).product) === want);
+          if (rs.length) {
+            mechanism = 'пакет перехода: обработка выгрузки + правила КД2';
+            content = mergeContent(rs.map(x => linkContent(x, null)).filter(Boolean));
+            notes.push(`Проверено по пакету: ${[...new Set(rs.map(x => x.entry))].join(', ')} (правила ${rs.map(x => x.template || 'xml').join(', ')})`);
+          }
+        }
         addLink({
-          shippedIn, source: 'releases', kind: 'переход', mechanism: r.mechanism || 'пакет перехода',
-          exchangePlan: null, from: P.fromLabel(s), to: { ...self, version: null },
-          evidence: [`releases.1c.ru: ${x.path}`], notes: [`«${title}» (${c.title})`, ...(r.note ? [r.note] : [])], urls: [x.url],
+          shippedIn, source: 'releases', kind: 'переход', mechanism,
+          exchangePlan: null, from: src, to: { ...self, version: null }, content,
+          evidence: [`releases.1c.ru: ${x.path}`], notes, urls: [x.url],
         });
       }
     }
@@ -413,7 +444,7 @@ for (const l of links.values()) {
   const ev = (l.evidence || []).join(' ');
   l.noContent = /дистрибутив обновления/.test(l.mechanism)
     ? 'переход обновлением конфигурации (файл .cfu): база становится новой конфигурацией, данные сохраняются целиком; версии источника и приёмника должны совпадать'
-    : /пакет перехода/.test(l.mechanism) ? 'пакет на releases.1c.ru не скачан; проверенные пакеты такого вида — обновление конфигурации файлом .cfu (база целиком)'
+    : /пакет перехода/.test(l.mechanism) ? 'пакет на releases.1c.ru не скачан (бывает обновление конфигурации .cfu или обработка выгрузки с правилами; разбор — tools/scan-packages.js)'
     : /ПомощникПереходаСРедакции20/.test(ev) ? 'переход обновлением конфигурации: база обновляется до новой редакции, данные сохраняются целиком'
     : /ПомощникПереходаСПрежнихПрограмм/.test(ev) ? 'перенос кодом помощника (без правил конвертации): кадровые и расчётные данные прежней программы'
     : /Обработка\.(ЗагрузкаДанныхИз|ПереносДанныхИз|ПомощникПереходаС(Торговля|ДругихКонфигураций)|ПомощникПереходаВ)/.test(ev)
@@ -516,6 +547,11 @@ for (const l of list) {
   };
 }
 
+// разобранные программы (шаблоны и CF), кроме библиотек и неизвестных имён
+const LIBS = new Set(['БСП', 'Конвертация данных', 'БПО']);
+const scannedSelf = [...scan.templates.map(t => P.fromTemplate(t)), ...cfScans.map(cf => P.fromTemplate(cf))]
+  .filter(c => c.product !== c.name && !LIBS.has(c.product));
+
 // ---- JSON
 const out = {
   generated: new Date().toISOString(),
@@ -530,7 +566,8 @@ const out = {
   })),
   enterpriseData: enterpriseData.map(e => ({ config: P.display(e.config), line: P.line(e.config), version: e.config.version, declared: e.declared, packages: e.packages })),
   // линейки: семейство и актуальность — для выбора пары на странице
-  lines: Object.fromEntries([...new Map(list.flatMap(l => [l.from, l.to]).map(c => [P.line(c), c])).entries()].map(([ln, c]) => [ln, { product: c.product, edition: c.edition || null, family: familyOf(c), current: isCurrent(c), support: supportOf(c) }])),
+  // линейки связей и все разобранные программы (даже без своих связей: ДО ПРОФ — через общую кодовую базу с ДО КОРП)
+  lines: Object.fromEntries([...new Map([...list.flatMap(l => [l.from, l.to]), ...scannedSelf].map(c => [P.line(c), c])).entries()].map(([ln, c]) => [ln, { product: c.product, edition: c.edition || null, family: familyOf(c), current: isCurrent(c), support: supportOf(c) }])),
 };
 fs.writeFileSync(path.join(ROOT, 'data', 'registry.json'), JSON.stringify(out, null, 1));
 

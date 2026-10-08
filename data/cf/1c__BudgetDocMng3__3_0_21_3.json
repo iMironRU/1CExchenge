@@ -1,9 +1,9 @@
 {
- "id": "1c__DocMngCorp3__3_0_21_3",
- "path": "1c/DocMngCorp3/3_0_21_3",
- "name": "ДокументооборотКОРП",
+ "id": "1c__BudgetDocMng3__3_0_21_3",
+ "path": "1c/BudgetDocMng3/3_0_21_3",
+ "name": "ДокументооборотГосударственногоУчреждения",
  "version": "3.0.21.3",
- "scanned": "2026-10-08T13:19:49.756Z",
+ "scanned": "2026-10-08T13:19:45.346Z",
  "enterpriseData": {
   "declared": [
    "1.2",
