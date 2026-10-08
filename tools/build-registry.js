@@ -337,9 +337,46 @@ function edContent(fromLine, toLine, plan) {
 }
 for (const l of links.values()) {
   if (l.mechanism !== 'EnterpriseData' && l.mechanism !== OWN_FORMAT) continue;
-  l.content = planBy.has(P.line(l.from) + '|' + l.exchangePlan) || planBy.has(P.line(l.to) + '|' + l.exchangePlan)
-    ? edContent(P.line(l.from), P.line(l.to), l.exchangePlan)
-    : edContent(P.line(l.from), P.line(l.to));
+  const byPlan = planBy.has(P.line(l.from) + '|' + l.exchangePlan) || planBy.has(P.line(l.to) + '|' + l.exchangePlan);
+  // собственный формат — только по правилам своего плана (Архив: АДХ — правил EnterpriseData не касается)
+  if (l.mechanism === OWN_FORMAT && !byPlan) continue;
+  l.content = byPlan ? edContent(P.line(l.from), P.line(l.to), l.exchangePlan) : edContent(P.line(l.from), P.line(l.to));
+}
+
+// Правил нет (обмен с Архивом, HTTP-обмены по плану) — состав плана обмена у отправителя: что регистрируется к отправке
+const planComp = new Map();
+for (const cf of cfScans) {
+  const ln = P.line(P.fromTemplate(cf));
+  for (const p of cf.exchangePlans) if (p.composition && p.composition.length) planComp.set(`${ln}|${p.name}`, p.composition);
+}
+for (const l of links.values()) {
+  if (l.content || l.kind !== 'синхронизация' || !l.exchangePlan) continue;
+  const plan = l.exchangePlan.split(', ').find(p => planComp.has(`${P.line(l.from)}|${p}`));
+  if (!plan) continue;
+  const comp = planComp.get(`${P.line(l.from)}|${plan}`);
+  const summary = {};
+  for (const o of comp) { const k = o.split('.')[0]; summary[k] = (summary[k] || 0) + 1; }
+  l.content = {
+    comp: true, summary, export: comp.map(o => [o, o, null]), formats: 0, pko: null, off: 0, reg: null,
+    basis: [`состав плана обмена «${plan}» у ${P.line(l.from)}: что регистрируется к отправке; правил преобразования в поставке нет`],
+  };
+}
+
+// Интеграции без плана (веб-сервис, HTTP): состав — из разметки по коду (content.out — от for к партнёру, content.in — обратно)
+for (const l of links.values()) {
+  if (l.content || l.kind !== 'синхронизация') continue;
+  for (const a of [...(ann.integrations || []), ...(ann.contents || [])]) {
+    if (!a.content) continue;
+    const partners = a.partners.map(x => P.fromLabel(x).product);
+    const rows = a.for.includes(l.from.product) && partners.includes(l.to.product) ? a.content.out
+      : a.for.includes(l.to.product) && partners.includes(l.from.product) ? a.content.in : null;
+    if (!rows || !rows.length) continue;
+    const exp = rows.map(r => (Array.isArray(r) ? [r[0] || null, r[1] || r[0], null] : [r, r, null]));
+    const summary = {};
+    for (const o of new Set(exp.map(r => r[0] || r[1]))) { const k = o.split('.')[0]; summary[k] = (summary[k] || 0) + 1; }
+    l.content = { comp: true, summary, export: exp, formats: 0, pko: null, off: 0, reg: null, basis: [a.contentNote || 'состав — по коду интеграции'] };
+    break;
+  }
 }
 
 // Программы на коде другой (Садовод, Гаражи — на коде БП 3.0): обмены, которые есть и у базовой программы,

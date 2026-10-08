@@ -283,6 +283,18 @@ function planRules(xmlDir) {
   return out;
 }
 
+// Состав плана обмена (Ext/Content.xml): что регистрируется к отправке — «Справочник.X», «Документ.Y»…
+const META_KIND = {
+  Catalog: 'Справочник', Document: 'Документ', InformationRegister: 'Регистр сведений', AccumulationRegister: 'Регистр накопления',
+  AccountingRegister: 'Регистр бухгалтерии', CalculationRegister: 'Регистр расчета', ChartOfCharacteristicTypes: 'ПВХ',
+  ChartOfAccounts: 'План счетов', ChartOfCalculationTypes: 'ПВР', Constant: 'Константа', BusinessProcess: 'Бизнес-процесс', Task: 'Задача',
+};
+function planComposition(file) {
+  if (!fs.existsSync(file)) return [];
+  return [...readText(file).matchAll(/<Metadata>(\w+)\.([^<]+)<\/Metadata>/g)]
+    .filter(m => META_KIND[m[1]]).map(m => `${META_KIND[m[1]]}.${m[2]}`);
+}
+
 function analyze(id, cfDir, meta) {
   const xmlDir = path.join(cfDir, 'xml');
   const dumpInfo = fs.readFileSync(path.join(cfDir, 'ConfigDumpInfo.xml'), 'utf8');
@@ -305,6 +317,7 @@ function analyze(id, cfDir, meta) {
       correspondents: correspondents(bsl, xmlDir),
       sourceConfigName: ((bsl.match(/ИмяКонфигурацииИсточника\s*=\s*"([^"]+)"/) || [])[1]) || null,
       rules: rulesTemplates(path.join(epDir, name)),
+      composition: planComposition(path.join(epDir, name, 'Ext', 'Content.xml')),
     });
   }
 
