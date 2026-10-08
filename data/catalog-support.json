@@ -1,6 +1,6 @@
 {
  "source": "https://upd.imiron.ru/api/configs",
- "fetched": "2026-10-08T08:55:13.880Z",
+ "fetched": "2026-10-08T10:06:23.956Z",
  "lines": {
   "1С:Архив": {
    "latest": true,
@@ -8,6 +8,22 @@
    "version": "1.0.14.6",
    "ids": [
     "24136"
+   ]
+  },
+  "1С:Деньги 1.0": {
+   "latest": false,
+   "lastRelease": "2013-03-20",
+   "version": "1.0.26.1",
+   "ids": [
+    "58577"
+   ]
+  },
+  "1С:Деньги 2.0": {
+   "latest": true,
+   "lastRelease": "2024-06-04",
+   "version": "2.0.44.40",
+   "ids": [
+    "132"
    ]
   },
   "1С:Договоры 1.0": {

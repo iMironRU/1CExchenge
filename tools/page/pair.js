@@ -1,10 +1,11 @@
 // ---------- Пара: «у меня есть А и Б — что с ними можно сделать и что будет передаваться»
 const LINES = Object.keys(lineInfo).sort(byOrder);
 const bySlug = Object.fromEntries(LINES.map(l => [lineInfo[l].slug, l]));
-const FAM_ORDER = ['Бухгалтерия', 'Торговля и производство', 'Розница и касса', 'Малый бизнес', 'Зарплата и кадры', 'Документооборот', 'НСИ (MDM)', 'Госсектор', 'Прочее'];
+const FAM_ORDER = ['Бухгалтерия', 'Торговля и производство', 'Розница и касса', 'Малый бизнес', 'Зарплата и кадры', 'Документооборот', 'НСИ (MDM)', 'Госсектор', 'Мобильные приложения', 'Прочее'];
 const POPULAR = ['УТ 11', 'БП 3.0', 'КА 2', 'ERP 2', 'Розница 3', 'УНФ 3', 'ЗУП КОРП 3', 'ДО КОРП 3', 'РМК 1.1', 'Розница 2'].filter(l => lineInfo[l]);
-const MECH_ORDER = ['EnterpriseData', 'Собственный формат', 'Правила КД2', 'КД2, правила из файла', 'Веб-сервис (HTTP)', 'Только описание', 'Обработка', 'Пакет перехода'];
+const MECH_ORDER = ['EnterpriseData', 'Собственный формат', 'Правила КД2', 'КД2, правила из файла', 'Мобильное приложение', 'Веб-сервис (HTTP)', 'Только описание', 'Обработка', 'Пакет перехода'];
 const MECH_TEXT = {
+  'Мобильное приложение': 'обмен с мобильным приложением (план обмена + веб-сервис учётной программы)',
   'Веб-сервис (HTTP)': 'через веб-сервис / HTTP (собственный протокол, без плана обмена БСП)',
   'EnterpriseData': 'через универсальный формат EnterpriseData',
   'Собственный формат': 'в собственном XDTO-формате (не EnterpriseData)',
@@ -131,8 +132,8 @@ function mechBlock(A, B, mech, group) {
   if (srcs.has('releases')) req.push('Файл — на странице версии releases.1c.ru.');
   const urls = [...new Set(group.flatMap(l => l.urls || []))];
   // у интеграций без плана обмена протокол и состав описаны в разметке — показываем целиком
-  const http = mech === 'Веб-сервис (HTTP)';
-  if (http) req.push(`Протокол: ${[...new Set(group.map(l => l.mech))].map(esc).join('; ')}.`);
+  const http = mech === 'Веб-сервис (HTTP)' || mech === 'Мобильное приложение';
+  if (mech === 'Веб-сервис (HTTP)') req.push(`Протокол: ${[...new Set(group.map(l => l.mech))].map(esc).join('; ')}.`);
   if (http) for (const n of new Set(group.flatMap(l => l.notes))) req.push(esc(n));
   const notes = http ? [] : [...new Set(group.flatMap(l => l.notes).filter(n => /не уточнено|не проверена|нужна|только описание/.test(n)))];
   const tw = group.filter(l => l.twin).map(l => `${l.from.line} → ${l.to.line}`);

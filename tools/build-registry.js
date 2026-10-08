@@ -181,7 +181,7 @@ for (const cf of cfScans) {
     }
     // партнёры планов без корреспондентов в коде — по ручной разметке
     for (const a of planPartners) {
-      if (!a.re.test(p.name) || (a.for && !a.for.includes(self.product))) continue;
+      if (!a.re.test(p.name) || (a.for && !a.for.includes(self.product) && !a.for.includes(P.line(self)))) continue;
       for (const label of a.partners) {
         const corr = P.withCurrent(P.fromLabel(label));
         const common = { ...base, kind: 'синхронизация', exchangePlan: p.name, evidence: [where], notes: a.note ? [a.note] : [],
@@ -432,6 +432,7 @@ function mechClass(m) {
   if (m === OWN_FORMAT) return 'Собственный формат';
   if (/пакет перехода|дистрибутив обновления/.test(m)) return 'Пакет перехода';
   if (/встроен в конфигурацию/.test(m)) return 'Только описание';
+  if (/^мобильное приложение/.test(m)) return 'Мобильное приложение';
   if (/веб-сервис|HTTP/i.test(m)) return 'Веб-сервис (HTTP)';
   return 'Обработка';
 }
@@ -444,6 +445,7 @@ function task(l) {
     return 'Переход на другую программу';
   }
   if (l.from.product === l.to.product) return 'Между базами одной программы';
+  if (fams.has('Мобильные приложения')) return 'Мобильное приложение ↔ учётная программа';
   // Клиент ЭДО — электронный обмен документами с контрагентами, а не внутренний документооборот
   if (l.from.product === 'Клиент ЭДО' || l.to.product === 'Клиент ЭДО') return 'ЭДО с контрагентами ↔ учёт';
   // MDM — центр нормативно-справочной информации: раздаёт и собирает справочники
