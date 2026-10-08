@@ -37,6 +37,7 @@ function addLink(l) {
     ex.content = ex.content || l.content || null;
     if (l.formatVersions) ex.formatVersions = l.formatVersions;
     for (const u of l.urls || []) if (!(ex.urls || (ex.urls = [])).includes(u)) ex.urls.push(u);
+    if (l.compFromReceiver) ex.compFromReceiver = true;
     return;
   }
   links.set(key, { ...l, shippedIn: [l.shippedIn], evidence: ev, sources: [source] });
@@ -178,7 +179,9 @@ for (const cf of cfScans) {
   const selfRef = { ...self, version: null };
   const shippedIn = { path: cf.path, product: self.product, version: cf.version, name: cf.name };
   const base = { shippedIn, source: 'cf' };
-  enterpriseData.push({ config: self, declared: cf.enterpriseData.declared, packages: cf.enterpriseData.xdtoPackages });
+  enterpriseData.push({ config: self, declared: cf.enterpriseData.declared, packages: cf.enterpriseData.xdtoPackages,
+    // есть ли план синхронизации через EnterpriseData (объявленные версии без плана — только библиотечный код: ДО ПРОФ)
+    edPlan: cf.exchangePlans.some(p => p.name === 'СинхронизацияДанныхЧерезУниверсальныйФормат' || (p.xdto && p.correspondents.length)) });
 
   for (const p of cf.exchangePlans) {
     if (skipPlans.test(p.name)) continue;
@@ -200,7 +203,8 @@ for (const cf of cfScans) {
         const common = { ...base, kind: 'синхронизация', exchangePlan: p.name, evidence: [where], notes: a.note ? [a.note] : [],
           mechanism: a.mechanism || ((cf.planRules || {})[p.name] ? OWN_FORMAT : p.xdto ? 'EnterpriseData' : 'КД2: план обмена, правила из файла') };
         if (a.direction !== 'in') addLink({ ...common, from: selfRef, to: corr });
-        if (a.direction !== 'out') addLink({ ...common, from: corr, to: selfRef });
+        // receiverComposition: партнёр пишет изменения в пределах состава плана этой программы (интеграция с ДО)
+        if (a.direction !== 'out') addLink({ ...common, from: corr, to: selfRef, compFromReceiver: !!a.receiverComposition });
       }
     }
     if (!p.xdto) continue;
@@ -391,14 +395,18 @@ for (const cf of cfScans) {
 }
 for (const l of links.values()) {
   if (l.content || l.kind !== 'синхронизация' || !l.exchangePlan) continue;
-  const plan = l.exchangePlan.split(', ').find(p => planComp.has(`${P.line(l.from)}|${p}`));
+  let side = P.line(l.from);
+  let plan = l.exchangePlan.split(', ').find(p => planComp.has(`${side}|${p}`));
+  if (!plan && l.compFromReceiver) { side = P.line(l.to); plan = l.exchangePlan.split(', ').find(p => planComp.has(`${side}|${p}`)); }
   if (!plan) continue;
-  const comp = planComp.get(`${P.line(l.from)}|${plan}`);
+  const comp = planComp.get(`${side}|${plan}`);
   const summary = {};
   for (const o of comp) { const k = o.split('.')[0]; summary[k] = (summary[k] || 0) + 1; }
   l.content = {
     comp: true, summary, export: comp.map(o => [o, o, null]), formats: 0, pko: null, off: 0, reg: null,
-    basis: [`состав плана обмена «${plan}» у ${P.line(l.from)}: что регистрируется к отправке; правил преобразования в поставке нет`],
+    basis: [side === P.line(l.from)
+      ? `состав плана обмена «${plan}» у ${side}: что регистрируется к отправке; правил преобразования в поставке нет`
+      : `${P.line(l.from)} записывает изменения объектов в пределах состава плана «${plan}» у ${side}`],
   };
 }
 
@@ -508,6 +516,7 @@ function mechClass(m) {
   if (/пакет перехода|дистрибутив обновления/.test(m)) return 'Пакет перехода';
   if (/встроен в конфигурацию/.test(m)) return 'Только описание';
   if (/^мобильное приложение/.test(m)) return 'Мобильное приложение';
+  if (/^интеграция с 1С:Документооборотом/.test(m)) return 'Интеграция с ДО';
   if (/веб-сервис|HTTP/i.test(m)) return 'Веб-сервис (HTTP)';
   return 'Обработка';
 }
@@ -564,7 +573,7 @@ const out = {
     formatVersions: l.formatVersions || null, content: l.content || null,
     class: l.class, sources: l.sources, shippedIn: l.shippedIn, evidence: l.evidence, notes: l.notes, urls: l.urls || [], noContent: l.noContent || null,
   })),
-  enterpriseData: enterpriseData.map(e => ({ config: P.display(e.config), line: P.line(e.config), version: e.config.version, declared: e.declared, packages: e.packages })),
+  enterpriseData: enterpriseData.map(e => ({ config: P.display(e.config), line: P.line(e.config), version: e.config.version, declared: e.declared, packages: e.packages, edPlan: e.edPlan })),
   // линейки: семейство и актуальность — для выбора пары на странице
   // линейки связей и все разобранные программы (даже без своих связей: ДО ПРОФ — через общую кодовую базу с ДО КОРП)
   lines: Object.fromEntries([...new Map([...list.flatMap(l => [l.from, l.to]), ...scannedSelf].map(c => [P.line(c), c])).entries()].map(([ln, c]) => [ln, { product: c.product, edition: c.edition || null, family: familyOf(c), current: isCurrent(c), support: supportOf(c) }])),
