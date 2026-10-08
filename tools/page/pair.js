@@ -164,7 +164,8 @@ function transBlock(x, y, list) {
         <span class="pill ${g.some(isAct) ? 'ok' : 'old'}">${g.some(isAct) ? 'актуально' : 'устаревшие редакции'}</span></div>
       ${notes.length ? `<div class="req">${esc(notes.join(' · '))}</div>` : ''}
       ${urls.length ? `<div class="req">${urls.map(u => `<a href="${esc(u)}" target="_blank" rel="noopener">открыть файл на releases.1c.ru</a>`).join(' · ')}</div>` : ''}
-      ${b.cs ? `<div class="sum">${sumText(b.cs)}</div><details class="objs" data-link="${b.id}"><summary>Что переносится</summary><div class="objs-body"></div></details>` : ''}
+      ${b.cs ? `<div class="sum">${sumText(b.cs)}</div>${b.cs.basis && b.cs.basis.length ? `<div class="dim">${esc(b.cs.basis.join(' · '))}</div>` : ''}<details class="objs" data-link="${b.id}"><summary>Что переносится</summary><div class="objs-body"></div></details>`
+        : g.some(l => l.why) ? `<div class="dim">${[...new Set(g.map(l => l.why).filter(Boolean))].map(esc).join(' · ')}</div>` : ''}
       <details class="more"><summary>откуда это известно</summary><ul class="ev">${[...new Set(g.flatMap(l => l.ev))].slice(0, 6).map(e => `<li>${esc(e)}</li>`).join('')}</ul></details>
     </div>`;
   }).join('');

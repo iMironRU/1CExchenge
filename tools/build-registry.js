@@ -130,9 +130,12 @@ for (const t of scan.templates) {
       if (r.skip) continue;
       const from = r.from ? resolve(r.from) : self;
       const to = r.to ? resolve(r.to) : P.fromLabel(partner);
+      // правила КД2 макетом внутри самой обработки (epf) — её состав, как бы ни были подписаны программы в заголовке
+      const emb = conv.find(c => c.embedded && c.file === a.file && (!a.entry || (c.entry || '').startsWith(`${a.entry}::`)));
       addLink({
         from, to, kind: r.kind, mechanism: r.mechanism, exchangePlan: null, shippedIn,
-        evidence: [evidence(a), ...docs.map(evidence)], notes: r.note ? [r.note] : [],
+        evidence: [evidence(a), ...(emb ? [evidence(emb)] : []), ...docs.map(evidence)], notes: r.note ? [r.note] : [],
+        ...(emb ? { content: linkContent(emb, null), rulesFormat: emb.formatVersion, rulesCreated: emb.created } : {}),
       });
       produced++;
     }
@@ -227,8 +230,14 @@ for (const cf of cfScans) {
       for (const a of rules) {
         const notes = a.note ? [a.note] : [];
         for (const s of a.sources || []) {
+          // правила в макетах обработки — по продукту и редакции источника (ruleAlias: КА 1.1 — правила УПП)
+          const src = P.fromLabel(s);
+          const want = (a.ruleAlias || {})[s] || src.product;
+          const cand = conversions(d).filter(r => P.fromRules(r.source).product === want);
+          const r = cand.find(x => P.line(P.fromRules(x.source)) === P.line({ ...src, product: want })) || (cand.length === 1 ? cand[0] : null);
           addLink({ ...base, kind: 'переход', mechanism: 'встроенная обработка', exchangePlan: null,
-            from: P.fromLabel(s), to: selfRef, evidence: [where], notes });
+            from: src, to: selfRef, evidence: [where, ...(r ? [`${where}.Макет.${r.template}`] : [])], notes,
+            ...(r ? { rulesFormat: r.formatVersion, rulesCreated: r.created, content: linkContent(r, null) } : {}) });
         }
         for (const t of a.targets || []) {
           addLink({ ...base, kind: 'переход', mechanism: 'встроенная обработка', exchangePlan: null,
@@ -248,7 +257,7 @@ for (const cf of cfScans) {
     for (const r of conversions(d)) {
       addLink({ ...base, kind: 'переход', mechanism: 'встроенная обработка + правила КД2', exchangePlan: null,
         from: withSelf(P.fromRules(r.source), self), to: withSelf(P.fromRules(r.target), self),
-        evidence: [`${where}.Макет.${r.template}`],
+        evidence: [`${where}.Макет.${r.template}`], content: linkContent(r, null),
         notes: ['нужна проверка: data/annotations.json → cfProcessors'] });
     }
     // имя «ПомощникПереходаС…/ЗагрузкаДанныхИз…/ПереносДанныхИз…» без разметки — источник из синонима
@@ -379,6 +388,37 @@ for (const l of links.values()) {
   }
 }
 
+// Переход без своих правил (обработка 7.7, загрузчик XML в приёмнике): состав — по правилам КД2 той же пары программ,
+// которые поставляются вместе с ним (выгрузка в источнике по правилам, загрузка в приёмнике)
+const rulesByPair = new Map();
+for (const l of links.values()) {
+  if (l.kind !== 'переход' || !l.content || !l.content.export || !l.content.export.length) continue;
+  const k = `${P.line(l.from)}|${P.line(l.to)}`;
+  const prev = rulesByPair.get(k);
+  if (!prev || l.content.export.length > prev.content.export.length) rulesByPair.set(k, l);
+}
+for (const l of links.values()) {
+  if (l.kind !== 'переход' || l.content) continue;
+  const sib = rulesByPair.get(`${P.line(l.from)}|${P.line(l.to)}`);
+  if (!sib) continue;
+  const where = ((sib.evidence || [])[0] || '').replace(/^[^:]+: /, '');
+  l.content = { ...sib.content, basis: [...(sib.content.basis || []), `по правилам конвертации той же пары: ${where}`] };
+}
+
+// Почему у перехода нет состава — понятной фразой на странице
+for (const l of links.values()) {
+  if (l.kind !== 'переход' || l.content) continue;
+  const ev = (l.evidence || []).join(' ');
+  l.noContent = /пакет перехода|дистрибутив обновления/.test(l.mechanism) ? 'состав — внутри пакета на releases.1c.ru (пакет не скачан)'
+    : /ПомощникПереходаСРедакции20/.test(ev) ? 'переход обновлением конфигурации: база обновляется до новой редакции, данные сохраняются целиком'
+    : /ПомощникПереходаСПрежнихПрограмм/.test(ev) ? 'перенос кодом помощника (без правил конвертации): кадровые и расчётные данные прежней программы'
+    : /Обработка\.(ЗагрузкаДанныхИз|ПереносДанныхИз|ПомощникПереходаС(Торговля|ДругихКонфигураций)|ПомощникПереходаВ)/.test(ev)
+      ? 'загрузчик читает файл, выгруженный программой-источником по её правилам; в поставке приёмника правил нет'
+      : /Подготовка/.test(ev) ? 'подготовительная обработка (проверка и очистка данных перед переходом), данные не переносит'
+      : /Конвертация обменов/.test(ev) ? 'переносит настройки синхронизации (узлы планов обмена, транспорт, сценарии, соответствия объектов), а не данные'
+      : null;
+}
+
 // Программы на коде другой (Садовод, Гаражи — на коде БП 3.0): обмены, которые есть и у базовой программы,
 // не дублируем — страница показывает их через «общую кодовую базу»; остаются только собственные
 const CODE_BASE = ann.codeBase || {};
@@ -482,7 +522,7 @@ const out = {
     from: { ...l.from, line: P.line(l.from) }, to: { ...l.to, line: P.line(l.to) },
     exchangePlan: l.exchangePlan, rulesFormat: l.rulesFormat || null, rulesCreated: l.rulesCreated || null,
     formatVersions: l.formatVersions || null, content: l.content || null,
-    class: l.class, sources: l.sources, shippedIn: l.shippedIn, evidence: l.evidence, notes: l.notes, urls: l.urls || [],
+    class: l.class, sources: l.sources, shippedIn: l.shippedIn, evidence: l.evidence, notes: l.notes, urls: l.urls || [], noContent: l.noContent || null,
   })),
   enterpriseData: enterpriseData.map(e => ({ config: P.display(e.config), line: P.line(e.config), version: e.config.version, declared: e.declared, packages: e.packages })),
   // линейки: семейство и актуальность — для выбора пары на странице

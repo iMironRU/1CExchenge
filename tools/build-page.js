@@ -53,7 +53,7 @@ const links = reg.links.map(l => {
     id: l.id, k: l.kind === 'переход' ? 't' : 's', m: mechClass(l.mechanism), mech: l.mechanism,
     from: { line: lineOf(l.from), ver: l.from.version || null },
     to: { line: lineOf(l.to), ver: l.to.version || null },
-    plan: l.exchangePlan || null, src: l.sources || ['files'],
+    plan: l.exchangePlan || null, src: l.sources || ["files"], why: l.noContent || null,
     ev: l.evidence, notes: l.notes, fv: l.formatVersions || null, urls: l.urls || [],
     cs: l.content ? { summary: l.content.summary, ed: !!l.content.ed, formats: l.content.formats || null, pko: l.content.pko || null,
       off: l.content.off || 0, reg: l.content.reg || null, basis: l.content.basis || null, n: l.content.export.length } : null,

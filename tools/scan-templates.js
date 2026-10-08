@@ -8,6 +8,7 @@ const path = require('path');
 const { listEntries, readEntry } = require('./lib/zip');
 const { decodeText, rootElement, parseRules } = require('./lib/rules');
 const { rulesContent } = require('./lib/rules-content');
+const v8 = require('./lib/v8container');
 
 const args = Object.fromEntries(process.argv.slice(2).reduce((a, v, i, arr) => {
   if (v.startsWith('--')) a.push([v.slice(2), arr[i + 1]]);
@@ -76,6 +77,27 @@ function xmlArtifact(buf, where) {
   return { type: 'xml', ...where, root: rootElement(text) };
 }
 
+// Внешняя обработка 8.x (epf/erf): правила КД2 часто лежат в ней макетом («ПравилаОбмена») — разбираем контейнер
+function processingArtifacts(buf, where, artifacts) {
+  artifacts.push({ type: 'processing', ...where });
+  if (!v8.isContainer(buf)) return; // ert 7.7 — другой формат
+  const items = v8.walk(buf);
+  const names = new Map(); // uuid макета -> имя (из описания объекта)
+  for (const it of items) {
+    const head = it.data.subarray(0, 600).toString('utf8');
+    for (const m of head.matchAll(/\{1,0,([0-9a-f-]{36})\},"([^"]+)"/g)) names.set(m[1], m[2]);
+  }
+  for (const it of items) {
+    const text = decodeText(it.data);
+    if (!/^\s*<ПравилаОбмена[\s>]/.test(text.slice(0, 200))) continue;
+    const rules = parseRules(text);
+    if (!rules) continue;
+    const uuid = (it.path.match(/([0-9a-f-]{36})\.\d+$/) || [])[1];
+    const entry = `${where.entry ? where.entry + '::' : ''}Макет ${names.get(uuid) || it.path}`;
+    artifacts.push({ type: 'rules', ...where, entry, embedded: true, ...rules, content: rulesContent(text) });
+  }
+}
+
 // zip бывает вложенным (ДО 2.0: «Правила обмена.zip» внутри «Правила обмена.zip»)
 function scanZip(buf, where, prefix, artifacts) {
   for (const e of listEntries(buf)) {
@@ -84,7 +106,7 @@ function scanZip(buf, where, prefix, artifacts) {
     const w = { ...where, entry: prefix + e.name };
     if (eext === '.xml') artifacts.push(xmlArtifact(readEntry(buf, e), w));
     else if (eext === '.zip') scanZip(readEntry(buf, e), where, `${prefix}${e.name}::`, artifacts);
-    else if (PROC_EXT.has(eext)) artifacts.push({ type: 'processing', ...w });
+    else if (PROC_EXT.has(eext)) processingArtifacts(readEntry(buf, e), w, artifacts);
   }
 }
 
@@ -103,7 +125,7 @@ function scanTemplate(t) {
       } else if (ext === '.zip') {
         scanZip(fs.readFileSync(file), where, '', artifacts);
       } else if (PROC_EXT.has(ext)) {
-        artifacts.push({ type: 'processing', ...where });
+        processingArtifacts(fs.readFileSync(file), where, artifacts);
       } else if (DOC_EXT.has(ext) && ctx.section) {
         artifacts.push({ type: 'doc', ...where });
       }
