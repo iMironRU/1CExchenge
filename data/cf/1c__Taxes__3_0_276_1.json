@@ -1,0 +1,33 @@
+{
+ "id": "1c__Taxes__3_0_276_1",
+ "path": "1c/Taxes/3_0_276_1",
+ "name": "Налогоплательщик",
+ "version": "3.0.276.1",
+ "scanned": "2026-10-08T08:53:19.502Z",
+ "enterpriseData": {
+  "declared": [],
+  "xdtoPackages": [],
+  "rules": {
+   "modules": [],
+   "rules": 0,
+   "send": [],
+   "receive": []
+  }
+ },
+ "planRules": {},
+ "exchangePlans": [],
+ "processors": [
+  {
+   "name": "ПереходС1СНалогоплательщика77",
+   "synonym": "Переход с 1С:Налогоплательщика  7.7",
+   "comment": null,
+   "rules": []
+  },
+  {
+   "name": "УниверсальныйОбменДаннымиXML",
+   "synonym": "Универсальный обмен данными в формате XML",
+   "comment": "При загрузке строк обрезать пробелы справа",
+   "rules": []
+  }
+ ]
+}

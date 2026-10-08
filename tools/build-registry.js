@@ -342,6 +342,18 @@ for (const l of links.values()) {
     : edContent(P.line(l.from), P.line(l.to));
 }
 
+// Программы на коде другой (Садовод, Гаражи — на коде БП 3.0): обмены, которые есть и у базовой программы,
+// не дублируем — страница показывает их через «общую кодовую базу»; остаются только собственные
+const CODE_BASE = ann.codeBase || {};
+const mkey = (f, t, l) => `${f}|${t}|${l.kind}|${mechClass(l.mechanism)}`;
+const baseKeys = new Set([...links.values()].map(l => mkey(P.line(l.from), P.line(l.to), l)));
+let codeBaseDropped = 0;
+for (const [k, l] of links) {
+  if (!CODE_BASE[l.from.product] && !CODE_BASE[l.to.product]) continue;
+  const sub = x => CODE_BASE[x.product] || P.line(x);
+  if (baseKeys.has(mkey(sub(l.from), sub(l.to), l))) { links.delete(k); codeBaseDropped++; }
+}
+
 const list = [...links.values()].sort((a, b) =>
   P.line(a.from).localeCompare(P.line(b.from), 'ru') || P.line(a.to).localeCompare(P.line(b.to), 'ru') ||
   a.shippedIn[0].path.localeCompare(b.shippedIn[0].path));
@@ -508,4 +520,5 @@ for (const l of out.links) {
 fs.writeFileSync(path.join(ROOT, 'REGISTRY.md'), md.join('\n') + '\n');
 
 console.log(`links: ${out.links.length} (${Object.entries(out.links.reduce((a, l) => (a[l.kind] = (a[l.kind] || 0) + 1, a), {})).map(([k, v]) => `${k} ${v}`).join(', ')})`);
+if (codeBaseDropped) console.log(`  не дублируем обмены базовой программы (общий код: ${Object.keys(CODE_BASE).join(", ")}): ${codeBaseDropped}`);
 console.log('-> data/registry.json, data/registry.csv, REGISTRY.md');

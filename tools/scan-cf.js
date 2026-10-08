@@ -24,7 +24,7 @@ const PROJECT = path.join(__dirname, '..');
 const WORK = path.join(PROJECT, 'work');
 const OUT = path.join(PROJECT, 'data', 'cf');
 // Не прикладные конфигурации — обменов с ними не ищем
-const SKIP_NAMES = new Set(['БиблиотекаСтандартныхПодсистем', 'КонвертацияДанныхРедакция21']);
+const SKIP_NAMES = new Set(['БиблиотекаСтандартныхПодсистем', 'КонвертацияДанныхРедакция21', 'БиблиотекаПодключаемогоОборудования']);
 
 function findIbcmd() {
   if (args.ibcmd) return args.ibcmd;

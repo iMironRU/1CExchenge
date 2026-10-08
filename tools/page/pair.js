@@ -19,6 +19,10 @@ const PA = { a: 'УТ 11', b: 'БП 3.0' };
 
 // КОРП-редакции и базовые — одна кодовая база: связи одной считаются и для другой (с пометкой)
 const TWIN = { 'ЗУП КОРП 3': 'ЗУП 3', 'ЗУП 3': 'ЗУП КОРП 3', 'БП КОРП 3.0': 'БП 3.0', 'БП 3.0': 'БП КОРП 3.0' };
+// программы на коде другой (Садовод, Гаражи → БП 3.0): обмены базовой показываем и для них — в одну сторону
+for (const [prod, base] of Object.entries(DATA.codeBase || {})) {
+  for (const l of LINES) if (lineInfo[l].prod === prod && !TWIN[l]) TWIN[l] = base;
+}
 const side = x => [x, TWIN[x]].filter(v => v && lineInfo[v]);
 const between = (x, y) => {
   const own = links.filter(l => l.from.line === x && l.to.line === y);
@@ -153,6 +157,8 @@ function transBlock(x, y, list) {
     const b = best(g);
     const urls = [...new Set(g.flatMap(l => l.urls || []))];
     const notes = [...new Set(g.flatMap(l => l.notes))].slice(0, 3);
+    const tw = [...new Set(g.filter(l => l.twin).map(l => `${l.from.line} → ${l.to.line}`))];
+    if (tw.length) notes.unshift(`найдено для родственной программы (общая кодовая база): ${tw.join(', ')}`);
     return `<div class="mech"><div class="mh"><span class="mt">${esc(MECH_TEXT[m] || m)}</span>
         <span class="pill ${g.some(isAct) ? 'ok' : 'old'}">${g.some(isAct) ? 'актуально' : 'устаревшие редакции'}</span></div>
       ${notes.length ? `<div class="req">${esc(notes.join(' · '))}</div>` : ''}

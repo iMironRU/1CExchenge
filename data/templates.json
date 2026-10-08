@@ -1,6 +1,6 @@
 {
  "root": "C:\\.temp\\tmplts",
- "scanned": "2026-10-07T14:18:40.913Z",
+ "scanned": "2026-10-08T08:16:09.104Z",
  "templates": [
   {
    "path": "1c/Accounting/3_0_203_24",
@@ -3139,6 +3139,74 @@
    ]
   },
   {
+   "path": "1c/AccountingGC/3_0_206_2",
+   "vendor": "Фирма \"1С\"",
+   "name": "Гаражи",
+   "version": "3.0.206.2",
+   "synonym": "1С:Гаражи",
+   "artifacts": [
+    {
+     "type": "xml",
+     "file": "enaof.xml",
+     "section": null,
+     "partner": null,
+     "root": "Справочник"
+    },
+    {
+     "type": "processing",
+     "file": "Обмены данными\\ЗагрузкаПоставляемыхДанныхДиректБанк.epf",
+     "section": "exchange",
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "Обмены данными\\ЗагрузкаПравилПреобразованияФорматов_2.0.epf",
+     "section": "exchange",
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "Обмены данными\\Конвертация обменов с БП 2.0.epf",
+     "section": "exchange",
+     "partner": null
+    }
+   ]
+  },
+  {
+   "path": "1c/AccountingGP/3_0_206_2",
+   "vendor": "Фирма \"1С\"",
+   "name": "Садовод",
+   "version": "3.0.206.2",
+   "synonym": "1С:Садовод",
+   "artifacts": [
+    {
+     "type": "xml",
+     "file": "enaof.xml",
+     "section": null,
+     "partner": null,
+     "root": "Справочник"
+    },
+    {
+     "type": "processing",
+     "file": "Обмены данными\\ЗагрузкаПоставляемыхДанныхДиректБанк.epf",
+     "section": "exchange",
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "Обмены данными\\ЗагрузкаПравилПреобразованияФорматов_2.0.epf",
+     "section": "exchange",
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "Обмены данными\\Конвертация обменов с БП 2.0.epf",
+     "section": "exchange",
+     "partner": null
+    }
+   ]
+  },
+  {
    "path": "1c/AccountingNPO/3_0_206_3",
    "vendor": "Фирма \"1С\"",
    "name": "БухгалтерияНекоммерческойОрганизации",
@@ -4845,12 +4913,199 @@
    ]
   },
   {
+   "path": "1c/budgetreports/1_1_72_1",
+   "vendor": "Фирма \"1С\"",
+   "name": "БюджетнаяОтчетность",
+   "version": "1.1.72.1",
+   "synonym": "1С:Бюджетная отчетность",
+   "artifacts": [
+    {
+     "type": "processing",
+     "file": "Cases\\extrp.zip",
+     "section": null,
+     "partner": null,
+     "entry": "ВыгрузкаОтчетности_BusGovRu_1_7_8.epf"
+    },
+    {
+     "type": "processing",
+     "file": "Cases\\extrp.zip",
+     "section": null,
+     "partner": null,
+     "entry": "ВыгрузкаОтчетностиДляФНС.epf"
+    },
+    {
+     "type": "processing",
+     "file": "Cases\\extrp.zip",
+     "section": null,
+     "partner": null,
+     "entry": "ВыгрузкаСвод8.epf"
+    },
+    {
+     "type": "processing",
+     "file": "Cases\\extrp.zip",
+     "section": null,
+     "partner": null,
+     "entry": "ВыгрузкаСвод77.epf"
+    },
+    {
+     "type": "processing",
+     "file": "Cases\\extrp.zip",
+     "section": null,
+     "partner": null,
+     "entry": "ВыгрузкаФормы14Минфин.epf"
+    },
+    {
+     "type": "processing",
+     "file": "Cases\\extrp.zip",
+     "section": null,
+     "partner": null,
+     "entry": "ВыгрузкаВФорматеФК_АУиБУ.epf"
+    },
+    {
+     "type": "processing",
+     "file": "Cases\\extrp.zip",
+     "section": null,
+     "partner": null,
+     "entry": "ВыгрузкаВФорматеФК_ФО_ГВБФ.epf"
+    },
+    {
+     "type": "processing",
+     "file": "Cases\\extrp.zip",
+     "section": null,
+     "partner": null,
+     "entry": "ВыгрузкаВФорматеФК_ГРБС_КУ.epf"
+    },
+    {
+     "type": "processing",
+     "file": "Cases\\extrp.zip",
+     "section": null,
+     "partner": null,
+     "entry": "ВыгрузкаМинфин_500м.epf"
+    },
+    {
+     "type": "processing",
+     "file": "Cases\\extrp.zip",
+     "section": null,
+     "partner": null,
+     "entry": "ВыгрузкаМинфин_624_625.epf"
+    },
+    {
+     "type": "processing",
+     "file": "Cases\\extrp.zip",
+     "section": null,
+     "partner": null,
+     "entry": "ВыгрузкаМинфин_581.epf"
+    },
+    {
+     "type": "processing",
+     "file": "Cases\\extrp.zip",
+     "section": null,
+     "partner": null,
+     "entry": "ВыгрузкаСводСмарт.epf"
+    },
+    {
+     "type": "doc",
+     "file": "Convert\\Conv77_8.txt",
+     "section": "transition",
+     "partner": "Convert"
+    },
+    {
+     "type": "rules",
+     "file": "Convert\\SVOD_77_8.xml",
+     "section": "transition",
+     "partner": "Convert",
+     "kind": "conversion",
+     "root": "ПравилаОбмена",
+     "formatVersion": "2.01",
+     "compatibility": null,
+     "id": "85ce7698-fb7d-4c35-a35c-77bcb0f47514",
+     "title": "Конфигурация \"Свод отчетов ПРОФ, ред. 2\" --> СводОтчетовПРОФ",
+     "created": "2011-06-01T13:45:04",
+     "source": {
+      "name": "Конфигурация \"Свод отчетов ПРОФ, ред. 2\"",
+      "version": "7.70.207",
+      "synonym": null,
+      "platform": "7.7"
+     },
+     "target": {
+      "name": "СводОтчетовПРОФ",
+      "version": "3.4.1.3",
+      "synonym": "Свод отчетов ПРОФ, редакция 3.4",
+      "platform": "8.0"
+     },
+     "content": {
+      "kind": "conversion",
+      "export": [
+       {
+        "group": "Справочники",
+        "name": "Учреждения",
+        "from": "Справочник.Фирмы",
+        "to": "Справочник.Организации"
+       }
+      ],
+      "pko": 15,
+      "summary": {
+       "Справочник": 1
+      }
+     }
+    },
+    {
+     "type": "processing",
+     "file": "Convert\\V77Exp.ert",
+     "section": "transition",
+     "partner": "Convert"
+    }
+   ]
+  },
+  {
    "path": "1c/CashboxBase/4_1_10_11",
    "vendor": "Фирма \"1С\"",
    "name": "КассаБазовая",
    "version": "4.1.10.11",
    "synonym": "1С:Касса (приложение для ПК)",
    "artifacts": []
+  },
+  {
+   "path": "1c/CEL/3_2_10_14",
+   "vendor": "Фирма \"1С\"",
+   "name": "БиблиотекаПодключаемогоОборудования",
+   "version": "3.2.10.14",
+   "synonym": "1С:Библиотека подключаемого оборудования",
+   "artifacts": [
+    {
+     "type": "processing",
+     "file": "ExtFiles\\МенеджерПроверкиВнедренияБПО.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПроверкаВнедренияБПО.erf",
+     "section": null,
+     "partner": null
+    }
+   ]
+  },
+  {
+   "path": "1c/CEL/3_3_4_33",
+   "vendor": "Фирма \"1С\"",
+   "name": "БиблиотекаПодключаемогоОборудования",
+   "version": "3.3.4.33",
+   "synonym": "1С:Библиотека подключаемого оборудования",
+   "artifacts": [
+    {
+     "type": "processing",
+     "file": "ExtFiles\\МенеджерПроверкиВнедренияБПО.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "ExtFiles\\ПроверкаВнедренияБПО.erf",
+     "section": null,
+     "partner": null
+    }
+   ]
   },
   {
    "path": "1c/ClientEDOBase/2_10_2_31",
@@ -7358,6 +7613,21 @@
        "ПВХ": 2
       }
      }
+    }
+   ]
+  },
+  {
+   "path": "1c/GMZ/1_1_53_1",
+   "vendor": "Фирма \"1С\"",
+   "name": "ГосударственныеИМуниципальныеЗакупки",
+   "version": "1.1.53.1",
+   "synonym": "1С:Государственные и муниципальные закупки",
+   "artifacts": [
+    {
+     "type": "processing",
+     "file": "ПолучениеДанныхИзЕИСЧерезОчередиОтдачи.epf",
+     "section": null,
+     "partner": null
     }
    ]
   },
@@ -24207,6 +24477,27 @@
    "artifacts": []
   },
   {
+   "path": "1c/SettlementBudget/1_3_56_50",
+   "vendor": "Фирма \"1С\"",
+   "name": "БюджетПоселения",
+   "version": "1.3.56.50",
+   "synonym": "1С:Бюджет поселения",
+   "artifacts": [
+    {
+     "type": "processing",
+     "file": "EXT\\ЗагрузкаУчрежденийИзСводногоРеестра.epf",
+     "section": null,
+     "partner": null
+    },
+    {
+     "type": "processing",
+     "file": "EXT\\Отладка регламентированного отчета.epf",
+     "section": null,
+     "partner": null
+    }
+   ]
+  },
+  {
    "path": "1c/smallbusiness/3_0_14_159",
    "vendor": "Фирма \"1С\"",
    "name": "УправлениеНебольшойФирмой",
@@ -27744,6 +28035,79 @@
    "version": "3.1.38.92",
    "synonym": "1С:Зарплата и кадры государственного учреждения 8 КОРП",
    "artifacts": []
+  },
+  {
+   "path": "1c/Taxes/3_0_276_1",
+   "vendor": "Фирма \"1С\"",
+   "name": "Налогоплательщик",
+   "version": "3.0.276.1",
+   "synonym": "1С:Налогоплательщик",
+   "artifacts": [
+    {
+     "type": "processing",
+     "file": "Convert\\Tax77Exp.ert",
+     "section": "transition",
+     "partner": "Convert"
+    },
+    {
+     "type": "doc",
+     "file": "Convert\\Tax77_8.txt",
+     "section": "transition",
+     "partner": "Convert"
+    },
+    {
+     "type": "rules",
+     "file": "Convert\\Tax77_8.xml",
+     "section": "transition",
+     "partner": "Convert",
+     "kind": "conversion",
+     "root": "ПравилаОбмена",
+     "formatVersion": "2.01",
+     "compatibility": null,
+     "id": "a11ee18b-4202-4705-92b3-10652c88e152",
+     "title": "Налогоплательщик редакция 2.0 --> Налогоплательщик",
+     "created": "2008-04-01T11:45:28",
+     "source": {
+      "name": "Налогоплательщик редакция 2.0",
+      "version": null,
+      "synonym": "Налогоплательщик редакция 2.0",
+      "platform": "7.7"
+     },
+     "target": {
+      "name": "Налогоплательщик",
+      "version": "3.0.1.1",
+      "synonym": "Налогоплательщик, редакция 3.0",
+      "platform": "8.0"
+     },
+     "content": {
+      "kind": "conversion",
+      "export": [
+       {
+        "group": "Справочники",
+        "name": "ФизическиеЛица",
+        "from": "Справочник.ФизическиеЛица",
+        "to": "Справочник.ФизическиеЛица"
+       },
+       {
+        "group": "Справочники",
+        "name": "ФизическиеЛица ПоОрганизации",
+        "from": null,
+        "to": "Справочник.ФизическиеЛица"
+       }
+      ],
+      "pko": 18,
+      "summary": {
+       "Справочник": 1
+      }
+     }
+    },
+    {
+     "type": "processing",
+     "file": "Convert\\КонвертацияВнешнихОбработок82.epf",
+     "section": "transition",
+     "partner": "Convert"
+    }
+   ]
   },
   {
    "path": "1c/trade/10_3_88_3",
