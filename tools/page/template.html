@@ -770,11 +770,14 @@ $('#l-q').addEventListener('input', e => { L.q = e.target.value; renderList(); }
   const label = { ok: 'разобрана', old: 'другая редакция', no: 'не разобрана' };
   const ord = { no: 0, old: 1, ok: 2 };
   const a = (href, text) => `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(text)}</a>`;
+  // пометка доступности ссылки (проверка с сессией ИТС): PIN — спросят одноразовый код, не найден — файла нет
+  const ST = { pin: ['PIN', 'спросят одноразовый код (второй фактор ИТС)'], notfound: ['не найден', 'на releases.1c.ru файла нет'], login: ['вход', 'нужен вход в ИТС'] };
+  const badge = s => (ST[s] ? ` <span class="pill ${s === 'pin' ? 'n' : 'old'}" title="${esc(ST[s][1])}">${esc(ST[s][0])}</span>` : '');
   $('#d-catalog').innerHTML = [...cat].sort((a, b) => ord[a.status] - ord[b.status] || a.title.localeCompare(b.title, 'ru')).map(c => {
     const d = c.dl || {};
     const ver = d.version || c.version;
-    const dlLinks = [d.full && a(d.full, 'полный дистрибутив'), d.page && a(d.page, 'все файлы версии')].filter(Boolean).join(' · ');
-    const trans = (d.trans || []).map(t => `<li>${a(t.url, t.title)}</li>`).join('');
+    const dlLinks = [d.full && a(d.full, 'полный дистрибутив') + badge(d.fullSt), d.page && a(d.page, 'все файлы версии')].filter(Boolean).join(' · ');
+    const trans = (d.trans || []).map(t => `<li>${a(t.url, t.title)}${badge(t.st)}</li>`).join('');
     return `<div class="dist-row">
       <div class="t">${c.releases ? a(c.releases, c.title) : esc(c.title)}
         <div class="m"><span class="mono">${esc(ver)}</span>${c.date ? ` · ${esc(c.date)}` : ''}${c.scanned ? ` · в реестре: <span class="mono">${esc(c.scanned)}</span>` : ''}${c.note ? ` · ${esc(c.note)}` : ''}</div>

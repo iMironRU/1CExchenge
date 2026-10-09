@@ -77,12 +77,17 @@ const files = fs.existsSync(filesPath) ? JSON.parse(fs.readFileSync(filesPath, '
 const RE_TRANS = /перехода? с|обновления с конфигурац/i;
 const RE_EDITION_UPD = /с базовой версии|с версии (ПРОФ|КОРП)|^Порядок/i;
 
+// доступность ссылок releases.1c.ru (проверка в браузере с сессией ИТС: tools/page/check-links.browser.js)
+const stPath = path.join(ROOT, 'data', 'links-status.json');
+const linkSt = fs.existsSync(stPath) ? JSON.parse(fs.readFileSync(stPath, 'utf8')).statuses : {};
+const st = u => (linkSt[u] ? linkSt[u].status : null);
+
 // Статус конфигурации каталога: разобрана (та же редакция) / другая редакция / нет
 const cat = catalog.map(c => {
   const f = files[c.id] || {};
   const dl = f.links ? {
-    version: f.version, full: f.links.full || null, page: f.links.page || null,
-    trans: (f.files || []).map(x => ({ title: x.title.replace(/^.*Версия [\d.]+\.\s*/, ''), url: x.url }))
+    version: f.version, full: f.links.full || null, fullSt: st(f.links.full), page: f.links.page || null,
+    trans: (f.files || []).map(x => ({ title: x.title.replace(/^.*Версия [\d.]+\.\s*/, ''), url: x.url, st: st(x.url) }))
       .filter(x => RE_TRANS.test(x.title) && !RE_EDITION_UPD.test(x.title)),
   } : { error: f.error ? f.error.replace(/^.*HTTP \d+ /, '') : null };
   const same = reg.templates.filter(t => t.name === c.name);

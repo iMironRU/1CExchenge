@@ -1,0 +1,709 @@
+{
+ "statuses": {
+  "https://releases.1c.ru/version_file?nick=ARAutomation20&ver=2.5.27.95&path=ARAutomation%5C2_5_27_95%5CARAutomation_2_5_27_95_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Комплексная автоматизация, редакция 2",
+   "version": "2.5.27.95",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=ARAutomation20&ver=2.5.27.95&path=ARAutomation%5C2_5_27_95%5CARAutomation_2_5_27_95_updsetup_HRM3.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Для перехода с \"Зарплата и Управление Персоналом, редакция 3\"",
+   "version": "2.5.27.95",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=ARAutomation20&ver=2.5.27.95&path=ARAutomation%5C2_5_27_95%5CARAutomation_2_5_27_95_updsetup_UPP1_3_KA1_1.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Для перехода с \"Управление производственным предприятием\", ред.1.3 / \"Комплексная автоматизация\", ред. 1.1",
+   "version": "2.5.27.95",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=ARAutomation20&ver=2.5.27.95&path=ARAutomation%5C2_5_27_95%5CARAutomation_2_5_27_95_updsetup_accounting3.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Для перехода с \"Бухгалтерия предприятия, редакция 3.0\"",
+   "version": "2.5.27.95",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=ARAutomation20&ver=2.5.27.95&path=ARAutomation%5C2_5_27_95%5CARAutomation_2_5_27_95_updsetuptrade.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления с конфигурации \"Управление торговлей, редакция 11\"",
+   "version": "2.5.27.95",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=Accounting30&ver=3.0.207.25&path=Accounting%5C3_0_207_25%5CAccounting_3_0_207_25_setup1c.zip": {
+   "status": "pin",
+   "mirrors": 0,
+   "kind": "full",
+   "title": "Бухгалтерия предприятия, редакция 3.0",
+   "version": "3.0.207.25",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=Accounting30&ver=3.0.207.25&path=Accounting%5C3_0_207_25%5CAccounting_3_0_207_25_updstpb.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с базовой версии",
+   "version": "3.0.207.25",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=Accounting30&ver=3.0.207.25&path=Accounting%5C3_0_207_25%5CAccounting_3_0_207_25_updstpo.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с базовой версии для 1",
+   "version": "3.0.207.25",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AccountingBase30&ver=3.0.207.25&path=AccountingBase%5C3_0_207_25%5CAccountingBase_3_0_207_25_setup1c.zip": {
+   "status": "pin",
+   "mirrors": 0,
+   "kind": "full",
+   "title": "Бухгалтерия предприятия базовая, редакция 3.0; 1С:Упрощенка, редакция 3.0; 1С:Предприниматель, редакция 3.0",
+   "version": "3.0.207.25",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AccountingBase30&ver=3.0.207.25&path=AccountingBase%5C3_0_207_25%5CAccountingBase_3_0_207_25_updstpo.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с базовой версии для 1",
+   "version": "3.0.207.25",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AccountingCorp30&ver=3.0.207.25&path=AccountingCorp%5C3_0_207_25%5CAccountingCorp_3_0_207_25_setup1c.zip": {
+   "status": "pin",
+   "mirrors": 0,
+   "kind": "full",
+   "title": "Бухгалтерия предприятия КОРП, редакция 3.0",
+   "version": "3.0.207.25",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AccountingCorp30&ver=3.0.207.25&path=AccountingCorp%5C3_0_207_25%5CAccountingCorp_3_0_207_25_updstpp.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с версии ПРОФ",
+   "version": "3.0.207.25",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AccountingGC&ver=3.0.206.2&path=AccountingGC%5C3_0_206_2%5CAccountingGC_3_0_206_2_setup1c.zip": {
+   "status": "pin",
+   "mirrors": 0,
+   "kind": "full",
+   "title": "1С:Гаражи",
+   "version": "3.0.206.2",
+   "checked": "2026-10-09T13:09:17.928Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AccountingGP&ver=3.0.206.2&path=AccountingGP%5C3_0_206_2%5CAccountingGP_3_0_206_2_setup1c.zip": {
+   "status": "pin",
+   "mirrors": 0,
+   "kind": "full",
+   "title": "1С:Садовод",
+   "version": "3.0.206.2",
+   "checked": "2026-10-09T13:09:17.928Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AccountingGP&ver=3.0.206.2&path=AccountingGP%5C3_0_206_2%5CAccountingGP_3_0_206_2_updstpb.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с базовой версии",
+   "version": "3.0.206.2",
+   "checked": "2026-10-09T13:09:17.928Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AccountingGPBase&ver=3.0.206.2&path=AccountingGPBase%5C3_0_206_2%5CAccountingGPBase_3_0_206_2_setup1c.zip": {
+   "status": "pin",
+   "mirrors": 0,
+   "kind": "full",
+   "title": "1С:Садовод (базовая версия)",
+   "version": "3.0.206.2",
+   "checked": "2026-10-09T13:09:17.928Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AccountingNPO&ver=3.0.206.3&path=AccountingNPO%5C3_0_206_3%5CAccountingNPO_3_0_206_3_setup1c.zip": {
+   "status": "pin",
+   "mirrors": 0,
+   "kind": "full",
+   "title": "Бухгалтерия некоммерческой организации",
+   "version": "3.0.206.3",
+   "checked": "2026-10-09T13:09:17.929Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AccountingNPO&ver=3.0.206.3&path=AccountingNPO%5C3_0_206_3%5CAccountingNPO_3_0_206_3_updstpb.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с базовой версии",
+   "version": "3.0.206.3",
+   "checked": "2026-10-09T13:09:17.929Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AccountingNPO&ver=3.0.206.3&path=AccountingNPO%5C3_0_206_3%5CAccountingNPO_3_0_206_3_updstpbb.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с 1С:Бухгалтерия Базовая",
+   "version": "3.0.206.3",
+   "checked": "2026-10-09T13:09:17.929Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AccountingNPO&ver=3.0.206.3&path=AccountingNPO%5C3_0_206_3%5CAccountingNPO_3_0_206_3_updstpbo.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с 1С:Бухгалтерия Базовая для 1",
+   "version": "3.0.206.3",
+   "checked": "2026-10-09T13:09:17.929Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AccountingNPO&ver=3.0.206.3&path=AccountingNPO%5C3_0_206_3%5CAccountingNPO_3_0_206_3_updstpbp.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с 1С:Бухгалтерия ПРОФ",
+   "version": "3.0.206.3",
+   "checked": "2026-10-09T13:09:17.929Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AccountingNPOBase&ver=3.0.206.3&path=AccountingNPOBase%5C3_0_206_3%5CAccountingNPOBase_3_0_206_3_setup1c.zip": {
+   "status": "pin",
+   "mirrors": 0,
+   "kind": "full",
+   "title": "Бухгалтерия некоммерческой организации (базовая)",
+   "version": "3.0.206.3",
+   "checked": "2026-10-09T13:09:17.929Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AccountingNPOCorp&ver=3.0.206.3&path=AccountingNPOCorp%5C3_0_206_3%5CAccountingNPOCorp_3_0_206_3_setup1c.zip": {
+   "status": "pin",
+   "mirrors": 0,
+   "kind": "full",
+   "title": "Бухгалтерия некоммерческой организации КОРП",
+   "version": "3.0.206.3",
+   "checked": "2026-10-09T13:09:17.929Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AccountingNPOCorp&ver=3.0.206.3&path=AccountingNPOCorp%5C3_0_206_3%5CAccountingNPOCorp_3_0_206_3_updstpbc.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с 1С:Бухгалтерия 8 КОРП",
+   "version": "3.0.206.3",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AccountingNPOCorp&ver=3.0.206.3&path=AccountingNPOCorp%5C3_0_206_3%5CAccountingNPOCorp_3_0_206_3_updstpnp.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с 1С:Бухгалтерия некоммерческой организации ПРОФ",
+   "version": "3.0.206.3",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AccountingOneBase30&ver=3.0.207.25&path=AccountingOneBase%5C3_0_207_25%5CAccountingOneBase_3_0_207_25_setup1c.zip": {
+   "status": "pin",
+   "mirrors": 0,
+   "kind": "full",
+   "title": "Бухгалтерия предприятия (базовая для 1), редакция 3.0; 1С:БизнесСтарт",
+   "version": "3.0.207.25",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AccountingOneBase30&ver=3.0.207.25&path=AccountingOneBase%5C3_0_207_25%5CAccountingOneBase_3_0_207_25_updstpb.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с базовой версии",
+   "version": "3.0.207.25",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AppealsBase&ver=1.0.6.2&path=AppealsBase%5C1_0_6_2%5CAppealsBase_1_0_6_2_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 2,
+   "kind": "full",
+   "title": "1С:Учет обращений Базовая",
+   "version": "1.0.6.2",
+   "checked": "2026-10-09T13:09:17.928Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AppealsProf&ver=1.0.6.2&path=AppealsProf%5C1_0_6_2%5CAppealsProf_1_0_6_2_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 2,
+   "kind": "full",
+   "title": "1С:Учет обращений ПРОФ",
+   "version": "1.0.6.2",
+   "checked": "2026-10-09T13:09:17.928Z"
+  },
+  "https://releases.1c.ru/version_file?nick=AppealsProf&ver=1.0.6.2&path=AppealsProf%5C1_0_6_2%5CAppealsProf_1_0_6_2_updstpb.zip": {
+   "status": "ok",
+   "mirrors": 2,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с базовой версии",
+   "version": "1.0.6.2",
+   "checked": "2026-10-09T13:09:17.929Z"
+  },
+  "https://releases.1c.ru/version_file?nick=Archive&ver=1.0.14.6&path=Archive%5C1_0_14_6%5CArchive_1_0_14_6_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "1С:Архив",
+   "version": "1.0.14.6",
+   "checked": "2026-10-09T13:09:17.928Z"
+  },
+  "https://releases.1c.ru/version_file?nick=BMO&ver=1.3.59.60&path=BMO%5C1_3_59_60%5CBMO_1_3_59_60_setup1c.zip": {
+   "status": "pin",
+   "mirrors": 0,
+   "kind": "full",
+   "title": "1С:Бюджет муниципального образования 8",
+   "version": "1.3.59.60",
+   "checked": "2026-10-09T13:09:17.928Z"
+  },
+  "https://releases.1c.ru/version_file?nick=BudgetDocMng30&ver=3.0.21.3&path=BudgetDocMng%5C3_0_21_3%5CBudgetDocMng_3_0_21_3_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Документооборот государственного учреждения 8, редакция 3.0",
+   "version": "3.0.21.3",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=BudgetReports&ver=1.1.72.1&path=BudgetReports%5C1_1_72_1%5Cbudgetreports_1_1_72_1_setup1c.zip": {
+   "status": "pin",
+   "mirrors": 0,
+   "kind": "full",
+   "title": "Бюджетная отчетность",
+   "version": "1.1.72.1",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=CConstrBase&ver=3.0.11.109&path=CConstrBase%5C3_0_11_109%5CCConstrBase_3_0_11_109_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 2,
+   "kind": "full",
+   "title": "1С:Электронное обучение. Конструктор курсов. Базовая версия",
+   "version": "3.0.11.109",
+   "checked": "2026-10-09T13:09:17.929Z"
+  },
+  "https://releases.1c.ru/version_file?nick=CashboxBase&ver=4.1.10.11&path=CashboxBase%5C4_1_10_11%5CCashboxBase_4_1_10_11_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "1C:Касса (приложение для ПК), редакция 4.1",
+   "version": "4.1.10.11",
+   "checked": "2026-10-09T13:09:17.924Z"
+  },
+  "https://releases.1c.ru/version_file?nick=ClientEDOBase&ver=2.10.2.31&path=ClientEDOBase%5C2_10_2_31%5CClientEDOBase_2_10_2_31_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "1С:Клиент ЭДО 8 Базовая, редакция 2",
+   "version": "2.10.2.31",
+   "checked": "2026-10-09T13:09:17.928Z"
+  },
+  "https://releases.1c.ru/version_file?nick=Contracts&ver=1.0.7.2&path=Contracts%5C1_0_7_2%5CContracts_1_0_7_2_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 2,
+   "kind": "full",
+   "title": "Договоры ПРОФ",
+   "version": "1.0.7.2",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=Contracts&ver=1.0.7.2&path=Contracts%5C1_0_7_2%5CContracts_1_0_7_2_updstpb.zip": {
+   "status": "ok",
+   "mirrors": 2,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с базовой версии",
+   "version": "1.0.7.2",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=ContractsBase&ver=1.0.7.2&path=ContractsBase%5C1_0_7_2%5CContractsBase_1_0_7_2_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 2,
+   "kind": "full",
+   "title": "Договоры базовая",
+   "version": "1.0.7.2",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=CorpUniversity&ver=3.1.4.66&path=CorpUniversity%5C3_1_4_66%5CCorpUniversity_3_1_4_66_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "1С:Электронное обучение. Корпоративный университет",
+   "version": "3.1.4.66",
+   "checked": "2026-10-09T13:09:17.929Z"
+  },
+  "https://releases.1c.ru/version_file?nick=DocMng30&ver=3.0.20.21&path=DocMng%5C3_0_20_21%5CDocMng_3_0_20_21_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Документооборот ПРОФ, редакция 3.0",
+   "version": "3.0.20.21",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=DocMngCorp30&ver=3.0.21.3&path=DocMngCorp%5C3_0_21_3%5CDocMngCorp_3_0_21_3_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Документооборот КОРП, редакция 3.0",
+   "version": "3.0.21.3",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=DocMngCorpRuEng30&ver=3.0.21.3&path=DocMngCorpRuEng%5C3_0_21_3%5CDocMngCorpRuEng_3_0_21_3_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Документооборот КОРП (русский и английский интерфейс), редакция 3.0",
+   "version": "3.0.21.3",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=DocMngCorpRuEng30&ver=3.0.21.3&path=DocMngCorpRuEng%5C3_0_21_3%5CDocMngCorpRuEng_3_0_21_3_updstpc.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с версии КОРП",
+   "version": "3.0.21.3",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=DocMngRegion30&ver=3.0.21.3&path=DocMngRegion%5C3_0_21_3%5CDocMngRegion_3_0_21_3_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Документооборот государственного учреждения КОРП. Регион, редакция 3.0",
+   "version": "3.0.21.3",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=EduOrganization&ver=3.0.9.155&path=EduOrganization%5C3_0_9_155%5CEduOrganization_3_0_9_155_setup1c.exe": {
+   "status": "ok",
+   "mirrors": 2,
+   "kind": "full",
+   "title": "1С:Электронное обучение. Образовательная организация",
+   "version": "3.0.9.155",
+   "checked": "2026-10-09T13:09:17.929Z"
+  },
+  "https://releases.1c.ru/version_file?nick=Enterprise13&ver=1.3.285.1&path=Enterprise%5C1_3_285_1%5CEnterprise_1_3_285_1_setup1c.zip": {
+   "status": "pin",
+   "mirrors": 0,
+   "kind": "full",
+   "title": "Управление производственным предприятием, редакция 1.3",
+   "version": "1.3.285.1",
+   "checked": "2026-10-09T13:09:17.931Z"
+  },
+  "https://releases.1c.ru/version_file?nick=Exam&ver=3.0.21.109&path=Exam%5C3_0_21_109%5CExam_3_0_21_109_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 2,
+   "kind": "full",
+   "title": "1С:Электронное обучение. Экзаменатор",
+   "version": "3.0.21.109",
+   "checked": "2026-10-09T13:09:17.929Z"
+  },
+  "https://releases.1c.ru/version_file?nick=GMZ&ver=1.1.53.1&path=GMZ%5C1_1_53_1%5CGMZ_1_1_53_1_setup1c.zip": {
+   "status": "pin",
+   "mirrors": 0,
+   "kind": "full",
+   "title": "Государственные и муниципальные закупки",
+   "version": "1.1.53.1",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=HRM30&ver=3.1.38.92&path=HRM%5C3_1_38_92%5CHRM_3_1_38_92_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Зарплата и Управление Персоналом, редакция 3",
+   "version": "3.1.38.92",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=HRM30&ver=3.1.38.92&path=HRM%5C3_1_38_92%5CHRM_3_1_38_92_updstpb.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с базовой версии",
+   "version": "3.1.38.92",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=HRMBase30&ver=3.1.38.92&path=HRMBase%5C3_1_38_92%5CHRMBase_3_1_38_92_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Зарплата и Управление Персоналом базовая, редакция 3",
+   "version": "3.1.38.92",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=HRMCorp30&ver=3.1.38.92&path=HRMCorp%5C3_1_38_92%5CHRMCorp_3_1_38_92_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Зарплата и управление персоналом КОРП, редакция 3",
+   "version": "3.1.38.92",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=MDM25&ver=2.5.14.1&path=MDM%5C2_5_14_1%5CMDM_2_5_14_1_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 1,
+   "kind": "full",
+   "title": "1С:MDM Управление нормативно-справочной информацией, редакция 2.5",
+   "version": "2.5.14.1",
+   "checked": "2026-10-09T13:09:17.928Z"
+  },
+  "https://releases.1c.ru/version_file?nick=PayDesk&ver=1.1.4.105&path=PayDesk%5C1_1_4_105%5CPayDesk_1_1_4_105_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "1С:РМК",
+   "version": "1.1.4.105",
+   "checked": "2026-10-09T13:09:17.928Z"
+  },
+  "https://releases.1c.ru/version_file?nick=PayDocs&ver=1.0.32.1&path=PayDocs%5C1_0_32_1%5CPayDocs_1_0_32_1_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Платежные документы",
+   "version": "1.0.32.1",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=Retail30&ver=3.0.14.159&path=Retail%5C3_0_14_159%5CRetail_3_0_14_159_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Розница, редакция 3.0 (рекомендуется)",
+   "version": "3.0.14.159",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=Retail30&ver=3.0.14.159&path=Retail%5C3_0_14_159%5CRetail_3_0_14_159_updstpb.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с базовой версии",
+   "version": "3.0.14.159",
+   "checked": "2026-10-09T13:09:17.931Z"
+  },
+  "https://releases.1c.ru/version_file?nick=RetailBase30&ver=3.0.14.159&path=RetailBase%5C3_0_14_159%5CRetailBase_3_0_14_159_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Розница базовая, редакция 3.0 (рекомендуется)",
+   "version": "3.0.14.159",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=SettlementBudget&ver=1.3.56.50&path=SettlementBudget%5C1_3_56_50%5CSettlementBudget_1_3_56_50_setup1c.zip": {
+   "status": "pin",
+   "mirrors": 0,
+   "kind": "full",
+   "title": "1С:Бюджет поселения 8",
+   "version": "1.3.56.50",
+   "checked": "2026-10-09T13:09:17.928Z"
+  },
+  "https://releases.1c.ru/version_file?nick=SettlementBudgetBase&ver=1.3.56.50&path=SettlementBudgetBase%5C1_3_56_50%5CSettlementBudgetBase_1_3_56_50_setup1c.zip": {
+   "status": "pin",
+   "mirrors": 0,
+   "kind": "full",
+   "title": "1С:Бюджет поселения 8 (базовая)",
+   "version": "1.3.56.50",
+   "checked": "2026-10-09T13:09:17.928Z"
+  },
+  "https://releases.1c.ru/version_file?nick=SmallBusiness30&ver=3.0.14.159&path=SmallBusiness%5C3_0_14_159%5CSmallBusiness_3_0_14_159_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Управление нашей фирмой, редакция 3.0",
+   "version": "3.0.14.159",
+   "checked": "2026-10-09T13:09:17.931Z"
+  },
+  "https://releases.1c.ru/version_file?nick=SmallBusiness30&ver=3.0.14.159&path=SmallBusiness%5C3_0_14_159%5CSmallBusiness_3_0_14_159_updstpb.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с базовой версии",
+   "version": "3.0.14.159",
+   "checked": "2026-10-09T13:09:17.931Z"
+  },
+  "https://releases.1c.ru/version_file?nick=SmallBusiness30&ver=3.0.14.159&path=SmallBusiness%5C3_0_14_159%5CSmallBusiness_3_0_14_159_updstprt.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив перехода с конфигураций \"Розница\" и \"Розница базовая\" редакция 3.0",
+   "version": "3.0.14.159",
+   "checked": "2026-10-09T13:09:17.931Z"
+  },
+  "https://releases.1c.ru/version_file?nick=SmallBusinessBase30&ver=3.0.14.159&path=SmallBusinessBase%5C3_0_14_159%5CSmallBusinessBase_3_0_14_159_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Управление нашей фирмой базовая, редакция 3.0",
+   "version": "3.0.14.159",
+   "checked": "2026-10-09T13:09:17.931Z"
+  },
+  "https://releases.1c.ru/version_file?nick=SmallBusinessBase30&ver=3.0.14.159&path=SmallBusinessBase%5C3_0_14_159%5CSmallBusinessBase_3_0_14_159_updstprtb.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив перехода с конфигурации \"Розница базовая\", редакция 3.0",
+   "version": "3.0.14.159",
+   "checked": "2026-10-09T13:09:17.931Z"
+  },
+  "https://releases.1c.ru/version_file?nick=StateAccounting20&ver=2.0.110.66&path=StateAccounting%5C2_0_110_66%5CStateAccounting_2_0_110_66_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Бухгалтерия государственного учреждения, редакция 2.0",
+   "version": "2.0.110.66",
+   "checked": "2026-10-09T13:09:17.929Z"
+  },
+  "https://releases.1c.ru/version_file?nick=StateAccounting20&ver=2.0.110.66&path=StateAccounting%5C2_0_110_66%5CStateAccounting_2_0_110_66_updstpb.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с базовой версии",
+   "version": "2.0.110.66",
+   "checked": "2026-10-09T13:09:17.929Z"
+  },
+  "https://releases.1c.ru/version_file?nick=StateAccountingBase20&ver=2.0.110.66&path=StateAccountingBase%5C2_0_110_66%5CStateAccountingBase_2_0_110_66_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Бухгалтерия государственного учреждения базовая, редакция 2.0",
+   "version": "2.0.110.66",
+   "checked": "2026-10-09T13:09:17.929Z"
+  },
+  "https://releases.1c.ru/version_file?nick=StateAccountingCorp&ver=2.0.110.66&path=StateAccountingCorp%5C2_0_110_66%5CStateAccountingCorp_2_0_110_66_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Бухгалтерия государственного учреждения КОРП",
+   "version": "2.0.110.66",
+   "checked": "2026-10-09T13:09:17.929Z"
+  },
+  "https://releases.1c.ru/version_file?nick=StateAccountingCorp&ver=2.0.110.66&path=StateAccountingCorp%5C2_0_110_66%5CStateAccountingCorp_2_0_110_66_updstpp.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с версии ПРОФ",
+   "version": "2.0.110.66",
+   "checked": "2026-10-09T13:09:17.929Z"
+  },
+  "https://releases.1c.ru/version_file?nick=StateHRM30&ver=3.1.38.92&path=StateHRM%5C3_1_38_92%5CStateHRM_3_1_38_92_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Зарплата и кадры государственного учреждения, редакция 3",
+   "version": "3.1.38.92",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=StateHRM30&ver=3.1.38.92&path=StateHRM%5C3_1_38_92%5CStateHRM_3_1_38_92_updstpb.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с базовой версии",
+   "version": "3.1.38.92",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=StateHRMBase&ver=3.1.38.92&path=StateHRMBase%5C3_1_38_92%5CStateHRMBase_3_1_38_92_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Зарплата и кадры государственного учреждения базовая, редакция 3",
+   "version": "3.1.38.92",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=StateHRMCorp3&ver=3.1.38.92&path=StateHRMCorp%5C3_1_38_92%5CStateHRMCorp_3_1_38_92_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Зарплата и кадры государственного учреждения КОРП, редакция 3",
+   "version": "3.1.38.92",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=Taxes&ver=3.0.276.1&path=Taxes%5C3_0_276_1%5CTaxes_3_0_276_1_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Налогоплательщик",
+   "version": "3.0.276.1",
+   "checked": "2026-10-09T13:09:17.930Z"
+  },
+  "https://releases.1c.ru/version_file?nick=Trade110&ver=11.5.27.95&path=Trade%5C11_5_27_95%5CTrade_11_5_27_95_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Управление торговлей, редакция 11",
+   "version": "11.5.27.95",
+   "checked": "2026-10-09T13:09:17.931Z"
+  },
+  "https://releases.1c.ru/version_file?nick=Trade110&ver=11.5.27.95&path=Trade%5C11_5_27_95%5CTrade_11_5_27_95_updsetup_accounting3.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Для перехода с \"Бухгалтерия предприятия, редакция 3.0\"",
+   "version": "11.5.27.95",
+   "checked": "2026-10-09T13:09:17.931Z"
+  },
+  "https://releases.1c.ru/version_file?nick=Trade110&ver=11.5.27.95&path=Trade%5C11_5_27_95%5CTrade_11_5_27_95_updsetup_trade10_3.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Для перехода с \"Управление торговлей 10.3.\"",
+   "version": "11.5.27.95",
+   "checked": "2026-10-09T13:09:17.931Z"
+  },
+  "https://releases.1c.ru/version_file?nick=Trade110&ver=11.5.27.95&path=Trade%5C11_5_27_95%5CTrade_11_5_27_95_updstpb.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Дистрибутив обновления для перехода с базовой версии",
+   "version": "11.5.27.95",
+   "checked": "2026-10-09T13:09:17.931Z"
+  },
+  "https://releases.1c.ru/version_file?nick=TradeBase110&ver=11.5.27.95&path=TradeBase%5C11_5_27_95%5CTradeBase_11_5_27_95_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Управление торговлей базовая, редакция 11",
+   "version": "11.5.27.95",
+   "checked": "2026-10-09T13:09:17.931Z"
+  },
+  "https://releases.1c.ru/version_file?nick=TradeBase110&ver=11.5.27.95&path=TradeBase%5C11_5_27_95%5CTradeBase_11_5_27_95_updsetup_TiS9_2.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Для перехода с \"Торговля и Склад 9.2\"",
+   "version": "11.5.27.95",
+   "checked": "2026-10-09T13:09:17.931Z"
+  },
+  "https://releases.1c.ru/version_file?nick=TradeBase110&ver=11.5.27.95&path=TradeBase%5C11_5_27_95%5CTradeBase_11_5_27_95_updsetup_trade10_3.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "package",
+   "title": "Для перехода с \"Управление торговлей 10.3.\"",
+   "version": "11.5.27.95",
+   "checked": "2026-10-09T13:09:17.931Z"
+  },
+  "https://releases.1c.ru/version_file?nick=Treasury275&ver=1.0.2.12&path=Treasury275%5C1_0_2_12%5Csetup1c.exe": {
+   "status": "ok",
+   "mirrors": 2,
+   "kind": "full",
+   "title": "1С:275ФЗ",
+   "version": "1.0.2.12",
+   "checked": "2026-10-09T13:09:17.928Z"
+  },
+  "https://releases.1c.ru/version_file?nick=Treasury275Base&ver=1.0.2.12&path=Treasury275Base%5C1_0_2_12%5Csetup1c.exe": {
+   "status": "ok",
+   "mirrors": 2,
+   "kind": "full",
+   "title": "1С:275ФЗ (базовая)",
+   "version": "1.0.2.12",
+   "checked": "2026-10-09T13:09:17.928Z"
+  },
+  "https://releases.1c.ru/version_file?nick=UniformAllowances20&ver=2.0.43.11&path=UniformAllowances%5C2_0_43_11%5CUniformAllowances_2_0_43_11_setup1c.zip": {
+   "status": "ok",
+   "mirrors": 3,
+   "kind": "full",
+   "title": "Вещевое довольствие, редакция 2.0",
+   "version": "2.0.43.11",
+   "checked": "2026-10-09T13:09:17.930Z"
+  }
+ },
+ "labels": {
+  "ok": "доступно",
+  "pin": "нужен PIN (второй фактор)",
+  "notfound": "файл не найден",
+  "login": "нужен вход",
+  "file": "отдаёт файл сразу",
+  "error": "ошибка запроса",
+  "other": "не распознано"
+ }
+}

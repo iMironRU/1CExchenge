@@ -43,6 +43,10 @@ node tools/scan-templates.js      # файлы поставок      -> data/tem
 node tools/scan-cf.js             # CF (≈5–7 мин/поставка, кеш в work/) -> data/cf/*.json
 node tools/fetch-files.js         # файлы последних версий из API Апдейкона -> data/catalog-files.json
 node tools/fetch-support.js       # статус линеек (актуальная / поддерживается / устаревшая) -> data/catalog-support.json
+node tools/links-list.js          # ссылки releases.1c.ru для проверки -> work/links.json
+#   проверка доступности — во вкладке releases.1c.ru с сессией ИТС (tools/page/check-links.browser.js),
+#   результат «0:ok/3 1:pin …» -> node tools/links-status.js "<результат>" -> data/links-status.json
+node tools/scan-packages.js <zip|папка>  # скачанные пакеты перехода: .cfu или обработка с правилами -> data/packages.json
 node tools/build-registry.js      # -> data/registry.json, data/registry.csv, REGISTRY.md
 node tools/build-page.js --pages  # страница -> work/page/registry.html и docs/index.html (GitHub Pages)
 ```
