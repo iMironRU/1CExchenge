@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "pages",
+      "runtimeExecutable": "C:\\.dev\\.tools\\node\\node.exe",
+      "runtimeArgs": ["-e", "const h=require('http'),fs=require('fs'),p=require('path');const T={'.html':'text/html; charset=utf-8','.json':'application/json'};h.createServer((q,s)=>{let f=p.join('docs',decodeURIComponent(q.url.split('?')[0]));if(f.endsWith(p.sep)||f==='docs')f=p.join(f,'index.html');fs.readFile(f,(e,d)=>{if(e){s.writeHead(404);return s.end();}s.writeHead(200,{'Content-Type':T[p.extname(f)]||'application/octet-stream'});s.end(d);});}).listen(8765)"],
+      "port": 8765
+    }
+  ]
+}
