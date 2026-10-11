@@ -47,6 +47,9 @@ node tools/links-list.js          # ссылки releases.1c.ru для пров�
 #   проверка доступности — во вкладке releases.1c.ru с сессией ИТС (tools/page/check-links.browser.js),
 #   результат «0:ok/3 1:pin …» -> node tools/links-status.js "<результат>" -> data/links-status.json
 node tools/scan-packages.js <zip|папка>  # скачанные пакеты перехода: .cfu или обработка с правилами -> data/packages.json
+node tools/scan-ids.js             # идентификаторы Интернет-поддержки подсистем -> data/ids.json
+node tools/resolve-ids.js          # раскрытие выражений (programName, версии библиотек) -> data/ids.json
+node tools/update-info.js          # update-api.1c.ru: следующая версия, цепочка, платформа, исправления -> data/update-info.json (см. UPDATE-API.md)
 node tools/build-registry.js      # -> data/registry.json, data/registry.csv, REGISTRY.md
 node tools/build-page.js --pages  # страница -> work/page/registry.html и docs/index.html (GitHub Pages)
 ```
