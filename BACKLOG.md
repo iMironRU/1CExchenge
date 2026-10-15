@@ -10,7 +10,9 @@
 - **Окружение.** Node портативный: `C:\.dev\.tools\node\node.exe`. В PowerShell он в PATH только после `. C:\.dev\.tools\activate.ps1`,
   в Bash — `export PATH=/c/.dev/.tools/node:$PATH`. Платформа для ibcmd — новейшая в `C:\Program Files\1cv8` (сейчас 8.5.1.1529);
   ibcmd `--data` передавать **абсолютным** путём.
-- **`work/` не в git** (большой, воспроизводимый): `work/ib/<id>` — файловые базы из поставок (`.loaded`), `work/cf/<id>` — выгрузки
+- **`work/` не в git** (большой, воспроизводимый): `work/ib/<id>` — файловые базы из поставок (`.loaded`; 43 базы ≈ 53 ГБ). С 2026-10-15 весь `work`
+  (≈ 56 ГБ) физически на `D:\.dev\1CExchenge\work`, а `C:\.dev\1CExchenge\work` — junction туда, скрипты не менялись.
+  Удалять junction только `cmd /c rmdir`, не `Remove-Item -Recurse` (снесёт содержимое на D:), `work/cf/<id>` — выгрузки
   (`ConfigDumpInfo.xml`, частичные выгрузки модулей `ids/`, `ids-x/`, `ids-subs/`, кеш `.done`). Шаблоны поставок — каталог из
   `%APPDATA%\1C\1CEStart\1cestart.cfg`; новые zip распаковывает `node tools/efd.js <zip|папка>`.
 - **Порядок пересборки**: scan-templates → scan-cf → fetch-files / fetch-support → (links-list + проверка ссылок в Chrome → links-status)
