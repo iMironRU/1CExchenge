@@ -6,7 +6,7 @@
 //   3) ibcmd infobase config export objects (обмены)        -> work/cf/<id>/xml
 //   4) анализ                                               -> data/cf/<id>.json
 // Лицензия не нужна (ibcmd). Использование:
-//   node tools/scan-cf.js [--root C:\.temp\tmplts] [--only trade/11_6] [--ibcmd <path>]
+//   node tools/scan-cf.js [--root D:\.temp\tmplts] [--only trade/11_6] [--ibcmd <path>]
 'use strict';
 const fs = require('fs');
 const path = require('path');
@@ -21,7 +21,7 @@ const args = Object.fromEntries(process.argv.slice(2).reduce((a, v, i, arr) => {
   if (v.startsWith('--')) a.push([v.slice(2), arr[i + 1] && !arr[i + 1].startsWith('--') ? arr[i + 1] : true]);
   return a;
 }, []));
-const ROOT = args.root || 'C:\\.temp\\tmplts';
+const ROOT = args.root || 'D:\\.temp\\tmplts';
 const PROJECT = path.join(__dirname, '..');
 const WORK = path.join(PROJECT, 'work');
 const OUT = path.join(PROJECT, 'data', 'cf');

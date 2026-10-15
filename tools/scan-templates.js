@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Сканер каталога шаблонов 1С (tmplts): находит в поставках правила обмена КД2,
 // обработки переходов/обменов и сопроводительные документы.
-// Использование: node tools/scan-templates.js [--root C:\.temp\tmplts] [--out data/templates.json]
+// Использование: node tools/scan-templates.js [--root D:\.temp\tmplts] [--out data/templates.json]
 'use strict';
 const fs = require('fs');
 const path = require('path');
@@ -14,7 +14,7 @@ const args = Object.fromEntries(process.argv.slice(2).reduce((a, v, i, arr) => {
   if (v.startsWith('--')) a.push([v.slice(2), arr[i + 1]]);
   return a;
 }, []));
-const ROOT = args.root || 'C:\\.temp\\tmplts';
+const ROOT = args.root || 'D:\\.temp\\tmplts';
 const OUT = args.out || path.join(__dirname, '..', 'data', 'templates.json');
 
 const SKIP_EXT = new Set(['.cf', '.cfu', '.dt', '.mft', '.ttf', '.jpg', '.jpeg', '.png', '.gif', '.bmp',
