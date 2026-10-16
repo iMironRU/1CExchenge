@@ -57,6 +57,11 @@ node tools/build-page.js --pages  # страница -> work/page/registry.html 
 Страница опубликована как артефакт: https://claude.ai/artifact/F7cwxeovhDSFgpzhjsKerp
 (шаблон `tools/page/template.html`, каталог типовых — снимок `/api/configs` в `data/catalog-ru.json`).
 
+## Индекс типовых
+
+Поиск механизмов по всем разобранным конфигурациям (объекты, реквизиты, код, методы) — отдельный приватный проект
+[1c-typical-index](https://github.com/iMironRU/1c-typical-index) (`C:\.dev\1c-typical-index`). Источник для него — базы `work/ib` этого проекта.
+
 `scan-cf.js --only trade/11_6` — одна поставка. Повторный запуск пропускает готовые шаги
 (база, список объектов, выгрузка) и только переанализирует.
 
